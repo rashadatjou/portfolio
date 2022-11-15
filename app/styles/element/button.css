@@ -1,0 +1,20 @@
+/*
+ * File: button.css
+ * Project: *
+ * Created: Tuesday, 4th October 2022
+ * Author: Mehdi Rashadatjou
+ * -----
+ * Copyright 2021 - 2022, ©*
+ * -----
+ */
+
+.btn {
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: var(--txt-normal);
+}
+
+.btn-primary {
+  background-color: var(--color-act-main);
+}
