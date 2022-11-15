@@ -8,11 +8,20 @@
  * -----
  */
 
-import { LinkDescriptor } from "@remix-run/node";
-import { Link } from "@remix-run/react";
 import introCssPath from "~/styles/container/intro.css";
 
+import { LinkDescriptor } from "@remix-run/node";
+import { Link } from "@remix-run/react";
+
 // - Components
+const Settings = () => {
+  return (
+    <div className="intro__settings">
+      <button className="intro__setting-action">⚙️</button>
+    </div>
+  );
+};
+
 const Menu = () => {
   return (
     <div className="intro__menu">
@@ -23,8 +32,9 @@ const Menu = () => {
         <li>
           <Link to="/contact">Contact</Link>
         </li>
-        <li>Theme</li>
-        <li>Language</li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
       </ul>
     </div>
   );
@@ -33,6 +43,7 @@ const Menu = () => {
 const IntroContainer = () => {
   return (
     <div className="intro">
+      <Settings />
       <h1>Hello, My name is Mehdi 👋🏽</h1>
       <span>Check out the options bellow for more info 👇🏽</span>
       <Menu />

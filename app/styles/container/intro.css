@@ -28,6 +28,7 @@
   margin-top: var(--space-small);
 }
 
+/* Menu */
 .intro__menu {
   margin: calc(var(--space-x-large) * 2);
 }
@@ -40,4 +41,16 @@
 .intro__menu-list > li {
   display: inline-block;
   margin-inline: var(--space-large);
+}
+
+/* Settings */
+.intro__settings {
+  position: absolute;
+  top: var(--space-x-large);
+  right: var(--space-x-large);
+}
+
+.intro__setting-action {
+  font-size: var(--size-txt-medium);
+  border-radius: calc(var(--size-txt-medium) / 2);
 }
