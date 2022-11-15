@@ -8,7 +8,7 @@
  * -----
  */
 
- .intro_container {
+.intro {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -17,22 +17,27 @@
   align-items: center;
 }
 
-.intro_container > h1 {
+.intro > h1 {
   font-size: var(--size-txt-large);
   font-weight: bold;
   padding: var(--space-large);
 }
 
-.intro_container > span {
+.intro > span {
   font-size: var(--size-txt-normal);
   margin-top: var(--space-small);
 }
 
-.intro-container__action-button {
+.intro__menu {
   margin: calc(var(--space-x-large) * 2);
 }
 
-.intro-container__action-button.btn {
-  font-size: var(--size-txt-large);
-  font-weight: bold;
+.intro__menu-list {
+  font-size: var(--size-txt-small);
+  font-weight: 600;
+}
+
+.intro__menu-list > li {
+  display: inline-block;
+  margin-inline: var(--space-large);
 }
