@@ -9,6 +9,7 @@
  */
 
 import { LinkDescriptor } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 import introCssPath from "~/styles/container/intro.css";
 
 // - Components
@@ -16,8 +17,12 @@ const Menu = () => {
   return (
     <div className="intro__menu">
       <ul className="intro__menu-list">
-        <li>Blog</li>
-        <li>Contact</li>
+        <li>
+          <Link to="/blog">Blog</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
         <li>Theme</li>
         <li>Language</li>
       </ul>

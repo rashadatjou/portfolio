@@ -27,3 +27,7 @@ p {
 span {
   color: var(--color-txt-secondary);
 }
+
+a {
+  color: var(--color-act-secondary);
+}
