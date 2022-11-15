@@ -1,9 +1,10 @@
 /*
- * File: i18n.server.ts
- * Project: *
- * Created: *
+ * File: /app/i18n/i18n.server.ts
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
  * -----
- * Copyright 2022, ©Denpex
+ * Copyright 2022, ©Mehdi Rashadatjou
  * -----
  */
 

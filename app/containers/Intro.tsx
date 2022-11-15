@@ -1,9 +1,10 @@
 /*
- * File: index.tsx
- * Project: Portfolio 3.0
- * Created: Monday, 26th September 2022
+ * File: /app/containers/Intro.tsx
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
  * -----
- * Copyright 2022, ©Denpex
+ * Copyright 2022, ©Mehdi Rashadatjou
  * -----
  */
 

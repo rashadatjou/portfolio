@@ -1,9 +1,10 @@
 /*
- * File: index.ts
- * Project: *
- * Created: *
+ * File: /app/services/js-detect/index.ts
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
  * -----
- * Copyright 2022, ©Denpex
+ * Copyright 2022, ©Mehdi Rashadatjou
  * -----
  */
 

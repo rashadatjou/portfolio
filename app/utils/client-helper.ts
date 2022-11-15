@@ -1,10 +1,10 @@
 /*
- * File: server-gurad.ts
- * Project: *
- * Created: *
- * Author: Mehdi Rashadatjou
+ * File: /app/utils/client-helper.ts
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
  * -----
- * Copyright 2021 - 2022, ©*
+ * Copyright 2022, ©Mehdi Rashadatjou
  * -----
  */
 

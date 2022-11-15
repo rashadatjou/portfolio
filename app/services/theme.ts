@@ -1,10 +1,10 @@
 /*
- * File: theme.ts
- * Project: *
- * Created: *
- * Author: Mehdi Rashadatjou
+ * File: /app/services/theme.ts
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
  * -----
- * Copyright 2021 - 2022, ©*
+ * Copyright 2022, ©Mehdi Rashadatjou
  * -----
  */
 
@@ -17,7 +17,7 @@ import { isServerSide } from "~/utils/client-helper";
 import AppError from "~/utils/app-error";
 
 // - Constants
-const ALL_THEMES = new Set<Theme>(["dark", "light", "solarized"]);
+const ALL_THEMES = new Set<Theme>(["dark", "light"]);
 const LINK_REL_STYLESHEET = "link[rel=stylesheet]";
 const PREFERS_COLOR_SCHEME = "prefers-color-scheme";
 const ROOT_PSEUDO_CLASS = ":root";

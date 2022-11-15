@@ -1,9 +1,10 @@
 /*
- * File: contex.ts
- * Project: *
- * Created: *
+ * File: /app/typings/context.ts
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
  * -----
- * Copyright 2022, ©Denpex
+ * Copyright 2022, ©Mehdi Rashadatjou
  * -----
  */
 

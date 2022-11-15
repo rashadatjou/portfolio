@@ -1,10 +1,10 @@
 /*
- * File: theme.tsx
- * Project: *
- * Created: *
- * Author: Mehdi Rashadatjou
+ * File: /app/context/theme.tsx
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
  * -----
- * Copyright 2021 - 2022, ©*
+ * Copyright 2022, ©Mehdi Rashadatjou
  * -----
  */
 
