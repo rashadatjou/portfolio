@@ -29,7 +29,7 @@
   --color-bg-main: #efefef;
   --color-bg-secondary: #f7f7f7;
   --color-bg-body: #fff;
-  --color-bg-border: #dbdbdb;
+  --color-bg-border: #b7b7b7;
 
   /* Text */
   --color-txt-main: #050505;
@@ -43,7 +43,7 @@
 
   /* Other */
   --color-theme-main: #f6d728;
-  --color-focus-main: rgb(8, 191, 142, 0.67);
+  --color-focus-main: rgb(8, 191, 142, 0.47);
   --color-selection-main: #9e9e9e;
   --color-highlight-main: #03d79e;
 }

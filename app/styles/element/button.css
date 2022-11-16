@@ -12,9 +12,36 @@
   cursor: pointer;
   border-radius: 6px;
   font-weight: bold;
-  font-size: var(--txt-normal);
+  font-size: var(txt-normal);
+  border-color: var(--color-bg-border);
 }
 
 .btn-primary {
   background-color: var(--color-act-main);
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+}
+
+.btn-icon.border {
+  font-size: var(--size-txt-medium);
+  border: solid;
+  border-radius: var(--size-txt-medium);
+  border-color: var(--color-bg-border);
+  border-width: var(--border-width-medium);
+}
+
+/* Selectors */
+.btn:hover {
+  background-color: var(--color-highlight-main);
+}
+
+.btn-icon.border:hover {
+  border-color: var(--color-highlight-main);
+}
+
+.btn:active {
+  transform: scale(0.95);
 }

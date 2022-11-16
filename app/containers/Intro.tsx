@@ -13,11 +13,15 @@ import introCssPath from "~/styles/container/intro.css";
 import { LinkDescriptor } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
+import ButtonIcon, {
+  links as iconButtonLinks,
+} from "~/components/button/ButtonIcon";
+
 // - Components
 const Settings = () => {
   return (
     <div className="intro__settings">
-      <button className="intro__setting-action">⚙️</button>
+      <ButtonIcon bordered>⚙️</ButtonIcon>
     </div>
   );
 };
@@ -55,4 +59,5 @@ const IntroContainer = () => {
 export default IntroContainer;
 export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: introCssPath },
+  ...iconButtonLinks,
 ];

@@ -29,4 +29,9 @@
 
   /* Animations */
   --animation-duration: 0.1s;
+
+  /* Border */
+  --border-width-small: 0.125rem;
+  --border-width-medium: 0.25rem;
+  --border-width-large: 0.5rem;
 }
