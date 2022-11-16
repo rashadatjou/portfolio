@@ -83,8 +83,7 @@ export const links: LinksFunction = () => {
     {
       rel: "stylesheet",
       href: colorCssPath,
-      media:
-        "(prefers-color-scheme: no-preference), (prefers-color-scheme: light)",
+      media: "(prefers-color-scheme: light)",
     },
     {
       rel: "stylesheet",

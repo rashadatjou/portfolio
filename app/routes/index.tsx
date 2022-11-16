@@ -11,7 +11,7 @@
 import type { LinksFunction } from "@remix-run/node";
 import { useTranslation } from "react-i18next";
 import { useCatch } from "@remix-run/react";
-import { useTheme } from "~/context/theme";
+import { useTheme } from "@themeit/react";
 import { useJsDetect } from "~/context/js-detect";
 
 import IntroContainer, { links as introLinks } from "~/containers/Intro";

@@ -13,20 +13,15 @@ import { hydrateRoot } from "react-dom/client";
 import { localizeRoot } from "~/i18n/i18n.client";
 import { I18nextProvider } from "react-i18next";
 import { JsDetectProvider } from "~/context/js-detect";
-import { ThemeProvider } from "~/context/theme";
-import { getClientCSSLinks, getTheme } from "~/services/theme";
-
-const linkList = getClientCSSLinks();
-const pickedTheme = getTheme();
+import { ThemeProvider } from "@themeit/react";
+import { Theme } from "~/typings/theme";
 
 localizeRoot((i18n) => {
   hydrateRoot(
     document,
     <I18nextProvider i18n={i18n}>
       <JsDetectProvider jsEnabled>
-        <ThemeProvider
-          defaultTheme={pickedTheme || "light"}
-          linkList={linkList}>
+        <ThemeProvider<Theme> defaultTheme="light" autoLoad>
           <RemixBrowser />
         </ThemeProvider>
       </JsDetectProvider>
