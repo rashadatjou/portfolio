@@ -10,10 +10,11 @@
 
 .btn {
   cursor: pointer;
-  border-radius: 6px;
   font-weight: bold;
   font-size: var(txt-normal);
   border-color: var(--color-bg-border);
+  border: none;
+  appearance: none;
 }
 
 .btn-primary {
@@ -22,15 +23,14 @@
 
 .btn-icon {
   background: none;
-  border: none;
 }
 
 .btn-icon.border {
   font-size: var(--size-txt-medium);
   border: solid;
-  border-radius: var(--size-txt-medium);
-  border-color: var(--color-bg-border);
-  border-width: var(--border-width-medium);
+  border-width: var(--size-border-width);
+  border-radius: var(--size-border-radius);
+  border-color: var(--color-bg-border)
 }
 
 /* Selectors */

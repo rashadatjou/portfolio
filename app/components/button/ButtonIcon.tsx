@@ -1,5 +1,5 @@
 /*
- * File: /app/components/button/Button.tsx
+ * File: /app/components/button/ButtonIcon.tsx
  * Project: portfolio
  * Created: Wednesday, 16th November 2022
  * Author: Denpex
@@ -15,7 +15,7 @@ import cls from "classnames";
 
 // - Props
 type Props = {
-  bordered?: Boolean;
+  bordered?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 // - Components
@@ -29,6 +29,7 @@ const ButtonIcon = ({ children, className, bordered, ...htmlAtt }: Props) => (
 
 // - Exports
 export default ButtonIcon;
-export const links: LinkDescriptor[] = [
-  { rel: "stylesheet", href: buttonCssPath },
-];
+export const stylesheet: LinkDescriptor = {
+  rel: "stylesheet",
+  href: buttonCssPath,
+};

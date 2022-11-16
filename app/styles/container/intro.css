@@ -23,24 +23,24 @@
   padding: var(--space-large);
 }
 
-.intro > span {
+.intro > p {
   font-size: var(--size-txt-normal);
-  margin-top: var(--space-small);
+  padding: var(--space-large);
 }
 
 /* Menu */
 .intro__menu {
-  margin: calc(var(--space-x-large) * 2);
+  margin-top: var(--space-x-large);
 }
 
 .intro__menu-list {
-  font-size: var(--size-txt-small);
+  font-size: var(--size-txt-large);
   font-weight: 600;
 }
 
 .intro__menu-list > li {
   display: inline-block;
-  margin-inline: var(--space-large);
+  margin-inline: var(--space-x-large);
 }
 
 /* Settings */

@@ -30,6 +30,7 @@
   --color-bg-secondary: #f7f7f7;
   --color-bg-body: #fff;
   --color-bg-border: #b7b7b7;
+  --color-bg-shadow: rgba(0, 0, 0, 0.25);
 
   /* Text */
   --color-txt-main: #050505;

@@ -27,6 +27,7 @@ const ButtonPrimary = ({ children, className, ...htmlAtt }: Props) => {
 
 // - Exports
 export default ButtonPrimary;
-export const links: LinkDescriptor[] = [
-  { rel: "stylesheet", href: buttonCssPath },
-];
+export const stylesheet: LinkDescriptor = {
+  rel: "stylesheet",
+  href: buttonCssPath,
+};
