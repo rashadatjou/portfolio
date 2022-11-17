@@ -9,9 +9,44 @@
  */
 
 .form {
-  /* Add form CSS */
+  /* TODO: Missing */
 }
 
 .form fieldset {
-  padding: var(--space-medium);
+  padding: var(--space-normal);
+}
+
+.form legend {
+  font-weight: 600;
+  font-size: var(--size-txt-normal);
+}
+
+.form label {
+  font-weight: 600;
+  font-size: var(--size-txt-small);
+  display: block;
+}
+
+.form select {
+  font-size: var(--size-txt-small);
+  color: var(--color-txt-main);
+  background-color: var(--color-bg-secondary);
+  display: block;
+  width: 100%;
+  border: solid;
+  border-width: var(--size-border-width);
+  border-radius: var(--size-border-radius);
+  border-color: var(--color-bg-border);
+  padding: var(--space-normal);
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  background-repeat: no-repeat;
+  background-image: var(--icon-chevron-down);
+  background-position-x: 100%;
+  background-position-y: calc(var(--size-txt-small) / 4);
+}
+
+.form * {
+  margin-bottom: var(--space-medium);
 }

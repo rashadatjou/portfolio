@@ -12,6 +12,7 @@
 CSS Files:
 * button.css
 * modal.css
+* form.css
 */
 
 import { useState } from "react";
@@ -29,7 +30,6 @@ type SettingModalProps = {
 // - Components
 const SettingModal = ({ onToggle, present }: SettingModalProps) => (
   <Modal present={present}>
-    <h1>Settings</h1>
     <LanguageForm />
     <Button buttonType="primary" onClick={onToggle}>
       Close
@@ -38,7 +38,7 @@ const SettingModal = ({ onToggle, present }: SettingModalProps) => (
 );
 
 const Settings = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const onToggleModal = () => {
     setShow((state) => !state);

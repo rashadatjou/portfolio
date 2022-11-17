@@ -8,8 +8,6 @@
  * -----
  */
 
-import cssFile from "~/styles/element/modal.css";
-
 import type { PropsWithChildren } from "react";
 
 // - Types

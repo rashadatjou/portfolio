@@ -20,7 +20,6 @@
 }
 
 .modal-container {
-  display: flex;
   position: absolute;
   flex-direction: column;
 

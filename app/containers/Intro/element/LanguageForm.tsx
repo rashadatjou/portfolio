@@ -8,38 +8,39 @@
  * -----
  */
 
+import type { FormEvent } from "react";
+
 import { useTranslation } from "react-i18next";
-import Button from "~/components/Button";
+import { Form, useSubmit } from "@remix-run/react";
 
 // - Const
 const LANGUAGES = ["en", "sv", "bs"];
 
 // - Components
 const LanguageForm = () => {
+  const submit = useSubmit();
   const { t, i18n } = useTranslation();
 
+  const onChange = (event: FormEvent) => {
+    submit(event.currentTarget as any, { replace: false });
+  };
+
   return (
-    <form method="get">
-      <h3>Language</h3>
+    <Form className="form" method="get" onChange={onChange}>
       <fieldset>
-        <div>
-          <label htmlFor="setting-language">Language</label>
-          <select
-            name="lng"
-            id="setting-language"
-            defaultValue={i18n.resolvedLanguage}>
-            {LANGUAGES.map((langCode) => (
-              <option key={langCode} value={langCode}>
-                {t(langCode)}
-              </option>
-            ))}
-          </select>
-        </div>
-        <Button type="submit" buttonType="secondary">
-          Apply
-        </Button>
+        <label htmlFor="setting-language">{t("language")}</label>
+        <select
+          name="lng"
+          id="setting-language"
+          defaultValue={i18n.resolvedLanguage}>
+          {LANGUAGES.map((langCode) => (
+            <option key={langCode} value={langCode}>
+              {t(langCode)}
+            </option>
+          ))}
+        </select>
       </fieldset>
-    </form>
+    </Form>
   );
 };
 

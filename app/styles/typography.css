@@ -10,14 +10,17 @@
 
 h1 {
   font-size: var(--size-txt-large);
+  font-weight: 700;
 }
 
 h2 {
   font-size: var(--size-txt-medium);
+  font-weight: 600;
 }
 
 h3 {
   font-size: var(--size-txt-normal);
+  font-weight: 600;
 }
 
 p {

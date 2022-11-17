@@ -50,7 +50,7 @@
   right: var(--space-x-large);
 }
 
-.intro__setting-action {
-  font-size: var(--size-txt-medium);
-  border-radius: calc(var(--size-txt-medium) / 2);
+.intro__settings .modal-container {
+  width: 300px;
+  height: 400px;
 }

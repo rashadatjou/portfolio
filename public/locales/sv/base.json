@@ -1,8 +1,12 @@
 {
   "meta.title": "Hej, Världen!",
-  "intro": "Introduktion",
-  "intro.body": "Det här dokumentet ger en guide som hjälper dig med den viktiga uppgiften att välja rätt Äpple.",
-  "intro.img.alt": "Färgade godismaskar",
+  "intro.title": "Hej, jag heter Mehdi 👋🏽",
+  "intro.body": "Kolla in alternativen nedan för mer info 👇🏽",
+
+  "intro.link.1": "Blogg",
+  "intro.link.2": "Kontakt",
+  "intro.link.3": "Handla om",
+
   "option.1.title": "Byta tema",
   "option.2.title": "Ändra språk",
   "option.3.title": "Aktivera/inaktivera Javascript",
@@ -11,5 +15,7 @@
   "en": "Engelsk",
   "dev": "Utveckling",
   "sv": "Svenska",
-  "bs": "Bosniska"
+  "bs": "Bosniska",
+
+  "language": "Språk"
 }
