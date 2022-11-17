@@ -25,8 +25,8 @@ import {
   Scripts,
 } from "@remix-run/react";
 import { json } from "@remix-run/node";
-import { getLocale, i18nRemix } from "~/i18n/i18n.server";
-import { i18nCookie } from "~/i18n/config/cookie";
+import { getLocale, i18nRemix } from "~/services/i18n/i18n.server";
+import { i18nCookie } from "~/services/i18n/config/cookie";
 import { useChangeLanguage } from "remix-i18next";
 import { useTranslation } from "react-i18next";
 import { useJsDetect } from "~/context/js-detect";

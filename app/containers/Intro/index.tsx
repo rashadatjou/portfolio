@@ -1,7 +1,7 @@
 /*
- * File: /app/containers/Intro.tsx
+ * File: /app/containers/Intro/index.tsx
  * Project: portfolio
- * Created: Tuesday, 4th October 2022
+ * Created: Thursday, 17th November 2022
  * Author: Denpex
  * -----
  * Copyright 2022, ©Mehdi Rashadatjou
@@ -14,32 +14,10 @@ import modalCssPath from "~/styles/element/modal.css";
 
 import { LinkDescriptor } from "@remix-run/node";
 import { Link } from "@remix-run/react";
-import { useState } from "react";
 
-import Modal from "~/components/Modal";
-import Button from "~/components/Button";
+import Settings from "./element/Settings";
 
 // - Components
-const Settings = () => {
-  const [show, setShow] = useState(false);
-
-  const onToggleModal = () => {
-    setShow((state) => !state);
-  };
-
-  return (
-    <div className="intro__settings">
-      <Button buttonType="icon" onClick={onToggleModal} bordered>
-        ⚙️
-      </Button>
-      <Modal present={show}>
-        This is a test modal
-        <Button onClick={onToggleModal}>Close</Button>
-      </Modal>
-    </div>
-  );
-};
-
 const Navbar = () => (
   <div className="intro__menu">
     <ul className="intro__menu-list">

@@ -23,7 +23,7 @@ export const links: LinksFunction = () => {
 
 // - Component
 export default function MainRoute() {
-  const {} = useTranslation(); // TODO:
+  const { i18n } = useTranslation(); // TODO:
   const [] = useTheme(); // TODO:
   const [] = useJsDetect(); // TODO:
 

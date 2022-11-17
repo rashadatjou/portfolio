@@ -10,8 +10,8 @@
 
 import type { ActionFunction } from "@remix-run/node";
 import { json, Response } from "@remix-run/node";
-import { i18nCookie } from "~/i18n/config/cookie";
-import { i18nRemixConfig } from "~/i18n/config/i18n.config.server";
+import { i18nCookie } from "~/services/i18n/config/cookie";
+import { i18nRemixConfig } from "~/services/i18n/config/i18n.config.server";
 
 // - Route Module API
 export const action: ActionFunction = async ({ request }) => {

@@ -14,7 +14,7 @@ import { PassThrough } from "stream";
 import { Response } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { renderToPipeableStream } from "react-dom/server";
-import { i18nInterceptor } from "~/i18n/i18n.server";
+import { i18nInterceptor } from "~/services/i18n/i18n.server";
 import { I18nextProvider } from "react-i18next";
 import { detectJs } from "~/services/js-detect";
 import { JsDetectProvider } from "~/context/js-detect";

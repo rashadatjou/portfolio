@@ -11,10 +11,19 @@
 import type { InitOptions } from "i18next";
 import type { RemixI18NextOption } from "remix-i18next";
 import { resolve } from "node:path";
-import Backend from "i18next-fs-backend";
-import { i18nCookie } from './cookie';
+import { i18nCookie } from "./cookie";
 
-const remixConfig: RemixI18NextOption = {
+import Backend from "i18next-fs-backend";
+
+// For some reason the backend prop of RemixI18NextOption
+// does not work with i18next-fs-backend.
+// So I am resetting it here.
+type FixedRemixI18NextOption = {
+  backend: typeof Backend;
+} & Omit<RemixI18NextOption, "backend">;
+
+const remixConfig: FixedRemixI18NextOption = {
+  backend: Backend,
   detection: {
     // Persist language selection in cookie
     cookie: i18nCookie,
@@ -32,7 +41,6 @@ const remixConfig: RemixI18NextOption = {
       loadPath: resolve("./public/locales/{{lng}}/{{ns}}.json"),
     },
   },
-  backend: Backend,
 };
 
 const serverConfig: InitOptions = {

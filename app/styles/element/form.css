@@ -1,0 +1,17 @@
+/*
+ * File: /app/styles/element/form.css
+ * Project: portfolio
+ * Created: Thursday, 17th November 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.form {
+  /* Add form CSS */
+}
+
+.form fieldset {
+  padding: var(--space-medium);
+}
