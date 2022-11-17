@@ -17,20 +17,22 @@
   appearance: none;
 }
 
-.btn-primary {
+/* Primary */
+.btn.primary {
   background-color: var(--color-act-main);
 }
 
-.btn-icon {
+/* Icon */
+.btn.icon {
   background: none;
 }
 
-.btn-icon.border {
+.btn.icon.border {
   font-size: var(--size-txt-medium);
   border: solid;
   border-width: var(--size-border-width);
   border-radius: var(--size-border-radius);
-  border-color: var(--color-bg-border)
+  border-color: var(--color-bg-border);
 }
 
 /* Selectors */
@@ -38,10 +40,10 @@
   background-color: var(--color-highlight-main);
 }
 
-.btn-icon.border:hover {
-  border-color: var(--color-highlight-main);
-}
-
 .btn:active {
   transform: scale(0.95);
+}
+
+.btn.icon.border:hover {
+  border-color: var(--color-highlight-main);
 }

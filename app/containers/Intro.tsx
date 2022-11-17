@@ -9,38 +9,32 @@
  */
 
 import introCssPath from "~/styles/container/intro.css";
+import buttonCssPath from "~/styles/element/button.css";
+import modalCssPath from "~/styles/element/modal.css";
 
 import { LinkDescriptor } from "@remix-run/node";
 import { Link } from "@remix-run/react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
-import ButtonIcon, {
-  stylesheet as buttonIconStylesheet,
-} from "~/components/button/ButtonIcon";
-
-import Modal, { stylesheet as modalStylesheet } from "~/components/Modal/Modal";
-import ModalButton from "~/components/Modal/ModalButton";
+import Modal from "~/components/Modal";
+import Button from "~/components/Button";
 
 // - Components
 const Settings = () => {
-  const modalRef = useRef<HTMLDialogElement>(null);
+  const [show, setShow] = useState(false);
 
-  const onOpen = () => {
-    if (modalRef.current?.open) {
-      modalRef.current?.close();
-    } else {
-      modalRef.current?.show();
-    }
+  const onToggleModal = () => {
+    setShow((state) => !state);
   };
 
   return (
     <div className="intro__settings">
-      <ButtonIcon onClick={onOpen} bordered>
+      <Button buttonType="icon" onClick={onToggleModal} bordered>
         ⚙️
-      </ButtonIcon>
-      <Modal ref={modalRef}>
+      </Button>
+      <Modal present={show}>
         This is a test modal
-        <ModalButton title="Dismiss" action={onOpen} />
+        <Button onClick={onToggleModal}>Close</Button>
       </Modal>
     </div>
   );
@@ -77,6 +71,6 @@ const IntroContainer = () => {
 export default IntroContainer;
 export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: introCssPath },
-  buttonIconStylesheet,
-  modalStylesheet,
+  { rel: "stylesheet", href: buttonCssPath },
+  { rel: "stylesheet", href: modalCssPath },
 ];

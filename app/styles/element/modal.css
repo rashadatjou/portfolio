@@ -8,7 +8,7 @@
  * -----
  */
 
-.modal-parent {
+.modal {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -22,6 +22,7 @@
 .modal-container {
   display: flex;
   position: absolute;
+  flex-direction: column;
 
   top: 50%;
   left: 50%;
