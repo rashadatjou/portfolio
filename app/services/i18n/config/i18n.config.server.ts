@@ -15,15 +15,8 @@ import { i18nCookie } from "./cookie";
 
 import Backend from "i18next-fs-backend";
 
-// For some reason the backend prop of RemixI18NextOption
-// does not work with i18next-fs-backend.
-// So I am resetting it here.
-type FixedRemixI18NextOption = {
-  backend: typeof Backend;
-} & Omit<RemixI18NextOption, "backend">;
-
-const remixConfig: FixedRemixI18NextOption = {
-  backend: Backend,
+const remixConfig: RemixI18NextOption = {
+  backend: Backend as any, // Bug ?
   detection: {
     // Persist language selection in cookie
     cookie: i18nCookie,
