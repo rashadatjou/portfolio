@@ -3,8 +3,13 @@
   "intro": "Uvod",
   "intro.body": "Ovaj dokument pruža vodič koji će vam pomoći u važnom zadatku odabira ispravne Jabuke.",
   "intro.img.alt": "Obojeni gumeni crvi",
-  "option.title.1": "Promijenite temu",
-  "option.title.2": "Promijeni jezik",
-  "option.title.3": "Omogući/onemogući Javascript",
-  "option.3.label": "Onemogući Javascript"
+  "option.1.title": "Promijenite temu",
+  "option.2.title": "Promijeni jezik",
+  "option.3.title": "Omogući/onemogući Javascript",
+  "option.3.label": "Onemogući Javascript",
+
+  "en": "Engleski",
+  "dev": "Razvoj",
+  "sv": "Svedski",
+  "bs": "Bosanski"
 }

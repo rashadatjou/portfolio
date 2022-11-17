@@ -3,8 +3,13 @@
   "intro": "Introduktion",
   "intro.body": "Det här dokumentet ger en guide som hjälper dig med den viktiga uppgiften att välja rätt Äpple.",
   "intro.img.alt": "Färgade godismaskar",
-  "option.title.1": "Byta tema",
-  "option.title.2": "Ändra språk",
-  "option.title.3": "Aktivera/inaktivera Javascript"
-  "option.3.label": "Inaktivera Javascript"
+  "option.1.title": "Byta tema",
+  "option.2.title": "Ändra språk",
+  "option.3.title": "Aktivera/inaktivera Javascript",
+  "option.3.label": "Inaktivera Javascript",
+
+  "en": "Engelsk",
+  "dev": "Utveckling",
+  "sv": "Svenska",
+  "bs": "Bosniska"
 }
