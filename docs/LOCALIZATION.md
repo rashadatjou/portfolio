@@ -20,7 +20,7 @@ You can use the `api/v1/lang` to change the language on the server.
 
 ```Javascript
 // Example
-fetch(api/v1/lang, { code: 'en' })
+fetch("api/v1/lang", { code: 'en' })
 ```
 
 ## Change the language with remix-i18next

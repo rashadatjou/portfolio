@@ -18,7 +18,7 @@ import { useState } from "react";
 
 import Modal from "~/components/Modal";
 import Button from "~/components/Button";
-import SettingForm from "./SettingForm";
+import LanguageForm from "./LanguageForm";
 
 // - Types
 type SettingModalProps = {
@@ -29,7 +29,8 @@ type SettingModalProps = {
 // - Components
 const SettingModal = ({ onToggle, present }: SettingModalProps) => (
   <Modal present={present}>
-    <SettingForm />
+    <h1>Settings</h1>
+    <LanguageForm />
     <Button buttonType="primary" onClick={onToggle}>
       Close
     </Button>

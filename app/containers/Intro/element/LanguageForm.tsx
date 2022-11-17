@@ -9,30 +9,39 @@
  */
 
 import { useTranslation } from "react-i18next";
+import Button from "~/components/Button";
+
+// - Const
+const LANGUAGES = ["en", "sv", "bs"];
 
 // - Components
-const SettingsForm = () => {
-  const { i18n, t } = useTranslation();
+const LanguageForm = () => {
+  const { t, i18n } = useTranslation();
+
   return (
-    <form action="get">
-      <fieldset>
-        <legend>Settings</legend>
-      </fieldset>
+    <form method="get">
+      <h3>Language</h3>
       <fieldset>
         <div>
           <label htmlFor="setting-language">Language</label>
-          <select name="language" id="setting-language">
-            {i18n.languages?.map((langCode) => (
+          <select
+            name="lng"
+            id="setting-language"
+            defaultValue={i18n.resolvedLanguage}>
+            {LANGUAGES.map((langCode) => (
               <option key={langCode} value={langCode}>
                 {t(langCode)}
               </option>
             ))}
           </select>
         </div>
+        <Button type="submit" buttonType="secondary">
+          Apply
+        </Button>
       </fieldset>
     </form>
   );
 };
 
 // - Exports
-export default SettingsForm;
+export default LanguageForm;
