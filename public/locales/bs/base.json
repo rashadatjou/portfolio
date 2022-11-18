@@ -16,5 +16,8 @@
   "sv": "Švedski",
   "bs": "Bosanski",
 
-  "language": "Jezik"
+  "language": "Jezik",
+
+  "dark": "Tamno",
+  "light": "Svijetlo"
 }

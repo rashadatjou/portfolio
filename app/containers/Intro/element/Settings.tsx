@@ -20,6 +20,7 @@ import { useState } from "react";
 import Modal from "~/components/Modal";
 import Button from "~/components/Button";
 import LanguageForm from "./LanguageForm";
+import ThemeForm from "./ThemeForm";
 
 // - Types
 type SettingModalProps = {
@@ -31,6 +32,7 @@ type SettingModalProps = {
 const SettingModal = ({ onToggle, present }: SettingModalProps) => (
   <Modal present={present}>
     <LanguageForm />
+    <ThemeForm />
     <Button buttonType="primary" onClick={onToggle}>
       Close
     </Button>

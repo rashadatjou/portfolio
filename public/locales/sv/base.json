@@ -16,5 +16,8 @@
   "sv": "Svenska",
   "bs": "Bosniska",
 
-  "language": "Språk"
+  "language": "Språk",
+
+  "dark": "Mörk",
+  "light": "Ljus"
 }

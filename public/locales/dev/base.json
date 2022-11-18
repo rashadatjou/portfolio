@@ -16,5 +16,8 @@
   "sv": "Swedish",
   "bs": "Bosnian",
 
-  "language": "Language"
+  "language": "Language",
+
+  "dark": "Dark",
+  "light": "Light"
 }
