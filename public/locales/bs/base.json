@@ -7,14 +7,13 @@
   "intro.link.2": "Kontakt",
   "intro.link.3": "O meni",
 
-  "option.1.title": "Promijenite temu",
-  "option.2.title": "Promijeni jezik",
-  "option.3.title": "Omogući/onemogući Javascript",
-  "option.3.label": "Onemogući Javascript",
+  "setting.language.title": "Promijeni jezik",
+  "setting.theme.title": "Promijenite temu",
+  "setting.js.title": "Omogući/onemogući Javascript",
 
   "en": "Engleski",
   "dev": "Razvoj",
-  "sv": "Svedski",
+  "sv": "Švedski",
   "bs": "Bosanski",
 
   "language": "Jezik"

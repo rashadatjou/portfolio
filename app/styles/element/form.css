@@ -10,10 +10,9 @@
 
 .form {
   /* TODO: Missing */
-}
-
-.form fieldset {
-  padding: var(--space-normal);
+  display: flex;
+  flex-direction: column;
+  justify-items: stretch;
 }
 
 .form legend {
@@ -22,13 +21,15 @@
 }
 
 .form label {
-  font-weight: 600;
-  font-size: var(--size-txt-small);
+  font-weight: 700;
+  font-size: var(--size-txt-tiny);
+  text-transform: capitalize;
   display: block;
 }
 
 .form select {
   font-size: var(--size-txt-small);
+  height: var(--size-txt-large);
   color: var(--color-txt-main);
   background-color: var(--color-bg-secondary);
   display: block;
@@ -44,7 +45,7 @@
   background-repeat: no-repeat;
   background-image: var(--icon-chevron-down);
   background-position-x: 100%;
-  background-position-y: calc(var(--size-txt-small) / 4);
+  background-position-y: calc(var(--size-txt-large) / 4);
 }
 
 .form * {

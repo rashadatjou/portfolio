@@ -56,3 +56,7 @@ html {
 *, *::before, *::after {
   box-sizing: inherit;
 }
+
+*:focus-visible, *:focus {
+	outline-color: var(--color-focus-main);
+}

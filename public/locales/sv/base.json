@@ -7,10 +7,9 @@
   "intro.link.2": "Kontakt",
   "intro.link.3": "Handla om",
 
-  "option.1.title": "Byta tema",
-  "option.2.title": "Ändra språk",
-  "option.3.title": "Aktivera/inaktivera Javascript",
-  "option.3.label": "Inaktivera Javascript",
+  "setting.language.title": "Byta tema",
+  "setting.theme.title": "Ändra språk",
+  "setting.js.title": "Aktivera/inaktivera Javascript",
 
   "en": "Engelsk",
   "dev": "Utveckling",

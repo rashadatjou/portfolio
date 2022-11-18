@@ -28,7 +28,7 @@ const LanguageForm = () => {
   return (
     <Form className="form" method="get" onChange={onChange}>
       <fieldset>
-        <label htmlFor="setting-language">{t("language")}</label>
+        <label htmlFor="setting-language">{t("setting.language.title")}</label>
         <select
           name="lng"
           id="setting-language"

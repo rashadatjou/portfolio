@@ -26,10 +26,10 @@
 
 :root {
   /* Background */
-  --color-bg-main: #efefef;
+  --color-bg-main: #f6f6f6;
   --color-bg-secondary: #f7f7f7;
   --color-bg-body: #fff;
-  --color-bg-border: #b7b7b7;
+  --color-bg-border: #e1e1e1;
   --color-bg-shadow: rgba(0, 0, 0, 0.25);
 
   /* Text */
@@ -45,7 +45,7 @@
 
   /* Other */
   --color-theme-main: #f6d728;
-  --color-focus-main: rgb(8, 191, 142, 0.47);
+  --color-focus-main: rgba(201, 69, 7, 0.5);
   --color-selection-main: #9e9e9e;
   --color-highlight-main: #03d79e;
 

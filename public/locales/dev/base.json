@@ -7,10 +7,9 @@
   "intro.link.2": "Contact",
   "intro.link.3": "About",
 
-  "option.1.title": "Change theme",
-  "option.2.title": "Change language",
-  "option.3.title": "Enable/Disable Javascript",
-  "option.3.label": "Disable Javascript",
+  "setting.language.title": "Change theme",
+  "setting.theme.title": "Change language",
+  "setting.js.title": "Enable/Disable Javascript",
 
   "en": "English",
   "dev": "Development",
