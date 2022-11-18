@@ -12,6 +12,7 @@ import introCssPath from "~/styles/container/intro.css";
 import buttonCssPath from "~/styles/element/button.css";
 import modalCssPath from "~/styles/element/modal.css";
 import formCssPath from "~/styles/element/form.css";
+import switchCssPath from "~/styles/element/switch.css";
 
 import { LinkDescriptor } from "@remix-run/node";
 import { Link } from "@remix-run/react";
@@ -60,4 +61,5 @@ export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: buttonCssPath },
   { rel: "stylesheet", href: modalCssPath },
   { rel: "stylesheet", href: formCssPath },
+  { rel: "stylesheet", href: switchCssPath },
 ];

@@ -9,10 +9,19 @@
  */
 
 .form {
-  /* TODO: Missing */
   display: flex;
   flex-direction: column;
   justify-items: stretch;
+}
+
+fieldset {
+  margin-bottom: var(--space-x-large);
+}
+
+fieldset.linear {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .form legend {
@@ -20,11 +29,17 @@
   font-size: var(--size-txt-normal);
 }
 
-.form label {
+.form label,
+.label {
   font-weight: 700;
   font-size: var(--size-txt-tiny);
   text-transform: capitalize;
   display: block;
+}
+
+.form label + input,
+.form label + select {
+  margin-top: var(--space-medium);
 }
 
 .form select {
@@ -47,8 +62,4 @@
   background-image: var(--icon-chevron-down);
   background-position-x: 100%;
   background-position-y: calc(var(--size-txt-large) / 4);
-}
-
-.form * {
-  margin-bottom: var(--space-medium);
 }

@@ -18,15 +18,17 @@ import type { Context, PropsWithChildren } from "react";
 import { createContext, useState, useContext } from "react";
 
 // - Type
-type ProviderProp = PropsWithChildren<JsDetectContextState>;
+type ProviderProp = PropsWithChildren<{
+  defaultValue: boolean;
+}>;
 
 // - Context
 const defaultState: JsDetectContext = [{ jsEnabled: true }, {}];
 const Context = createContext(defaultState);
 
 // - Provider
-const JsDetectProvider = ({ children, jsEnabled }: ProviderProp) => {
-  const [enabled, setEnabled] = useState(jsEnabled);
+const JsDetectProvider = ({ children, defaultValue = true }: ProviderProp) => {
+  const [enabled, setEnabled] = useState(defaultValue);
 
   // Actions
   const onToggle = (newValue: boolean) => {
