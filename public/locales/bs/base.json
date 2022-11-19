@@ -9,7 +9,7 @@
 
   "setting.language.title": "Promijeni jezik",
   "setting.theme.title": "Promijenite temu",
-  "setting.js.title": "Omogući/onemogući Javascript",
+  "setting.cookie.title": "Onemogućite kolačiće",
 
   "en": "Engleski",
   "dev": "Razvoj",

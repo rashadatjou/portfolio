@@ -13,7 +13,6 @@ import type {
   LinksFunction,
   LoaderFunction,
 } from "@remix-run/node";
-import type { Theme } from "~/typings/theme";
 
 import {
   Links,
@@ -29,9 +28,6 @@ import { getLocale, i18nRemix } from "~/services/i18n/i18n.server";
 import { i18nCookie } from "~/services/i18n/config/cookie";
 import { useChangeLanguage } from "remix-i18next";
 import { useTranslation } from "react-i18next";
-import { useJsDetect } from "~/context/js-detect";
-import { detectJs } from "~/services/js-detect";
-import { jsDetectCookie } from "~/services/js-detect/cookie";
 
 import resetCssPath from "~/styles/reset.css";
 import colorCssPath from "~/styles/color/light.css";
@@ -46,13 +42,10 @@ import geometricLargeCssPath from "~/styles/geometry/large.css";
 type LoaderData = {
   locale: string;
   title: string;
-  jsDisabled: boolean;
-  theme: Theme;
 };
 
 // - Route Module API
 export const loader: LoaderFunction = async ({ request }) => {
-  const jsDisabled = await detectJs(request);
   const locale = await getLocale(request);
   const translate = await i18nRemix.getFixedT(request, "base");
   const title = translate("meta.title");
@@ -60,15 +53,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const headers = new Headers();
   headers.set("Set-Cookie", await i18nCookie.serialize(locale));
 
-  // Remove cookie if JS is enabled
-  if (!jsDisabled) {
-    headers.append(
-      "Set-Cookie",
-      await jsDetectCookie.serialize(null, { maxAge: 0 }),
-    );
-  }
-
-  return json({ locale, title, jsDisabled }, { headers });
+  return json({ locale, title }, { headers });
 };
 
 export const meta: MetaFunction = ({ data }) => ({
@@ -112,14 +97,11 @@ export const handle = {
 
 // - Component
 export default function Root() {
-  const { locale, jsDisabled } = useLoaderData<LoaderData>();
+  const { locale } = useLoaderData<LoaderData>();
   const { i18n } = useTranslation();
-  const [{}, { toggleJs }] = useJsDetect();
 
   // Load language
   useChangeLanguage(locale);
-  // Toggle JS loaded or not
-  toggleJs?.(!jsDisabled);
 
   return (
     <html lang={locale} dir={i18n.dir()}>
@@ -131,15 +113,7 @@ export default function Root() {
         <Outlet />
         <ScrollRestoration />
         <LiveReload />
-        {!jsDisabled && <Scripts />}
-        {!jsDisabled && (
-          <noscript>
-            <meta
-              httpEquiv="refresh"
-              content="0;URL=/api/v1/js-detect?xjs=true"
-            />
-          </noscript>
-        )}
+        <Scripts />
       </body>
     </html>
   );

@@ -10,9 +10,6 @@
 
 import type { LinksFunction } from "@remix-run/node";
 import { useCatch } from "@remix-run/react";
-// import { useTranslation } from "react-i18next";
-// import { useTheme } from "@themeit/react";
-// import { useJsDetect } from "~/context/js-detect";
 
 import IntroContainer, { links as introLinks } from "~/containers/Intro";
 
@@ -23,15 +20,7 @@ export const links: LinksFunction = () => {
 
 // - Component
 export default function MainRoute() {
-  // const { } = useTranslation(); // TODO:
-  // const [] = useTheme(); // TODO:
-  // const [] = useJsDetect(); // TODO:
-
-  return (
-    <div>
-      <IntroContainer />
-    </div>
-  );
+  return <IntroContainer />;
 }
 
 export function CatchBoundary() {

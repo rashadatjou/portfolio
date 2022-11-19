@@ -12,7 +12,6 @@ import type { FormEvent } from "react";
 
 import { Form, useSubmit } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
-import { useJsDetect } from "~/context/js-detect";
 
 import SwitchInput from "~/components/SwitchInput";
 
@@ -20,24 +19,18 @@ import SwitchInput from "~/components/SwitchInput";
 type Props = {};
 
 function JavascriptForm({}: Props) {
-  const { t } = useTranslation();
   const submit = useSubmit();
-  const [{ jsEnabled }] = useJsDetect();
+  const { t } = useTranslation();
 
   const onChange = (event: FormEvent) => {
-    submit(event.currentTarget as any, { replace: false });
+    submit(event.currentTarget as any, { replace: true });
   };
 
   return (
-    <Form className="form" onChange={onChange} action="api/v1/js-detect">
+    <Form className="form" onChange={onChange}>
       <fieldset className="linear">
-        <span className="label">{t("setting.js.title")}</span>
-        <SwitchInput
-          defaultChecked={jsEnabled}
-          name="xjs"
-          id="javascript-switch"
-          rounded
-        />
+        <span className="label">{t("setting.cookie.title")}</span>
+        <SwitchInput name="cookies" rounded />
       </fieldset>
     </Form>
   );

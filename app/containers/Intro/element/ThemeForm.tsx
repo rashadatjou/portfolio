@@ -9,6 +9,7 @@
  */
 
 import type { FormEvent } from "react";
+import { Theme } from "~/typings/theme";
 
 import { Form } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
@@ -21,6 +22,9 @@ CSS Files:
 
 // - Types
 type Props = {};
+
+// - Const
+const DEFAULT_THEME: Array<Theme> = ["light", "dark"];
 
 // - Component
 function ThemeForm({}: Props) {
@@ -39,7 +43,7 @@ function ThemeForm({}: Props) {
       <fieldset>
         <label htmlFor="theme-select">{t("setting.theme.title")}</label>
         <select name="theme" id="theme-select" defaultValue={theme}>
-          {themeList?.map((item) => (
+          {(themeList || DEFAULT_THEME)?.map((item) => (
             <option key={item} value={item}>
               {t(item)}
             </option>

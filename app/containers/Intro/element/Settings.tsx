@@ -21,7 +21,7 @@ import Modal from "~/components/Modal";
 import Button from "~/components/Button";
 import LanguageForm from "./LanguageForm";
 import ThemeForm from "./ThemeForm";
-import JavascriptForm from "./JavascriptForm";
+import CookiesForm from "./CookiesForm";
 
 // - Types
 type SettingModalProps = {
@@ -34,7 +34,7 @@ const SettingModal = ({ onToggle, present }: SettingModalProps) => (
   <Modal present={present}>
     <LanguageForm />
     <ThemeForm />
-    <JavascriptForm />
+    <CookiesForm />
     <Button buttonType="primary" onClick={onToggle}>
       Close
     </Button>
