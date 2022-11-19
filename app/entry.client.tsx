@@ -8,18 +8,22 @@
  * -----
  */
 
+import type { Theme } from "~/typings/theme";
+
 import { RemixBrowser } from "@remix-run/react";
 import { hydrateRoot } from "react-dom/client";
 import { localizeRoot } from "~/services/i18n/i18n.client";
 import { I18nextProvider } from "react-i18next";
 import { ThemeProvider } from "@themeit/react";
-import { Theme } from "~/typings/theme";
+import storage from "~/services/storage.service";
+
+const defaultTheme = storage.get("THEME_KEY") as Theme;
 
 localizeRoot((i18n) => {
   hydrateRoot(
     document,
     <I18nextProvider i18n={i18n}>
-      <ThemeProvider<Theme> defaultTheme="light" autoLoad>
+      <ThemeProvider<Theme> defaultTheme={defaultTheme} autoLoad>
         <RemixBrowser />
       </ThemeProvider>
     </I18nextProvider>,

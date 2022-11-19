@@ -42,7 +42,7 @@ const SettingModal = ({ onToggle, present }: SettingModalProps) => (
 );
 
 const Settings = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   const onToggleModal = () => {
     setShow((state) => !state);

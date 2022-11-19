@@ -9,8 +9,8 @@
  */
 
 import type { FormEvent } from "react";
-import { Theme } from "~/typings/theme";
 
+import storage from "~/services/storage.service";
 import { Form } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@themeit/react";
@@ -33,6 +33,7 @@ function ThemeForm({}: Props) {
     const newTheme = formData.get("theme");
     if (typeof newTheme !== "string") return;
     changeTheme?.(newTheme);
+    storage.save("THEME_KEY", newTheme);
   };
 
   return (
