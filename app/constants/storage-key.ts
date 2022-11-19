@@ -10,3 +10,4 @@
 
 // All keys used by LocalStorage
 export const THEME_KEY = "theme-key";
+export const COOKIE_KEY = "cookie-key";

@@ -9,7 +9,7 @@
 
   "setting.language.title": "Change theme",
   "setting.theme.title": "Change language",
-  "setting.js.title": "Disable Cookies",
+  "setting.cookie.title": "Disable Cookies",
 
   "en": "English",
   "dev": "Development",

@@ -23,9 +23,6 @@ CSS Files:
 // - Types
 type Props = {};
 
-// - Const
-const DEFAULT_THEME: Array<Theme> = ["light", "dark"];
-
 // - Component
 function ThemeForm({}: Props) {
   const { t } = useTranslation();
@@ -43,7 +40,7 @@ function ThemeForm({}: Props) {
       <fieldset>
         <label htmlFor="theme-select">{t("setting.theme.title")}</label>
         <select name="theme" id="theme-select" defaultValue={theme}>
-          {(themeList || DEFAULT_THEME)?.map((item) => (
+          {themeList?.map((item) => (
             <option key={item} value={item}>
               {t(item)}
             </option>

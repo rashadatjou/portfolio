@@ -8,32 +8,54 @@
  * -----
  */
 
-import type { FormEvent } from "react";
+import type { ChangeEvent } from "react";
 
-import { Form, useSubmit } from "@remix-run/react";
+import { Form } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
+import { deleteCookies } from "~/services/cookies.service";
+import { useState } from "react";
+
+import storage from "~/services/storage.service";
 
 import SwitchInput from "~/components/SwitchInput";
 
-// - Props
+// - Types
 type Props = {};
 
-function JavascriptForm({}: Props) {
-  const submit = useSubmit();
+// - Const
+const SWITCH_NAME = "cookies";
+
+// - Component
+function CookieForm({}: Props) {
+  const [checked, setChecked] = useState(storage.get("COOKIE_KEY") === "true");
   const { t } = useTranslation();
 
-  const onChange = (event: FormEvent) => {
-    submit(event.currentTarget as any, { replace: true });
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log("called");
+    const value = event.target.checked;
+
+    if (value) {
+      deleteCookies();
+    }
+
+    storage.save("COOKIE_KEY", `${value}`);
+    setChecked(value);
   };
 
   return (
-    <Form className="form" onChange={onChange}>
+    <Form className="form">
       <fieldset className="linear">
         <span className="label">{t("setting.cookie.title")}</span>
-        <SwitchInput name="cookies" rounded />
+        <SwitchInput
+          name={SWITCH_NAME}
+          checked={checked}
+          onChange={onChange}
+          rounded
+        />
       </fieldset>
     </Form>
   );
 }
 
-export default JavascriptForm;
+// - Exports
+export default CookieForm;
