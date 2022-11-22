@@ -15,7 +15,7 @@
 }
 
 fieldset {
-  margin-bottom: var(--space-x-large);
+  margin-bottom: var(--space-large);
 }
 
 fieldset.linear {
@@ -39,7 +39,7 @@ fieldset.linear {
 
 .form label + input,
 .form label + select {
-  margin-top: var(--space-medium);
+  margin-top: var(--space-normal);
 }
 
 .form select {

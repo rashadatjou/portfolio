@@ -8,15 +8,14 @@
  * -----
  */
 
+import type { LinksFunction } from "@remix-run/node";
 import type { MDXModule, Post } from "~/typings/blog";
 
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import * as blogPosts from "./__posts/posts";
-import BlogContainer from "~/containers/Blog";
-
-
+import BlogContainer, { links as blogLinks } from "~/containers/Blog";
 
 // - Helpers
 function postFromModule(module: MDXModule): Post {
@@ -32,6 +31,10 @@ export async function loader() {
   const allPosts = Object.values(blogPosts);
   return json(allPosts.map(postFromModule as any));
 }
+
+export const links: LinksFunction = () => {
+  return [...blogLinks];
+};
 
 // - Component
 export default function BlogRoute() {

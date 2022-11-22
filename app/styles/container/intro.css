@@ -20,17 +20,16 @@
 .intro > h1 {
   font-size: var(--size-txt-large);
   font-weight: bold;
-  padding: var(--space-large);
 }
 
 .intro > p {
   font-size: var(--size-txt-normal);
-  padding: var(--space-large);
+  padding: var(--space-medium);
 }
 
 /* Menu */
 .intro__menu {
-  margin-top: var(--space-x-large);
+  margin-top: var(--space-large);
 }
 
 .intro__menu-list {
@@ -46,8 +45,8 @@
 /* Settings */
 .intro__settings {
   position: absolute;
-  top: var(--space-x-large);
-  right: var(--space-x-large);
+  top: var(--space-large);
+  right: var(--space-large);
 }
 
 .intro__settings .modal-container {

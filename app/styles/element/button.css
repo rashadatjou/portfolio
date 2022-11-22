@@ -21,7 +21,6 @@
 /* Primary */
 .btn.primary {
   background-color: var(--color-act-main);
-  padding: var(--space-medium);
   border-radius: var(--size-border-radius);
   color: var(--color-txt-inverted);
 }

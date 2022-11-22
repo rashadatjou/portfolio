@@ -12,12 +12,12 @@
 
 :root {
   /* Spaces */
-  --space-x-large: 2rem;
-  --space-large: 1rem;
-  --space-medium: 0.75rem;
-  --space-normal: 0.5rem;
-  --space-small: 0.25rem;
-  --space-tiny: 0.125rem;
+  --space-x-large: 4rem;
+  --space-large: 2rem;
+  --space-medium: 1.6rem;
+  --space-normal: 0.75rem;
+  --space-small: 0.5rem;
+  --space-tiny: 0.25rem;
 
   /* Text size */
   --size-txt-large: 4.75rem;

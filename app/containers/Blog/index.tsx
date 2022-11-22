@@ -8,7 +8,11 @@
  * -----
  */
 
+import blogCssPath from "~/styles/container/blog.css";
+
 import type { Post } from "~/typings/blog";
+import type { LinkDescriptor } from "@remix-run/node";
+
 import { Link } from "@remix-run/react";
 
 // - Types
@@ -22,9 +26,9 @@ type Props = {
 
 // - Components
 const Article = ({ post }: ArticleProps) => (
-  <li key={post.slug}>
+  <li className="blog__article">
     <Link to={post.slug}>
-      <h1>{post.title}</h1>
+      <h1 className="title">{post.title}</h1>
     </Link>
     {post.description ? <p>{post.description}</p> : null}
     <span>{post.date}</span>
@@ -39,9 +43,9 @@ const Article = ({ post }: ArticleProps) => (
 const BlogContainer = ({ postList }: Props) => {
   return (
     <div className="blog__container">
-      <ul>
+      <ul className="blog__list">
         {postList.map((post) => (
-          <Article post={post} />
+          <Article key={post.slug} post={post} />
         ))}
       </ul>
     </div>
@@ -50,3 +54,6 @@ const BlogContainer = ({ postList }: Props) => {
 
 // - Exports
 export default BlogContainer;
+export const links: LinkDescriptor[] = [
+  { rel: "stylesheet", href: blogCssPath },
+];

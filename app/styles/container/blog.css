@@ -1,0 +1,29 @@
+/*
+ * File: /app/styles/container/blog.css
+ * Project: portfolio
+ * Created: Tuesday, 22nd November 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.blog__container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--color-bg-main);
+}
+
+.blog__list {
+  display: grid;
+}
+
+.blog__article {
+  padding: var(--space-medium);
+}
+
+.blog__article .title {
+  margin-bottom: var(--space-large);
+}
