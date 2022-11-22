@@ -15,9 +15,13 @@ import type { LinkDescriptor } from "@remix-run/node";
 
 import { Link } from "@remix-run/react";
 
+import { prettyPrintDate } from "~/utils/date";
+import { useTranslation } from "react-i18next";
+
 // - Types
 type ArticleProps = {
   post: Post;
+  locale: string;
 };
 
 type Props = {
@@ -25,27 +29,38 @@ type Props = {
 };
 
 // - Components
-const Article = ({ post }: ArticleProps) => (
+const Article = ({ post, locale }: ArticleProps) => (
   <li className="blog__article">
     <Link to={post.slug}>
       <h1 className="title">{post.title}</h1>
+
+      {post.description ? (
+        <p className="description">{post.description}</p>
+      ) : null}
     </Link>
-    {post.description ? <p>{post.description}</p> : null}
-    <span>{post.date}</span>
-    <div>
+
+    <time className="date" dateTime={post.date}>
+      {prettyPrintDate(post.date, locale)}
+    </time>
+
+    <div className="tag__container">
       {post.tags.map((tag) => (
-        <p key={tag}>{tag}</p>
+        <Link key={tag} className="tag" to={`?tag=${tag}`}>
+          {tag}
+        </Link>
       ))}
     </div>
   </li>
 );
 
 const BlogContainer = ({ postList }: Props) => {
+  const { i18n } = useTranslation();
+
   return (
     <div className="blog__container">
       <ul className="blog__list">
         {postList.map((post) => (
-          <Article key={post.slug} post={post} />
+          <Article key={post.slug} post={post} locale={i18n.resolvedLanguage} />
         ))}
       </ul>
     </div>

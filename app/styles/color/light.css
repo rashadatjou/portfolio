@@ -33,8 +33,8 @@
   --color-bg-shadow: rgba(0, 0, 0, 0.25);
 
   /* Text */
-  --color-txt-main: #050505;
-  --color-txt-secondary: #222222;
+  --color-txt-main: #111111;
+  --color-txt-secondary: #404040;
   --color-txt-inverted: #ededed;
   --color-txt-muted: #70777f;
   --color-txt-bright: #000;
@@ -49,7 +49,6 @@
   --color-selection-main: #9e9e9e;
   --color-highlight-main: #03d79e;
 
-  /* Icons */
   /* Icons */
   --icon-chevron-down: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSdibGFjaycgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyB3aWR0aD0nMjQnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTcgMTBsNSA1IDUtNXonLz48cGF0aCBkPSdNMCAwaDI0djI0SDB6JyBmaWxsPSdub25lJy8+PC9zdmc+)
 }

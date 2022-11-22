@@ -31,6 +31,7 @@ export type MDXModule = {
   default: any; // Component
   attributes: {
     meta: {
+      name: string;
       title: string;
       description: string;
       tags: string[];

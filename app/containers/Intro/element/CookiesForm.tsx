@@ -31,7 +31,6 @@ function CookieForm({}: Props) {
   const { t } = useTranslation();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log("called");
     const value = event.target.checked;
 
     if (value) {

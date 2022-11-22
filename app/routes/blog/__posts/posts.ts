@@ -8,4 +8,6 @@
  * -----
  */
 
-export * as post1 from "./HelloWorld.mdx";
+import * as HelloWorldBlog from "./hello-world";
+
+export default [HelloWorldBlog];

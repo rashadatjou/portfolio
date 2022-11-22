@@ -8,28 +8,29 @@
  * -----
  */
 
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderArgs } from "@remix-run/node";
 import type { MDXModule, Post } from "~/typings/blog";
 
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import * as blogPosts from "./__posts/posts";
+import blogPosts from "./__posts/posts";
 import BlogContainer, { links as blogLinks } from "~/containers/Blog";
+import { getLocale } from "~/services/i18n/i18n.server";
 
 // - Helpers
 function postFromModule(module: MDXModule): Post {
-  console.log("module", module);
   return {
-    slug: module.filename.replace(/\.mdx?$/, ""),
+    slug: `${module.attributes.meta.name}/${module.filename.replace(/\.mdx?$/, "")}`,
     ...module.attributes.meta,
   };
 }
 
 // - Route Module API
-export async function loader() {
-  const allPosts = Object.values(blogPosts);
-  return json(allPosts.map(postFromModule as any));
+export async function loader({ request }: LoaderArgs) {
+  const locale = await getLocale(request);
+  const localizedBlogs = blogPosts.map((item: any) => item[locale]);
+  return json(localizedBlogs.map((blog) => postFromModule(blog as any)));
 }
 
 export const links: LinksFunction = () => {
