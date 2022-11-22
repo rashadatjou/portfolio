@@ -16,8 +16,11 @@ import { useLoaderData } from "@remix-run/react";
 import * as blogPosts from "./__posts/posts";
 import BlogContainer from "~/containers/Blog";
 
+
+
 // - Helpers
 function postFromModule(module: MDXModule): Post {
+  console.log("module", module);
   return {
     slug: module.filename.replace(/\.mdx?$/, ""),
     ...module.attributes.meta,

@@ -8,5 +8,4 @@
  * -----
  */
 
-export * as post1 from "./Hello.mdx";
-export * as post2 from "./World.mdx";
+export * as post1 from "./HelloWorld.mdx";

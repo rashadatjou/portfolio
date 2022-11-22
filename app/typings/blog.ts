@@ -15,6 +15,8 @@ export type Post = {
   slug: string;
   title: string;
   description: string;
+  date: string;
+  tags: string[];
 };
 
 /**
@@ -26,11 +28,13 @@ export type Post = {
 export type MDXModule = {
   filename: string;
   headers: Record<string, string>;
-  default: any; // Really don't know what this does
+  default: any; // Component
   attributes: {
     meta: {
       title: string;
       description: string;
+      tags: string[];
+      date: string;
     };
   };
 };
