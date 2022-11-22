@@ -12,7 +12,9 @@ import type { Post } from "~/typings/blog";
 import { Link } from "@remix-run/react";
 
 // - Types
-type ArticleProps = { post: Post };
+type ArticleProps = {
+  post: Post;
+};
 
 type Props = {
   postList: Post[];
