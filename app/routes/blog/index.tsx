@@ -8,16 +8,16 @@
  * -----
  */
 
+import type { MDXModule, Post } from "~/typings/blog";
+
 import { json } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 
 import * as blogPosts from "./__posts/posts";
-
-// - Types
-type Props = {};
+import BlogContainer from "~/containers/Blog";
 
 // - Helpers
-function postFromModule(module: any) {
+function postFromModule(module: MDXModule): Post {
   return {
     slug: module.filename.replace(/\.mdx?$/, ""),
     ...module.attributes.meta,
@@ -27,23 +27,11 @@ function postFromModule(module: any) {
 // - Route Module API
 export async function loader() {
   const allPosts = Object.values(blogPosts);
-  return json(allPosts.map(postFromModule));
+  return json(allPosts.map(postFromModule as any));
 }
 
 // - Component
-export default function BlogRoute({}: Props) {
-  const posts = useLoaderData<any[]>();
-
-  return (
-    <ul>
-      {posts.map((post) => (
-        <li key={post.slug}>
-          <Link to={post.slug}>
-            <h1>{post.title}</h1>
-          </Link>
-          {post.description ? <p>{post.description}</p> : null}
-        </li>
-      ))}
-    </ul>
-  );
+export default function BlogRoute() {
+  const posts = useLoaderData<Post[]>();
+  return <BlogContainer postList={posts} />;
 }
