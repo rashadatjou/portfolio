@@ -9,13 +9,16 @@
  */
 
 import type { ButtonHTMLAttributes } from "react";
+import { Link } from "@remix-run/react";
 import cls from "classnames";
 
 // - Props
 type ButtonType = "primary" | "secondary" | "icon";
 type Props = {
   buttonType?: ButtonType;
-  bordered?: boolean;
+  bordered?: boolean; // Only works with "icon"
+  animated?: boolean; // Only works with icon
+  link?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 // - Components
@@ -24,6 +27,8 @@ const Button = ({
   className,
   buttonType = "primary",
   bordered,
+  animated,
+  link,
   ...htmlAtt
 }: Props) => (
   <button
@@ -33,8 +38,9 @@ const Button = ({
       className,
       buttonType,
       bordered && "border",
+      animated && "animate",
     ])}>
-    {children}
+    {link ? <Link to={link}>{children}</Link> : children}
   </button>
 );
 

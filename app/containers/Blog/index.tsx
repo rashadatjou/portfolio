@@ -9,6 +9,7 @@
  */
 
 import blogCssPath from "~/styles/container/blog.css";
+import btnCssPath from "~/styles/element/button.css";
 
 import type { Post } from "~/typings/blog";
 import type { LinkDescriptor } from "@remix-run/node";
@@ -17,6 +18,7 @@ import { Link } from "@remix-run/react";
 
 import { prettyPrintDate } from "~/utils/date";
 import { useTranslation } from "react-i18next";
+import Button from "~/components/Button";
 
 // - Types
 type ArticleProps = {
@@ -24,9 +26,23 @@ type ArticleProps = {
   locale: string;
 };
 
+type HeaderProps = {
+  tag?: string | null;
+};
+
 type Props = {
   postList: Post[];
+  tag?: string | null;
 };
+
+// - Functions
+function postFiltered(allPosts: Post[], tag?: string | null) {
+  if (tag && typeof tag === "string") {
+    return allPosts.filter((post) => post.tags.includes(tag));
+  }
+
+  return allPosts;
+}
 
 // - Components
 const Article = ({ post, locale }: ArticleProps) => (
@@ -53,13 +69,27 @@ const Article = ({ post, locale }: ArticleProps) => (
   </li>
 );
 
-const BlogContainer = ({ postList }: Props) => {
+const BlogHeader = ({ tag }: HeaderProps) => (
+  <div className="blog__header">
+    <Button buttonType="icon" bordered link="/">
+      👈🏽
+    </Button>
+    {tag && (
+      <Button buttonType="secondary" bordered link="?">
+        Clear tag
+      </Button>
+    )}
+  </div>
+);
+
+const BlogContainer = ({ postList, tag }: Props) => {
   const { i18n } = useTranslation();
 
   return (
     <div className="blog__container">
+      <BlogHeader tag={tag} />
       <ul className="blog__list">
-        {postList.map((post) => (
+        {postFiltered(postList, tag).map((post) => (
           <Article key={post.slug} post={post} locale={i18n.resolvedLanguage} />
         ))}
       </ul>
@@ -71,4 +101,5 @@ const BlogContainer = ({ postList }: Props) => {
 export default BlogContainer;
 export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: blogCssPath },
+  { rel: "stylesheet", href: btnCssPath },
 ];

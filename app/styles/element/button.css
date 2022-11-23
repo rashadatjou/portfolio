@@ -25,6 +25,11 @@
   color: var(--color-txt-inverted);
 }
 
+/* Secondary */
+.btn.secondary {
+  border-radius: var(--size-border-radius);
+}
+
 /* Icon */
 .btn.icon {
   background: none;
@@ -38,7 +43,7 @@
   border-color: var(--color-bg-border);
 }
 
-.btn.icon:hover {
+.btn.icon.animate:hover {
   transform: rotate(45deg);
 }
 
@@ -53,4 +58,9 @@
 
 .btn.icon.border:hover {
   border-color: var(--color-highlight-main);
+}
+
+/* Link */
+.btn > a {
+  text-decoration: none;
 }

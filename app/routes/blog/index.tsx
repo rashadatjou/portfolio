@@ -12,7 +12,7 @@ import type { LinksFunction, LoaderArgs } from "@remix-run/node";
 import type { MDXModule, Post } from "~/typings/blog";
 
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useSearchParams } from "@remix-run/react";
 
 import blogModules from "./__posts/posts";
 import BlogContainer, { links as blogLinks } from "~/containers/Blog";
@@ -54,5 +54,8 @@ export const links: LinksFunction = () => {
 // - Component
 export default function BlogRoute() {
   const posts = useLoaderData<Post[]>();
-  return <BlogContainer postList={posts} />;
+  const [searchParams] = useSearchParams();
+  const tagSearch = searchParams.get("tag");
+
+  return <BlogContainer postList={posts} tag={tagSearch} />;
 }
