@@ -39,8 +39,10 @@ const Button = ({
       buttonType,
       bordered && "border",
       animated && "animate",
+      link && "link",
     ])}>
-    {link ? <Link to={link}>{children}</Link> : children}
+    {link && <Link to={link} replace />}
+    {children}
   </button>
 );
 

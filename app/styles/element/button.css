@@ -33,14 +33,7 @@
 /* Icon */
 .btn.icon {
   background: none;
-}
-
-.btn.icon.border {
   font-size: var(--size-txt-medium);
-  border: solid;
-  border-width: var(--size-border-width);
-  border-radius: var(--size-border-radius);
-  border-color: var(--color-bg-border);
 }
 
 .btn.icon.animate:hover {
@@ -60,7 +53,24 @@
   border-color: var(--color-highlight-main);
 }
 
+/* Styles */
+.btn.border {
+  border: solid;
+  border-width: var(--size-border-width);
+  border-radius: var(--size-border-radius);
+  border-color: var(--color-bg-border);
+}
+
 /* Link */
+.btn.link {
+  position: relative;
+}
+
 .btn > a {
+  position: absolute;
   text-decoration: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
