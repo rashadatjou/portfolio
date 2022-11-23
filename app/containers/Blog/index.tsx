@@ -71,11 +71,11 @@ const Article = ({ post, locale }: ArticleProps) => (
 
 const BlogHeader = ({ tag }: HeaderProps) => (
   <div className="blog__header">
-    <Button buttonType="icon" bordered link="/">
+    <Button buttonType="icon" bordered href="/">
       👈🏽
     </Button>
     {tag && (
-      <Button buttonType="secondary" bordered link="?">
+      <Button buttonType="secondary" bordered href="?">
         Clear tag
       </Button>
     )}

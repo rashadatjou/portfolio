@@ -18,7 +18,7 @@ type Props = {
   buttonType?: ButtonType;
   bordered?: boolean; // Only works with "icon"
   animated?: boolean; // Only works with icon
-  link?: string;
+  href?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 // - Components
@@ -28,7 +28,7 @@ const Button = ({
   buttonType = "primary",
   bordered,
   animated,
-  link,
+  href,
   ...htmlAtt
 }: Props) => (
   <button
@@ -39,9 +39,9 @@ const Button = ({
       buttonType,
       bordered && "border",
       animated && "animate",
-      link && "link",
+      href && "link",
     ])}>
-    {link && <Link to={link} replace />}
+    {href && <Link to={href} replace />}
     {children}
   </button>
 );
