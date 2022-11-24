@@ -32,6 +32,7 @@
 /* List */
 .blog__list {
   display: grid;
+  max-width: var(--size-width-max);
 }
 
 /* Article */

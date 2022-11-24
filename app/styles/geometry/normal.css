@@ -19,6 +19,9 @@
   --space-small: 0.25rem;
   --space-tiny: 0.125rem;
 
+  /* Width */
+  --size-width-max: 62.5rem;
+
   /* Text size */
   --size-txt-large: 4.25rem;
   --size-txt-medium: 3rem;
