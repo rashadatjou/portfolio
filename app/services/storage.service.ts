@@ -9,8 +9,6 @@
  */
 
 import * as StorageKeys from "~/constants/storage-key";
-import AppError from "~/utils/app-error";
-import { AppErrorID, AppErrorType } from "~/typings/app-error";
 import { isServerSide } from "~/utils/client-helper";
 
 class StorageService {
@@ -41,6 +39,7 @@ class StorageService {
 
 // - Instance
 const storageService = new StorageService();
+Object.freeze(storageService);
 
 // - Export
 export default storageService;
