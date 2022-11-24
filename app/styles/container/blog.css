@@ -36,33 +36,33 @@
 }
 
 /* Article */
-.blog__article {
+.blog__post {
   padding: var(--space-medium);
 }
 
-.blog__article .title {
+.blog__post .title {
   margin-bottom: var(--space-normal);
   text-decoration: none;
 }
 
-.blog__article .description {
+.blog__post .description {
   color: var(--color-txt-secondary);
   margin-bottom: var(--space-medium);
   text-decoration: none;
 }
 
-.blog__article .date {
+.blog__post .date {
   font-size: var(--size-txt-tiny);
   font-weight: 300;
 }
 
-.blog__article .tag__container {
+.blog__post .tag__container {
   display: flex;
   column-gap: var(--space-large);
   margin-top: var(--space-normal);
 }
 
-.blog__article .tag {
+.blog__post .tag {
   font-size: var(--size-txt-tiny);
   color: var(--color-txt-inverted);
   font-weight: bold;

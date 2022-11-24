@@ -21,7 +21,7 @@ import { useTranslation } from "react-i18next";
 import Button from "~/components/Button";
 
 // - Types
-type ArticleProps = {
+type PostItemProps = {
   post: Post;
   locale: string;
 };
@@ -45,8 +45,8 @@ function postFiltered(allPosts: Post[], tag?: string | null) {
 }
 
 // - Components
-const Article = ({ post, locale }: ArticleProps) => (
-  <li className="blog__article">
+const PostItem = ({ post, locale }: PostItemProps) => (
+  <li className="blog__post">
     <Link to={post.slug}>
       <h1 className="title">{post.title}</h1>
 
@@ -90,7 +90,7 @@ const BlogContainer = ({ postList, tag }: Props) => {
       <BlogHeader tag={tag} />
       <ul className="blog__list">
         {postFiltered(postList, tag).map((post) => (
-          <Article key={post.slug} post={post} locale={i18n.resolvedLanguage} />
+          <PostItem key={post.slug} post={post} locale={i18n.resolvedLanguage} />
         ))}
       </ul>
     </div>
