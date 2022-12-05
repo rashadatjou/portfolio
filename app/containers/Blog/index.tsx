@@ -19,6 +19,7 @@ import { Link } from "@remix-run/react";
 import { prettyPrintDate } from "~/utils/date";
 import { useTranslation } from "react-i18next";
 import Button from "~/components/Button";
+import NavHeader from "~/components/NavHeader";
 
 // - Types
 type PostItemProps = {
@@ -70,7 +71,7 @@ const PostItem = ({ post, locale }: PostItemProps) => (
 );
 
 const BlogHeader = ({ tag }: HeaderProps) => (
-  <div className="blog__header">
+  <NavHeader>
     <Button buttonType="icon" bordered href="/">
       👈🏽
     </Button>
@@ -79,7 +80,7 @@ const BlogHeader = ({ tag }: HeaderProps) => (
         Clear tag
       </Button>
     )}
-  </div>
+  </NavHeader>
 );
 
 const BlogContainer = ({ postList, tag }: Props) => {
@@ -90,7 +91,11 @@ const BlogContainer = ({ postList, tag }: Props) => {
       <BlogHeader tag={tag} />
       <ul className="blog__list">
         {postFiltered(postList, tag).map((post) => (
-          <PostItem key={post.slug} post={post} locale={i18n.resolvedLanguage} />
+          <PostItem
+            key={post.slug}
+            post={post}
+            locale={i18n.resolvedLanguage}
+          />
         ))}
       </ul>
     </div>
