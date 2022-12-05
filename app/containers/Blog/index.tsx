@@ -11,7 +11,7 @@
 import blogCssPath from "~/styles/container/blog.css";
 import btnCssPath from "~/styles/element/button.css";
 
-import type { Post } from "~/typings/blog";
+import type { MDXPost } from "~/typings/blog";
 import type { LinkDescriptor } from "@remix-run/node";
 
 import { Link } from "@remix-run/react";
@@ -22,7 +22,7 @@ import Button from "~/components/Button";
 
 // - Types
 type PostItemProps = {
-  post: Post;
+  post: MDXPost;
   locale: string;
 };
 
@@ -31,12 +31,12 @@ type HeaderProps = {
 };
 
 type Props = {
-  postList: Post[];
+  postList: MDXPost[];
   tag?: string | null;
 };
 
 // - Functions
-function postFiltered(allPosts: Post[], tag?: string | null) {
+function postFiltered(allPosts: MDXPost[], tag?: string | null) {
   if (tag && typeof tag === "string") {
     return allPosts.filter((post) => post.tags.includes(tag));
   }

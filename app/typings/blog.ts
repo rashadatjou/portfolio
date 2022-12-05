@@ -11,7 +11,7 @@
 /**
  * Describes a Post object
  */
-export type Post = {
+export type MDXPost = {
   slug: string;
   title: string;
   description: string;
@@ -20,22 +20,24 @@ export type Post = {
 };
 
 /**
- * MDXModule found in routes/__posts/
- *
- * Note:
- * Attributes may vary
+ * MDXModule Meta attribute.
+ */
+export type MDXModuleMeta = {
+  name: string;
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+};
+
+/**
+ * MDXModule for .mdx files
  */
 export type MDXModule = {
   filename: string;
   headers: Record<string, string>;
   default: any; // Component
   attributes: {
-    meta: {
-      name: string;
-      title: string;
-      description: string;
-      tags: string[];
-      date: string;
-    };
+    meta: MDXModuleMeta;
   };
 };

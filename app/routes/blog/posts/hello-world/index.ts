@@ -1,13 +1,13 @@
 /*
- * File: /app/routes/blog/__posts/HelloWorld/blog.ts
+ * File: /app/routes/blog/__posts/hello-world.ts
  * Project: portfolio
- * Created: Tuesday, 22nd November 2022
+ * Created: Friday, 25th November 2022
  * Author: Denpex
  * -----
  * Copyright 2022, ©Mehdi Rashadatjou
  * -----
  */
 
+export * as bs from "./bs.mdx";
 export * as en from "./en.mdx";
 export * as sv from "./sv.mdx";
-export * as bs from "./bs.mdx";

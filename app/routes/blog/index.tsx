@@ -9,23 +9,23 @@
  */
 
 import type { LinksFunction, LoaderArgs } from "@remix-run/node";
-import type { MDXModule, Post } from "~/typings/blog";
+import type { MDXModule, MDXPost } from "~/typings/blog";
 
 import { json } from "@remix-run/node";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
 
-import blogModules from "./__posts/posts";
+import blogModules from "~/constants/blog-list";
 import BlogContainer, { links as blogLinks } from "~/containers/Blog";
 import { getLocale } from "~/services/i18n/i18n.server";
 
 // - Helpers
-function postFromModule(module: MDXModule): Post {
+function postFromModule(module: MDXModule): MDXPost {
+  const { attributes, filename } = module;
+  const { meta } = attributes;
+  const locale = filename.replace(/\.mdx?$/, "");
   return {
-    slug: `${module.attributes.meta.name}/${module.filename.replace(
-      /\.mdx?$/,
-      "",
-    )}`,
-    ...module.attributes.meta,
+    slug: `posts/${meta.name}/${locale}`,
+    ...meta,
   };
 }
 
@@ -53,7 +53,7 @@ export const links: LinksFunction = () => {
 
 // - Component
 export default function BlogRoute() {
-  const posts = useLoaderData<Post[]>();
+  const posts = useLoaderData<MDXPost[]>();
   const [searchParams] = useSearchParams();
   const tagSearch = searchParams.get("tag");
 
