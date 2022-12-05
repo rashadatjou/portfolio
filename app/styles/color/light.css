@@ -38,6 +38,7 @@
   --color-txt-inverted: #ededed;
   --color-txt-muted: #70777f;
   --color-txt-bright: #000;
+  --color-txt-error: #ff0000;
 
   /* Actions */
   --color-act-main: #08bf8e;

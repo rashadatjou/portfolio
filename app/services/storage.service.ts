@@ -9,7 +9,7 @@
  */
 
 import * as StorageKeys from "~/constants/storage-key";
-import { isServerSide } from "~/utils/client-helper";
+import { isServerSide } from "~/utils/helpers.client";
 
 class StorageService {
   save(key: keyof typeof StorageKeys, value: string) {

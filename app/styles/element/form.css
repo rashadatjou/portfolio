@@ -108,3 +108,10 @@ fieldset.linear {
   background-repeat: no-repeat;
   font-family: inherit;
 }
+
+/* Errors */
+.form p.error {
+  color: var(--color-txt-error);
+  font-size: var(--size-txt-tiny);
+  padding-block: var(--space-normal);
+}

@@ -8,7 +8,7 @@
  * -----
  */
 
-import { isServerSide } from "~/utils/client-helper";
+import { isServerSide } from "~/utils/helpers.client";
 
 function getAllCookies(): Array<string> {
   if (isServerSide()) return [];
