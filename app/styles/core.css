@@ -12,6 +12,10 @@
   --themes: light dark;
 }
 
+html {
+  font-family: Helvetica, sans-serif;
+}
+
 body {
   background: #fff;
   background: var(--color-bg-body);
