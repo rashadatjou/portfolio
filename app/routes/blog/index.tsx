@@ -14,7 +14,7 @@ import type { MDXModule, MDXPost } from "~/typings/blog";
 import { json } from "@remix-run/node";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
 
-import blogModules from "~/constants/blog-list";
+import blogList from "~/constants/blog-list";
 import BlogContainer, { links as blogLinks } from "~/containers/Blog";
 import { getLocale } from "~/services/i18n/i18n.server";
 
@@ -41,7 +41,7 @@ function getLocalizedModule(locale: string, module: Record<string, MDXModule>) {
 // - Route Module API
 export async function loader({ request }: LoaderArgs) {
   const locale = await getLocale(request);
-  const localizedBlogs = blogModules.map((module: any) =>
+  const localizedBlogs = blogList.map((module: any) =>
     getLocalizedModule(locale, module),
   );
   return json(localizedBlogs.map(postFromModule));
