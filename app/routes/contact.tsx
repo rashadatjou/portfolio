@@ -24,9 +24,11 @@ import {
   validateRange,
   validateString,
 } from "~/services/validation.service";
+import { useTranslation } from "react-i18next";
 
 // - Types
 type ErrorLabelProps = {
+  id?: string;
   message?: string;
 };
 
@@ -44,7 +46,7 @@ type ActionData = {
 
 // - Const
 const EMAIL_NAME = "email";
-const CONTENT_NAME = "content";
+const MESSAGE_NAME = "message";
 
 // - Methods
 function validateFields(email: unknown, content: unknown) {
@@ -60,10 +62,10 @@ function validateFields(email: unknown, content: unknown) {
   }
 
   if (!validateString(content)) {
-    fieldErrors.set(CONTENT_NAME, "Message is not valid type of string.");
+    fieldErrors.set(MESSAGE_NAME, "Message is not valid type of string.");
   } else if (!validateRange(content as string, [4, 500])) {
     fieldErrors.set(
-      CONTENT_NAME,
+      MESSAGE_NAME,
       "Message is shorter than 4 chars. or bigger than 500 chars.",
     );
   }
@@ -83,7 +85,7 @@ export const links: LinksFunction = () => {
 export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData();
   const email = form.get(EMAIL_NAME);
-  const content = form.get(CONTENT_NAME);
+  const content = form.get(MESSAGE_NAME);
 
   if (typeof email !== "string" || typeof content !== "string") {
     return badRequest<ActionData>({
@@ -98,19 +100,19 @@ export const action: ActionFunction = async ({ request }) => {
       fields: { email, content },
       fieldErrors: {
         email: fieldErrors.get(EMAIL_NAME),
-        content: fieldErrors.get(CONTENT_NAME),
+        content: fieldErrors.get(MESSAGE_NAME),
       },
     });
   }
 
-  return json({ status: "Success" }, { status: 204 });
+  return json({ status: "Success" }, { status: 200 });
 };
 
 // - Components
-const ErrorLabel = ({ message }: ErrorLabelProps) => {
+const ErrorLabel = ({ id, message }: ErrorLabelProps) => {
   if (!message) return null;
   return (
-    <p className="error" role="alert">
+    <p className="error" role="alert" id={id}>
       {message}
     </p>
   );
@@ -118,6 +120,7 @@ const ErrorLabel = ({ message }: ErrorLabelProps) => {
 
 const ContactRoute = () => {
   const actionData = useActionData<ActionData>();
+  // const { t } = useTranslation();
 
   return (
     <div className="contact-container">
@@ -130,9 +133,9 @@ const ContactRoute = () => {
         <h1>Contact</h1>
         <form className="form" method="post">
           <fieldset>
-            <label htmlFor="email">Email</label>
+            <label htmlFor={`contact__${EMAIL_NAME}`}>Email</label>
             <input
-              id="email"
+              id={`contact__${EMAIL_NAME}`}
               type="email"
               name={EMAIL_NAME}
               defaultValue={actionData?.fields?.email}
@@ -142,21 +145,27 @@ const ContactRoute = () => {
                 actionData?.fieldErrors?.email ? "email-error" : undefined
               }
             />
-            <ErrorLabel message={actionData?.fieldErrors?.email} />
+            <ErrorLabel
+              id="email-error"
+              message={actionData?.fieldErrors?.email}
+            />
           </fieldset>
           <fieldset>
-            <label htmlFor="content">Message</label>
+            <label htmlFor={`contact__${MESSAGE_NAME}`}>Message</label>
             <textarea
-              id="content"
-              name={CONTENT_NAME}
+              id={`contact__${MESSAGE_NAME}`}
+              name={MESSAGE_NAME}
               defaultValue={actionData?.fields?.content}
               placeholder="Ask me anything"
               aria-invalid={!actionData?.fieldErrors?.email || undefined}
               aria-errormessage={
-                actionData?.fieldErrors?.email ? "content-error" : undefined
+                actionData?.fieldErrors?.email ? "message-error" : undefined
               }
             />
-            <ErrorLabel message={actionData?.fieldErrors?.content} />
+            <ErrorLabel
+              id="message-error"
+              message={actionData?.fieldErrors?.content}
+            />
           </fieldset>
           <Button type="submit" buttonType="primary">
             Send
