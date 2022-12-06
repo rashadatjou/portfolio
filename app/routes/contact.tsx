@@ -39,11 +39,11 @@ type ActionData = {
   formError?: string;
   fieldErrors?: {
     email: string | undefined;
-    content: string | undefined;
+    message: string | undefined;
   };
   fields?: {
     email: string;
-    content: string;
+    message: string;
   };
 };
 
@@ -54,7 +54,7 @@ const MESSAGE_NAME = "message";
 // - Methods
 function validateFields(
   email: unknown,
-  content: unknown,
+  message: unknown,
   translate: TFunction,
 ) {
   const fieldErrors = new Map<string, string>();
@@ -65,9 +65,9 @@ function validateFields(
     fieldErrors.set(EMAIL_NAME, translate("contact.form.email.error.2"));
   }
 
-  if (!validateString(content)) {
+  if (!validateString(message)) {
     fieldErrors.set(MESSAGE_NAME, translate("contact.form.message.error.1"));
-  } else if (!validateRange(content as string, [4, 500])) {
+  } else if (!validateRange(message as string, [4, 500])) {
     fieldErrors.set(MESSAGE_NAME, translate("contact.form.message.error.2"));
   }
 
@@ -86,25 +86,23 @@ export const links: LinksFunction = () => {
 export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData();
   const email = form.get(EMAIL_NAME);
-  const content = form.get(MESSAGE_NAME);
+  const message = form.get(MESSAGE_NAME);
 
-  const locale = await getLocale(request);
-  const translate = await i18nRemix.getFixedT(request, "base");
-
-  if (typeof email !== "string" || typeof content !== "string") {
+  if (typeof email !== "string" || typeof message !== "string") {
     return badRequest<ActionData>({
       formError: "Form not submitted correctly.", // TODO: Translate??
     });
   }
 
-  const fieldErrors = validateFields(email, content, translate);
+  const translate = await i18nRemix.getFixedT(request, "base");
+  const errors = validateFields(email, message, translate);
 
-  if (fieldErrors.size > 0) {
+  if (errors.size > 0) {
     return badRequest<ActionData>({
-      fields: { email, content },
+      fields: { email, message },
       fieldErrors: {
-        email: fieldErrors.get(EMAIL_NAME),
-        content: fieldErrors.get(MESSAGE_NAME),
+        email: errors.get(EMAIL_NAME),
+        message: errors.get(MESSAGE_NAME),
       },
     });
   }
@@ -163,16 +161,16 @@ const ContactRoute = () => {
             <textarea
               id={`contact__${MESSAGE_NAME}`}
               name={MESSAGE_NAME}
-              defaultValue={actionData?.fields?.content}
+              defaultValue={actionData?.fields?.message}
               placeholder={t("contact.form.message.label")}
-              aria-invalid={!actionData?.fieldErrors?.email || undefined}
+              aria-invalid={!actionData?.fieldErrors?.message || undefined}
               aria-errormessage={
-                actionData?.fieldErrors?.email ? "message-error" : undefined
+                actionData?.fieldErrors?.message ? "message-error" : undefined
               }
             />
             <ErrorLabel
               id="message-error"
-              message={actionData?.fieldErrors?.content}
+              message={actionData?.fieldErrors?.message}
             />
           </fieldset>
           <Button type="submit" buttonType="primary">
