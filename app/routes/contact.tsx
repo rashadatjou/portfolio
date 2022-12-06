@@ -107,6 +107,8 @@ export const action: ActionFunction = async ({ request }) => {
     });
   }
 
+  // TODO: Send email via a service
+
   return json({ message: translate("contact.form.success") }, { status: 200 });
 };
 
