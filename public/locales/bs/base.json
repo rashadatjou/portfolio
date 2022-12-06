@@ -22,6 +22,8 @@
   "contact.form.message.error.2": "Poruka je kraća od 4 znaka. ili veći od 500 znakova.",
 
   "contact.form.submit": "Pošalji",
+  "contact.form.success": "Hvala, javit ću vam se što je prije moguće.",
+  "contact.form.failure": "Molimo pokušajte ponovo. Zahtjev nije uspio.",
 
   "en": "Engleski",
   "dev": "Razvoj",

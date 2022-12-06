@@ -22,6 +22,8 @@
   "contact.form.message.error.2": "Message is shorter than 4 chars. or bigger than 500 chars.",
 
   "contact.form.submit": "Send",
+  "contact.form.success": "Thank you, will get back to you asap.",
+  "contact.form.failure": "Please try again. The request failed.",
 
   "en": "English",
   "dev": "Development",

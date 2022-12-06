@@ -17,7 +17,7 @@ import type { LinksFunction, ActionFunction } from "@remix-run/node";
 
 import { json } from "@remix-run/node";
 import { useActionData } from "@remix-run/react";
-import { getLocale, i18nRemix } from "~/services/i18n/i18n.server";
+import { i18nRemix } from "~/services/i18n/i18n.server";
 import { badRequest } from "~/utils/helper.server";
 import {
   validateEmail,
@@ -84,17 +84,17 @@ export const links: LinksFunction = () => {
 };
 
 export const action: ActionFunction = async ({ request }) => {
+  const translate = await i18nRemix.getFixedT(request, "base");
   const form = await request.formData();
   const email = form.get(EMAIL_NAME);
   const message = form.get(MESSAGE_NAME);
 
   if (typeof email !== "string" || typeof message !== "string") {
     return badRequest<ActionData>({
-      formError: "Form not submitted correctly.", // TODO: Translate??
+      formError: translate("contact.form.failure"),
     });
   }
 
-  const translate = await i18nRemix.getFixedT(request, "base");
   const errors = validateFields(email, message, translate);
 
   if (errors.size > 0) {
@@ -107,7 +107,7 @@ export const action: ActionFunction = async ({ request }) => {
     });
   }
 
-  return json({ status: "Success" }, { status: 200 });
+  return json({ message: translate("contact.form.success") }, { status: 200 });
 };
 
 // - Components
@@ -162,7 +162,7 @@ const ContactRoute = () => {
               id={`contact__${MESSAGE_NAME}`}
               name={MESSAGE_NAME}
               defaultValue={actionData?.fields?.message}
-              placeholder={t("contact.form.message.label")}
+              placeholder={t("contact.form.message.placeholder")}
               aria-invalid={!actionData?.fieldErrors?.message || undefined}
               aria-errormessage={
                 actionData?.fieldErrors?.message ? "message-error" : undefined

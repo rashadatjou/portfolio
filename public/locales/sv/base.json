@@ -22,6 +22,8 @@
   "contact.form.message.error.2": "Meddelandet är kortare än 4 tecken. eller större än 500 tecken.",
 
   "contact.form.submit": "Skicka",
+  "contact.form.success": "Tack, återkommer till dig snarast.",
+  "contact.form.failure": "Var god försök igen. Begäran misslyckades.",
 
   "en": "Engelsk",
   "dev": "Utveckling",
