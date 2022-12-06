@@ -1,5 +1,5 @@
 /*
- * File: /app/containers/Blog/index.tsx
+ * File: /app/views/Blog/index.tsx
  * Project: portfolio
  * Created: Tuesday, 22nd November 2022
  * Author: Denpex
@@ -8,7 +8,7 @@
  * -----
  */
 
-import blogCssPath from "~/styles/container/blog.css";
+import blogCssPath from "~/styles/views/blog.css";
 import btnCssPath from "~/styles/element/button.css";
 
 import type { MDXPost } from "~/typings/blog";

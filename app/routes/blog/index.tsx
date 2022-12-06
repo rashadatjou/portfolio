@@ -13,10 +13,10 @@ import type { MDXModule, MDXPost } from "~/typings/blog";
 
 import { json } from "@remix-run/node";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
+import { getLocale } from "~/services/i18n/i18n.server";
 
 import blogList from "~/constants/blog-list";
-import BlogContainer, { links as blogLinks } from "~/containers/Blog";
-import { getLocale } from "~/services/i18n/i18n.server";
+import BlogView, { links as blogLinks } from "~/views/Blog";
 
 // - Helpers
 function postFromModule(module: MDXModule): MDXPost {
@@ -57,5 +57,5 @@ export default function BlogRoute() {
   const [searchParams] = useSearchParams();
   const tagSearch = searchParams.get("tag");
 
-  return <BlogContainer postList={posts} tag={tagSearch} />;
+  return <BlogView postList={posts} tag={tagSearch} />;
 }

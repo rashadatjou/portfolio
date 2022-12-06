@@ -1,5 +1,5 @@
 /*
- * File: /app/containers/Intro/element/SettingForm.tsx
+ * File: /app/views/Intro/element/SettingForm.tsx
  * Project: portfolio
  * Created: Thursday, 17th November 2022
  * Author: Denpex

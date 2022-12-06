@@ -11,7 +11,7 @@
 import type { LinksFunction } from "@remix-run/node";
 import { useCatch } from "@remix-run/react";
 
-import IntroContainer, { links as introLinks } from "~/containers/Intro";
+import MainView, { links as introLinks } from "~/views/Main";
 
 // - Route Module API
 export const links: LinksFunction = () => {
@@ -20,7 +20,7 @@ export const links: LinksFunction = () => {
 
 // - Component
 const MainRoute = () => {
-  return <IntroContainer />;
+  return <MainView />;
 };
 
 const CatchBoundary = () => {

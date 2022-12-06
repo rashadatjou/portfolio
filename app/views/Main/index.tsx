@@ -1,5 +1,5 @@
 /*
- * File: /app/containers/Intro/index.tsx
+ * File: /app/views/Main/index.tsx
  * Project: portfolio
  * Created: Thursday, 17th November 2022
  * Author: Denpex
@@ -8,7 +8,7 @@
  * -----
  */
 
-import introCssPath from "~/styles/container/intro.css";
+import mainCssPath from "~/styles/views/main.css";
 import buttonCssPath from "~/styles/element/button.css";
 import modalCssPath from "~/styles/element/modal.css";
 import formCssPath from "~/styles/element/form.css";
@@ -42,7 +42,7 @@ const Navbar = ({ t }: NavbarProps) => (
   </div>
 );
 
-const IntroContainer = () => {
+const MainView = () => {
   const { t } = useTranslation();
   return (
     <div className="intro">
@@ -55,9 +55,9 @@ const IntroContainer = () => {
 };
 
 // - Exports
-export default IntroContainer;
+export default MainView;
 export const links: LinkDescriptor[] = [
-  { rel: "stylesheet", href: introCssPath },
+  { rel: "stylesheet", href: mainCssPath },
   { rel: "stylesheet", href: buttonCssPath },
   { rel: "stylesheet", href: modalCssPath },
   { rel: "stylesheet", href: formCssPath },

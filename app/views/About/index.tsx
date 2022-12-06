@@ -1,5 +1,5 @@
 /*
- * File: /app/routes/about.tsx
+ * File: /app/views/About/index.tsx
  * Project: portfolio
  * Created: Tuesday, 6th December 2022
  * Author: Denpex
@@ -8,15 +8,13 @@
  * -----
  */
 
-import AboutView from "~/views/About";
-
 // - Types
 type Props = {};
 
 // - Components
-const AboutRoute = (props: Props) => {
-  return <AboutView />;
+const AboutView = (props: Props) => {
+  return <div>AboutView</div>;
 };
 
 // - Exports
-export default AboutRoute;
+export default AboutView;

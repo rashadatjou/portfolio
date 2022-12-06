@@ -1,5 +1,5 @@
 /*
- * File: /app/containers/Intro/element/IntroSettings.tsx
+ * File: /app/views/Intro/element/IntroSettings.tsx
  * Project: portfolio
  * Created: Thursday, 17th November 2022
  * Author: Denpex

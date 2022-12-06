@@ -8,7 +8,7 @@
  * -----
  */
 
-import postCSSPath from "~/styles/container/blog-post.css";
+import postCSSPath from "~/styles/views/post.css";
 import buttonCSSPath from "~/styles/element/button.css";
 
 import type { LinksFunction } from "@remix-run/node";
