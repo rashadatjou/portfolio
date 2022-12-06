@@ -19,11 +19,11 @@ export const links: LinksFunction = () => {
 };
 
 // - Component
-export default function MainRoute() {
+const MainRoute = () => {
   return <IntroContainer />;
-}
+};
 
-export function CatchBoundary() {
+const CatchBoundary = () => {
   const caught = useCatch();
 
   return (
@@ -35,4 +35,8 @@ export function CatchBoundary() {
       </pre>
     </div>
   );
-}
+};
+
+// - Exports
+export default MainRoute;
+export { CatchBoundary };
