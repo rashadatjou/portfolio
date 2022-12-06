@@ -26,6 +26,10 @@ import {
 } from "~/services/validation.service";
 
 // - Types
+type ErrorLabelProps = {
+  message?: string;
+};
+
 type ActionData = {
   formError?: string;
   fieldErrors?: {
@@ -89,9 +93,6 @@ export const action: ActionFunction = async ({ request }) => {
 
   const fieldErrors = validateFields(email, content);
 
-  console.log("form", { email, content });
-  console.log("fieldErrors", fieldErrors);
-
   if (fieldErrors.size > 0) {
     return badRequest<ActionData>({
       fields: { email, content },
@@ -106,6 +107,15 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 // - Components
+const ErrorLabel = ({ message }: ErrorLabelProps) => {
+  if (!message) return null;
+  return (
+    <p className="error" role="alert">
+      {message}
+    </p>
+  );
+};
+
 const ContactRoute = () => {
   const actionData = useActionData<ActionData>();
 
@@ -126,19 +136,13 @@ const ContactRoute = () => {
               type="email"
               name={EMAIL_NAME}
               defaultValue={actionData?.fields?.email}
-              aria-invalid={
-                Boolean(actionData?.fieldErrors?.email) || undefined
-              }
+              placeholder="email@domain.tld"
+              aria-invalid={!actionData?.fieldErrors?.email || undefined}
               aria-errormessage={
                 actionData?.fieldErrors?.email ? "email-error" : undefined
               }
-              placeholder="email@domain.tld"
             />
-            {actionData?.fieldErrors?.email ? (
-              <p className="error" role="alert" id="name-error">
-                {actionData.fieldErrors.email}
-              </p>
-            ) : null}
+            <ErrorLabel message={actionData?.fieldErrors?.email} />
           </fieldset>
           <fieldset>
             <label htmlFor="content">Message</label>
@@ -146,25 +150,14 @@ const ContactRoute = () => {
               id="content"
               name={CONTENT_NAME}
               defaultValue={actionData?.fields?.content}
-              aria-invalid={
-                Boolean(actionData?.fieldErrors?.email) || undefined
-              }
+              placeholder="Ask me anything"
+              aria-invalid={!actionData?.fieldErrors?.email || undefined}
               aria-errormessage={
                 actionData?.fieldErrors?.email ? "content-error" : undefined
               }
-              placeholder="Ask me anything"
             />
-            {actionData?.fieldErrors?.content ? (
-              <p className="error" role="alert" id="content-error">
-                {actionData.fieldErrors.content}
-              </p>
-            ) : null}
+            <ErrorLabel message={actionData?.fieldErrors?.content} />
           </fieldset>
-          {actionData?.formError ? (
-            <p className="error" role="alert" id="content-error">
-              {actionData.formError}
-            </p>
-          ) : null}
           <Button type="submit" buttonType="primary">
             Send
           </Button>
