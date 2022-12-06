@@ -26,6 +26,9 @@
 /* Article */
 .blog__post {
   padding: var(--space-medium);
+  background-color: var(--color-bg-body);
+  border-radius: var(--size-border-radius);
+  border: var(--size-border-width) solid var(--color-bg-border);
 }
 
 .blog__post .title {
