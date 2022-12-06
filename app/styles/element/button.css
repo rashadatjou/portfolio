@@ -32,8 +32,10 @@
 
 /* Icon */
 .btn.icon {
-  background: none;
+  width: var(--size-txt-large);
   font-size: var(--size-txt-medium);
+  background: var(--color-bg-body);
+  padding: 0;
 }
 
 .btn.icon.animate:hover {

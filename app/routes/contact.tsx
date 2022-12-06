@@ -16,6 +16,7 @@ import { LinksFunction, ActionFunction, json } from "@remix-run/node";
 import { useActionData } from "@remix-run/react";
 
 import Button from "~/components/Button";
+import NavHeader from "~/components/NavHeader";
 
 import { badRequest } from "~/utils/helper.server";
 import {
@@ -110,6 +111,11 @@ const ContactRoute = () => {
 
   return (
     <div className="contact-container">
+      <NavHeader>
+        <Button buttonType="icon" href="/" bordered>
+          👈🏽
+        </Button>
+      </NavHeader>
       <div className="contact-content">
         <h1>Contact</h1>
         <form className="form" method="post">
