@@ -11,12 +11,13 @@
 import contactCSSPaths from "~/styles/views/contact.css";
 import buttonCSSPaths from "~/styles/element/button.css";
 import formCSSPaths from "~/styles/element/form.css";
+import headerCssPath from "~/styles/element/header.css";
 
 import type { TFunction } from "react-i18next";
 import type { LinkDescriptor } from "@remix-run/node";
 
 import Button from "~/components/Button";
-import NavHeader from "~/components/NavHeader";
+import NavHeader from "~/components/Header";
 
 // - Const
 const EMAIL_FIELD = "email";
@@ -119,4 +120,5 @@ export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: contactCSSPaths },
   { rel: "stylesheet", href: buttonCSSPaths },
   { rel: "stylesheet", href: formCSSPaths },
+  { rel: "stylesheet", href: headerCssPath },
 ];

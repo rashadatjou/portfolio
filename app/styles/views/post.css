@@ -8,8 +8,17 @@
  * -----
  */
 
-.post__container {
-  max-width: var(--size-width-max);
+.post {
   text-align: center;
-  margin: var(--space-x-large) auto;
+  background-color: var(--color-bg-main);
+}
+
+.post__wrapper {
+  background-color: var(--color-bg-body);
+  max-width: var(--size-width-max);
+  padding: var(--space-x-large);
+  margin: auto;
+  height: 100vh;
+  border-left: var(--size-border-width) solid var(--color-bg-border);
+  border-right: var(--size-border-width) solid var(--color-bg-border);
 }

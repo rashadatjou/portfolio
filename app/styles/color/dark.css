@@ -28,12 +28,12 @@
   /* Background */
   --color-bg-main: #232323;
   --color-bg-secondary: #424242;
-  --color-bg-body: #21211e;
-  --color-bg-border: #e1e1e1;
+  --color-bg-body: #161515;
+  --color-bg-border: #444444;
   --color-bg-shadow: rgba(82, 82, 82, 0.25);
 
   /* Text */
-  --color-txt-main: #ededed;
+  --color-txt-main: #e2e2e2;
   --color-txt-secondary: #c2c1c1;
   --color-txt-inverted: #050505;
   --color-txt-muted: #a9b1ba;
@@ -42,7 +42,7 @@
 
   /* Actions */
   --color-act-main: #06efb1;
-  --color-act-secondary: #ff570a;
+  --color-act-secondary: #ea723a;
 
   /* Other */
   --color-theme-main: #f6d728;

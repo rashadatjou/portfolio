@@ -1,0 +1,38 @@
+/*
+ * File: /app/styles/views/about.css
+ * Project: portfolio
+ * Created: Tuesday, 6th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.about {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-inline: var(--space-large);
+  background-color: var(--color-bg-main);
+}
+
+.features-wrapper {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: var(--space-normal);
+  padding-bottom: var(--space-medium);
+}
+
+.feature {
+  border: var(--size-border-width) solid var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  padding: var(--space-medium);
+  background-color: var(--color-bg-body);
+}
+
+.grid-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+}

@@ -8,10 +8,17 @@
  * -----
  */
 
-import AboutView from "~/views/About";
+import type { LinksFunction } from "@remix-run/node";
+
+import AboutView, { links as cssLinks } from "~/views/About";
 
 // - Types
 type Props = {};
+
+// - Module Route API
+export const links: LinksFunction = () => {
+  return [...cssLinks];
+};
 
 // - Components
 const AboutRoute = (props: Props) => {

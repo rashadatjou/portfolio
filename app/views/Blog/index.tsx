@@ -10,6 +10,7 @@
 
 import blogCssPath from "~/styles/views/blog.css";
 import btnCssPath from "~/styles/element/button.css";
+import headerCssPath from "~/styles/element/header.css";
 
 import type { MDXPost } from "~/typings/blog";
 import type { LinkDescriptor } from "@remix-run/node";
@@ -19,7 +20,7 @@ import { Link } from "@remix-run/react";
 import { prettyPrintDate } from "~/utils/date";
 import { useTranslation } from "react-i18next";
 import Button from "~/components/Button";
-import NavHeader from "~/components/NavHeader";
+import NavHeader from "~/components/Header";
 
 // - Types
 type PostItemProps = {
@@ -107,4 +108,5 @@ export default BlogContainer;
 export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: blogCssPath },
   { rel: "stylesheet", href: btnCssPath },
+  { rel: "stylesheet", href: headerCssPath },
 ];
