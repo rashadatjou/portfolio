@@ -12,12 +12,12 @@ import contactCSSPaths from "~/styles/container/contact.css";
 import buttonCSSPaths from "~/styles/element/button.css";
 import formCSSPaths from "~/styles/element/form.css";
 
-import { LinksFunction, ActionFunction, json } from "@remix-run/node";
+import type { TFunction } from "i18next";
+import type { LinksFunction, ActionFunction } from "@remix-run/node";
+
+import { json } from "@remix-run/node";
 import { useActionData } from "@remix-run/react";
-
-import Button from "~/components/Button";
-import NavHeader from "~/components/NavHeader";
-
+import { getLocale, i18nRemix } from "~/services/i18n/i18n.server";
 import { badRequest } from "~/utils/helper.server";
 import {
   validateEmail,
@@ -25,6 +25,9 @@ import {
   validateString,
 } from "~/services/validation.service";
 import { useTranslation } from "react-i18next";
+
+import Button from "~/components/Button";
+import NavHeader from "~/components/NavHeader";
 
 // - Types
 type ErrorLabelProps = {
@@ -49,25 +52,23 @@ const EMAIL_NAME = "email";
 const MESSAGE_NAME = "message";
 
 // - Methods
-function validateFields(email: unknown, content: unknown) {
+function validateFields(
+  email: unknown,
+  content: unknown,
+  translate: TFunction,
+) {
   const fieldErrors = new Map<string, string>();
 
   if (!validateEmail(email)) {
-    fieldErrors.set(EMAIL_NAME, "Email is not in a valid format.");
+    fieldErrors.set(EMAIL_NAME, translate("contact.form.email.error.1"));
   } else if (!validateRange(email as string, [4, 100])) {
-    fieldErrors.set(
-      EMAIL_NAME,
-      "Email is shorter than 4 chars. or bigger than 100 chars.",
-    );
+    fieldErrors.set(EMAIL_NAME, translate("contact.form.email.error.2"));
   }
 
   if (!validateString(content)) {
-    fieldErrors.set(MESSAGE_NAME, "Message is not valid type of string.");
+    fieldErrors.set(MESSAGE_NAME, translate("contact.form.message.error.1"));
   } else if (!validateRange(content as string, [4, 500])) {
-    fieldErrors.set(
-      MESSAGE_NAME,
-      "Message is shorter than 4 chars. or bigger than 500 chars.",
-    );
+    fieldErrors.set(MESSAGE_NAME, translate("contact.form.message.error.2"));
   }
 
   return fieldErrors;
@@ -87,13 +88,16 @@ export const action: ActionFunction = async ({ request }) => {
   const email = form.get(EMAIL_NAME);
   const content = form.get(MESSAGE_NAME);
 
+  const locale = await getLocale(request);
+  const translate = await i18nRemix.getFixedT(request, "base");
+
   if (typeof email !== "string" || typeof content !== "string") {
     return badRequest<ActionData>({
-      formError: "Form not submitted correctly.",
+      formError: "Form not submitted correctly.", // TODO: Translate??
     });
   }
 
-  const fieldErrors = validateFields(email, content);
+  const fieldErrors = validateFields(email, content, translate);
 
   if (fieldErrors.size > 0) {
     return badRequest<ActionData>({
@@ -120,7 +124,7 @@ const ErrorLabel = ({ id, message }: ErrorLabelProps) => {
 
 const ContactRoute = () => {
   const actionData = useActionData<ActionData>();
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className="contact-container">
@@ -130,16 +134,18 @@ const ContactRoute = () => {
         </Button>
       </NavHeader>
       <div className="contact-content">
-        <h1>Contact</h1>
+        <h1>{t("intro.link.2")}</h1>
         <form className="form" method="post">
           <fieldset>
-            <label htmlFor={`contact__${EMAIL_NAME}`}>Email</label>
+            <label htmlFor={`contact__${EMAIL_NAME}`}>
+              {t("contact.form.email.label")}
+            </label>
             <input
               id={`contact__${EMAIL_NAME}`}
               type="email"
               name={EMAIL_NAME}
               defaultValue={actionData?.fields?.email}
-              placeholder="email@domain.tld"
+              placeholder={t("contact.form.email.placeholder")}
               aria-invalid={!actionData?.fieldErrors?.email || undefined}
               aria-errormessage={
                 actionData?.fieldErrors?.email ? "email-error" : undefined
@@ -151,12 +157,14 @@ const ContactRoute = () => {
             />
           </fieldset>
           <fieldset>
-            <label htmlFor={`contact__${MESSAGE_NAME}`}>Message</label>
+            <label htmlFor={`contact__${MESSAGE_NAME}`}>
+              {t("contact.form.message.label")}
+            </label>
             <textarea
               id={`contact__${MESSAGE_NAME}`}
               name={MESSAGE_NAME}
               defaultValue={actionData?.fields?.content}
-              placeholder="Ask me anything"
+              placeholder={t("contact.form.message.label")}
               aria-invalid={!actionData?.fieldErrors?.email || undefined}
               aria-errormessage={
                 actionData?.fieldErrors?.email ? "message-error" : undefined
@@ -168,7 +176,7 @@ const ContactRoute = () => {
             />
           </fieldset>
           <Button type="submit" buttonType="primary">
-            Send
+            {t("contact.form.submit")}
           </Button>
         </form>
       </div>

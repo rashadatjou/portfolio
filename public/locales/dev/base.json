@@ -7,9 +7,21 @@
   "intro.link.2": "Contact",
   "intro.link.3": "About",
 
-  "setting.language.title": "Change theme",
-  "setting.theme.title": "Change language",
+  "setting.language.title": "Change language",
+  "setting.theme.title": "Change theme",
   "setting.cookie.title": "Disable Cookies",
+
+  "contact.form.email.label": "Email",
+  "contact.form.email.placeholder": "email@domain.tld",
+  "contact.form.email.error.1": "Email is not in a valid format.",
+  "contact.form.email.error.2": "Email is shorter than 4 chars. or bigger than 100 chars.",
+
+  "contact.form.message.label": "Message",
+  "contact.form.message.placeholder": "Ask me anything…",
+  "contact.form.message.error.1": "Message is not valid type of string.",
+  "contact.form.message.error.2": "Message is shorter than 4 chars. or bigger than 500 chars.",
+
+  "contact.form.submit": "Send",
 
   "en": "English",
   "dev": "Development",

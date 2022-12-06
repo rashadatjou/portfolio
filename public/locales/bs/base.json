@@ -11,6 +11,18 @@
   "setting.theme.title": "Promijenite temu",
   "setting.cookie.title": "Onemogućite kolačiće",
 
+  "contact.form.email.label": "E-pošta",
+  "contact.form.email.placeholder": "e-pošta@domena.tld",
+  "contact.form.email.error.1": "E-pošta nije u važećem formatu.",
+  "contact.form.email.error.2": "E-pošta je kraći od 4 znaka. ili veći od 100 znakova.",
+
+  "contact.form.message.label": "Poruka",
+  "contact.form.message.placeholder": "Pitaj me bilo sta…",
+  "contact.form.message.error.1": "Poruka nije važeći tip stringa.",
+  "contact.form.message.error.2": "Poruka je kraća od 4 znaka. ili veći od 500 znakova.",
+
+  "contact.form.submit": "Pošalji",
+
   "en": "Engleski",
   "dev": "Razvoj",
   "sv": "Švedski",
