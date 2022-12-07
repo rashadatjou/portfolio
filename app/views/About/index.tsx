@@ -21,11 +21,52 @@ import NavHeader from "~/components/Header";
 import Tooltip from "~/components/Tooltip";
 
 // - Types
+type ProfileProps = {
+  name?: GitUser["name"];
+  avatarUrl?: GitUser["avatar_url"];
+  bio?: GitUser["bio"];
+  publicRepos?: GitUser["public_repos"];
+  followers?: GitUser["followers"];
+  publicGists?: GitUser["public_gists"];
+};
+
 type Props = {
   userData?: GitUser;
 };
 
 // - Components
+const Profile = ({
+  name,
+  avatarUrl,
+  bio,
+  publicRepos,
+  followers,
+  publicGists,
+}: ProfileProps) => (
+  <div className="profile">
+    <img className="image" src={avatarUrl} alt="Profile image" />
+    <h2 className="title">{name}</h2>
+    <p className="bio">{bio}</p>
+    <ul className="stat-list">
+      <li>
+        <Tooltip alwaysOn position="left" text="Public repos">
+          <p className="stat">{publicRepos}</p>
+        </Tooltip>
+      </li>
+      <li>
+        <Tooltip alwaysOn position="bottom" text="Git Followers">
+          <p className="stat">{followers}</p>
+        </Tooltip>
+      </li>
+      <li>
+        <Tooltip alwaysOn position="right" text="Public gists">
+          <p className="stat">{publicGists}</p>
+        </Tooltip>
+      </li>
+    </ul>
+  </div>
+);
+
 const AboutView = ({ userData }: Props) => {
   return (
     <div className="about">
@@ -35,32 +76,14 @@ const AboutView = ({ userData }: Props) => {
         </Button>
       </NavHeader>
       <div className="about__content">
-        <div className="profile">
-          <img
-            className="image"
-            src={userData?.avatar_url}
-            alt="Profile image"
-          />
-          <h2 className="title">{userData?.name}</h2>
-          <p className="bio">{userData?.bio}</p>
-          <ul className="stat-list">
-            <li>
-              <Tooltip alwaysOn position="left" text="Public repos">
-                <p className="stat">{userData?.public_repos}</p>
-              </Tooltip>
-            </li>
-            <li>
-              <Tooltip alwaysOn position="bottom" text="Git Followers">
-                <p className="stat">{userData?.followers}</p>
-              </Tooltip>
-            </li>
-            <li>
-              <Tooltip alwaysOn position="right" text="Public gists">
-                <p className="stat">{userData?.public_gists}</p>
-              </Tooltip>
-            </li>
-          </ul>
-        </div>
+        <Profile
+          name={userData?.name}
+          avatarUrl={userData?.avatar_url}
+          publicGists={userData?.public_gists}
+          publicRepos={userData?.public_repos}
+          followers={userData?.followers}
+          bio={userData?.bio}
+        />
       </div>
       <div className="projects"></div>
     </div>
