@@ -19,10 +19,10 @@
   visibility: hidden;
   text-align: center;
 
-  background-color: var(--color-bg-tooltip);
-  color: var(--color-txt-inverted);
+  color: var(--color-txt-main);
   padding: var(--space-normal) var(--space-large);
   border-radius: var(--size-border-radius);
+  border: var(--size-border-width) dotted var(--color-txt-main);
 
   /* Position the tooltip text - see examples below! */
   position: absolute;
@@ -49,7 +49,7 @@
   margin-left: -5px;
   border-width: 4px;
   border-style: solid;
-  border-color: var(--color-bg-tooltip) transparent transparent transparent;
+  border-color: var(--color-txt-main) transparent transparent transparent;
 }
 
 .tooltip .tooltip__text.bottom {
@@ -66,7 +66,7 @@
   margin-left: -5px;
   border-width: 4px;
   border-style: solid;
-  border-color: transparent transparent var(--color-bg-tooltip) transparent;
+  border-color: transparent transparent var(--color-txt-main) transparent;
 }
 
 .tooltip .tooltip__text.left {
@@ -82,7 +82,7 @@
   margin-top: -5px;
   border-width: 4px;
   border-style: solid;
-  border-color: transparent transparent transparent var(--color-bg-tooltip);
+  border-color: transparent transparent transparent var(--color-txt-main);
 }
 
 .tooltip .tooltip__text.right {
@@ -98,7 +98,7 @@
   margin-top: -5px;
   border-width: 4px;
   border-style: solid;
-  border-color: transparent var(--color-bg-tooltip) transparent transparent;
+  border-color: transparent var(--color-txt-main) transparent transparent;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */

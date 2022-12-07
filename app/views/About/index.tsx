@@ -45,17 +45,17 @@ const AboutView = ({ userData }: Props) => {
           <p className="bio">{userData?.bio}</p>
           <ul className="stat-list">
             <li>
-              <Tooltip position="left" text="Public repos">
+              <Tooltip alwaysOn position="left" text="Public repos">
                 <p className="stat">{userData?.public_repos}</p>
               </Tooltip>
             </li>
             <li>
-              <Tooltip position="bottom" text="Git Followers">
+              <Tooltip alwaysOn position="bottom" text="Git Followers">
                 <p className="stat">{userData?.followers}</p>
               </Tooltip>
             </li>
             <li>
-              <Tooltip position="right" text="Public gists">
+              <Tooltip alwaysOn position="right" text="Public gists">
                 <p className="stat">{userData?.public_gists}</p>
               </Tooltip>
             </li>
