@@ -19,6 +19,7 @@ import type { GitUser } from "~/typings/git";
 import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
 import Profile from "./element/Profile";
+import Projects from "./element/Projects";
 
 // - Types
 type Props = {
@@ -43,6 +44,7 @@ const AboutView = ({ userData }: Props) => {
           followers={userData?.followers}
           bio={userData?.bio}
         />
+        <Projects />
       </div>
       <div className="projects"></div>
     </div>
