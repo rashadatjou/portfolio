@@ -31,6 +31,7 @@
   --color-bg-body: #161515;
   --color-bg-border: #444444;
   --color-bg-shadow: rgba(82, 82, 82, 0.25);
+  --color-bg-tooltip: #9a9a9a;
 
   /* Text */
   --color-txt-main: #e2e2e2;

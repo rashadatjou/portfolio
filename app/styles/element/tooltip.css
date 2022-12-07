@@ -1,0 +1,107 @@
+/*
+ * File: /app/styles/element/tooltip.css
+ * Project: portfolio
+ * Created: Wednesday, 7th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltip .tooltip__text {
+  visibility: hidden;
+  text-align: center;
+
+  background-color: var(--color-bg-tooltip);
+  color: var(--color-txt-inverted);
+  padding: var(--space-normal) var(--space-large);
+  border-radius: var(--size-border-radius);
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip .tooltip__text.always-on {
+  visibility: visible;
+}
+
+/* Position */
+.tooltip .tooltip__text.top {
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-bottom: var(--space-normal);
+}
+
+.tooltip .tooltip__text.top::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--color-bg-tooltip) transparent transparent transparent;
+}
+
+.tooltip .tooltip__text.bottom {
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: var(--space-normal);
+}
+
+.tooltip .tooltip__text.bottom::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent transparent var(--color-bg-tooltip) transparent;
+}
+
+.tooltip .tooltip__text.left {
+  top: -1px;
+  right: calc(100% + var(--space-small));
+}
+
+.tooltip .tooltip__text.left::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--color-bg-tooltip);
+}
+
+.tooltip .tooltip__text.right {
+  top: -1px;
+  left: calc(100% + var(--space-small));
+}
+
+.tooltip .tooltip__text.right::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent var(--color-bg-tooltip) transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltip__text {
+  visibility: visible;
+}

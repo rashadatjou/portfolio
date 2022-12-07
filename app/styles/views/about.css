@@ -64,7 +64,7 @@
   display: flex;
   justify-content: center;
   column-gap: var(--space-medium);
-  margin-block: var(--space-normal);
+  margin-block: var(--space-large);
 }
 
 .profile .stat-list .stat {
