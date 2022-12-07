@@ -8,7 +8,11 @@
  * -----
  */
 
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import type { GitUser } from "~/typings/git";
+
+import { json, fetch } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 
 import AboutView, { links as cssLinks } from "~/views/About";
 
@@ -20,9 +24,16 @@ export const links: LinksFunction = () => {
   return [...cssLinks];
 };
 
+export const loader: LoaderFunction = async ({}) => {
+  const res = await fetch(`${process.env.BASE_URL}/api/v1/git/user`);
+  const data = await res.json();
+  return json(data, { status: 200 });
+};
+
 // - Components
-const AboutRoute = (props: Props) => {
-  return <AboutView />;
+const AboutRoute = () => {
+  const data = useLoaderData<GitUser>();
+  return <AboutView userData={data} />;
 };
 
 // - Exports

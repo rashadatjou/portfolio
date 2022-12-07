@@ -16,6 +16,9 @@
   background-color: var(--color-bg-main);
 }
 
+.about__content { }
+
+/* Feature */
 .features-wrapper {
   display: grid;
   flex: 1;
@@ -32,10 +35,46 @@
   background-color: var(--color-bg-body);
 }
 
-.grid-projects {
-  display: grid;
-  height: 100%;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
-  row-gap: 1rem;
+/* profile */
+.profile {
+  text-align: center;
 }
+
+.profile .title {
+  margin-block: var(--space-normal);
+}
+
+.profile .bio {
+  font-size: var(--size-txt-tiny);
+  margin-top: var(--space-small);
+  color: var(--color-txt-secondary);
+}
+
+.profile .image {
+  max-width: var(--size-width-img);
+  border: var(--size-border-width) solid var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  padding: var(--space-medium);
+  background-color: var(--color-bg-body);
+  margin-top: var(--space-medium);
+  display: inline;
+}
+
+.profile .stat-list {
+  display: flex;
+  justify-content: center;
+  column-gap: var(--space-medium);
+  margin-block: var(--space-normal);
+}
+
+.profile .stat-list .stat {
+  font-size: var(--size-txt-small);
+  font-weight: 600;
+  color: var(--color-txt-inverted);
+  background-color: var(--color-badge-main);
+  width: calc(var(--size-txt-normal) * 2);
+  padding: var(--space-small);
+  border-radius: var(--size-border-radius);
+}
+
+/* Projects */
