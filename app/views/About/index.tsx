@@ -34,9 +34,9 @@ const AboutView = ({}: Props) => {
           <h2>Projects:</h2>
           <ul className="grid-projects">
             <li className="card">1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+            <li className="card">2</li>
+            <li className="card">3</li>
+            <li className="card">4</li>
           </ul>
         </div>
         <div className="feature">
