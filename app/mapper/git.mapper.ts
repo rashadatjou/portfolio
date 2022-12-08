@@ -44,3 +44,7 @@ export const mapGitUser = (res: ApiGitUser): GitUser => ({
   updatedAt: res["updated_at"],
   url: res["url"],
 });
+
+export const mapRepoList = () => {
+
+}

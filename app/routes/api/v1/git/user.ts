@@ -12,16 +12,9 @@ import { json, LoaderFunction } from "@remix-run/node";
 import { mapGitUser } from "~/mapper/git.mapper";
 import { ApiGitUser } from "~/typings/git";
 import { fakeFetch } from "~/utils/helper.server";
+import { BASE_URL } from "~/constants/git";
 
 // - Const
-const BASE_URL = "https://api.github.com";
-// const API_VERSION = "2022-11-28";
-// const HEADERS = new Headers({
-//   Accept: "application/vnd.github+json",
-//   Authorization: `token ${process.env.GIT_TOKEN}`,
-//   "X-GitHub-Api-Version": API_VERSION,
-// });
-
 const MOCK = JSON.parse(`
 {
   "login": "Denpex",
@@ -59,11 +52,7 @@ const MOCK = JSON.parse(`
 }
 `);
 
-// - API
-// TODO: Get all repos.
-// TODO: Get single repo.
-
-// - Route Module API
+// - GET
 export const loader: LoaderFunction = async ({}) => {
   try {
     const url = `${BASE_URL}/user`;
