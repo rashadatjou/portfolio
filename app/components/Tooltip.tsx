@@ -21,14 +21,27 @@ import cns from "classnames";
 type Props = PropsWithChildren<{
   text: string | undefined;
   position?: "left" | "right" | "top" | "bottom";
+  type?: "solid" | "dotted";
   alwaysOn?: boolean;
 }>;
 
 // - Component
-const Tooltip = ({ children, text, alwaysOn, position = "top" }: Props) => (
+const Tooltip = ({
+  children,
+  text,
+  alwaysOn,
+  position = "top",
+  type = "solid",
+}: Props) => (
   <div className="tooltip">
     {children}
-    <span className={cns(["tooltip__text", position, alwaysOn && "always-on"])}>
+    <span
+      className={cns([
+        "tooltip__text",
+        position,
+        alwaysOn && "always-on",
+        type,
+      ])}>
       {text}
     </span>
   </div>
