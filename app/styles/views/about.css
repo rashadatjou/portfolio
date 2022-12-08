@@ -22,23 +22,6 @@
   margin-inline: auto;
 }
 
-/* Feature */
-.features-wrapper {
-  display: grid;
-  flex: 1;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: var(--space-normal);
-  padding-bottom: var(--space-medium);
-}
-
-.feature {
-  border: var(--size-border-width) solid var(--color-bg-border);
-  border-radius: var(--size-border-radius);
-  padding: var(--space-medium);
-  background-color: var(--color-bg-body);
-}
-
 /* profile */
 .profile {
   text-align: center;
@@ -85,4 +68,22 @@
 /* Projects */
 .projects {
   text-align: center;
+}
+
+.projects__container {
+  margin-block: var(--space-medium);
+}
+
+/* Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--space-normal);
+}
+
+.card {
+  border: var(--size-border-width) solid var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  padding: var(--space-medium);
+  background-color: var(--color-bg-body);
 }
