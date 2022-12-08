@@ -8,9 +8,9 @@
  * -----
  */
 
-import type { ApiGitUser, GitUser } from "~/typings/git",
+import type { ApiGitUser, GitUser } from "~/typings/git";
 
-export const mapGitResponse = (res: ApiGitUser): GitUser => ({
+export const mapGitUser = (res: ApiGitUser): GitUser => ({
   avatarUrl: res["avatar_url"],
   bio: res["bio"],
   blogURL: res["blog"],

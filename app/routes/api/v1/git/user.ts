@@ -9,7 +9,7 @@
  */
 
 import { json, LoaderFunction } from "@remix-run/node";
-import { mapGitResponse } from "~/mapper/git.mapper";
+import { mapGitUser } from "~/mapper/git.mapper";
 import { ApiGitUser } from "~/typings/git";
 import { fakeFetch } from "~/utils/helper.server";
 
@@ -75,7 +75,7 @@ export const loader: LoaderFunction = async ({}) => {
     // const jsonResponse = await res.json();
     // console.log("res", jsonResponse);
     const res = await fakeFetch(Math.random() * 1500, MOCK);
-    const cleanRes = mapGitResponse(res as ApiGitUser);
+    const cleanRes = mapGitUser(res as ApiGitUser);
     return json(cleanRes, { status: 200 });
   } catch (error) {
     console.log("GIT ERROR:", error);
