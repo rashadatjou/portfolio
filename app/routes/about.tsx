@@ -26,14 +26,14 @@ export const links: LinksFunction = () => {
 
 export const loader: LoaderFunction = async ({}) => {
   const res = await fetch(`${process.env.BASE_URL}/api/v1/git/user`);
-  const data = await res.json();
+  const data = await res.json(); // GitUser
   return json(data, { status: 200 });
 };
 
 // - Components
 const AboutRoute = () => {
   const data = useLoaderData<GitUser>();
-  return <AboutView userData={data} />;
+  return <AboutView gitUser={data} />;
 };
 
 // - Exports

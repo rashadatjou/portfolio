@@ -23,32 +23,30 @@ import Projects from "./element/Projects";
 
 // - Types
 type Props = {
-  userData?: GitUser;
+  gitUser?: GitUser;
 };
 
 // - Components
-const AboutView = ({ userData }: Props) => {
-  return (
-    <div className="about">
-      <NavHeader position="relative">
-        <Button buttonType="icon" href="/" bordered>
-          👈🏽
-        </Button>
-      </NavHeader>
-      <div className="about__content">
-        <Profile
-          name={userData?.name}
-          avatarUrl={userData?.avatar_url}
-          publicGists={userData?.public_gists}
-          publicRepos={userData?.public_repos}
-          followers={userData?.followers}
-          bio={userData?.bio}
-        />
-        <Projects />
-      </div>
+const AboutView = ({ gitUser }: Props) => (
+  <div className="about">
+    <NavHeader position="relative">
+      <Button buttonType="icon" href="/" bordered>
+        👈🏽
+      </Button>
+    </NavHeader>
+    <div className="about__content">
+      <Profile
+        name={gitUser?.name}
+        avatarUrl={gitUser?.avatarUrl}
+        publicGistCount={gitUser?.publicGistCount}
+        publicRepoCount={gitUser?.publicRepoCount}
+        followersCount={gitUser?.followersCount}
+        bio={gitUser?.bio}
+      />
+      <Projects />
     </div>
-  );
-};
+  </div>
+);
 
 // - Exports
 export default AboutView;

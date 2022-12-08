@@ -12,23 +12,26 @@ import type { GitUser } from "~/typings/git";
 import Tooltip from "~/components/Tooltip";
 
 // - Types
-type ProfileProps = {
-  name?: GitUser["name"];
-  avatarUrl?: GitUser["avatar_url"];
-  bio?: GitUser["bio"];
-  publicRepos?: GitUser["public_repos"];
-  followers?: GitUser["followers"];
-  publicGists?: GitUser["public_gists"];
-};
+type ProfileProps = Partial<
+  Pick<
+    GitUser,
+    | "name"
+    | "avatarUrl"
+    | "bio"
+    | "publicRepoCount"
+    | "publicGistCount"
+    | "followersCount"
+  >
+>;
 
 // - Component
 const Profile = ({
   name,
   avatarUrl,
   bio,
-  publicRepos,
-  followers,
-  publicGists,
+  publicRepoCount,
+  followersCount,
+  publicGistCount,
 }: ProfileProps) => (
   <div className="profile">
     <img className="image" src={avatarUrl} alt="Profile image" />
@@ -37,17 +40,17 @@ const Profile = ({
     <ul className="stat-list">
       <li>
         <Tooltip type="dotted" alwaysOn position="left" text="Public repos">
-          <p className="stat">{publicRepos}</p>
+          <p className="stat">{publicRepoCount}</p>
         </Tooltip>
       </li>
       <li>
-        <Tooltip type="dotted" alwaysOn position="bottom" text="Git Followers">
-          <p className="stat">{followers}</p>
+        <Tooltip type="dotted" alwaysOn position="bottom" text="Public gists">
+          <p className="stat">{publicGistCount}</p>
         </Tooltip>
       </li>
       <li>
-        <Tooltip type="dotted" alwaysOn position="right" text="Public gists">
-          <p className="stat">{publicGists}</p>
+        <Tooltip type="dotted" alwaysOn position="right" text="Git Followers">
+          <p className="stat">{followersCount}</p>
         </Tooltip>
       </li>
     </ul>
