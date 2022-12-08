@@ -9,8 +9,7 @@
  */
 
 import { json, LoaderFunction } from "@remix-run/node";
-import { mapGitUser } from "~/mapper/git.mapper";
-import { ApiGitUser } from "~/typings/git";
+import { mapRepoList } from "~/mapper/git.mapper";
 import { fakeFetch } from "~/utils/helper.server";
 import { BASE_URL, HTTP_HEADERS } from "~/constants/git";
 
@@ -938,20 +937,22 @@ export const loader: LoaderFunction = async () => {
   try {
     const url = new URL(`${BASE_URL}/user/repos`);
     url.searchParams.set("affiliation", "owner,collaborator");
-    console.log("git/repos:", url);
 
-    /*
-      const res = await fetch(url, {
-        method: "get",
-        headers: HTTP_HEADERS,
-      });
-      const jsonResponse = await res.json();
-     */
+    if (process.env.NODE_ENV === "development") {
+      console.log("git/repos/mock");
+      const res = await fakeFetch(Math.random() * 1000, MOCK);
+      const cleanRes = mapRepoList(JSON.parse(res as string));
+      return json(cleanRes, { status: 200 });
+    }
 
-    const res = await fakeFetch(Math.random() * 1000, MOCK);
-    const jsonRes = JSON.parse(res as string);
-    // const cleanRes = mapGitUser(res as ApiGitUser);
-    return json(jsonRes, { status: 200 });
+    console.log("git/repos/prod");
+    const res = await fetch(url, {
+      method: "get",
+      headers: HTTP_HEADERS,
+    });
+    const jsonRes = await res.json();
+    const cleanRes = mapRepoList(jsonRes);
+    return json(cleanRes, { status: 200 });
   } catch (error) {
     console.log("GIT ERROR:", error);
     return new Response("Failed", { status: 400 });

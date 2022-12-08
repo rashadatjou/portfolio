@@ -49,7 +49,6 @@ export type GitUser = {
   bio: ApiGitUser["bio"];
   blogURL: ApiGitUser["blog"];
   company: ApiGitUser["company"];
-  createdAt: ApiGitUser["created_at"];
   email: ApiGitUser["email"];
   eventsURL: ApiGitUser["events_url"];
   followersURL: ApiGitUser["followers_url"];
@@ -75,8 +74,9 @@ export type GitUser = {
   subscriptionsURL: ApiGitUser["subscriptions_url"];
   twitterUsername: ApiGitUser["twitter_username"];
   type: ApiGitUser["type"];
-  updatedAt: ApiGitUser["updated_at"];
   url: ApiGitUser["url"];
+  updatedDate: ApiGitUser["updated_at"];
+  createdDate: ApiGitUser["created_at"];
 };
 
 /// REPOS
@@ -135,7 +135,6 @@ export type ApiGitRepo = {
   language: string | null;
   forks_count: number; // same thing as forks ??
   forks: number; // same this as forks_count ??
-  mirror_url: string | null;
   open_issues_count: number;
   topics: string[];
   visibility: "public" | "private" | "internal";
@@ -160,6 +159,7 @@ export type ApiGitRepo = {
   html_url: string;
   forks_url: string;
   keys_url: string;
+  mirror_url: string | null;
   collaborators_url: string;
   teams_url: string;
   hooks_url: string;
@@ -205,5 +205,135 @@ export type ApiGitRepo = {
   // objects
   license: ApiGitRepoLicense | null;
   owner: ApiGitRepoOwner | null;
+  permissions: ApiGitRepoPermissions;
+};
+
+export type GitRepoLicense = {
+  key: ApiGitRepoLicense["key"];
+  name: ApiGitRepoLicense["name"];
+  url: ApiGitRepoLicense["url"];
+  spdxID: ApiGitRepoLicense["spdx_id"];
+  nodeID: ApiGitRepoLicense["node_id"];
+  htmlURL: ApiGitRepoLicense["html_url"];
+};
+
+export type GitRepoOwner = {
+  name: ApiGitRepoOwner["name"];
+  email: ApiGitRepoOwner["email"];
+  login: ApiGitRepoOwner["login"];
+  id: ApiGitRepoOwner["id"];
+  nodeID: ApiGitRepoOwner["node_id"];
+  avatarURL: ApiGitRepoOwner["avatar_url"];
+  gravatarID: ApiGitRepoOwner["gravatar_id"];
+  url: ApiGitRepoOwner["url"];
+  htmlURL: ApiGitRepoOwner["html_url"];
+  followersURL: ApiGitRepoOwner["followers_url"];
+  followingURL: ApiGitRepoOwner["following_url"];
+  gistsURL: ApiGitRepoOwner["gists_url"];
+  starredURL: ApiGitRepoOwner["starred_url"];
+  subscriptionsURL: ApiGitRepoOwner["subscriptions_url"];
+  organizationsURL: ApiGitRepoOwner["organizations_url"];
+  reposURL: ApiGitRepoOwner["repos_url"];
+  eventsURL: ApiGitRepoOwner["events_url"];
+  receivedEventsURL: ApiGitRepoOwner["received_events_url"];
+  type: ApiGitRepoOwner["type"];
+  siteAdmin: ApiGitRepoOwner["site_admin"];
+  starredDate: ApiGitRepoOwner["starred_at"];
+};
+
+export type GitRepoInfo = {
+  id: ApiGitRepo["id"];
+  nodeID: ApiGitRepo["node_id"];
+  fullName: ApiGitRepo["full_name"];
+  name: ApiGitRepo["name"];
+  description: ApiGitRepo["description"];
+  homepage: ApiGitRepo["homepage"];
+  size: ApiGitRepo["size"];
+  language: ApiGitRepo["language"];
+  stargazersCount: ApiGitRepo["stargazers_count"];
+  watchersCount: ApiGitRepo["watchers_count"];
+  forksCount: ApiGitRepo["forks_count"];
+  openIssuesCount: ApiGitRepo["open_issues_count"];
+  topics: ApiGitRepo["topics"];
+  visibility: ApiGitRepo["visibility"];
+  watchers: ApiGitRepo["watchers"];
+  defaultBranch: ApiGitRepo["default_branch"];
+};
+
+export type GitRepoFlag = {
+  isPrivate: ApiGitRepo["private"];
+  isFork: ApiGitRepo["fork"];
+  isArchived: ApiGitRepo["archived"];
+  isDisabled: ApiGitRepo["disabled"];
+  isTemplate: ApiGitRepo["is_template"];
+  hasIssues: ApiGitRepo["has_issues"];
+  hasProjects: ApiGitRepo["has_projects"];
+  hasDownloads: ApiGitRepo["has_downloads"];
+  hasWiki: ApiGitRepo["has_wiki"];
+  hasPages: ApiGitRepo["has_pages"];
+  hasDiscussions: ApiGitRepo["has_discussions"];
+  doesAllowForking: ApiGitRepo["allow_forking"];
+  doesRequireWebCommitSignOff: ApiGitRepo["web_commit_signoff_required"];
+};
+
+export type GitRepoURL = {
+  url: ApiGitRepo["url"];
+  htmlURL: ApiGitRepo["html_url"];
+  forksURL: ApiGitRepo["forks_url"];
+  keysURL: ApiGitRepo["keys_url"];
+  mirrorURL: ApiGitRepo["mirror_url"];
+  collaboratorsURL: ApiGitRepo["collaborators_url"];
+  teamsURL: ApiGitRepo["teams_url"];
+  hooksURL: ApiGitRepo["hooks_url"];
+  issueEventsURL: ApiGitRepo["issue_events_url"];
+  eventsURL: ApiGitRepo["events_url"];
+  assigneesURL: ApiGitRepo["assignees_url"];
+  branchesURL: ApiGitRepo["branches_url"];
+  tagsURL: ApiGitRepo["tags_url"];
+  blobsURL: ApiGitRepo["blobs_url"];
+  gitTagsURL: ApiGitRepo["git_tags_url"];
+  gitRefsURL: ApiGitRepo["git_refs_url"];
+  treesURL: ApiGitRepo["trees_url"];
+  statusesURL: ApiGitRepo["statuses_url"];
+  languagesURL: ApiGitRepo["languages_url"];
+  stargazersURL: ApiGitRepo["stargazers_url"];
+  contributorsURL: ApiGitRepo["contributors_url"];
+  subscribersURL: ApiGitRepo["subscribers_url"];
+  subscriptionURL: ApiGitRepo["subscription_url"];
+  commitsURL: ApiGitRepo["commits_url"];
+  gitCommitsURL: ApiGitRepo["git_commits_url"];
+  commentsURL: ApiGitRepo["comments_url"];
+  issueCommentURL: ApiGitRepo["issue_comment_url"];
+  contentsURL: ApiGitRepo["contents_url"];
+  compareURL: ApiGitRepo["compare_url"];
+  mergesURL: ApiGitRepo["merges_url"];
+  archiveURL: ApiGitRepo["archive_url"];
+  downloadsURL: ApiGitRepo["downloads_url"];
+  issuesURL: ApiGitRepo["issues_url"];
+  pullsURL: ApiGitRepo["pulls_url"];
+  milestonesURL: ApiGitRepo["milestones_url"];
+  notificationsURL: ApiGitRepo["notifications_url"];
+  labelsURL: ApiGitRepo["labels_url"];
+  releasesURL: ApiGitRepo["releases_url"];
+  deploymentsURL: ApiGitRepo["deployments_url"];
+  gitURL: ApiGitRepo["git_url"];
+  sshURL: ApiGitRepo["ssh_url"];
+  cloneURL: ApiGitRepo["clone_url"];
+  svnURL: ApiGitRepo["svn_url"];
+};
+
+export type GitRepoDate = {
+  createdDate: ApiGitRepo["created_at"];
+  updatedDate: ApiGitRepo["updated_at"];
+  pushedDate: ApiGitRepo["pushed_at"];
+};
+
+export type GitRepo = {
+  info: GitRepoInfo;
+  flags: GitRepoFlag;
+  urls: GitRepoURL;
+  dates: GitRepoDate;
+  license: GitRepoLicense | null;
+  owner: GitRepoOwner | null;
   permissions: ApiGitRepoPermissions;
 };
