@@ -46,7 +46,6 @@ const AboutView = ({ userData }: Props) => {
         />
         <Projects />
       </div>
-      <div className="projects"></div>
     </div>
   );
 };

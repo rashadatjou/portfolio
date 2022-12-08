@@ -16,7 +16,11 @@
   background-color: var(--color-bg-main);
 }
 
-.about__content { }
+/* Select all children except the 1 one */
+.about__content > *:not(:first-child) {
+  max-width: var(--size-width-max);
+  margin-inline: auto;
+}
 
 /* Feature */
 .features-wrapper {
@@ -38,6 +42,7 @@
 /* profile */
 .profile {
   text-align: center;
+  margin-bottom: calc(var(--space-x-large) * 2.5);
 }
 
 .profile .title {
@@ -78,3 +83,6 @@
 }
 
 /* Projects */
+.projects {
+  text-align: center;
+}
