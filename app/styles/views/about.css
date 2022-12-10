@@ -9,11 +9,10 @@
  */
 
 .about {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
   padding-inline: var(--space-large);
+  padding-block: var(--space-medium);
   background-color: var(--color-bg-main);
+  min-height: 100vh;
 }
 
 /* Select all children except the 1 one */
@@ -92,6 +91,11 @@
 
 .projects__container {
   margin-block: var(--space-medium);
+}
+
+.projects__container .title {
+  margin-block: var(--space-large);
+  font-weight: 500;
 }
 
 /* Cards */

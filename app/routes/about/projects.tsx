@@ -14,6 +14,8 @@ import type { GitRepo } from "~/typings/git";
 import { json } from "@remix-run/node";
 import { useLoaderData, useTransition } from "@remix-run/react";
 
+import closeSourceProjects from "~/constants/closed-source";
+
 // - Types
 type LoaderProps = {
   repoList?: GitRepo[];
@@ -34,12 +36,26 @@ const Projects = () => {
   return (
     <div className="projects">
       <div className="projects__container">
+        <h3 className="title">Closed projects</h3>
+        <div className="card-grid">
+          {closeSourceProjects.map((project) => (
+            <div className="card">
+              <a href={project.href} target="_blank">
+                <p>{project.name}</p>
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="title">Open source</h3>
         <div className="card-grid">
           {!repoList && <div className="card">No projects available...</div>}
           {type === "idle" &&
             repoList?.map((repo) => (
               <div key={repo.info.id} className="card">
-                <p>{repo.info.fullName}</p>
+                <a href={repo.urls.htmlURL} target="_blank">
+                  <p>{repo.info.fullName}</p>
+                </a>
               </div>
             ))}
         </div>

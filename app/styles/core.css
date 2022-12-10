@@ -18,7 +18,7 @@ html {
 
 body {
   background: #fff;
-  background: var(--color-bg-body);
+  background: var(--color-bg-main);
 
   color: #050505;
   color: var(--color-txt-main);
