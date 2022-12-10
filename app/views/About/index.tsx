@@ -56,7 +56,7 @@ const AboutView = ({ gitUser }: Props) => {
           followersCount={gitUser?.followersCount}
           bio={gitUser?.bio}
         />
-        <LinkList data={linkListData} />
+        <LinkList size="normal" data={linkListData} />
         {state === "loading" && <div className="loader" />}
         <Outlet />
       </div>

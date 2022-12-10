@@ -8,15 +8,26 @@
  * -----
  */
 
+/* container */
 .link-list__container {
   margin-top: var(--space-large);
 }
 
+/* list */
 .link-list {
   font-size: var(--size-txt-large);
   font-weight: 600;
 }
 
+.link-list.normal {
+  font-size: var(--size-txt-normal);
+}
+
+.link-list.small {
+  font-size: var(--size-txt-small);
+}
+
+/* link */
 .link-list > li {
   display: inline-block;
   margin-inline: var(--space-x-large);
@@ -29,4 +40,11 @@
 
 .link-list > li > .active {
   text-decoration: underline;
+}
+
+.link-list > li.button {
+  border: var(--size-border-width) solid var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  padding: var(--space-medium) var(--space-large);
+  background-color: var(--color-bg-body);
 }

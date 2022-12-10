@@ -10,6 +10,7 @@
 
 import { TFunction } from "react-i18next";
 import { NavLink } from "@remix-run/react";
+import cns from "classnames";
 
 /**
  * CSS:
@@ -22,14 +23,21 @@ type LinkListItem = { name: string; href: string };
 type LinkListProps = {
   data: LinkListItem[];
   translate?: TFunction<"translation", undefined>;
+  buttonLike?: boolean;
+  size?: "small" | "normal" | "large";
 };
 
 // - Component
-const LinkList = ({ data, translate }: LinkListProps) => (
+const LinkList = ({
+  data,
+  buttonLike,
+  size = "large",
+  translate,
+}: LinkListProps) => (
   <div className="link-list__container">
-    <ul className="link-list">
+    <ul className={cns(["link-list", size])}>
       {data.map((item) => (
-        <li key={item.href}>
+        <li key={item.href} className={buttonLike ? "button" : undefined}>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : undefined)}
             to={item.href}>
