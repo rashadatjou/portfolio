@@ -10,6 +10,8 @@
 
 import type { LoaderArgs } from "@remix-run/node";
 import { useTransition } from "@remix-run/react";
+import Button from "~/components/Button";
+import resumeList from "~/constants/resume-list";
 
 // - Types
 type Props = {};
@@ -28,8 +30,12 @@ const Resume = ({}: Props) => {
       <div className="resume__container">
         {type === "idle" && (
           <div className="card-grid">
-            <div className="card"></div>
-            <div className="card"></div>
+            {resumeList.map((item) => (
+              <div className="card">
+                <p>{item.name}</p>
+                <a href={item.href}>Download 📑</a>
+              </div>
+            ))}
           </div>
         )}
       </div>
