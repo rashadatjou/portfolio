@@ -8,8 +8,16 @@
  * -----
  */
 
+import type { LoaderArgs } from "@remix-run/node";
+
 // - Types
 type Props = {};
+
+// - Route Module API
+export async function loader(args: LoaderArgs) {
+  // TODO: - Call data here
+  return {};
+}
 
 // - Component
 const Projects = ({}: Props) => {

@@ -25,7 +25,7 @@
 /* profile */
 .profile {
   text-align: center;
-  margin-bottom: calc(var(--space-x-large) * 2.5);
+  margin-bottom: calc(var(--space-x-large) * 2);
 }
 
 .profile .title {
@@ -63,6 +63,12 @@
   width: calc(var(--size-txt-normal) * 2);
   padding: var(--space-small);
   border-radius: var(--size-border-radius);
+}
+
+/* Links */
+.link-list__container {
+  text-align: center;
+  margin-bottom: var(--space-x-large);
 }
 
 /* Projects */

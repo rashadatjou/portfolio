@@ -13,35 +13,22 @@ import buttonCssPath from "~/styles/element/button.css";
 import modalCssPath from "~/styles/element/modal.css";
 import formCssPath from "~/styles/element/form.css";
 import switchCssPath from "~/styles/element/switch.css";
+import linkListCssPath from "~/styles/element/link-list.css";
 
 import { LinkDescriptor } from "@remix-run/node";
-import { Link } from "@remix-run/react";
 
 import Settings from "./element/Settings";
-import { useTranslation, TFunction } from "react-i18next";
+import LinkList, { LinkListItem } from "~/components/LinkList";
+import { useTranslation } from "react-i18next";
 
-// - Types
-type NavbarProps = {
-  t: TFunction<"translation", undefined>;
-};
+// - Const
+const linkListData: LinkListItem[] = [
+  { name: "intro.link.1", href: "/blog" },
+  { name: "intro.link.2", href: "/contact" },
+  { name: "intro.link.3", href: "/about" },
+];
 
 // - Components
-const Navbar = ({ t }: NavbarProps) => (
-  <div className="intro__menu">
-    <ul className="intro__menu-list">
-      <li>
-        <Link to="/blog">{t("intro.link.1")}</Link>
-      </li>
-      <li>
-        <Link to="/contact">{t("intro.link.2")}</Link>
-      </li>
-      <li>
-        <Link to="/about">{t("intro.link.3")}</Link>
-      </li>
-    </ul>
-  </div>
-);
-
 const MainView = () => {
   const { t } = useTranslation();
   return (
@@ -49,7 +36,7 @@ const MainView = () => {
       <Settings />
       <h1>{t("intro.title")}</h1>
       <p>{t("intro.body")}</p>
-      <Navbar t={t} />
+      <LinkList translate={t} data={linkListData} />
     </div>
   );
 };
@@ -62,4 +49,5 @@ export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: modalCssPath },
   { rel: "stylesheet", href: formCssPath },
   { rel: "stylesheet", href: switchCssPath },
+  { rel: "stylesheet", href: linkListCssPath },
 ];

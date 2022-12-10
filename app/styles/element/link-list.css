@@ -1,0 +1,32 @@
+/*
+ * File: /app/styles/element/link-list.css
+ * Project: portfolio
+ * Created: Saturday, 10th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.link-list__container {
+  margin-top: var(--space-large);
+}
+
+.link-list {
+  font-size: var(--size-txt-large);
+  font-weight: 600;
+}
+
+.link-list > li {
+  display: inline-block;
+  margin-inline: var(--space-x-large);
+}
+
+.link-list > li > a {
+  text-decoration: none;
+  appearance: none;
+}
+
+.link-list > li > .active {
+  text-decoration: underline;
+}

@@ -12,19 +12,29 @@ import aboutCSSPath from "~/styles/views/about.css";
 import buttonCSSPaths from "~/styles/element/button.css";
 import headerCSSPaths from "~/styles/element/header.css";
 import tooltipCSSPaths from "~/styles/element/tooltip.css";
+import linkListCSSPaths from "~/styles/element/link-list.css";
 
 import type { LinkDescriptor } from "@remix-run/node";
 import type { GitUser } from "~/typings/git";
 
+import { Outlet } from "@remix-run/react";
+
 import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
-import Profile from "./element/Profile";
-import Projects from "./element/Projects";
+import LinkList, { LinkListItem } from "~/components/LinkList";
+import Profile from "./elements/profile";
 
 // - Types
 type Props = {
   gitUser?: GitUser;
 };
+
+// - Const
+const linkListData: LinkListItem[] = [
+  { name: "Projects", href: "projects" },
+  { name: "Resume", href: "resume" },
+  { name: "Links", href: "links" },
+];
 
 // - Components
 const AboutView = ({ gitUser }: Props) => (
@@ -43,7 +53,8 @@ const AboutView = ({ gitUser }: Props) => (
         followersCount={gitUser?.followersCount}
         bio={gitUser?.bio}
       />
-      <Projects />
+      <LinkList data={linkListData} />
+      <Outlet />
     </div>
   </div>
 );
@@ -55,4 +66,5 @@ export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: buttonCSSPaths },
   { rel: "stylesheet", href: headerCSSPaths },
   { rel: "stylesheet", href: tooltipCSSPaths },
+  { rel: "stylesheet", href: linkListCSSPaths },
 ];
