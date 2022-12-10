@@ -10,11 +10,15 @@
 
 export default [
   {
-    name: "Zushups",
+    name: "Zushups (App)",
     href: "https://apps.apple.com/us/app/zushups-pushups-program/id1246695736",
   },
   {
-    name: "FlowplayerSDK",
+    name: "Flowplayer (SDK)",
     href: "https://docs.flowplayer.com/sdks/ios/getting-started",
+  },
+  {
+    name: "War childhood museum (App)",
+    href: "https://warchildhood.org/ba/",
   },
 ];

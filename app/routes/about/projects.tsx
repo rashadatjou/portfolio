@@ -36,7 +36,7 @@ const Projects = () => {
   return (
     <div className="projects">
       <div className="projects__container">
-        <h3 className="title">Closed projects</h3>
+        <h3 className="title">Closed source</h3>
         <div className="card-grid">
           {closeSourceProjects.map((project) => (
             <div className="card">
