@@ -9,6 +9,7 @@
  */
 
 import type { LoaderArgs } from "@remix-run/node";
+import { useTransition } from "@remix-run/react";
 
 // - Types
 type Props = {};
@@ -21,13 +22,16 @@ export async function loader(args: LoaderArgs) {
 
 // - Component
 const Resume = ({}: Props) => {
+  const { type } = useTransition();
   return (
     <div className="resume">
       <div className="resume__container">
-        <div className="card-grid">
-          <div className="card"></div>
-          <div className="card"></div>
-        </div>
+        {type === "idle" && (
+          <div className="card-grid">
+            <div className="card"></div>
+            <div className="card"></div>
+          </div>
+        )}
       </div>
     </div>
   );

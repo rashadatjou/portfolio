@@ -14,7 +14,7 @@ import type { LoaderArgs } from "@remix-run/node";
 type Props = {};
 
 // - Route Module API
-export async function loader(args: LoaderArgs) {
+export async function loader({}: LoaderArgs) {
   // TODO: - Call data here
   return {};
 }

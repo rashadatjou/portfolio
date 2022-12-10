@@ -44,10 +44,10 @@ const MainView = () => {
 // - Exports
 export default MainView;
 export const links: LinkDescriptor[] = [
-  { rel: "stylesheet", href: mainCssPath },
   { rel: "stylesheet", href: buttonCssPath },
   { rel: "stylesheet", href: modalCssPath },
   { rel: "stylesheet", href: formCssPath },
   { rel: "stylesheet", href: switchCssPath },
   { rel: "stylesheet", href: linkListCssPath },
+  { rel: "stylesheet", href: mainCssPath },
 ];

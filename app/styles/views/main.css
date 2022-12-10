@@ -27,19 +27,9 @@
   padding: var(--space-medium);
 }
 
-/* Menu */
-.intro__menu {
-  margin-top: var(--space-large);
-}
-
-.intro__menu-list {
-  font-size: var(--size-txt-large);
-  font-weight: 600;
-}
-
-.intro__menu-list > li {
-  display: inline-block;
-  margin-inline: var(--space-x-large);
+/* Link List */
+.link-list > li > a {
+  text-decoration: underline;
 }
 
 /* Settings */

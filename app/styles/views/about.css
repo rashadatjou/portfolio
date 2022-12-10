@@ -65,10 +65,24 @@
   border-radius: var(--size-border-radius);
 }
 
+/* loader */
+.loader {
+  margin-bottom: var(--space-x-large);
+}
+
 /* Links */
 .link-list__container {
   text-align: center;
   margin-bottom: var(--space-x-large);
+}
+
+.link-list > li > a {
+  text-decoration: underline;
+  color: var(--color-txt-secondary);
+}
+
+.link-list > li > a.active {
+  color: var(--color-act-secondary);
 }
 
 /* Projects */

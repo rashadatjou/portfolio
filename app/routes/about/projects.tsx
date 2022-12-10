@@ -12,7 +12,7 @@ import type { LoaderArgs } from "@remix-run/node";
 import type { GitRepo } from "~/typings/git";
 
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useTransition } from "@remix-run/react";
 
 // - Types
 type LoaderProps = {
@@ -29,16 +29,19 @@ export async function loader({}: LoaderArgs) {
 // - Component
 const Projects = () => {
   const { repoList } = useLoaderData<LoaderProps>();
+  const { type } = useTransition();
+
   return (
     <div className="projects">
       <div className="projects__container">
         <div className="card-grid">
           {!repoList && <div className="card">No projects available...</div>}
-          {repoList?.map((repo) => (
-            <div key={repo.info.id} className="card">
-              <p>{repo.info.fullName}</p>
-            </div>
-          ))}
+          {type === "idle" &&
+            repoList?.map((repo) => (
+              <div key={repo.info.id} className="card">
+                <p>{repo.info.fullName}</p>
+              </div>
+            ))}
         </div>
       </div>
     </div>

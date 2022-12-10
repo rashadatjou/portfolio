@@ -23,7 +23,7 @@ export const loader: LoaderFunction = async () => {
   try {
     if (process.env.NODE_ENV === "development") {
       console.log("git/repos/mock");
-      const res = await fakeFetch(Math.random() * 1000, repoListMock);
+      const res = await fakeFetch(Math.random() * 5000, repoListMock);
       const cleanRes = mapRepoList(res as ApiGitRepo[]);
       return json(cleanRes, { status: 200 });
     }

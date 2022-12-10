@@ -13,6 +13,7 @@ import buttonCSSPaths from "~/styles/element/button.css";
 import headerCSSPaths from "~/styles/element/header.css";
 import tooltipCSSPaths from "~/styles/element/tooltip.css";
 import linkListCSSPaths from "~/styles/element/link-list.css";
+import loaderCSSPaths from "~/styles/element/loader.css";
 
 import type { LinkDescriptor } from "@remix-run/node";
 import type { GitUser } from "~/typings/git";
@@ -39,7 +40,6 @@ const linkListData: LinkListItem[] = [
 // - Components
 const AboutView = ({ gitUser }: Props) => {
   const { state } = useTransition();
-
   return (
     <div className="about">
       <NavHeader position="relative">
@@ -57,7 +57,7 @@ const AboutView = ({ gitUser }: Props) => {
           bio={gitUser?.bio}
         />
         <LinkList data={linkListData} />
-        {state === "loading" && <div className="loader">Loading...</div>}
+        {state === "loading" && <div className="loader" />}
         <Outlet />
       </div>
     </div>
@@ -67,9 +67,10 @@ const AboutView = ({ gitUser }: Props) => {
 // - Exports
 export default AboutView;
 export const links: LinkDescriptor[] = [
-  { rel: "stylesheet", href: aboutCSSPath },
   { rel: "stylesheet", href: buttonCSSPaths },
   { rel: "stylesheet", href: headerCSSPaths },
   { rel: "stylesheet", href: tooltipCSSPaths },
   { rel: "stylesheet", href: linkListCSSPaths },
+  { rel: "stylesheet", href: loaderCSSPaths },
+  { rel: "stylesheet", href: aboutCSSPath },
 ];

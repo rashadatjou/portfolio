@@ -22,6 +22,7 @@
   /* Width */
   --size-width-max: 95rem;
   --size-width-img: 20rem;
+  --size-width-loader: 6rem;
 
   /* Text size */
   --size-txt-large: 4.75rem;
@@ -34,6 +35,7 @@
   --animation-duration: 0.3s;
 
   /* Border */
+  --size-border-loader: 0.6rem;
   --size-border-width: 0.15rem;
   --size-border-radius: 1rem;
 }
