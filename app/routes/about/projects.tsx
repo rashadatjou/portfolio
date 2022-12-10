@@ -39,7 +39,7 @@ const Projects = () => {
         <h3 className="title">Closed source</h3>
         <div className="card-grid">
           {closeSourceProjects.map((project) => (
-            <div className="card">
+            <div className="card" key={project.href}>
               <a href={project.href} target="_blank">
                 <p>{project.name}</p>
               </a>
