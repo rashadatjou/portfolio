@@ -13,6 +13,7 @@ import buttonCSSPaths from "~/styles/element/button.css";
 import headerCSSPaths from "~/styles/element/header.css";
 import tooltipCSSPaths from "~/styles/element/tooltip.css";
 import linkListCSSPaths from "~/styles/element/link-list.css";
+import cardCSSPaths from "~/styles/element/card.css";
 import loaderCSSPaths from "~/styles/element/loader.css";
 
 import type { LinkDescriptor } from "@remix-run/node";
@@ -72,5 +73,6 @@ export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: tooltipCSSPaths },
   { rel: "stylesheet", href: linkListCSSPaths },
   { rel: "stylesheet", href: loaderCSSPaths },
+  { rel: "stylesheet", href: cardCSSPaths },
   { rel: "stylesheet", href: aboutCSSPath },
 ];

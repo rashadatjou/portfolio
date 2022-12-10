@@ -17,8 +17,4 @@ export default [
     name: "Flowplayer (SDK)",
     href: "https://docs.flowplayer.com/sdks/ios/getting-started",
   },
-  {
-    name: "War childhood museum (App)",
-    href: "https://warchildhood.org/ba/",
-  },
 ];

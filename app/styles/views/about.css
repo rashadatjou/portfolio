@@ -97,17 +97,3 @@
   margin-block: var(--space-large);
   font-weight: 500;
 }
-
-/* Cards */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: var(--space-normal);
-}
-
-.card {
-  border: var(--size-border-width) solid var(--color-bg-border);
-  border-radius: var(--size-border-radius);
-  padding: var(--space-medium);
-  background-color: var(--color-bg-body);
-}

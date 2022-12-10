@@ -8,26 +8,28 @@
  * -----
  */
 
-import type { LoaderArgs } from "@remix-run/node";
-
-// - Types
-type Props = {};
-
-// - Route Module API
-export async function loader({}: LoaderArgs) {
-  // TODO: - Call data here
-  return {};
-}
+import socialLinks from "~/constants/social-links";
+import { useTransition } from "@remix-run/react";
 
 // - Component
-const Links = ({}: Props) => {
+const Links = () => {
+  const { type } = useTransition();
   return (
     <div className="links">
       <div className="links__container">
-        <div className="card-grid">
-          <div className="card"></div>
-          <div className="card"></div>
-        </div>
+        {type === "idle" && (
+          <div className="card-grid">
+            {socialLinks.map((item) => (
+              <a
+                className="card"
+                key={item.href}
+                href={item.href}
+                target="_blank">
+                <p>{item.username}</p>@<span>{item.platform}</span>
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
