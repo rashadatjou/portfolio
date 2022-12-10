@@ -29,7 +29,7 @@ const LinkList = ({ data, translate }: LinkListProps) => (
   <div className="link-list__container">
     <ul className="link-list">
       {data.map((item) => (
-        <li>
+        <li key={item.href}>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : undefined)}
             to={item.href}>

@@ -9,25 +9,36 @@
  */
 
 import type { LoaderArgs } from "@remix-run/node";
+import type { GitRepo } from "~/typings/git";
+
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 
 // - Types
-type Props = {};
+type LoaderProps = {
+  repoList?: GitRepo[];
+};
 
 // - Route Module API
-export async function loader(args: LoaderArgs) {
-  // TODO: - Call data here
-  return {};
+export async function loader({}: LoaderArgs) {
+  const res = await fetch(`${process.env.BASE_URL}/api/v1/git/repo-list`);
+  const data = await res.json(); // GitRepos
+  return json({ repoList: data }, { status: 200 });
 }
 
 // - Component
-const Projects = ({}: Props) => {
+const Projects = () => {
+  const { repoList } = useLoaderData<LoaderProps>();
   return (
     <div className="projects">
-      <h1>Projects</h1>
       <div className="projects__container">
         <div className="card-grid">
-          <div className="card"></div>
-          <div className="card"></div>
+          {!repoList && <div className="card">No projects available...</div>}
+          {repoList?.map((repo) => (
+            <div key={repo.info.id} className="card">
+              <p>{repo.info.fullName}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

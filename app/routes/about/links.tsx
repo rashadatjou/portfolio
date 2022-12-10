@@ -23,7 +23,6 @@ export async function loader(args: LoaderArgs) {
 const Links = ({}: Props) => {
   return (
     <div className="links">
-      <h1>Links</h1>
       <div className="links__container">
         <div className="card-grid">
           <div className="card"></div>

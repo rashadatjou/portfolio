@@ -23,7 +23,6 @@ export async function loader(args: LoaderArgs) {
 const Resume = ({}: Props) => {
   return (
     <div className="resume">
-      <h1>Resume</h1>
       <div className="resume__container">
         <div className="card-grid">
           <div className="card"></div>

@@ -17,7 +17,7 @@ import linkListCSSPaths from "~/styles/element/link-list.css";
 import type { LinkDescriptor } from "@remix-run/node";
 import type { GitUser } from "~/typings/git";
 
-import { Outlet } from "@remix-run/react";
+import { Outlet, useTransition } from "@remix-run/react";
 
 import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
@@ -37,27 +37,32 @@ const linkListData: LinkListItem[] = [
 ];
 
 // - Components
-const AboutView = ({ gitUser }: Props) => (
-  <div className="about">
-    <NavHeader position="relative">
-      <Button buttonType="icon" href="/" bordered>
-        👈🏽
-      </Button>
-    </NavHeader>
-    <div className="about__content">
-      <Profile
-        name={gitUser?.name}
-        avatarUrl={gitUser?.avatarUrl}
-        publicGistCount={gitUser?.publicGistCount}
-        publicRepoCount={gitUser?.publicRepoCount}
-        followersCount={gitUser?.followersCount}
-        bio={gitUser?.bio}
-      />
-      <LinkList data={linkListData} />
-      <Outlet />
+const AboutView = ({ gitUser }: Props) => {
+  const { state } = useTransition();
+
+  return (
+    <div className="about">
+      <NavHeader position="relative">
+        <Button buttonType="icon" href="/" bordered>
+          👈🏽
+        </Button>
+      </NavHeader>
+      <div className="about__content">
+        <Profile
+          name={gitUser?.name}
+          avatarUrl={gitUser?.avatarUrl}
+          publicGistCount={gitUser?.publicGistCount}
+          publicRepoCount={gitUser?.publicRepoCount}
+          followersCount={gitUser?.followersCount}
+          bio={gitUser?.bio}
+        />
+        <LinkList data={linkListData} />
+        {state === "loading" && <div className="loader">Loading...</div>}
+        <Outlet />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // - Exports
 export default AboutView;
