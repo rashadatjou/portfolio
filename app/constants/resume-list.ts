@@ -9,6 +9,6 @@
  */
 
 export default [
-  { name: "Long CV", href: "file:///some-file.pdf" },
-  { name: "Short CV", href: "file:///other-file.pdf" },
+  { name: "Long Version", href: "file:///some-file.pdf" },
+  { name: "Short Version", href: "file:///other-file.pdf" },
 ];

@@ -16,7 +16,7 @@ import type { GitRepo } from "~/typings/git";
 import { json } from "@remix-run/node";
 import { useLoaderData, useTransition } from "@remix-run/react";
 
-import closeSourceProjects from "~/constants/projects";
+import closeSourceProjects from "~/constants/project-list";
 
 // - Types
 type LoaderProps = {

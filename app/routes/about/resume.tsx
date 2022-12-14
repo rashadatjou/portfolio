@@ -31,9 +31,9 @@ const Resume = ({}: Props) => {
         {type === "idle" && (
           <div className="card-grid">
             {resumeList.map((item) => (
-              <div className="card">
-                <p>{item.name}</p>
-                <a href={item.href}>Download 📑</a>
+              <div className="card inline">
+                <h3>{item.name}</h3>
+                <Button href={item.href}>Download 📑</Button>
               </div>
             ))}
           </div>

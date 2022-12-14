@@ -34,7 +34,7 @@ type Props = {
 // - Const
 const linkListData: LinkListItem[] = [
   { name: "Projects", href: "projects" },
-  { name: "Resume", href: "resume" },
+  { name: "Resume/CV", href: "resume" },
   { name: "Links", href: "links" },
 ];
 

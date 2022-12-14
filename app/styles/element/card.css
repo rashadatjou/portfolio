@@ -21,6 +21,11 @@
   background-color: var(--color-bg-body);
 }
 
+.card.inline {
+  display: flex;
+  flex-direction: row;
+}
+
 a.card {
   color: var(--color-txt-main);
   text-decoration: none;
