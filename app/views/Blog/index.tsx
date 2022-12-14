@@ -19,7 +19,7 @@ import type { LinkDescriptor } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
 import { prettyPrintDate } from "~/utils/date";
-import { useTranslation } from "react-i18next";
+import { TFunction, useTranslation } from "react-i18next";
 import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
 
@@ -31,6 +31,7 @@ type PostItemProps = {
 
 type HeaderProps = {
   tag?: string | null;
+  translate?: TFunction;
 };
 
 type Props = {
@@ -72,25 +73,25 @@ const PostItem = ({ post, locale }: PostItemProps) => (
   </li>
 );
 
-const BlogHeader = ({ tag }: HeaderProps) => (
+const BlogHeader = ({ tag, translate }: HeaderProps) => (
   <NavHeader>
     <Button buttonType="icon" bordered href="/">
       👈🏽
     </Button>
     {tag && (
-      <Button buttonType="secondary" bordered href="?">
-        Clear tag
+      <Button buttonType="primary" bordered href="?">
+        {translate?.("clear.filter") ?? "Clear tag"}
       </Button>
     )}
   </NavHeader>
 );
 
 const BlogContainer = ({ postList, tag }: Props) => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   return (
     <div className="blog__container">
-      <BlogHeader tag={tag} />
+      <BlogHeader tag={tag} translate={t} />
       <ul className="blog__list">
         {postFiltered(postList, tag).map((post) => (
           <PostItem

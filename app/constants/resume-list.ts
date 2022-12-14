@@ -9,6 +9,6 @@
  */
 
 export default [
-  { name: "Long Version", href: "file:///some-file.pdf" },
-  { name: "Short Version", href: "file:///other-file.pdf" },
+  { name: "Long Version", href: "/some-file.pdf" },
+  { name: "Short Version", href: "/other-file.pdf" },
 ];
