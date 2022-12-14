@@ -8,10 +8,6 @@
  * -----
  */
 
-:root {
-  --themes: light dark;
-}
-
 html {
   font-family: Helvetica, sans-serif;
 }

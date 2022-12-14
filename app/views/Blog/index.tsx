@@ -10,6 +10,7 @@
 
 import blogCssPath from "~/styles/views/blog.css";
 import btnCssPath from "~/styles/element/button.css";
+import tagCssPath from "~/styles/element/tag.css";
 import headerCssPath from "~/styles/element/header.css";
 
 import type { MDXPost } from "~/typings/blog";
@@ -108,5 +109,6 @@ export default BlogContainer;
 export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: blogCssPath },
   { rel: "stylesheet", href: btnCssPath },
+  { rel: "stylesheet", href: tagCssPath },
   { rel: "stylesheet", href: headerCssPath },
 ];

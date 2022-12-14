@@ -46,19 +46,3 @@
   font-size: var(--size-txt-tiny);
   font-weight: 300;
 }
-
-.blog__post .tag__container {
-  display: flex;
-  column-gap: var(--space-large);
-  margin-top: var(--space-normal);
-}
-
-.blog__post .tag {
-  font-size: var(--size-txt-tiny);
-  color: var(--color-txt-inverted);
-  font-weight: bold;
-  background-color: var(--color-act-secondary);
-  padding: var(--space-small);
-  border-radius: var(--size-border-radius);
-  text-decoration: none;
-}

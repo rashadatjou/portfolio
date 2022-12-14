@@ -8,13 +8,15 @@
  * -----
  */
 
-import type { LoaderArgs } from "@remix-run/node";
+import tagCssPath from "~/styles/element/tag.css";
+
+import type { LoaderArgs, LinksFunction } from "@remix-run/node";
 import type { GitRepo } from "~/typings/git";
 
 import { json } from "@remix-run/node";
 import { useLoaderData, useTransition } from "@remix-run/react";
 
-import closeSourceProjects from "~/constants/closed-source";
+import closeSourceProjects from "~/constants/projects";
 
 // - Types
 type LoaderProps = {
@@ -22,6 +24,10 @@ type LoaderProps = {
 };
 
 // - Route Module API
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: tagCssPath }];
+};
+
 export async function loader({}: LoaderArgs) {
   const res = await fetch(`${process.env.BASE_URL}/api/v1/git/repo-list`);
   const data = await res.json(); // GitRepos
@@ -33,6 +39,7 @@ const Projects = () => {
   const { repoList } = useLoaderData<LoaderProps>();
   const { type } = useTransition();
 
+  if (type !== "idle") return null;
   return (
     <div className="projects">
       <div className="projects__container">
@@ -41,8 +48,15 @@ const Projects = () => {
           {closeSourceProjects.map((project) => (
             <div className="card" key={project.href}>
               <a href={project.href} target="_blank">
-                <p>{project.name}</p>
+                <h3>{project.name}</h3>
               </a>
+              <ul className="tag__container">
+                {project.tags.map((tag) => (
+                  <li key={tag}>
+                    <span>{tag}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -50,14 +64,13 @@ const Projects = () => {
         <h3 className="title">Open source</h3>
         <div className="card-grid">
           {!repoList && <div className="card">No projects available...</div>}
-          {type === "idle" &&
-            repoList?.map((repo) => (
-              <div key={repo.info.id} className="card">
-                <a href={repo.urls.htmlURL} target="_blank">
-                  <p>{repo.info.fullName}</p>
-                </a>
-              </div>
-            ))}
+          {repoList?.map((repo) => (
+            <div key={repo.info.id} className="card">
+              <a href={repo.urls.htmlURL} target="_blank">
+                <p>{repo.info.fullName}</p>
+              </a>
+            </div>
+          ))}
         </div>
       </div>
     </div>

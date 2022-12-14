@@ -24,7 +24,7 @@
 /* profile */
 .profile {
   text-align: center;
-  margin-bottom: calc(var(--space-x-large) * 2);
+  margin-bottom: calc(var(--space-x-large) * 3);
 }
 
 .profile .title {
@@ -58,7 +58,7 @@
   font-size: var(--size-txt-small);
   font-weight: 600;
   color: var(--color-txt-inverted);
-  background-color: var(--color-badge-main);
+  background-color: var(--color-act-secondary);
   width: calc(var(--size-txt-normal) * 2);
   padding: var(--space-small);
   border-radius: var(--size-border-radius);
@@ -76,12 +76,13 @@
 }
 
 .link-list > li > a {
-  text-decoration: underline;
+  text-decoration: none;
   color: var(--color-txt-secondary);
 }
 
 .link-list > li > a.active {
   color: var(--color-act-secondary);
+  text-decoration: none;
 }
 
 /* Projects */
@@ -96,4 +97,17 @@
 .projects__container .title {
   margin-block: var(--space-large);
   font-weight: 500;
+}
+
+.projects__container .card a {
+  font-weight: 600;
+}
+
+.projects__container .card .tag__container {
+  justify-content: center;
+}
+
+.projects__container .card .tag__container > li {
+  font-size: var(--size-txt-tiny);
+  color: var(--color-txt-secondary);
 }

@@ -19,6 +19,7 @@
   visibility: hidden;
   text-align: center;
 
+  font-size: var(--size-txt-tiny);
   padding: var(--space-normal) var(--space-large);
   position: absolute;
   z-index: 1;
