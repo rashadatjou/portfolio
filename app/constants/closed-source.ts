@@ -10,11 +10,19 @@
 
 export default [
   {
-    name: "Zushups (App)",
+    name: "Zushups (iOS)",
     href: "https://apps.apple.com/us/app/zushups-pushups-program/id1246695736",
   },
   {
-    name: "Flowplayer (SDK)",
+    name: "Flowplayer (iOS SDK)",
     href: "https://docs.flowplayer.com/sdks/ios/getting-started",
+  },
+  {
+    name: "Kloeckner Metals (Android)",
+    href: "https://apkcombo.com/kloeckner-metals/com.kloeckner.metals.application",
+  },
+  {
+    name: "Bluemoon (Web)",
+    href: "https://bluemoon.ad-pro.info/login",
   },
 ];
