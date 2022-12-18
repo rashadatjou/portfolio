@@ -36,6 +36,11 @@ const projectList: Project[] = [
     href: "https://bluemoon.ad-pro.info/login",
     tags: ["Web", "React"],
   },
+  {
+    name: "Flowplayer OVP",
+    href: "https://app.flowplayer.com",
+    tags: ["Web", "React"],
+  },
 ];
 
 export default projectList;
