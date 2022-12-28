@@ -37,6 +37,7 @@ import coreCssPath from "~/styles/core.css";
 import sizeSCssPath from "~/styles/geometry/size.s.css";
 import sizeMCssPath from "~/styles/geometry/size.m.css";
 import sizeLCssPath from "~/styles/geometry/size.l.css";
+import proportionCssPath from "~/styles/geometry/proportion.css";
 
 // - Types
 type LoaderData = {
@@ -77,7 +78,7 @@ export const links: LinksFunction = () => {
     },
     {
       rel: "stylesheet",
-      href: sizeMCssPath
+      href: sizeMCssPath,
     },
     {
       rel: "stylesheet",
@@ -91,6 +92,7 @@ export const links: LinksFunction = () => {
     },
     { rel: "stylesheet", href: coreCssPath },
     { rel: "stylesheet", href: typographyCssPath },
+    { rel: "stylesheet", href: proportionCssPath },
   ];
 };
 

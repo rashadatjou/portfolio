@@ -1,0 +1,18 @@
+/*
+ * File: /app/styles/geometry/proportion.css
+ * Project: portfolio
+ * Created: Wednesday, 28th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+:root {
+  /* Animation */
+  --time-animation: 0.3s;
+
+  /* Border */
+  --size-border-width: 0.15rem;
+  --size-border-radius: 1rem;
+}

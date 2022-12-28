@@ -37,8 +37,8 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
   left: 4px;
   top: calc((var(--size-font-m) - var(--size-font-s)) / 2);
   background-color: var(--color-bg-body);
-  -webkit-transition: var(--animation-duration);
-  transition: var(--animation-duration);
+  -webkit-transition: var(--time-animation);
+  transition: var(--time-animation);
 }
 
 input:checked + .slider {

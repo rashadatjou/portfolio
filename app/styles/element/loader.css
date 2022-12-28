@@ -9,6 +9,8 @@
  */
 
 .loader {
+  --size-border-loader: 0.6rem;
+
   border: var(--size-border-loader) solid var(--color-bg-border); /* Light grey */
   border-top: var(--size-border-loader) solid var(--color-act-main); /* Blue */
   border-radius: 50%;

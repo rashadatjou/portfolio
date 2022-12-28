@@ -30,12 +30,4 @@
   --size-font-s: 2.5rem;
   --size-font-xs: 2rem;
   --size-font-xxs: 1.5rem;
-
-  /* Animations */
-  --animation-duration: 0.3s;
-
-  /* Border */
-  --size-border-loader: 0.6rem;
-  --size-border-width: 0.15rem;
-  --size-border-radius: 1rem;
 }
