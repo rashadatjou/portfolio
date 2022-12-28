@@ -21,6 +21,7 @@
 .blog__list {
   display: grid;
   max-width: var(--size-width-max);
+  padding: var(--space-m)
 }
 
 /* Article */
@@ -34,6 +35,7 @@
 .blog__post .title {
   margin-bottom: var(--space-s);
   text-decoration: none;
+  font-size: var(--font-size-m);
 }
 
 .blog__post .description {
@@ -43,6 +45,6 @@
 }
 
 .blog__post .date {
-  font-size: var(--size-txt-tiny);
+  font-size: var(--font-size-xxs);
   font-weight: 300;
 }

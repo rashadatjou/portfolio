@@ -9,7 +9,7 @@
  */
 
 .nav-header {
-  --size-nav-height: calc(var(--space-l) + var(--size-txt-large));
+  --size-nav-height: calc(var(--space-l) + var(--font-size-l));
 
   display: flex;
   justify-content: space-between;

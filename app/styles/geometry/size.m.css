@@ -8,34 +8,34 @@
  * -----
  */
 
-/* Devices between 625px and 1024px */
+/* Devices between 650px and 1024px */
 
 :root {
   /* Spaces */
   --space-xl: 2rem;
-  --space-l: 1rem;
-  --space-m: 0.75rem;
-  --space-s: 0.5rem;
-  --space-xs: 0.25rem;
-  --space-xxs: 0.125rem;
+  --space-l: 2rem;
+  --space-m: 1.25rem;
+  --space-s: 0.75rem;
+  --space-xs: 0.5rem;
+  --space-xxs: 0.25rem;
 
   /* Width */
-  --size-width-max: 62.5rem;
+  --size-width-max: 70rem;
   --size-width-img: 15rem;
   --size-width-loader: 8rem;
 
   /* Text size */
-  --size-txt-large: 3.5rem;
-  --size-txt-medium: 2.5rem;
-  --size-txt-normal: 2rem;
-  --size-txt-small: 1.55rem;
-  --size-txt-tiny: 1.325rem;
+  --font-size-l: 5rem;
+  --font-size-m: 3.5rem;
+  --font-size-s: 2.5rem;
+  --font-size-xs: 2rem;
+  --font-size-xxs: 1.5rem;
 
   /* Animations */
   --animation-duration: 0.3s;
 
   /* Border */
-  --size-border-loader: 1rem;
-  --size-border-width: 0.2rem;
-  --size-border-radius: 0.5rem;
+  --size-border-loader: 0.6rem;
+  --size-border-width: 0.15rem;
+  --size-border-radius: 1rem;
 }

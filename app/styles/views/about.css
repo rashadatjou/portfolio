@@ -32,7 +32,7 @@
 }
 
 .profile .bio {
-  font-size: var(--size-txt-tiny);
+  font-size: var(--font-size-xxs);
   margin-top: var(--space-xs);
   color: var(--color-txt-secondary);
 }
@@ -55,11 +55,11 @@
 }
 
 .profile .stat-list .stat {
-  font-size: var(--size-txt-small);
+  font-size: var(--font-size-xs);
   font-weight: 600;
   color: var(--color-txt-inverted);
   background-color: var(--color-act-secondary);
-  width: calc(var(--size-txt-normal) * 2);
+  width: calc(var(--font-size-s) * 2);
   padding: var(--space-xs);
   border-radius: var(--size-border-radius);
 }
@@ -108,7 +108,7 @@
 }
 
 .projects__container .card .tag__container > li {
-  font-size: var(--size-txt-tiny);
+  font-size: var(--font-size-xxs);
   color: var(--color-txt-secondary);
 }
 

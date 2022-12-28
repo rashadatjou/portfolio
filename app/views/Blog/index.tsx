@@ -92,15 +92,17 @@ const BlogContainer = ({ postList, tag }: Props) => {
   return (
     <div className="blog__container">
       <BlogHeader tag={tag} translate={t} />
-      <ul className="blog__list">
-        {postFiltered(postList, tag).map((post) => (
-          <PostItem
-            key={post.slug}
-            post={post}
-            locale={i18n.resolvedLanguage}
-          />
-        ))}
-      </ul>
+      <div className="blog__wrapper">
+        <ul className="blog__list">
+          {postFiltered(postList, tag).map((post) => (
+            <PostItem
+              key={post.slug}
+              post={post}
+              locale={i18n.resolvedLanguage}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

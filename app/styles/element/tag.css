@@ -15,7 +15,7 @@
 }
 
 .tag {
-  font-size: var(--size-txt-tiny);
+  font-size: var(--font-size-xxs);
   color: var(--color-bg-body);
   background-color: var(--color-act-secondary);
   padding: var(--space-xs);

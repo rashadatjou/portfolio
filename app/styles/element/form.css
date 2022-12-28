@@ -27,14 +27,14 @@ fieldset.linear {
 
 .form legend {
   font-weight: 600;
-  font-size: var(--size-txt-normal);
+  font-size: var(--font-size-s);
 }
 
 /* Label */
 .form label,
 .label {
   font-weight: 700;
-  font-size: var(--size-txt-tiny);
+  font-size: var(--font-size-xxs);
   text-transform: capitalize;
   display: block;
 }
@@ -53,8 +53,8 @@ fieldset.linear {
 }
 
 .form select {
-  font-size: var(--size-txt-small);
-  height: var(--size-txt-large);
+  font-size: var(--font-size-xs);
+  height: var(--font-size-l);
   color: var(--color-txt-main);
   text-transform: capitalize;
   display: block;
@@ -70,12 +70,12 @@ fieldset.linear {
   background-repeat: no-repeat;
   background-image: var(--icon-chevron-down);
   background-position-x: 100%;
-  background-position-y: calc(var(--size-txt-large) / 4);
+  background-position-y: calc(var(--font-size-l) / 4);
 }
 
 .form input {
-  font-size: var(--size-txt-small);
-  height: var(--size-txt-large);
+  font-size: var(--font-size-xs);
+  height: var(--font-size-l);
   color: var(--color-txt-main);
   text-transform: capitalize;
   display: block;
@@ -92,8 +92,8 @@ fieldset.linear {
 }
 
 .form textarea {
-  font-size: var(--size-txt-small);
-  height: var(--size-txt-large);
+  font-size: var(--font-size-xs);
+  height: var(--font-size-l);
   color: var(--color-txt-main);
   display: block;
   width: 100%;
@@ -112,6 +112,6 @@ fieldset.linear {
 /* Errors */
 .form p.error {
   color: var(--color-txt-error);
-  font-size: var(--size-txt-tiny);
+  font-size: var(--font-size-xxs);
   padding-block: var(--space-s);
 }

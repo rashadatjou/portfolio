@@ -25,11 +25,11 @@
   --size-width-loader: 6rem;
 
   /* Text size */
-  --size-txt-large: 4.75rem;
-  --size-txt-medium: 3.5rem;
-  --size-txt-normal: 2.5rem;
-  --size-txt-small: 2rem;
-  --size-txt-tiny: 1.5rem;
+  --font-size-l: 4.75rem;
+  --font-size-m: 3.5rem;
+  --font-size-s: 2.5rem;
+  --font-size-xs: 2rem;
+  --font-size-xxs: 1.5rem;
 
   /* Animations */
   --animation-duration: 0.3s;

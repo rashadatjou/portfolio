@@ -82,7 +82,7 @@ export const links: LinksFunction = () => {
     {
       rel: "stylesheet",
       href: sizeSCssPath,
-      media: "print, (max-width: 640px)",
+      media: "print, (max-width: 650px)",
     },
     {
       rel: "stylesheet",
