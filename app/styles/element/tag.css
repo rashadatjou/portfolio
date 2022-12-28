@@ -10,15 +10,15 @@
 
 .tag__container {
   display: flex;
-  column-gap: var(--space-large);
-  margin-top: var(--space-normal);
+  column-gap: var(--space-l);
+  margin-top: var(--space-s);
 }
 
 .tag {
   font-size: var(--size-txt-tiny);
   color: var(--color-bg-body);
   background-color: var(--color-act-secondary);
-  padding: var(--space-small);
+  padding: var(--space-xs);
   border-radius: var(--size-border-radius);
   font-weight: bold;
   text-decoration: none;

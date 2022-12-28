@@ -9,7 +9,7 @@
  */
 
 .nav-header {
-  --size-nav-height: calc(var(--space-large) + var(--size-txt-large));
+  --size-nav-height: calc(var(--space-l) + var(--size-txt-large));
 
   display: flex;
   justify-content: space-between;
@@ -27,5 +27,5 @@
 
 .nav-header.fixed {
   position: fixed;
-  padding: var(--space-large);
+  padding: var(--space-l);
 }

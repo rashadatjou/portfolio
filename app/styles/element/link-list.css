@@ -10,7 +10,7 @@
 
 /* container */
 .link-list__container {
-  margin-top: var(--space-large);
+  margin-top: var(--space-l);
 }
 
 /* list */
@@ -30,7 +30,7 @@
 /* link */
 .link-list > li {
   display: inline-block;
-  margin-inline: var(--space-x-large);
+  margin-inline: var(--space-xl);
 }
 
 .link-list > li > a {
@@ -45,6 +45,6 @@
 .link-list > li.button {
   border: var(--size-border-width) solid var(--color-bg-border);
   border-radius: var(--size-border-radius);
-  padding: var(--space-medium) var(--space-large);
+  padding: var(--space-m) var(--space-l);
   background-color: var(--color-bg-body);
 }

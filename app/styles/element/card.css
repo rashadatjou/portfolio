@@ -11,13 +11,13 @@
 .card-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: var(--space-normal);
+  grid-gap: var(--space-s);
 }
 
 .card {
   border: var(--size-border-width) solid var(--color-bg-border);
   border-radius: var(--size-border-radius);
-  padding: var(--space-medium);
+  padding: var(--space-m);
   background-color: var(--color-bg-body);
 }
 

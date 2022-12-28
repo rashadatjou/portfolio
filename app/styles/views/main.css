@@ -24,7 +24,7 @@
 
 .intro > p {
   font-size: var(--size-txt-normal);
-  padding: var(--space-medium);
+  padding: var(--space-m);
 }
 
 /* Link List */
@@ -35,8 +35,8 @@
 /* Settings */
 .intro__settings {
   position: absolute;
-  top: var(--space-large);
-  right: var(--space-large);
+  top: var(--space-l);
+  right: var(--space-l);
 }
 
 .intro__settings .modal-container {

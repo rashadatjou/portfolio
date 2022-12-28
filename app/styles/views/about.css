@@ -9,8 +9,8 @@
  */
 
 .about {
-  padding-inline: var(--space-large);
-  padding-block: var(--space-medium);
+  padding-inline: var(--space-l);
+  padding-block: var(--space-m);
   background-color: var(--color-bg-main);
   min-height: 100vh;
 }
@@ -24,16 +24,16 @@
 /* profile */
 .profile {
   text-align: center;
-  margin-bottom: calc(var(--space-x-large) * 3);
+  margin-bottom: calc(var(--space-xl) * 3);
 }
 
 .profile .title {
-  margin-block: var(--space-normal);
+  margin-block: var(--space-s);
 }
 
 .profile .bio {
   font-size: var(--size-txt-tiny);
-  margin-top: var(--space-small);
+  margin-top: var(--space-xs);
   color: var(--color-txt-secondary);
 }
 
@@ -41,17 +41,17 @@
   max-width: var(--size-width-img);
   border: var(--size-border-width) solid var(--color-bg-border);
   border-radius: var(--size-border-radius);
-  padding: var(--space-medium);
+  padding: var(--space-m);
   background-color: var(--color-bg-body);
-  margin-top: var(--space-medium);
+  margin-top: var(--space-m);
   display: inline;
 }
 
 .profile .stat-list {
   display: flex;
   justify-content: center;
-  column-gap: var(--space-medium);
-  margin-block: var(--space-large);
+  column-gap: var(--space-m);
+  margin-block: var(--space-l);
 }
 
 .profile .stat-list .stat {
@@ -60,19 +60,19 @@
   color: var(--color-txt-inverted);
   background-color: var(--color-act-secondary);
   width: calc(var(--size-txt-normal) * 2);
-  padding: var(--space-small);
+  padding: var(--space-xs);
   border-radius: var(--size-border-radius);
 }
 
 /* loader */
 .loader {
-  margin-bottom: var(--space-x-large);
+  margin-bottom: var(--space-xl);
 }
 
 /* Links */
 .link-list__container {
   text-align: center;
-  margin-bottom: var(--space-x-large);
+  margin-bottom: var(--space-xl);
 }
 
 .link-list > li > a {
@@ -91,11 +91,11 @@
 }
 
 .projects__container {
-  margin-block: var(--space-medium);
+  margin-block: var(--space-m);
 }
 
 .projects__container .title {
-  margin-block: var(--space-large);
+  margin-block: var(--space-l);
   font-weight: 500;
 }
 

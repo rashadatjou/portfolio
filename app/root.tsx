@@ -34,9 +34,9 @@ import colorCssPath from "~/styles/color/light.css";
 import colorDarkCssPath from "~/styles/color/dark.css";
 import typographyCssPath from "~/styles/typography.css";
 import coreCssPath from "~/styles/core.css";
-import geometricSmallCssPath from "~/styles/geometry/small.css";
-import geometricNormalCssPath from "~/styles/geometry/normal.css";
-import geometricLargeCssPath from "~/styles/geometry/large.css";
+import sizeSCssPath from "~/styles/geometry/size.s.css";
+import sizeMCssPath from "~/styles/geometry/size.m.css";
+import sizeLCssPath from "~/styles/geometry/size.l.css";
 
 // - Types
 type LoaderData = {
@@ -75,15 +75,18 @@ export const links: LinksFunction = () => {
       href: colorDarkCssPath,
       media: "(prefers-color-scheme: dark)",
     },
-    { rel: "stylesheet", href: geometricSmallCssPath },
     {
       rel: "stylesheet",
-      href: geometricNormalCssPath,
-      media: "print, (min-width: 640px)",
+      href: sizeMCssPath
     },
     {
       rel: "stylesheet",
-      href: geometricLargeCssPath,
+      href: sizeSCssPath,
+      media: "print, (max-width: 640px)",
+    },
+    {
+      rel: "stylesheet",
+      href: sizeLCssPath,
       media: "screen and (min-width: 1024px)",
     },
     { rel: "stylesheet", href: coreCssPath },

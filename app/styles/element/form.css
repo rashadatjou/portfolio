@@ -16,7 +16,7 @@
 
 /* Groups */
 fieldset {
-  margin-bottom: var(--space-large);
+  margin-bottom: var(--space-l);
 }
 
 fieldset.linear {
@@ -42,7 +42,7 @@ fieldset.linear {
 .form label + input,
 .form label + select,
 .form label + textarea {
-  margin-top: var(--space-normal);
+  margin-top: var(--space-s);
 }
 
 /* Elements */
@@ -63,7 +63,7 @@ fieldset.linear {
   border-width: var(--size-border-width);
   border-radius: var(--size-border-radius);
   border-color: var(--color-bg-border);
-  padding: var(--space-normal);
+  padding: var(--space-s);
   -moz-appearance: none; /* Firefox */
   -webkit-appearance: none; /* Safari and Chrome */
   appearance: none;
@@ -84,7 +84,7 @@ fieldset.linear {
   border-width: var(--size-border-width);
   border-radius: var(--size-border-radius);
   border-color: var(--color-bg-border);
-  padding: var(--space-normal);
+  padding: var(--space-s);
   -moz-appearance: none; /* Firefox */
   -webkit-appearance: none; /* Safari and Chrome */
   appearance: none;
@@ -101,7 +101,7 @@ fieldset.linear {
   border-width: var(--size-border-width);
   border-radius: var(--size-border-radius);
   border-color: var(--color-bg-border);
-  padding: var(--space-normal);
+  padding: var(--space-s);
   -moz-appearance: none; /* Firefox */
   -webkit-appearance: none; /* Safari and Chrome */
   appearance: none;
@@ -113,5 +113,5 @@ fieldset.linear {
 .form p.error {
   color: var(--color-txt-error);
   font-size: var(--size-txt-tiny);
-  padding-block: var(--space-normal);
+  padding-block: var(--space-s);
 }

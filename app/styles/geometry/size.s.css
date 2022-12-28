@@ -1,5 +1,5 @@
 /*
- * File: /app/styles/geometry/small.css
+ * File: /app/styles/geometry/size.s.css
  * Project: portfolio
  * Created: Tuesday, 4th October 2022
  * Author: Denpex
@@ -12,12 +12,12 @@
 
 :root {
   /* Spaces */
-  --space-x-large: 2rem;
-  --space-large: 1rem;
-  --space-medium: 0.75rem;
-  --space-normal: 0.5rem;
-  --space-small: 0.25rem;
-  --space-tiny: 0.125rem;
+  --space-xl: 2rem;
+  --space-l: 1rem;
+  --space-m: 0.75rem;
+  --space-s: 0.5rem;
+  --space-xs: 0.25rem;
+  --space-xxs: 0.125rem;
 
   /* Width */
   --size-width-max: 35rem;
