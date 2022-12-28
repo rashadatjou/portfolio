@@ -19,7 +19,7 @@ import type { LinkDescriptor } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
 import { prettyPrintDate } from "~/utils/date";
-import { TFunction, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
 
@@ -27,11 +27,6 @@ import NavHeader from "~/components/Header";
 type PostItemProps = {
   post: MDXPost;
   locale: string;
-};
-
-type HeaderProps = {
-  tag?: string | null;
-  translate?: TFunction;
 };
 
 type Props = {
@@ -73,16 +68,11 @@ const PostItem = ({ post, locale }: PostItemProps) => (
   </li>
 );
 
-const BlogHeader = ({ tag, translate }: HeaderProps) => (
+const BlogHeader = () => (
   <NavHeader>
     <Button buttonType="icon" bordered href="/">
       👈🏽
     </Button>
-    {tag && (
-      <Button buttonType="primary" bordered href="?">
-        {translate?.("clear.filter") ?? "Clear tag"}
-      </Button>
-    )}
   </NavHeader>
 );
 
@@ -103,6 +93,11 @@ const BlogContainer = ({ postList, tag }: Props) => {
           ))}
         </ul>
       </div>
+      {tag && (
+        <Button className="blog__btn-clear-filter" capsule buttonType="primary" href="?">
+          {t?.("clear.filter") ?? "Clear tag"}
+        </Button>
+      )}
     </div>
   );
 };

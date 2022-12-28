@@ -24,6 +24,15 @@
   padding: var(--space-m)
 }
 
+/* Clear filter */
+.blog__btn-clear-filter  {
+  display: block;
+  position: absolute !important;
+  bottom: var(--space-l);
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 /* Article */
 .blog__post {
   padding: var(--space-m);

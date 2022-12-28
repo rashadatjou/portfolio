@@ -21,8 +21,9 @@ import cls from "classnames";
 type ButtonType = "primary" | "secondary" | "icon";
 type Props = {
   buttonType?: ButtonType;
-  bordered?: boolean; // Only works with "icon"
-  animated?: boolean; // Only works with icon
+  bordered?: boolean;
+  animated?: boolean;
+  capsule?: boolean;
   href?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -33,6 +34,7 @@ const Button = ({
   buttonType = "primary",
   bordered,
   animated,
+  capsule,
   href,
   ...htmlAtt
 }: Props) => (
@@ -40,11 +42,12 @@ const Button = ({
     {...htmlAtt}
     className={cls([
       "btn btn-primary",
-      className,
       buttonType,
+      capsule && "capsule",
       bordered && "border",
       animated && "animate",
       href && "link",
+      className,
     ])}>
     {href && <Link to={href} replace />}
     {children}
