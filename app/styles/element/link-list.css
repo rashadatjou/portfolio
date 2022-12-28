@@ -15,16 +15,16 @@
 
 /* list */
 .link-list {
-  font-size: var(--font-size-l);
+  font-size: var(--size-font-l);
   font-weight: 600;
 }
 
 .link-list.normal {
-  font-size: var(--font-size-s);
+  font-size: var(--size-font-s);
 }
 
 .link-list.small {
-  font-size: var(--font-size-xs);
+  font-size: var(--size-font-xs);
 }
 
 /* link */

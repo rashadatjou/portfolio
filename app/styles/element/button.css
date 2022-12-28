@@ -11,8 +11,8 @@
 .btn {
   cursor: pointer;
   font-weight: bold;
-  font-size: var(--font-size-xs);
-  height: var(--font-size-l);
+  font-size: var(--size-font-xs);
+  height: var(--size-font-l);
   border-color: var(--color-bg-border);
   border: none;
   appearance: none;
@@ -32,8 +32,8 @@
 
 /* Icon */
 .btn.icon {
-  width: var(--font-size-l);
-  font-size: var(--font-size-m);
+  width: var(--size-font-l);
+  font-size: var(--size-font-m);
   background: var(--color-bg-body);
   padding: 0;
 }
@@ -65,7 +65,7 @@
 }
 
 .btn.capsule {
-  border-radius: var(--font-size-l);
+  border-radius: var(--size-font-l);
 }
 
 /* Link */

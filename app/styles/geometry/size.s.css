@@ -25,11 +25,11 @@
   --size-width-loader: 6rem;
 
   /* Text size */
-  --font-size-l: 4.5rem;
-  --font-size-m: 3rem;
-  --font-size-s: 2.5rem;
-  --font-size-xs: 2rem;
-  --font-size-xxs: 1.5rem;
+  --size-font-l: 4.5rem;
+  --size-font-m: 3rem;
+  --size-font-s: 2.5rem;
+  --size-font-xs: 2rem;
+  --size-font-xxs: 1.5rem;
 
   /* Animations */
   --animation-duration: 0.1s;

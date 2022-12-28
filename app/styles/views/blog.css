@@ -44,7 +44,7 @@
 .blog__post .title {
   margin-bottom: var(--space-s);
   text-decoration: none;
-  font-size: var(--font-size-m);
+  font-size: var(--size-font-m);
 }
 
 .blog__post .description {
@@ -54,6 +54,6 @@
 }
 
 .blog__post .date {
-  font-size: var(--font-size-xxs);
+  font-size: var(--size-font-xxs);
   font-weight: 300;
 }

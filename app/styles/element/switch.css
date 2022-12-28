@@ -4,8 +4,8 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
 .switch {
   position: relative;
   display: inline-block;
-  width: calc(var(--font-size-m) * 1.75);
-  height: var(--font-size-m);
+  width: calc(var(--size-font-m) * 1.75);
+  height: var(--size-font-m);
   margin: 0;
 }
 
@@ -32,10 +32,10 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
 .slider:before {
   position: absolute;
   content: "";
-  height: var(--font-size-s);
-  width: var(--font-size-s);
+  height: var(--size-font-s);
+  width: var(--size-font-s);
   left: 4px;
-  top: calc((var(--font-size-m) - var(--font-size-s)) / 2);
+  top: calc((var(--size-font-m) - var(--size-font-s)) / 2);
   background-color: var(--color-bg-body);
   -webkit-transition: var(--animation-duration);
   transition: var(--animation-duration);

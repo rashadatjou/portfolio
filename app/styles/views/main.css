@@ -18,12 +18,12 @@
 }
 
 .intro > h1 {
-  font-size: var(--font-size-l);
+  font-size: var(--size-font-l);
   font-weight: bold;
 }
 
 .intro > p {
-  font-size: var(--font-size-s);
+  font-size: var(--size-font-s);
   padding: var(--space-m);
 }
 
