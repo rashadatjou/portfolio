@@ -12,30 +12,30 @@
 
 :root {
   /* Spaces */
-  --space-xl: 2rem;
-  --space-l: 1rem;
-  --space-m: 0.75rem;
-  --space-s: 0.5rem;
-  --space-xs: 0.25rem;
-  --space-xxs: 0.125rem;
+  --space-xl: 2.5rem;
+  --space-l: 1.5rem;
+  --space-m: 1.25rem;
+  --space-s: 1rem;
+  --space-xs: 0.55rem;
+  --space-xxs: 0.175rem;
 
   /* Width */
-  --size-width-max: 35rem;
+  --size-width-max: 50rem;
   --size-width-img: 10rem;
   --size-width-loader: 6rem;
 
   /* Text size */
-  --font-size-l: 3.75rem;
-  --font-size-m: 2.5rem;
-  --font-size-s: 1.875rem;
-  --font-size-xs: 1.25rem;
-  --font-size-xxs: 1.125rem;
+  --font-size-l: 4.5rem;
+  --font-size-m: 3rem;
+  --font-size-s: 2.5rem;
+  --font-size-xs: 2rem;
+  --font-size-xxs: 1.5rem;
 
   /* Animations */
   --animation-duration: 0.1s;
 
   /* Border */
-  --size-border-loader: 1rem;
-  --size-border-width: 0.25rem;
-  --size-border-radius: 0.25rem;
+  --size-border-loader: 0.6rem;
+  --size-border-width: 0.15rem;
+  --size-border-radius: 1rem;
 }
