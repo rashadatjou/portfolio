@@ -25,7 +25,6 @@
 }
 
 .intro > p {
-  font-size: var(--size-font-s);
   padding: var(--space-m);
 }
 
