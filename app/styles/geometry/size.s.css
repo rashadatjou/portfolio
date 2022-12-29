@@ -11,23 +11,8 @@
 /* Devices small then 650px */
 
 :root {
-  /* Spaces */
-  --space-xl: 2.5rem;
-  --space-l: 2rem;
-  --space-m: 1.5rem;
-  --space-s: 1.25rem;
-  --space-xs: 0.75rem;
-  --space-xxs: 0.25rem;
-
   /* Width */
   --size-width-max: 50rem;
   --size-width-img: 10rem;
   --size-width-loader: 6rem;
-
-  /* Text size */
-  --size-font-l: 4.5rem;
-  --size-font-m: 3rem;
-  --size-font-s: 2.5rem;
-  --size-font-xs: 2rem;
-  --size-font-xxs: 1.5rem;
 }
