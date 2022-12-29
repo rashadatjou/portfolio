@@ -22,7 +22,7 @@
 
 .nav-header.relative {
   position: relative;
-  padding: 0;
+  padding: unset;
 }
 
 .nav-header.fixed {
