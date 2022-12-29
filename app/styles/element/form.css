@@ -12,6 +12,8 @@
   display: flex;
   flex-direction: column;
   justify-items: stretch;
+
+  --field-height: calc(var(--space-l) + var(--size-font-s));
 }
 
 /* Groups */
@@ -54,7 +56,6 @@ fieldset.linear {
 
 .form select {
   font-size: var(--size-font-xs);
-  height: var(--size-font-l);
   color: var(--color-txt-main);
   text-transform: capitalize;
   display: block;
@@ -75,7 +76,6 @@ fieldset.linear {
 
 .form input {
   font-size: var(--size-font-xs);
-  height: var(--size-font-l);
   color: var(--color-txt-main);
   text-transform: capitalize;
   display: block;
@@ -93,7 +93,6 @@ fieldset.linear {
 
 .form textarea {
   font-size: var(--size-font-xs);
-  height: var(--size-font-l);
   color: var(--color-txt-main);
   display: block;
   width: 100%;

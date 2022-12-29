@@ -15,4 +15,9 @@
   /* Border */
   --size-border-width: 0.15rem;
   --size-border-radius: 1rem;
+
+  /* Screens */
+  --size-screen-s: 320px;
+  --size-screen-m: 650px;
+  --size-screen-l: 1025px;
 }

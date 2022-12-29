@@ -32,7 +32,6 @@
 
 .modal-container {
   position: absolute;
-  flex-direction: column;
   z-index: 2;
 
   top: 50%;

@@ -16,7 +16,8 @@
 .post__wrapper {
   background-color: var(--color-bg-body);
   max-width: var(--size-width-max);
-  padding: var(--space-xl);
+  padding-inline: var(--space-xl);
+  padding-top: calc(var(--size-font-l) * 2);
   margin: auto;
   height: 100vh;
   border-left: var(--size-border-width) solid var(--color-bg-border);

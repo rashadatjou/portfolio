@@ -8,11 +8,6 @@
  * -----
  */
 
-/* container */
-.link-list__container {
-  margin-top: var(--space-l);
-}
-
 /* list */
 .link-list {
   font-size: var(--size-font-l);
@@ -30,7 +25,7 @@
 /* link */
 .link-list > li {
   display: inline-block;
-  margin-inline: var(--space-xl);
+  margin: var(--space-m);
 }
 
 .link-list > li > a {

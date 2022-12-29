@@ -15,11 +15,13 @@
   background-color: var(--color-bg-main);
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .intro > h1 {
   font-size: var(--size-font-l);
   font-weight: bold;
+  padding-inline: var(--space-m);
 }
 
 .intro > p {
@@ -41,10 +43,18 @@
 
 .intro__settings .modal-container {
   width: 35rem;
-  display: flex;
+  display: block;
 }
 
 .intro__settings .modal-container > .btn {
   width: 100%;
   margin-top: auto;
+}
+
+/* Mobile */
+
+@media (max-width: 25rem) {
+  .intro__settings .modal-container {
+    width: calc(100% - var(--space-l));
+  }
 }
