@@ -37,7 +37,7 @@ const Tooltip = ({
     {children}
     <span
       className={cns([
-        "tooltip__text",
+        "tooltip__content",
         position,
         alwaysOn && "always-on",
         type,

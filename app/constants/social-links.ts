@@ -16,7 +16,12 @@ export default [
   },
   {
     platform: "Git",
-    username: "Denpex",
-    href: "https://github.com/Denpex",
+    username: "rashadatjou",
+    href: "https://github.com/rashadatjou",
+  },
+  {
+    platform: "Instagram",
+    username: "rashadatjou",
+    href: "https://instagram.com/rashadatjou",
   },
 ];

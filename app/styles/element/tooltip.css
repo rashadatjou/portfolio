@@ -15,10 +15,11 @@
 }
 
 /* Tooltip text */
-.tooltip .tooltip__text {
+.tooltip .tooltip__content {
   visibility: hidden;
   text-align: center;
 
+  background-color: var(--color-bg-body);
   font-size: var(--size-font-xxs);
   padding: var(--space-s) var(--space-l);
   position: absolute;
@@ -26,36 +27,36 @@
 }
 
 /* Present when container has been hovered over */
-.tooltip:hover .tooltip__text {
+.tooltip:hover .tooltip__content {
   visibility: visible;
 }
 
 /* Position */
-.tooltip .tooltip__text.top {
+.tooltip .tooltip__content.top {
   bottom: 100%;
   left: 50%;
   transform: translate(-50%, 0);
   margin-bottom: var(--space-s);
 }
 
-.tooltip .tooltip__text.bottom {
+.tooltip .tooltip__content.bottom {
   left: 50%;
   transform: translate(-50%, 0);
   margin-top: var(--space-s);
 }
 
-.tooltip .tooltip__text.left {
+.tooltip .tooltip__content.left {
   top: -5px;
   right: calc(100% + var(--space-s));
 }
 
-.tooltip .tooltip__text.right {
+.tooltip .tooltip__content.right {
   top: -5px;
   left: calc(100% + var(--space-s));
 }
 
 /* Arrow position */
-.tooltip .tooltip__text::after {
+.tooltip .tooltip__content::after {
   --arrow-size: 5px;
 
   /* General arrow */
@@ -65,53 +66,51 @@
   border-width: var(--arrow-size);
 }
 
-.tooltip .tooltip__text.top::after {
+.tooltip .tooltip__content.top::after {
   /* ↓ */
   top: 100%;
   left: 50%;
   margin-left: calc(var(--arrow-size) * -1);
-  border-color: var(--color-txt-main) transparent transparent transparent;
+  border-color: var(--color-txt-secondary) transparent transparent transparent;
 }
 
-.tooltip .tooltip__text.bottom::after {
+.tooltip .tooltip__content.bottom::after {
   /* ↑ */
   bottom: 100%;
   left: 50%;
   margin-left: calc(var(--arrow-size) * -1);;
-  border-color: transparent transparent var(--color-txt-main) transparent;
+  border-color: transparent transparent var(--color-txt-secondary) transparent;
 }
 
-.tooltip .tooltip__text.left::after {
+.tooltip .tooltip__content.left::after {
   /* → */
   top: 50%;
   left: 100%;
   margin-top: calc(var(--arrow-size) * -1);;
-  border-color: transparent transparent transparent var(--color-txt-main);
+  border-color: transparent transparent transparent var(--color-txt-secondary);
 }
 
-.tooltip .tooltip__text.right::after {
+.tooltip .tooltip__content.right::after {
   /* ← */
   top: 50%;
   right: 100%;
   margin-top: calc(var(--arrow-size) * -1);;
-  border-color: transparent var(--color-txt-main) transparent transparent;
+  border-color: transparent var(--color-txt-secondary) transparent transparent;
 }
 
 /* Types */
-.tooltip .tooltip__text.always-on {
+.tooltip .tooltip__content.always-on {
   visibility: visible;
 }
 
-.tooltip .tooltip__text.solid {
+.tooltip .tooltip__content.solid {
   color: var(--color-txt-inverted);
   background-color: var(--color-bg-tooltip);
-  border: none;
   border-radius: var(--size-border-radius);
 }
 
-.tooltip .tooltip__text.dotted {
+.tooltip .tooltip__content.dotted {
   color: var(--color-txt-main);
-  background: none;
   border-radius: var(--size-border-radius);
-  border: var(--size-border-width) dotted var(--color-txt-main);
+  border: var(--size-border-width) dotted var(--color-txt-secondary);
 }

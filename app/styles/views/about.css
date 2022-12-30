@@ -9,10 +9,17 @@
  */
 
 .about {
-  padding-inline: var(--space-l);
-  padding-block: var(--space-m);
   background-color: var(--color-bg-main);
   min-height: 100vh;
+}
+
+.about .nav-header {
+  padding: var(--space-m);
+}
+
+.about__content {
+  padding-inline: var(--space-l);
+  padding-block: var(--space-m);
 }
 
 /* Select all children except the 1 one */
@@ -24,7 +31,6 @@
 /* profile */
 .profile {
   text-align: center;
-  margin-bottom: calc(var(--space-xl) * 3);
 }
 
 .profile .title {
@@ -32,7 +38,7 @@
 }
 
 .profile .bio {
-  font-size: var(--size-font-xxs);
+  font-size: var(--size-font-s);
   margin-top: var(--space-xs);
   color: var(--color-txt-secondary);
 }
@@ -108,8 +114,8 @@
 }
 
 .projects__container .card .tag__container > li {
-  font-size: var(--size-font-xxs);
-  color: var(--color-txt-secondary);
+  font-size: var(--size-font-xs);
+  color: var(--color-txt-muted);
 }
 
 /* Resume */

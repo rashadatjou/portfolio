@@ -30,3 +30,10 @@ a.card {
   color: var(--color-txt-main);
   text-decoration: none;
 }
+
+/* Mobile */
+@media screen and (max-width: 650px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}

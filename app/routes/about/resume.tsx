@@ -31,7 +31,7 @@ const Resume = ({}: Props) => {
         {type === "idle" && (
           <div className="card-grid">
             {resumeList.map((item) => (
-              <div className="card inline">
+              <div key={item.href} className="card inline">
                 <h3>{item.name}</h3>
                 <Button href={item.href}>Download 📑</Button>
               </div>

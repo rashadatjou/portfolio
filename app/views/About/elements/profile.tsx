@@ -39,17 +39,17 @@ const Profile = ({
     <p className="bio">{bio}</p>
     <ul className="stat-list">
       <li>
-        <Tooltip type="dotted" alwaysOn position="left" text="Public repos">
+        <Tooltip position="left" text="Public repos">
           <p className="stat">{publicRepoCount}</p>
         </Tooltip>
       </li>
       <li>
-        <Tooltip type="dotted" alwaysOn position="bottom" text="Public gists">
+        <Tooltip position="bottom" text="Public gists">
           <p className="stat">{publicGistCount}</p>
         </Tooltip>
       </li>
       <li>
-        <Tooltip type="dotted" alwaysOn position="right" text="Git Followers">
+        <Tooltip position="right" text="Git Followers">
           <p className="stat">{followersCount}</p>
         </Tooltip>
       </li>
