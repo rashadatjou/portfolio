@@ -9,27 +9,33 @@
  */
 
 .intro {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: var(--color-bg-main);
-  justify-content: center;
+  display: grid;
   align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  background-color: var(--color-bg-main);
   text-align: center;
   padding: var(--space-m);
+  height: 100vh;
+  max-width: var(--size-width-max);
+  margin: auto;
 }
 
-.intro > h1 {
-  font-size: var(--size-font-l);
+.intro-content > h1 {
   font-weight: bold;
+  font-size: var(--size-font-l);
   padding-inline: var(--space-m);
 }
 
-.intro > p {
+.intro-content > p {
   padding: var(--space-m);
 }
 
 /* Link List */
+.link-list__container {
+  margin-block: var(--space-l)
+}
+
 .link-list > li > a {
   text-decoration: underline;
 }

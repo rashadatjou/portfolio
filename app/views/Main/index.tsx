@@ -34,9 +34,11 @@ const MainView = () => {
   return (
     <div className="intro">
       <Settings />
-      <h1>{t("intro.title")}</h1>
-      <p>{t("intro.body")}</p>
-      <LinkList translate={t} data={linkListData} />
+      <div className="intro-content">
+        <h1>{t("intro.title")}</h1>
+        <p>{t("intro.body")}</p>
+        <LinkList translate={t} data={linkListData} />
+      </div>
     </div>
   );
 };
