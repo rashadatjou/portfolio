@@ -30,8 +30,8 @@ import { useChangeLanguage } from "remix-i18next";
 import { useTranslation } from "react-i18next";
 
 import resetCssPath from "~/styles/reset.css";
-import colorCssPath from "~/styles/color/light.css";
-import colorDarkCssPath from "~/styles/color/dark.css";
+import colorCssPath from "~/styles/color/color.light.css";
+import colorDarkCssPath from "~/styles/color/color.dark.css";
 import typographyCssPath from "~/styles/typography.css";
 import coreCssPath from "~/styles/core.css";
 import sizeSCssPath from "~/styles/geometry/size.s.css";
