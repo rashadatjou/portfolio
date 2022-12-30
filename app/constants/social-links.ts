@@ -11,8 +11,8 @@
 export default [
   {
     platform: "Twitter",
-    username: "drac0Core",
-    href: "https://twitter.com/drac0Core",
+    username: "rashadatjou",
+    href: "https://twitter.com/rashadatjou",
   },
   {
     platform: "Git",

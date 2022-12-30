@@ -12,7 +12,7 @@ import { Project } from "~/typings/projects";
 
 const projectList: Project[] = [
   {
-    name: "Zushups",
+    name: "Zush-ups",
     href: "https://apps.apple.com/us/app/zushups-pushups-program/id1246695736",
     tags: ["iOS", "App", "Fitness"],
   },
