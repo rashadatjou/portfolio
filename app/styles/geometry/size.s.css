@@ -13,6 +13,6 @@
 :root {
   /* Width */
   --size-width-max: 50rem;
-  --size-width-img: 10rem;
+  --size-width-img: 20rem;
   --size-width-loader: 6rem;
 }
