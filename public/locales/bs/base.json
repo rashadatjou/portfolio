@@ -25,6 +25,21 @@
   "contact.form.success": "Hvala, javit ću vam se što je prije moguće.",
   "contact.form.failure": "Molimo pokušajte ponovo. Zahtjev nije uspio.",
 
+  "about.link.0": "Projekti",
+  "about.link.1": "Životopis",
+  "about.link.2": "Linkovi",
+
+  "about.profile.stat.1": "Javni repo",
+  "about.profile.stat.2": "Javni gists",
+  "about.profile.stat.3": "Git Prtailaca",
+
+  "about.projects.close-source": "Zatvoren izvor",
+  "about.projects.open-source": "Otvoreni izvor",
+  "about.projects.empty": "Nema dostupnih projekata...",
+
+  "about.resume.long": "Duga verzija",
+  "about.resume.short": "Kratka verzija",
+
   "en": "Engleski",
   "dev": "Razvoj",
   "sv": "Švedski",
@@ -32,6 +47,7 @@
 
   "language": "Jezik",
   "clear.filter": "Obriši filter",
+  "download": "Skinuti",
 
   "dark": "Tamno",
   "light": "Svijetlo"

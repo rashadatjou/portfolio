@@ -10,6 +10,7 @@
 
 import type { LoaderArgs } from "@remix-run/node";
 import { useTransition } from "@remix-run/react";
+import { useTranslation } from "react-i18next";
 import Button from "~/components/Button";
 import resumeList from "~/constants/resume-list";
 
@@ -25,6 +26,8 @@ export async function loader(args: LoaderArgs) {
 // - Component
 const Resume = ({}: Props) => {
   const { type } = useTransition();
+  const { t } = useTranslation();
+
   return (
     <div className="resume">
       <div className="resume__container">
@@ -32,8 +35,8 @@ const Resume = ({}: Props) => {
           <div className="card-grid">
             {resumeList.map((item) => (
               <div key={item.href} className="card inline">
-                <h3>{item.name}</h3>
-                <Button href={item.href}>Download 📑</Button>
+                <h3>{t(item.name)}</h3>
+                <Button href={item.href}>{t("download")} 📑</Button>
               </div>
             ))}
           </div>

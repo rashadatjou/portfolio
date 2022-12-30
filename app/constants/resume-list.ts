@@ -9,6 +9,6 @@
  */
 
 export default [
-  { name: "Long Version", href: "/some-file.pdf" },
-  { name: "Short Version", href: "/other-file.pdf" },
+  { name: "about.resume.long", href: "/some-file.pdf" },
+  { name: "about.resume.short", href: "/other-file.pdf" },
 ];

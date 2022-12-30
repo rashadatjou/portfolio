@@ -25,6 +25,7 @@ import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
 import LinkList, { LinkListItem } from "~/components/LinkList";
 import Profile from "./elements/profile";
+import { useTranslation } from "react-i18next";
 
 // - Types
 type Props = {
@@ -33,14 +34,16 @@ type Props = {
 
 // - Const
 const linkListData: LinkListItem[] = [
-  { name: "Projects", href: "projects" },
-  { name: "Resumes", href: "resume" },
-  { name: "Links", href: "links" },
+  { name: "about.link.0", href: "projects" },
+  { name: "about.link.1", href: "resume" },
+  { name: "about.link.2", href: "links" },
 ];
 
 // - Components
 const AboutView = ({ gitUser }: Props) => {
   const { state } = useTransition();
+  const { t } = useTranslation();
+
   return (
     <div className="about">
       <NavHeader position="relative">
@@ -56,8 +59,9 @@ const AboutView = ({ gitUser }: Props) => {
           publicRepoCount={gitUser?.publicRepoCount}
           followersCount={gitUser?.followersCount}
           bio={gitUser?.bio}
+          translate={t}
         />
-        <LinkList size="normal" buttonLike data={linkListData} />
+        <LinkList size="normal" buttonLike data={linkListData} translate={t} />
         {state === "loading" && <div className="loader" />}
         <Outlet />
       </div>

@@ -25,6 +25,21 @@
   "contact.form.success": "Tack, återkommer till dig snarast.",
   "contact.form.failure": "Var god försök igen. Begäran misslyckades.",
 
+  "about.link.0": "Projekt",
+  "about.link.1": "Meritförteckning",
+  "about.link.2": "Länkar",
+
+  "about.profile.stat.1": "Offentliga repos",
+  "about.profile.stat.2": "Offentliga gists",
+  "about.profile.stat.3": "Git Följare",
+
+  "about.projects.close-source": "Stängd källa",
+  "about.projects.open-source": "Öppen källa",
+  "about.projects.empty": "Inga projekt tillgängliga...",
+
+  "about.resume.long": "Lång version",
+  "about.resume.short": "Kort version",
+
   "en": "Engelsk",
   "dev": "Utveckling",
   "sv": "Svenska",
@@ -32,6 +47,7 @@
 
   "language": "Språk",
   "clear.filter": "Rensa filtret",
+  "download": "Ladda ner",
 
   "dark": "Mörk",
   "light": "Ljus"

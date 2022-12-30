@@ -26,7 +26,8 @@ const Links = () => {
                 href={item.href}
                 target="_blank">
                 <h3>
-                  {item.username}<span>@{item.platform}</span>
+                  {item.username}
+                  <span>@{item.platform}</span>
                 </h3>
               </a>
             ))}

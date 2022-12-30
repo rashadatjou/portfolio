@@ -17,6 +17,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData, useTransition } from "@remix-run/react";
 
 import closeSourceProjects from "~/constants/project-list";
+import { useTranslation } from "react-i18next";
 
 // - Types
 type LoaderProps = {
@@ -38,12 +39,13 @@ export async function loader({}: LoaderArgs) {
 const Projects = () => {
   const { repoList } = useLoaderData<LoaderProps>();
   const { type } = useTransition();
+  const { t } = useTranslation();
 
   if (type !== "idle") return null;
   return (
     <div className="projects">
       <div className="projects__container">
-        <h3 className="title">Closed source</h3>
+        <h3 className="title">{t("about.projects.close-source")}</h3>
         <div className="card-grid">
           {closeSourceProjects.map((project) => (
             <div className="card" key={project.href}>
@@ -61,9 +63,9 @@ const Projects = () => {
           ))}
         </div>
 
-        <h3 className="title">Open source</h3>
+        <h3 className="title">{t("about.projects.open-source")}</h3>
         <div className="card-grid">
-          {!repoList && <div className="card">No projects available...</div>}
+          {!repoList && <div className="card">{t("about.projects.empty")}</div>}
           {repoList?.map((repo) => (
             <div key={repo.info.id} className="card">
               <a href={repo.urls.htmlURL} target="_blank">
