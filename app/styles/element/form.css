@@ -35,8 +35,9 @@ fieldset.linear {
 /* Label */
 .form label,
 .label {
-  font-weight: 700;
+  font-weight: 500;
   font-size: var(--size-font-xs);
+  color: var(--color-txt-secondary);
   text-transform: capitalize;
   display: block;
 }
@@ -55,24 +56,23 @@ fieldset.linear {
 }
 
 .form select {
-  font-size: var(--size-font-xs);
-  color: var(--color-txt-main);
-  text-transform: capitalize;
-  display: block;
-  width: 100%;
-  height: var(--field-height);
-  border: solid;
-  border-width: var(--size-border-width);
-  border-radius: var(--size-border-radius);
-  border-color: var(--color-bg-border);
-  padding: var(--space-s);
   -moz-appearance: none; /* Firefox */
   -webkit-appearance: none; /* Safari and Chrome */
   appearance: none;
-  background-repeat: no-repeat;
   background-image: var(--icon-chevron-down);
   background-position-x: 100%;
-  background-position-y: calc(var(--size-font-l) / 4);
+  background-position-y: calc(var(--field-height) / 5);
+  background-repeat: no-repeat;
+  border-color: var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  border-width: var(--size-border-width);
+  color: var(--color-txt-main);
+  display: block;
+  font-size: var(--size-font-xs);
+  height: var(--field-height);
+  padding: var(--space-s);
+  text-transform: capitalize;
+  width: 100%;
 }
 
 .form input {
