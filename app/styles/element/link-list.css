@@ -12,6 +12,8 @@
 .link-list {
   font-size: var(--size-font-l);
   font-weight: 600;
+
+  display: flex;
 }
 
 .link-list.normal {
@@ -24,7 +26,7 @@
 
 /* link */
 .link-list > li {
-  display: inline-block;
+  flex: 1;
   margin: var(--space-m);
 }
 
@@ -45,8 +47,8 @@
 }
 
 /* Mobile */
-@media (max-width: 600px) {
-  .link-list li {
-    display: block;
+@media (max-width: 650px) {
+  .link-list {
+    flex-direction: column;
   }
 }

@@ -15,7 +15,7 @@ export default [
     href: "https://twitter.com/rashadatjou",
   },
   {
-    platform: "Git",
+    platform: "Github",
     username: "rashadatjou",
     href: "https://github.com/rashadatjou",
   },
