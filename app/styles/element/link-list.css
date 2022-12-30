@@ -43,3 +43,10 @@
   padding: var(--space-m) var(--space-l);
   background-color: var(--color-bg-body);
 }
+
+/* Mobile */
+@media (max-width: 600px) {
+  .link-list li {
+    display: block;
+  }
+}
