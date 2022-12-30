@@ -15,9 +15,6 @@
 }
 
 .blog__wrapper {
-  display: grid;
-  align-items: center;
-  justify-content: center;
   max-width: var(--size-width-max);
   margin: auto;
 }
