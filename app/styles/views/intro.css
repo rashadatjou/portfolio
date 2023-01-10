@@ -1,5 +1,5 @@
 /*
- * File: /app/styles/views/main.css
+ * File: /app/styles/views/intro.css
  * Project: portfolio
  * Created: Tuesday, 4th October 2022
  * Author: Denpex
@@ -33,7 +33,7 @@
 
 /* Link List */
 .link-list__container {
-  margin-block: var(--space-l)
+  margin-block: var(--space-l);
 }
 
 .link-list > li > a {
@@ -63,4 +63,18 @@
   .intro__settings .modal-container {
     width: calc(100% - var(--space-l));
   }
+}
+
+/* Footer */
+.intro-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-l);
+  z-index: 0;
+}
+
+.intro-footer .footer-title {
+  font-size: var(--size-font-xs);
 }

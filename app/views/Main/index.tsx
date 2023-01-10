@@ -8,7 +8,7 @@
  * -----
  */
 
-import mainCssPath from "~/styles/views/main.css";
+import introCssPath from "~/styles/views/intro.css";
 import buttonCssPath from "~/styles/element/button.css";
 import modalCssPath from "~/styles/element/modal.css";
 import formCssPath from "~/styles/element/form.css";
@@ -20,8 +20,14 @@ import { LinkDescriptor } from "@remix-run/node";
 import Settings from "./element/Settings";
 import LinkList, { LinkListItem } from "~/components/LinkList";
 import { useTranslation } from "react-i18next";
+import Footer from "~/views/Main/element/Footer";
 
 // - Const
+const sourceCodeData: LinkListItem = {
+  name: "intro.source.code",
+  href: "https://github.com/rashadatjou/portfolio",
+};
+
 const linkListData: LinkListItem[] = [
   { name: "intro.link.1", href: "/blog" },
   { name: "intro.link.2", href: "/contact" },
@@ -39,6 +45,7 @@ const MainView = () => {
         <p>{t("intro.body")}</p>
         <LinkList translate={t} data={linkListData} />
       </div>
+      <Footer title={t(sourceCodeData.name)} href={sourceCodeData.href} />
     </div>
   );
 };
@@ -51,5 +58,5 @@ export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: formCssPath },
   { rel: "stylesheet", href: switchCssPath },
   { rel: "stylesheet", href: linkListCssPath },
-  { rel: "stylesheet", href: mainCssPath },
+  { rel: "stylesheet", href: introCssPath },
 ];

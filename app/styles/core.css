@@ -23,3 +23,7 @@ body {
 img:not([src*=".svg"]) {
   filter: var(--color-image-filter);
 }
+
+code {
+  font-family: monospace;
+}
