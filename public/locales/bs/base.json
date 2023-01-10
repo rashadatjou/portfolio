@@ -27,7 +27,7 @@
   "contact.form.failure": "Molimo pokušajte ponovo. Zahtjev nije uspio.",
 
   "about.link.0": "Projekti",
-  "about.link.1": "Životopis",
+  "about.link.1": "Preuzimanja",
   "about.link.2": "Linkovi",
 
   "about.profile.stat.1": "Javni repo",
@@ -38,8 +38,7 @@
   "about.projects.open-source": "Otvoreni izvor",
   "about.projects.empty": "Nema dostupnih projekata...",
 
-  "about.resume.long": "Duga verzija",
-  "about.resume.short": "Kratka verzija",
+  "about.downloads.resume": "Životopis",
 
   "en": "Engleski",
   "dev": "Razvoj",

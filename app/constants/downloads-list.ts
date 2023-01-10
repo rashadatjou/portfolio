@@ -1,5 +1,5 @@
 /*
- * File: /app/constants/resume-list.ts
+ * File: /app/constants/downloads-list.ts
  * Project: portfolio
  * Created: Saturday, 10th December 2022
  * Author: Denpex
@@ -9,6 +9,5 @@
  */
 
 export default [
-  { name: "about.resume.long", href: "/some-file.pdf" },
-  { name: "about.resume.short", href: "/assets/resume-short.pdf" },
+  { name: "about.downloads.resume", href: "/assets/resume.pdf" },
 ];

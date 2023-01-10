@@ -27,7 +27,7 @@
   "contact.form.failure": "Please try again. The request failed.",
 
   "about.link.0": "Projects",
-  "about.link.1": "Resumes",
+  "about.link.1": "Downloads",
   "about.link.2": "Links",
 
   "about.profile.stat.1": "Public repos",
@@ -38,8 +38,7 @@
   "about.projects.open-source": "Open source",
   "about.projects.empty": "No projects available...",
 
-  "about.resume.long": "Long version",
-  "about.resume.short": "Short version",
+  "about.downloads.resume": "Resume",
 
   "en": "English",
   "dev": "Development",

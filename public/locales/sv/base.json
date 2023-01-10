@@ -27,7 +27,7 @@
   "contact.form.failure": "Var god försök igen. Begäran misslyckades.",
 
   "about.link.0": "Projekt",
-  "about.link.1": "Meritförteckning",
+  "about.link.1": "Nedladdningar",
   "about.link.2": "Länkar",
 
   "about.profile.stat.1": "Offentliga repos",
@@ -38,8 +38,7 @@
   "about.projects.open-source": "Öppen källa",
   "about.projects.empty": "Inga projekt tillgängliga...",
 
-  "about.resume.long": "Lång version",
-  "about.resume.short": "Kort version",
+  "about.downloads.resume": "Meritförteckning",
 
   "en": "Engelsk",
   "dev": "Utveckling",

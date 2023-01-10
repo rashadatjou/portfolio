@@ -119,7 +119,7 @@
 }
 
 /* Resume */
-.resume__container .card.inline {
+.downloads__container .card.inline {
   justify-content: space-between;
   align-items: center;
 }
