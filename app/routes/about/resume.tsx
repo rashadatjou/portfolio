@@ -8,7 +8,6 @@
  * -----
  */
 
-import type { LoaderArgs } from "@remix-run/node";
 import { useTransition } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import Button from "~/components/Button";
@@ -16,12 +15,6 @@ import resumeList from "~/constants/resume-list";
 
 // - Types
 type Props = {};
-
-// - Route Module API
-export async function loader(args: LoaderArgs) {
-  // TODO: - Call data here
-  return {};
-}
 
 // - Component
 const Resume = ({}: Props) => {
@@ -36,7 +29,9 @@ const Resume = ({}: Props) => {
             {resumeList.map((item) => (
               <div key={item.href} className="card inline">
                 <h3>{t(item.name)}</h3>
-                <Button href={item.href}>{t("download")} 📑</Button>
+                <Button hrefAsset href={item.href}>
+                  {t("download")} 📑
+                </Button>
               </div>
             ))}
           </div>

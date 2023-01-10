@@ -10,5 +10,5 @@
 
 export default [
   { name: "about.resume.long", href: "/some-file.pdf" },
-  { name: "about.resume.short", href: "/other-file.pdf" },
+  { name: "about.resume.short", href: "/assets/resume-short.pdf" },
 ];

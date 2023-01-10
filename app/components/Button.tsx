@@ -25,6 +25,7 @@ type Props = {
   animated?: boolean;
   capsule?: boolean;
   href?: string;
+  hrefAsset?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 // - Components
@@ -36,6 +37,7 @@ const Button = ({
   animated,
   capsule,
   href,
+  hrefAsset,
   ...htmlAtt
 }: Props) => (
   <button
@@ -49,7 +51,7 @@ const Button = ({
       href && "link",
       className,
     ])}>
-    {href && <Link to={href} replace />}
+    {href && <Link to={href} replace reloadDocument={hrefAsset} />}
     {children}
   </button>
 );
