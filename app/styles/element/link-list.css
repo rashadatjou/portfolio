@@ -14,7 +14,8 @@
   font-weight: 600;
 
   display: flex;
-  gap: var(--space-m);
+  column-gap: var(--space-m);
+  row-gap: var(--space-xl);
 }
 
 .link-list.normal {
