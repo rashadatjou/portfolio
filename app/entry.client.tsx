@@ -23,7 +23,7 @@ localizeRoot((i18n) => {
   hydrateRoot(
     document,
     <I18nextProvider i18n={i18n}>
-      <ThemeProvider<Theme> defaultTheme={defaultTheme} autoLoad>
+      <ThemeProvider<Theme> defaultTheme={defaultTheme}>
         <RemixBrowser />
       </ThemeProvider>
     </I18nextProvider>,
