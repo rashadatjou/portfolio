@@ -21,9 +21,6 @@ import { i18nRemix } from "~/services/i18n/i18n.server";
 import { badRequest } from "~/utils/helper.server";
 import { json } from "@remix-run/node";
 import { EMAIL_FIELD, MESSAGE_FIELD } from "~/views/Contact";
-import SendGrid from "@sendgrid/mail";
-
-SendGrid.setApiKey(process.env.SENDGRID_API_KEY ?? "");
 
 const composeEmail = (senderEmail: string, message: string) => ({
   to: "test@example.com", // Change to your recipient
@@ -78,14 +75,7 @@ export const action: ActionFunction = async ({ request }) => {
     });
   }
 
-  // TODO: Turn this on
-  // try {
-  //   const composedEmail = composeEmail(email, message);
-  //   await SendGrid.send(composedEmail);
-  //   console.log("Email sent");
-  // } catch (error) {
-  //   console.error(error);
-  // }
+  // TODO: Send email...
 
   // TODO: Redirect back to about page with proper response
   return json({ message: translate("contact.form.success") }, { status: 200 });
