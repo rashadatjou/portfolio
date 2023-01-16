@@ -66,7 +66,7 @@ const ContactView = ({ t, data }: Props) => {
       </NavHeader>
       <div className="contact-content">
         <h1>{t("intro.link.2")}</h1>
-        <form className="form" method="post" action="/api/v1/email">
+        <form className="form" method="post">
           <fieldset>
             <label htmlFor={`contact__${EMAIL_FIELD}`}>
               {t("contact.form.email.label")}
