@@ -27,5 +27,5 @@
 
 .nav-header.fixed {
   position: fixed;
-  padding: var(--space-l);
+  padding: var(--space-m);
 }
