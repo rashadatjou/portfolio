@@ -12,12 +12,15 @@ import contactCSSPaths from "~/styles/views/contact.css";
 import buttonCSSPaths from "~/styles/element/button.css";
 import formCSSPaths from "~/styles/element/form.css";
 import headerCssPath from "~/styles/element/header.css";
+import modalCssPath from "~/styles/element/modal.css";
 
 import type { TFunction } from "react-i18next";
 import type { LinkDescriptor } from "@remix-run/node";
 
 import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
+import Modal from "~/components/Modal";
+import { useEffect, useState } from "react";
 
 // - Const
 const EMAIL_FIELD = "email";
@@ -26,6 +29,10 @@ const MESSAGE_FIELD = "message";
 // - Types
 type ActionData = {
   formError?: string;
+  response?: {
+    message: string;
+    success: boolean;
+  };
   fieldErrors?: {
     [EMAIL_FIELD]: string | undefined;
     [MESSAGE_FIELD]: string | undefined;
@@ -57,6 +64,12 @@ const ErrorLabel = ({ id, message }: ErrorLabelProps) => {
 };
 
 const ContactView = ({ t, data }: Props) => {
+  const [present, setPresent] = useState(false);
+
+  useEffect(() => {
+    setPresent(!!data?.response);
+  }, [data]);
+
   return (
     <div className="contact-container">
       <NavHeader>
@@ -107,6 +120,19 @@ const ContactView = ({ t, data }: Props) => {
             {t("contact.form.submit")}
           </Button>
         </form>
+        <Modal present={present}>
+          <p className={!data?.response?.success ? "error" : ""} role="alert">
+            {data?.response?.message}
+          </p>
+          <Button
+            buttonType="primary"
+            type="reset"
+            onClick={() => {
+              setPresent(false);
+            }}>
+            {t("okay")}
+          </Button>
+        </Modal>
       </div>
     </div>
   );
@@ -121,4 +147,5 @@ export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: buttonCSSPaths },
   { rel: "stylesheet", href: formCSSPaths },
   { rel: "stylesheet", href: headerCssPath },
+  { rel: "stylesheet", href: modalCssPath },
 ];

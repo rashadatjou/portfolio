@@ -70,7 +70,6 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   const errors = validateFields(email, message, translate);
-
   if (errors.size > 0) {
     return badRequest<ActionData>({
       fields: { email, message },
@@ -88,12 +87,27 @@ export const action: ActionFunction = async ({ request }) => {
   });
 
   const res = await fetch(emailRequest);
-
   if (res.status === 400) {
-    return json({ message: "contact.form.failure" }, { status: 400 });
+    return json(
+      {
+        response: {
+          message: translate("contact.form.failure"),
+          success: false,
+        },
+      },
+      { status: 400 },
+    );
   }
 
-  return json({ message: translate("contact.form.success") }, { status: 200 });
+  return json(
+    {
+      response: {
+        message: translate("contact.form.success"),
+        success: true,
+      },
+    },
+    { status: 200 },
+  );
 };
 
 // - Components

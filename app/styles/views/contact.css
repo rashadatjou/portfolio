@@ -49,3 +49,12 @@
   max-width: 150px;
   width: 100%;
 }
+
+/* Modal */
+.modal-container > .btn {
+  width: 100%;
+}
+
+.modal-container > p[role="alert"] {
+  padding-bottom: var(--space-l);
+}
