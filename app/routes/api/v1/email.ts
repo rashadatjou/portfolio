@@ -9,7 +9,6 @@
  */
 
 import type { ActionFunction } from "@remix-run/node";
-import { json } from "@remix-run/node";
 
 import emailService from "~/services/email.service";
 
@@ -17,13 +16,15 @@ const composeEmail = (senderEmail: string, message: string) => ({
   to: process.env.AWS_SMTP_EMAIL_TO, // Change to your recipient
   from: process.env.AWS_SMTP_EMAIL_FORM, // Change to your verified sender
   subject: "Portfolio website support",
-  text: message + senderEmail,
+  html: `
+  <p>${senderEmail}</p>
+  <p>Message:<p>
+  <p>${message}<p>
+  `,
 });
 
 export const action: ActionFunction = async ({ request }) => {
   const { email, message } = await request.json();
-  console.log("email", email);
-  console.log("message", message);
   try {
     let composedEmail = composeEmail(email, message);
     await emailService.sendMail(composedEmail);
