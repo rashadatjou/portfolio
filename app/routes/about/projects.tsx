@@ -49,7 +49,10 @@ const Projects = () => {
         <div className="card-grid">
           {closeSourceProjects.map((project) => (
             <div className="card" key={project.href}>
-              <a href={project.href} target="_blank">
+              <a
+                href={project.href}
+                target="_blank"
+                referrerPolicy="no-referrer">
                 <h3>{project.name}</h3>
               </a>
               <ul className="tag__container">
