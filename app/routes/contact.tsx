@@ -15,7 +15,7 @@ import type { ActionData } from "~/views/Contact";
 import { i18nRemix } from "~/services/i18n/i18n.server";
 import { useActionData } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
-import { badRequest, getUrlFromRequest } from "~/utils/helper.server";
+import { badRequest } from "~/utils/helper.server";
 
 import ContactView, {
   links as contactViewLinks,
@@ -89,7 +89,7 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   // Send email
-  const baseUrl = getUrlFromRequest(request)?.origin;
+  const baseUrl = process.env.BASE_URL;
   if (baseUrl === null) {
     return json(generateResponse(translate("contact.form.failure"), false), {
       status: 400,
