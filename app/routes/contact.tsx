@@ -15,7 +15,7 @@ import type { ActionData } from "~/views/Contact";
 import { i18nRemix } from "~/services/i18n/i18n.server";
 import { useActionData } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
-import { badRequest } from "~/utils/helper.server";
+import { badRequest, getUrlFromRequest } from "~/utils/helper.server";
 
 import ContactView, {
   links as contactViewLinks,
@@ -28,6 +28,14 @@ import {
   validateRange,
   validateString,
 } from "~/services/validation.service";
+
+// - Const
+const generateResponse = (message: string, success: boolean) => ({
+  response: {
+    message,
+    success,
+  },
+});
 
 // - Helpers
 function validateFields(
@@ -81,33 +89,28 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   // Send email
-  const emailRequest = new Request(`${process.env.BASE_URL}/api/v1/email`, {
+  const baseUrl = getUrlFromRequest(request)?.origin;
+  if (baseUrl === null) {
+    return json(generateResponse(translate("contact.form.failure"), false), {
+      status: 400,
+    });
+  }
+
+  const emailRequest = new Request(`${baseUrl}/api/v1/email`, {
     method: "POST",
     body: JSON.stringify({ email, message }),
   });
 
   const res = await fetch(emailRequest);
   if (res.status === 400) {
-    return json(
-      {
-        response: {
-          message: translate("contact.form.failure"),
-          success: false,
-        },
-      },
-      { status: 400 },
-    );
+    return json(generateResponse(translate("contact.form.failure"), false), {
+      status: 400,
+    });
   }
 
-  return json(
-    {
-      response: {
-        message: translate("contact.form.success"),
-        success: true,
-      },
-    },
-    { status: 200 },
-  );
+  return json(generateResponse(translate("contact.form.success"), true), {
+    status: 200,
+  });
 };
 
 // - Components

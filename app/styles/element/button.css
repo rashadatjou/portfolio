@@ -11,8 +11,8 @@
 .btn {
   cursor: pointer;
   font-weight: bold;
-  font-size: var(--size-font-xs);
-  height: var(--size-font-l);
+  font-size: var(--size-font-s);
+  height: var(--size-font-xl);
   border-color: var(--color-bg-border);
   border: none;
   appearance: none;
@@ -32,7 +32,7 @@
 
 /* Icon */
 .btn.icon {
-  width: var(--size-font-l);
+  width: var(--size-font-xl);
   font-size: var(--size-font-m);
   background: var(--color-bg-body);
   padding: 0;

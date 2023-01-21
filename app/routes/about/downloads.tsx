@@ -16,6 +16,16 @@ import downloadsList from "~/constants/downloads-list";
 // - Types
 type Props = {};
 
+// - Helper
+function loadTypeEmoji(type: string): string {
+  switch (type) {
+    case "file":
+      return "📑";
+    default:
+      return "";
+  }
+}
+
 // - Component
 const Downloads = ({}: Props) => {
   const { type } = useTransition();
@@ -28,9 +38,11 @@ const Downloads = ({}: Props) => {
           <div className="card-grid">
             {downloadsList.map((item) => (
               <div key={item.href} className="card inline">
-                <h3>{t(item.name)}</h3>
+                <h3>
+                  {t(item.name)} {loadTypeEmoji(item.type)}
+                </h3>
                 <Button hrefAsset href={item.href}>
-                  {t("download")} 📑
+                  {t("download")}
                 </Button>
               </div>
             ))}

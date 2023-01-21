@@ -15,4 +15,7 @@
   --size-width-max: 70rem;
   --size-width-img: 25rem;
   --size-width-loader: 8rem;
+
+  /* Height */
+  --form-field-height: calc(var(--space-l) + var(--size-font-m));
 }

@@ -9,5 +9,5 @@
  */
 
 export default [
-  { name: "about.downloads.resume", href: "/assets/resume.pdf" },
+  { name: "about.downloads.resume", href: "/assets/resume.pdf", type: "file" },
 ];
