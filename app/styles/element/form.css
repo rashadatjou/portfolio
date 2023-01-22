@@ -12,8 +12,6 @@
   display: flex;
   flex-direction: column;
   justify-items: stretch;
-
-  --field-height: calc(var(--space-l) + var(--size-font-s));
 }
 
 /* Groups */
@@ -36,7 +34,7 @@ fieldset.linear {
 .form label,
 .label {
   font-weight: 500;
-  font-size: var(--size-font-xs);
+  font-size: var(--size-font-s);
   color: var(--color-txt-secondary);
   text-transform: capitalize;
   display: block;
@@ -61,15 +59,15 @@ fieldset.linear {
   appearance: none;
   background-image: var(--icon-chevron-down);
   background-position-x: 100%;
-  background-position-y: calc(var(--field-height) / 5);
+  background-position-y: calc(var(--form-field-height) / 5);
   background-repeat: no-repeat;
   border-color: var(--color-bg-border);
   border-radius: var(--size-border-radius);
   border-width: var(--size-border-width);
   color: var(--color-txt-main);
   display: block;
-  font-size: var(--size-font-xs);
-  height: var(--field-height);
+  font-size: var(--size-font-s);
+  height: var(--form-field-height);
   padding: var(--space-s);
   text-transform: capitalize;
   width: 100%;
@@ -81,18 +79,18 @@ fieldset.linear {
   appearance: none;
   background-repeat: no-repeat;
   border-radius: var(--size-border-radius);
-  border: solid  var(--color-bg-border) var(--size-border-width);
+  border: solid var(--color-bg-border) var(--size-border-width);
   color: var(--color-txt-main);
   display: block;
-  font-size: var(--size-font-xs);
-  height: var(--field-height);
+  font-size: var(--size-font-s);
+  height: var(--form-field-height);
   padding: var(--space-s);
   text-transform: capitalize;
   width: 100%;
 }
 
 .form textarea {
-  font-size: var(--size-font-xs);
+  font-size: var(--size-font-s);
   color: var(--color-txt-main);
   display: block;
   width: 100%;

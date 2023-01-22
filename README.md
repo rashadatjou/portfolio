@@ -4,7 +4,7 @@ rashadatjou.com
 
 # Hosting
 
-cloudflare.com
+Amazon AWS
 
 # Quick Info
 

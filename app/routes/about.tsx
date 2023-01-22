@@ -21,8 +21,10 @@ export const links: LinksFunction = () => {
   return [...cssLinks];
 };
 
-export const loader: LoaderFunction = async ({}) => {
-  const res = await fetch(`${process.env.BASE_URL}/api/v1/git/user`);
+export const loader: LoaderFunction = async ({ }) => {
+  const baseUrl = process.env.BASE_URL;
+  if (!baseUrl) return new Response(null, { status: 400 });
+  const res = await fetch(`${baseUrl}/api/v1/git/user`);
   const data = await res.json(); // GitUser
   return json(data, { status: 200 });
 };

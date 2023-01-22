@@ -29,6 +29,14 @@ import {
   validateString,
 } from "~/services/validation.service";
 
+// - Const
+const generateResponse = (message: string, success: boolean) => ({
+  response: {
+    message,
+    success,
+  },
+});
+
 // - Helpers
 function validateFields(
   email: unknown,
@@ -81,33 +89,28 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   // Send email
-  const emailRequest = new Request(`${process.env.BASE_URL}/api/v1/email`, {
+  const baseUrl = process.env.BASE_URL;
+  if (baseUrl === null) {
+    return json(generateResponse(translate("contact.form.failure"), false), {
+      status: 400,
+    });
+  }
+
+  const emailRequest = new Request(`${baseUrl}/api/v1/email`, {
     method: "POST",
     body: JSON.stringify({ email, message }),
   });
 
   const res = await fetch(emailRequest);
   if (res.status === 400) {
-    return json(
-      {
-        response: {
-          message: translate("contact.form.failure"),
-          success: false,
-        },
-      },
-      { status: 400 },
-    );
+    return json(generateResponse(translate("contact.form.failure"), false), {
+      status: 400,
+    });
   }
 
-  return json(
-    {
-      response: {
-        message: translate("contact.form.success"),
-        success: true,
-      },
-    },
-    { status: 200 },
-  );
+  return json(generateResponse(translate("contact.form.success"), true), {
+    status: 200,
+  });
 };
 
 // - Components
