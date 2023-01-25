@@ -9,5 +9,6 @@
  */
 
 import * as HelloWorldBlog from "~/routes/blog/posts/hello-world";
+import * as SpmXCFrmaeworkBlog from "~/routes/blog/posts/spm-to-xcframework";
 
-export default [HelloWorldBlog];
+export default [HelloWorldBlog, SpmXCFrmaeworkBlog];

@@ -23,6 +23,7 @@
 .blog__list {
   display: grid;
   padding-inline: var(--space-m);
+  gap: var(--space-l);
 }
 
 /* Nav Header */
