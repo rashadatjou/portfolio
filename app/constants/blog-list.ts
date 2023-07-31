@@ -8,6 +8,6 @@
  * -----
  */
 
-import * as HelloWorldBlog from "~/routes/blog/posts/hello-world/route";
+import * as HelloWorldBlog from "~/routes/blog/posts/hello-world";
 
 export default [HelloWorldBlog];

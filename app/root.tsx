@@ -1,6 +1,6 @@
 import type {
   LinksFunction,
-  V2_MetaFunction,
+  MetaFunction,
   LoaderFunction,
 } from "@remix-run/cloudflare";
 
@@ -50,16 +50,14 @@ export const loader: LoaderFunction = async ({ request }) => {
   return json({ locale, title, description }, { headers });
 };
 
-export const meta: V2_MetaFunction = ({ data }) => [
-  {
-    charset: "utf-8",
-    title: data.title,
-    description: data.description,
-    viewport: "width=device-width,initial-scale=1",
-    "application-name": "@rashadatjou",
-    generator: "remix.run",
-  },
-];
+export const meta: MetaFunction = ({ data }) => ({
+  charset: "utf-8",
+  title: data.title,
+  description: data.description,
+  viewport: "width=device-width,initial-scale=1",
+  "application-name": "@rashadatjou",
+  generator: "remix.run",
+});
 
 export const links: LinksFunction = () => {
   return [
