@@ -15,9 +15,11 @@ import type { GitRepo } from "~/typings/git";
 
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData, useTransition } from "@remix-run/react";
+import { useTranslation } from "react-i18next";
+import { mapRepoList } from "~/mapper/git.mapper";
 
 import closeSourceProjects from "~/constants/project-list";
-import { useTranslation } from "react-i18next";
+import REPO_LIST from "~/mock/git/repo-list.json";
 
 // - Types
 type LoaderProps = {
@@ -29,11 +31,9 @@ export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: tagCssPath }];
 };
 
-export async function loader({ context }: LoaderArgs) {
-  const baseUrl = (context.env as any).BASE_URL;
-  const res = await fetch(`${baseUrl}/api/v1/git/repo-list`);
-  const data = await res.json(); // GitRepos
-  return json({ repoList: data }, { status: 200 });
+export async function loader({}: LoaderArgs) {
+  let repoList = mapRepoList(REPO_LIST as any);
+  return json({ repoList }, { status: 200 });
 }
 
 // - Component

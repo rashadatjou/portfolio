@@ -10,16 +10,13 @@
 
 import nodemailer from "nodemailer";
 
-const emailServiceConfig: any = {
-  host: process.env.AWS_SMTP_ENDPOINT,
-  port: process.env.AWS_SMTP_PORT,
-  secure: false, // true for 465, false for other ports
-  auth: {
-    user: process.env.AWS_SMTP_USERNAME,
-    pass: process.env.AWS_SMTP_PASSWORD,
-  },
-};
-
-const emailService = nodemailer.createTransport(emailServiceConfig);
-
-export default emailService;
+export const createEmailService = (context: any) =>
+  nodemailer.createTransport({
+    host: context.env.AWS_SMTP_ENDPOINT,
+    port: context.env.AWS_SMTP_PORT,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: context.env.AWS_SMTP_USERNAME,
+      pass: context.env.AWS_SMTP_PASSWORD,
+    },
+  });

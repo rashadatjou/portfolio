@@ -16,6 +16,7 @@ import { i18nRemix } from "~/services/i18n/i18n.server";
 import { useActionData } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import { badRequest } from "~/utils/helper.server";
+import { createEmailService } from "~/services/email.service";
 
 import ContactView, {
   links as contactViewLinks,
@@ -60,12 +61,23 @@ function validateFields(
   return fieldErrors;
 }
 
+const composeEmail = (senderEmail: string, message: string) => ({
+  to: process.env.AWS_SMTP_EMAIL_TO, // Change to your recipient
+  from: process.env.AWS_SMTP_EMAIL_FORM, // Change to your verified sender
+  subject: "Portfolio website support",
+  html: `
+  <p>${senderEmail}</p>
+  <p>Message:<p>
+  <p>${message}<p>
+  `,
+});
+
 // - Route Module API
 export const links: LinksFunction = () => {
   return [...contactViewLinks];
 };
 
-export const action: ActionFunction = async ({ request }) => {
+export const action: ActionFunction = async ({ request, context }) => {
   const translate = await i18nRemix.getFixedT(request, "base");
   const form = await request.formData();
   const email = form.get(EMAIL_FIELD);
@@ -88,29 +100,27 @@ export const action: ActionFunction = async ({ request }) => {
     });
   }
 
-  // Send email
-  const baseUrl = process.env.BASE_URL;
-  if (baseUrl === null) {
-    return json(generateResponse(translate("contact.form.failure"), false), {
-      status: 400,
-    });
-  }
+  // // Send email
+  // let env = context.env as any;
+  // const baseUrl = env.BASE_URL;
+  // if (baseUrl === null) {
+  //   return json(generateResponse(translate("contact.form.failure"), false), {
+  //     status: 400,
+  //   });
+  // }
 
-  const emailRequest = new Request(`${baseUrl}/api/v1/email`, {
-    method: "POST",
-    body: JSON.stringify({ email, message }),
-  });
+  // let composedEmail = composeEmail(email, message);
 
-  const res = await fetch(emailRequest);
-  if (res.status === 400) {
-    return json(generateResponse(translate("contact.form.failure"), false), {
-      status: 400,
-    });
-  }
-
-  return json(generateResponse(translate("contact.form.success"), true), {
-    status: 200,
-  });
+  // try {
+  //   await createEmailService(context).sendMail(composedEmail);
+  //   return json(generateResponse(translate("contact.form.success"), true), {
+  //     status: 200,
+  //   });
+  // } catch (error) {
+  //   return json(generateResponse(translate("contact.form.failure"), false), {
+  //     status: 400,
+  //   });
+  // }
 };
 
 // - Components
