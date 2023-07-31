@@ -30,7 +30,7 @@ const sourceCodeData: LinkListItem = {
 
 const linkListData: LinkListItem[] = [
   { name: "intro.link.1", href: "/blog" },
-  { name: "intro.link.2", href: "/contact" },
+  { name: "intro.link.2", href: "mailto:mehdi@rashadatjou.com" },
   { name: "intro.link.3", href: "/about" },
 ];
 
