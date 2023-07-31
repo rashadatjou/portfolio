@@ -12,7 +12,7 @@ import type { ActionFunction } from "@remix-run/cloudflare";
 
 import emailService from "~/services/email.service";
 
-const composeEmail = (senderEmail: string, message: string) => ({
+const composeEmail = ( senderEmail: string, message: string) => ({
   to: process.env.AWS_SMTP_EMAIL_TO, // Change to your recipient
   from: process.env.AWS_SMTP_EMAIL_FORM, // Change to your verified sender
   subject: "Portfolio website support",

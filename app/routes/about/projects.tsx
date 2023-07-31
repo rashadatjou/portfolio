@@ -29,8 +29,8 @@ export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: tagCssPath }];
 };
 
-export async function loader({ }: LoaderArgs) {
-  const baseUrl = process.env.BASE_URL;
+export async function loader({ context }: LoaderArgs) {
+  const baseUrl = (context.env as any).BASE_URL;
   const res = await fetch(`${baseUrl}/api/v1/git/repo-list`);
   const data = await res.json(); // GitRepos
   return json({ repoList: data }, { status: 200 });

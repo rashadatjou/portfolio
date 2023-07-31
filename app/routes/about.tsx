@@ -8,24 +8,23 @@
  * -----
  */
 
-import type { LinksFunction, LoaderFunction } from "@remix-run/cloudflare";
-import type { GitUser } from "~/typings/git";
+import type { LinksFunction, LoaderArgs } from "@remix-run/cloudflare";
+import type { ApiGitUser, GitUser } from "~/typings/git";
 
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
+import { mapGitUser } from "~/mapper/git.mapper";
 
 import AboutView, { links as cssLinks } from "~/views/About";
+import GIT_USER_DATA from "~/mock/git/user.json";
 
 // - Module Route API
 export const links: LinksFunction = () => {
   return [...cssLinks];
 };
 
-export const loader: LoaderFunction = async ({ }) => {
-  const baseUrl = process.env.BASE_URL;
-  if (!baseUrl) return new Response(null, { status: 400 });
-  const res = await fetch(`${baseUrl}/api/v1/git/user`);
-  const data = await res.json() as any; // GitUser
+export const loader = async ({}: LoaderArgs) => {
+  const data = mapGitUser(GIT_USER_DATA) as GitUser;
   return json(data, { status: 200 });
 };
 
