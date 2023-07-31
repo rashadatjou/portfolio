@@ -1,0 +1,45 @@
+/*
+ * File: /app/styles/element/modal.css
+ * Project: portfolio
+ * Created: Wednesday, 16th November 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Enable scroll if needed */
+  top: 0;
+  left: 0;
+  border: none;
+  z-index: 1;
+}
+
+.modal::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  display: block;
+  z-index: -1;
+
+  background-color: var(--color-bg-shadow);
+  backdrop-filter: blur(5px);
+}
+
+.modal-container {
+  position: absolute;
+  z-index: 2;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: var(--color-bg-main);
+  border-radius: var(--size-border-radius);
+
+  padding: var(--space-l);
+}

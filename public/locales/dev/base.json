@@ -1,0 +1,56 @@
+{
+  "meta.title": "@rashdatjou",
+  "meta.description": "I am a Swift & Javascript developer heavily centered around client-side applications.",
+  "intro.title": "Hello, My name is Mehdi 👋🏽",
+  "intro.body": "Check out the options below for more info 👇🏽",
+
+  "intro.link.1": "Blog",
+  "intro.link.2": "Contact",
+  "intro.link.3": "About",
+  "intro.source.code": "Source-Code",
+
+  "setting.language.title": "Change language",
+  "setting.theme.title": "Change theme",
+  "setting.cookie.title": "Disable Cookies",
+
+  "contact.form.email.label": "Email",
+  "contact.form.email.placeholder": "email@domain.tld",
+  "contact.form.email.error.1": "Email is not in a valid format.",
+  "contact.form.email.error.2": "Email is shorter than 4 chars. or bigger than 100 chars.",
+
+  "contact.form.message.label": "Message",
+  "contact.form.message.placeholder": "Ask me anything…",
+  "contact.form.message.error.1": "Message is not valid type of string.",
+  "contact.form.message.error.2": "Message is shorter than 4 chars. or bigger than 500 chars.",
+
+  "contact.form.submit": "Send",
+  "contact.form.success": "Thank you, will get back to you asap.",
+  "contact.form.failure": "Please try again. The request failed.",
+
+  "about.link.0": "Projects",
+  "about.link.1": "Downloads",
+  "about.link.2": "Links",
+
+  "about.profile.stat.1": "Public repos",
+  "about.profile.stat.2": "Public gists",
+  "about.profile.stat.3": "Git Followers",
+
+  "about.projects.close-source": "Closed source",
+  "about.projects.open-source": "Open source",
+  "about.projects.empty": "No projects available...",
+
+  "about.downloads.resume": "Resume",
+
+  "en": "English",
+  "dev": "Development",
+  "sv": "Swedish",
+  "bs": "Bosnian",
+
+  "language": "Language",
+  "clear.filter": "Clear filter",
+  "download": "Download",
+  "okay": "Okay",
+
+  "dark": "Dark",
+  "light": "Light"
+}

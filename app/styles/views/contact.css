@@ -1,0 +1,60 @@
+/*
+ * File: /app/styles/views/contact.css
+ * Project: portfolio
+ * Created: Monday, 5th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.contact-container {
+  height: 100vh;
+  background-color: var(--color-bg-main);
+  padding: var(--space-l);
+  overflow: visible;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-content {
+  overflow: scroll;
+}
+
+/* Title */
+.contact-container h1 {
+  text-align: center;
+}
+
+/* .form */
+.contact-container .form {
+  width: 100%;
+  max-width: 50vh;
+  margin: auto;
+}
+
+.contact-container .form input {
+  text-transform: lowercase;
+}
+
+.contact-container .form textarea {
+  min-height: 25vh;
+  resize: vertical;
+}
+
+.contact-container .form button {
+  margin: auto;
+  max-width: 150px;
+  width: 100%;
+}
+
+/* Modal */
+.modal-container > .btn {
+  width: 100%;
+}
+
+.modal-container > p[role="alert"] {
+  padding-bottom: var(--space-l);
+}

@@ -1,41 +1,42 @@
-import type { V2_MetaFunction } from "@remix-run/cloudflare";
+/*
+ * File: /app/routes/index.tsx
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
 
-export const meta: V2_MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
+import type { LinksFunction } from "@remix-run/cloudflare";
+import { useCatch } from "@remix-run/react";
+
+import MainView, { links as introLinks } from "~/views/Main";
+
+// - Route Module API
+export const links: LinksFunction = () => {
+  return [...introLinks];
 };
 
-export default function Index() {
+// - Component
+const MainRoute = () => {
+  return <MainView />;
+};
+
+const CatchBoundary = () => {
+  const caught = useCatch();
+
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div>
+      <h1>Caught</h1>
+      <p>Status: {caught.status}</p>
+      <pre>
+        <code>{JSON.stringify(caught.data, null, 2)}</code>
+      </pre>
     </div>
   );
-}
+};
+
+// - Exports
+export default MainRoute;
+export { CatchBoundary };

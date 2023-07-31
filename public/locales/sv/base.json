@@ -1,0 +1,56 @@
+{
+  "meta.title": "@rashdatjou",
+  "meta.description": "Jag är en Swift & Javascript-utvecklare som är starkt centrerad kring applikationer på klientsidan.",
+  "intro.title": "Hej, jag heter Mehdi 👋🏽",
+  "intro.body": "Kolla in alternativen nedan för mer info 👇🏽",
+
+  "intro.link.1": "Blogg",
+  "intro.link.2": "Kontakt",
+  "intro.link.3": "Handla om",
+  "intro.source.code": "Källkod",
+
+  "setting.language.title": "Byta tema",
+  "setting.theme.title": "Ändra språk",
+  "setting.cookie.title": "Inaktivera cookies",
+
+  "contact.form.email.label": "E-post",
+  "contact.form.email.placeholder": "e-post@domän.td",
+  "contact.form.email.error.1": "E-post är inte i ett giltigt format.",
+  "contact.form.email.error.2": "E-post är kortare än 4 tecken. eller större än 100 tecken.",
+
+  "contact.form.message.label": "Meddelande",
+  "contact.form.message.placeholder": "Fråga mig vad som helst…",
+  "contact.form.message.error.1": "Meddelandet är inte giltig typ av sträng.",
+  "contact.form.message.error.2": "Meddelandet är kortare än 4 tecken. eller större än 500 tecken.",
+
+  "contact.form.submit": "Skicka",
+  "contact.form.success": "Tack, återkommer till dig snarast.",
+  "contact.form.failure": "Var god försök igen. Begäran misslyckades.",
+
+  "about.link.0": "Projekt",
+  "about.link.1": "Nedladdningar",
+  "about.link.2": "Länkar",
+
+  "about.profile.stat.1": "Offentliga repos",
+  "about.profile.stat.2": "Offentliga gists",
+  "about.profile.stat.3": "Git Följare",
+
+  "about.projects.close-source": "Stängd källa",
+  "about.projects.open-source": "Öppen källa",
+  "about.projects.empty": "Inga projekt tillgängliga...",
+
+  "about.downloads.resume": "Meritförteckning",
+
+  "en": "Engelsk",
+  "dev": "Utveckling",
+  "sv": "Svenska",
+  "bs": "Bosniska",
+
+  "language": "Språk",
+  "clear.filter": "Rensa filtret",
+  "download": "Ladda ner",
+  "okay": "Okej",
+
+  "dark": "Mörk",
+  "light": "Ljus"
+}

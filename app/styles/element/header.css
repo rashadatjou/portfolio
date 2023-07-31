@@ -1,0 +1,31 @@
+/*
+ * File: /app/styles/element/header.css
+ * Project: portfolio
+ * Created: Tuesday, 6th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.nav-header {
+  --size-nav-height: calc(var(--space-l) + var(--size-font-l));
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--size-nav-height);
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.nav-header.relative {
+  position: relative;
+  padding: unset;
+}
+
+.nav-header.fixed {
+  position: fixed;
+  padding: var(--space-m);
+}

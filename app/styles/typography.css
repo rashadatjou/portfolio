@@ -1,0 +1,36 @@
+/*
+ * File: /app/styles/typography.css
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+h1 {
+  font-size: var(--size-font-xl);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--size-font-m);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--size-font-s);
+  font-weight: 600;
+}
+
+p {
+  font-size: var(--size-font-s);
+}
+
+span {
+  color: var(--color-txt-secondary);
+}
+
+a {
+  color: var(--color-act-main);
+}

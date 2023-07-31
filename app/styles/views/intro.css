@@ -1,0 +1,78 @@
+/*
+ * File: /app/styles/views/intro.css
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.intro {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  background-color: var(--color-bg-main);
+  text-align: center;
+  padding: var(--space-m);
+  max-width: var(--size-width-max);
+  margin: auto;
+  height: 100vh;
+}
+
+.intro-content > h1 {
+  font-weight: bold;
+  font-size: var(--size-font-l);
+  padding-inline: var(--space-m);
+}
+
+.intro-content > p {
+  padding: var(--space-m);
+}
+
+/* Link List */
+.link-list__container {
+  margin-block: var(--space-l);
+}
+
+.link-list > li > a {
+  text-decoration: underline;
+}
+
+/* Settings */
+.intro__settings {
+  position: absolute;
+  top: var(--space-l);
+  right: var(--space-l);
+}
+
+.intro__settings .modal-container {
+  width: 35rem;
+  display: block;
+}
+
+.intro__settings .modal-container > .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Mobile */
+
+@media (max-width: 25rem) {
+  .intro__settings .modal-container {
+    width: calc(100% - var(--space-l));
+  }
+}
+
+/* Footer */
+.intro-footer {
+  width: 100%;
+  padding: var(--space-l);
+  z-index: 0;
+}
+
+.intro-footer .footer-title {
+  font-size: var(--size-font-xs);
+}
