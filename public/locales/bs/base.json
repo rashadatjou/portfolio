@@ -1,0 +1,56 @@
+{
+  "meta.title": "@rashdatjou",
+  "meta.description": "Ja sam Swift i Javascript programer koji se u velikoj mjeri bavi aplikacijama na strani klijenta.",
+  "intro.title": "Zdravo, moje ime je Mehdi 👋🏽",
+  "intro.body": "Pogledajte opcije u nastavku za više informacija 👇🏽",
+
+  "intro.link.1": "Blog",
+  "intro.link.2": "Kontakt",
+  "intro.link.3": "O meni",
+  "intro.source.code": "Pogledaj Kod",
+
+  "setting.language.title": "Promijeni jezik",
+  "setting.theme.title": "Promijenite temu",
+  "setting.cookie.title": "Onemogućite kolačiće",
+
+  "contact.form.email.label": "E-pošta",
+  "contact.form.email.placeholder": "e-pošta@domena.tld",
+  "contact.form.email.error.1": "E-pošta nije u važećem formatu.",
+  "contact.form.email.error.2": "E-pošta je kraći od 4 znaka. ili veći od 100 znakova.",
+
+  "contact.form.message.label": "Poruka",
+  "contact.form.message.placeholder": "Pitaj me bilo sta…",
+  "contact.form.message.error.1": "Poruka nije važeći tip stringa.",
+  "contact.form.message.error.2": "Poruka je kraća od 4 znaka. ili veći od 500 znakova.",
+
+  "contact.form.submit": "Pošalji",
+  "contact.form.success": "Hvala, javit ću vam se što je prije moguće.",
+  "contact.form.failure": "Molimo pokušajte ponovo. Zahtjev nije uspio.",
+
+  "about.link.0": "Projekti",
+  "about.link.1": "Preuzimanja",
+  "about.link.2": "Linkovi",
+
+  "about.profile.stat.1": "Javni repo",
+  "about.profile.stat.2": "Javni gists",
+  "about.profile.stat.3": "Git Prtailaca",
+
+  "about.projects.close-source": "Zatvoren izvor",
+  "about.projects.open-source": "Otvoreni izvor",
+  "about.projects.empty": "Nema dostupnih projekata...",
+
+  "about.downloads.resume": "Životopis",
+
+  "en": "Engleski",
+  "dev": "Razvoj",
+  "sv": "Švedski",
+  "bs": "Bosanski",
+
+  "language": "Jezik",
+  "clear.filter": "Obriši filter",
+  "download": "Skinuti",
+  "okay": "Uredu",
+
+  "dark": "Tamno",
+  "light": "Svijetlo"
+}

@@ -1,22 +1,32 @@
-# Welcome to Remix!
+# Address
 
-- [Remix Docs](https://remix.run/docs)
+rashadatjou.com
 
-## Development
+# Hosting
 
-You will be utilizing Wrangler for local development to emulate the Cloudflare runtime. This is already wired up in your package.json as the `dev` script:
+Cloudflare Pages
 
-```sh
-# start the remix dev server and wrangler
-npm run dev
-```
+# Quick Info
 
-Open up [http://127.0.0.1:8788](http://127.0.0.1:8788) and you should be ready to go!
+- Remix
+- CSS Reset
+- CSS Scaffold
+- Localization
+- Typings setup
+- Theming setup
+- Custom errors
 
-## Deployment
+# Tech Stack
 
-Cloudflare Pages are currently only deployable through their Git provider integrations.
+**Framework**
 
-If you don't already have an account, then [create a Cloudflare account here](https://dash.cloudflare.com/sign-up/pages) and after verifying your email address with Cloudflare, go to your dashboard and follow the [Cloudflare Pages deployment guide](https://developers.cloudflare.com/pages/framework-guides/deploy-anything).
+- Remix.run [https://remix.run]
 
-Configure the "Build command" should be set to `npm run build`, and the "Build output directory" should be set to `public`.
+**Dependencies**
+
+- React 18.2 [https://reactjs.org]
+- TypeScript 4.7.4 [https://www.typescriptlang.org]
+- i18Next (Localization) [https://react.i18next.com]
+- classnames [https://github.com/JedWatson/classnames]
+- eslint [https://github.com/eslint/eslint]
+- themeit [https://github.com/rashadatjou/themeit]
