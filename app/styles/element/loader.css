@@ -1,0 +1,29 @@
+/*
+ * File: /app/styles/element/loading.css
+ * Project: portfolio
+ * Created: Saturday, 10th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.loader {
+  --size-border-loader: 0.6rem;
+
+  border: var(--size-border-loader) solid var(--color-bg-border); /* Light grey */
+  border-top: var(--size-border-loader) solid var(--color-act-main); /* Blue */
+  border-radius: 50%;
+  width: var(--size-width-loader);
+  height: var(--size-width-loader);
+  animation: rotate 1s ease-in infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

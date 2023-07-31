@@ -1,0 +1,83 @@
+/*
+ * File: /app/styles/element/button.css
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.btn {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: var(--size-font-s);
+  height: var(--size-font-xl);
+  border-color: var(--color-bg-border);
+  border: none;
+  appearance: none;
+}
+
+/* Primary */
+.btn.primary {
+  background-color: var(--color-act-main);
+  border-radius: var(--size-border-radius);
+  color: var(--color-bg-body);
+}
+
+/* Secondary */
+.btn.secondary {
+  border-radius: var(--size-border-radius);
+}
+
+/* Icon */
+.btn.icon {
+  width: var(--size-font-xl);
+  font-size: var(--size-font-m);
+  background: var(--color-bg-body);
+  padding: 0;
+}
+
+.btn.icon.animate:hover {
+  transform: rotate(45deg);
+}
+
+/* Selectors */
+.btn:hover {
+  background-color: var(--color-highlight-main);
+  color: var(--color-txt-inverted);
+}
+
+.btn:active {
+  scale: 0.98;
+}
+
+.btn.icon.border:hover {
+  border-color: var(--color-highlight-main);
+}
+
+/* Styles */
+.btn.border {
+  border: solid;
+  border-width: var(--size-border-width);
+  border-radius: var(--size-border-radius);
+  border-color: var(--color-bg-border);
+}
+
+.btn.capsule {
+  border-radius: var(--size-font-l);
+}
+
+/* Link */
+.btn.link {
+  position: relative;
+}
+
+.btn > a {
+  position: absolute;
+  text-decoration: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

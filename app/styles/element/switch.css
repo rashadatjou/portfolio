@@ -1,0 +1,75 @@
+/*
+ * File: /app/styles/element/switch.css
+ * Project: portfolio
+ * Created: Friday, 18th November 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.switch {
+  --switch-width: calc(var(--size-font-m) * 1.75);
+  --switch-height: var(--size-font-m);
+
+  position: relative;
+  display: inline-block;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  margin: 0;
+
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin-right: auto;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-txt-muted);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  margin: 0;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--size-font-s);
+  width: var(--size-font-s);
+  left: 3px;
+  top: calc((var(--size-font-m) - var(--size-font-s)) / 2);
+  background-color: var(--color-bg-body);
+  -webkit-transition: var(--time-animation);
+  transition: var(--time-animation);
+}
+
+input:checked + .slider {
+  background-color: var(--color-act-main);
+}
+
+input.switch:focus + .slider {
+  box-shadow: 0 0 1px var(--color-act-main);
+}
+
+input:checked + .slider:before {
+  left: auto;
+  right: 3px;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

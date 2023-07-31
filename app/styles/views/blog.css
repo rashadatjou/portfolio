@@ -1,0 +1,70 @@
+/*
+ * File: /app/styles/views/blog.css
+ * Project: portfolio
+ * Created: Tuesday, 22nd November 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+/* Container */
+.blog__container {
+  background-color: var(--color-bg-main);
+  height: 100vh;
+}
+
+.blog__wrapper {
+  max-width: var(--size-width-max);
+  margin: auto;
+}
+
+/* List */
+.blog__list {
+  display: grid;
+  padding-inline: var(--space-m);
+  gap: var(--space-l);
+}
+
+/* Nav Header */
+.nav-header {
+  padding: var(--space-m) !important;
+}
+
+/* Clear filter */
+.blog__btn-clear-filter {
+  display: block;
+  position: absolute !important;
+  bottom: var(--space-l);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Article */
+.blog__post {
+  padding: var(--space-m);
+  background-color: var(--color-bg-body);
+  border-radius: var(--size-border-radius);
+  border: var(--size-border-width) solid var(--color-bg-border);
+  cursor: pointer;
+}
+
+.blog__post-container {
+  margin-bottom: var(--space-m);
+}
+
+.blog__post .title {
+  margin-bottom: var(--space-xs);
+  font-size: var(--size-font-m);
+}
+
+.blog__post .description {
+  color: var(--color-txt-secondary);
+  margin-bottom: var(--space-s);
+}
+
+.blog__post .date {
+  display: block;
+  font-weight: 300;
+  font-size: var(--size-font-xs);
+}

@@ -1,0 +1,29 @@
+/*
+ * File: /app/styles/core.css
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+html {
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  background: #fff;
+  background: var(--color-bg-main);
+
+  color: #050505;
+  color: var(--color-txt-main);
+}
+
+img:not([src*=".svg"]) {
+  filter: var(--color-image-filter);
+}
+
+code {
+  font-family: monospace;
+}

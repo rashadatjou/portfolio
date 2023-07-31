@@ -1,0 +1,39 @@
+/*
+ * File: /app/styles/element/card.css
+ * Project: portfolio
+ * Created: Saturday, 10th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--space-s);
+}
+
+.card {
+  border: var(--size-border-width) solid var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  padding: var(--space-m);
+  background-color: var(--color-bg-body);
+}
+
+.card.inline {
+  display: flex;
+  flex-direction: row;
+}
+
+a.card {
+  color: var(--color-txt-main);
+  text-decoration: none;
+}
+
+/* Mobile */
+@media screen and (max-width: 650px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}

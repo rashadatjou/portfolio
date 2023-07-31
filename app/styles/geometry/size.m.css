@@ -1,0 +1,21 @@
+/*
+ * File: /app/styles/geometry/size.m.css
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+/* Devices between 650px and 1024px */
+
+:root {
+  /* Width */
+  --size-width-max: 70rem;
+  --size-width-img: 25rem;
+  --size-width-loader: 8rem;
+
+  /* Height */
+  --form-field-height: calc(var(--space-l) + var(--size-font-m));
+}

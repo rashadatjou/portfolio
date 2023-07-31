@@ -1,0 +1,55 @@
+/*
+ * File: /app/styles/element/link-list.css
+ * Project: portfolio
+ * Created: Saturday, 10th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+/* list */
+.link-list {
+  font-size: var(--size-font-l);
+  font-weight: 600;
+
+  display: flex;
+  column-gap: var(--space-m);
+  row-gap: var(--space-xl);
+}
+
+.link-list.normal {
+  font-size: var(--size-font-s);
+}
+
+.link-list.small {
+  font-size: var(--size-font-xs);
+}
+
+/* link */
+.link-list > li {
+  flex: 1;
+}
+
+.link-list > li > a {
+  text-decoration: none;
+  appearance: none;
+}
+
+.link-list > li > .active {
+  text-decoration: underline;
+}
+
+.link-list > li.button {
+  border: var(--size-border-width) solid var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  padding: var(--space-m) var(--space-l);
+  background-color: var(--color-bg-body);
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .link-list {
+    flex-direction: column;
+  }
+}

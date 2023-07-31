@@ -1,0 +1,114 @@
+/*
+ * File: /app/styles/element/form.css
+ * Project: portfolio
+ * Created: Thursday, 17th November 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-items: stretch;
+}
+
+/* Groups */
+fieldset {
+  margin-bottom: var(--space-l);
+}
+
+fieldset.linear {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form legend {
+  font-weight: 600;
+  font-size: var(--size-font-s);
+}
+
+/* Label */
+.form label,
+.label {
+  font-weight: 500;
+  font-size: var(--size-font-s);
+  color: var(--color-txt-secondary);
+  text-transform: capitalize;
+  display: block;
+}
+
+.form label + input,
+.form label + select,
+.form label + textarea {
+  margin-top: var(--space-s);
+}
+
+/* Elements */
+.form input,
+.form select,
+.form textarea {
+  background-color: var(--color-bg-body);
+}
+
+.form select {
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  background-image: var(--icon-chevron-down);
+  background-position-x: 100%;
+  background-position-y: calc(var(--form-field-height) / 5);
+  background-repeat: no-repeat;
+  border-color: var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  border-width: var(--size-border-width);
+  color: var(--color-txt-main);
+  display: block;
+  font-size: var(--size-font-s);
+  height: var(--form-field-height);
+  padding: var(--space-s);
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.form input {
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  background-repeat: no-repeat;
+  border-radius: var(--size-border-radius);
+  border: solid var(--color-bg-border) var(--size-border-width);
+  color: var(--color-txt-main);
+  display: block;
+  font-size: var(--size-font-s);
+  height: var(--form-field-height);
+  padding: var(--space-s);
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.form textarea {
+  font-size: var(--size-font-s);
+  color: var(--color-txt-main);
+  display: block;
+  width: 100%;
+  border: solid;
+  border-width: var(--size-border-width);
+  border-radius: var(--size-border-radius);
+  border-color: var(--color-bg-border);
+  padding: var(--space-s);
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  background-repeat: no-repeat;
+  font-family: inherit;
+}
+
+/* Errors */
+.form p.error {
+  color: var(--color-txt-error);
+  font-size: var(--size-font-xs);
+  padding-block: var(--space-s);
+}

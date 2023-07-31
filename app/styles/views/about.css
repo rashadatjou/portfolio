@@ -1,0 +1,125 @@
+/*
+ * File: /app/styles/views/about.css
+ * Project: portfolio
+ * Created: Tuesday, 6th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+.about {
+  background-color: var(--color-bg-main);
+  min-height: 100vh;
+}
+
+.about .nav-header {
+  padding: var(--space-m);
+}
+
+.about__content {
+  padding-inline: var(--space-l);
+  padding-block: var(--space-m);
+}
+
+/* Select all children except the 1 one */
+.about__content > *:not(:first-child) {
+  max-width: var(--size-width-max);
+  margin-inline: auto;
+}
+
+/* profile */
+.profile {
+  text-align: center;
+}
+
+.profile .title {
+  margin-block: var(--space-s);
+}
+
+.profile .bio {
+  font-size: var(--size-font-s);
+  margin-top: var(--space-xs);
+  color: var(--color-txt-secondary);
+}
+
+.profile .image {
+  max-width: var(--size-width-img);
+  border: var(--size-border-width) solid var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  padding: var(--space-m);
+  background-color: var(--color-bg-body);
+  margin-top: var(--space-m);
+  display: inline;
+}
+
+.profile .stat-list {
+  display: flex;
+  justify-content: center;
+  column-gap: var(--space-m);
+  margin-block: var(--space-l);
+}
+
+.profile .stat-list .stat {
+  font-size: var(--size-font-xs);
+  font-weight: 600;
+  color: var(--color-txt-inverted);
+  background-color: var(--color-act-secondary);
+  width: calc(var(--size-font-s) * 2);
+  padding: var(--space-xs);
+  border-radius: var(--size-border-radius);
+}
+
+/* loader */
+.loader {
+  margin-bottom: var(--space-xl);
+}
+
+/* Links */
+.link-list__container {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.link-list > li > a {
+  text-decoration: none;
+  color: var(--color-txt-muted);
+}
+
+.link-list > li > a.active {
+  color: var(--color-act-secondary);
+  text-decoration: none;
+}
+
+/* Projects */
+.projects {
+  text-align: center;
+}
+
+.projects__container {
+  margin-block: var(--space-m);
+}
+
+.projects__container .title {
+  margin-block: var(--space-l);
+  font-weight: 500;
+}
+
+.projects__container .card a {
+  font-weight: 600;
+}
+
+.projects__container .card .tag__container {
+  justify-content: center;
+}
+
+.projects__container .card .tag__container > li {
+  font-size: var(--size-font-xs);
+  color: var(--color-txt-muted);
+}
+
+/* Resume */
+.downloads__container .card.inline {
+  justify-content: space-between;
+  align-items: center;
+}

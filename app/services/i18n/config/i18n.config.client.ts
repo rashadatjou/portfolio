@@ -29,5 +29,5 @@ export const i18nClientConfig: InitOptions = {
     // on the browser, so we disable it
     caches: [],
   },
-  debug: process.env.NODE_ENV === "development",
+  debug: true,
 };

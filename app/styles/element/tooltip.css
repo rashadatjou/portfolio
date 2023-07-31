@@ -1,0 +1,116 @@
+/*
+ * File: /app/styles/element/tooltip.css
+ * Project: portfolio
+ * Created: Wednesday, 7th December 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltip .tooltip__content {
+  visibility: hidden;
+  text-align: center;
+
+  background-color: var(--color-bg-body);
+  font-size: var(--size-font-xxs);
+  padding: var(--space-s) var(--space-l);
+  position: absolute;
+  z-index: 1;
+}
+
+/* Present when container has been hovered over */
+.tooltip:hover .tooltip__content {
+  visibility: visible;
+}
+
+/* Position */
+.tooltip .tooltip__content.top {
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-bottom: var(--space-s);
+}
+
+.tooltip .tooltip__content.bottom {
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: var(--space-s);
+}
+
+.tooltip .tooltip__content.left {
+  top: -5px;
+  right: calc(100% + var(--space-s));
+}
+
+.tooltip .tooltip__content.right {
+  top: -5px;
+  left: calc(100% + var(--space-s));
+}
+
+/* Arrow position */
+.tooltip .tooltip__content::after {
+  --arrow-size: 5px;
+
+  /* General arrow */
+  content: " ";
+  position: absolute;
+  border-style: solid;
+  border-width: var(--arrow-size);
+}
+
+.tooltip .tooltip__content.top::after {
+  /* ↓ */
+  top: 100%;
+  left: 50%;
+  margin-left: calc(var(--arrow-size) * -1);
+  border-color: var(--color-txt-secondary) transparent transparent transparent;
+}
+
+.tooltip .tooltip__content.bottom::after {
+  /* ↑ */
+  bottom: 100%;
+  left: 50%;
+  margin-left: calc(var(--arrow-size) * -1);;
+  border-color: transparent transparent var(--color-txt-secondary) transparent;
+}
+
+.tooltip .tooltip__content.left::after {
+  /* → */
+  top: 50%;
+  left: 100%;
+  margin-top: calc(var(--arrow-size) * -1);;
+  border-color: transparent transparent transparent var(--color-txt-secondary);
+}
+
+.tooltip .tooltip__content.right::after {
+  /* ← */
+  top: 50%;
+  right: 100%;
+  margin-top: calc(var(--arrow-size) * -1);;
+  border-color: transparent var(--color-txt-secondary) transparent transparent;
+}
+
+/* Types */
+.tooltip .tooltip__content.always-on {
+  visibility: visible;
+}
+
+.tooltip .tooltip__content.solid {
+  color: var(--color-txt-inverted);
+  background-color: var(--color-bg-tooltip);
+  border-radius: var(--size-border-radius);
+}
+
+.tooltip .tooltip__content.dotted {
+  color: var(--color-txt-main);
+  border-radius: var(--size-border-radius);
+  border: var(--size-border-width) dotted var(--color-txt-secondary);
+}

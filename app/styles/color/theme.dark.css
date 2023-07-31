@@ -1,0 +1,58 @@
+/*
+ * File: /app/styles/color/dark.css
+ * Project: portfolio
+ * Created: Tuesday, 4th October 2022
+ * Author: Denpex
+ * -----
+ * Copyright 2022, ©Mehdi Rashadatjou
+ * -----
+ */
+
+/*
+ * keyword:
+ * 1. bg (background)
+ * 2. txt (text/font)
+ * 3. act (action/button/link)
+ * 4. theme (specific theme color)
+ * 5. focus (element focus color)
+ * 6. selection (text selection color)
+ * 7. highlight (text highlight color)
+ *
+ * level:
+ * 1. main
+ * 2. secondary
+ * 3. tertiary
+ */
+
+:root {
+  /* Background */
+  --color-bg-main: #232323;
+  --color-bg-secondary: #424242;
+  --color-bg-body: #161515;
+  --color-bg-border: #444444;
+  --color-bg-shadow: rgba(82, 82, 82, 0.25);
+  --color-bg-tooltip: #9a9a9a;
+
+  /* Text */
+  --color-txt-main: #e2e2e2;
+  --color-txt-secondary: #c2c1c1;
+  --color-txt-inverted: #050505;
+  --color-txt-muted: #a9b1ba;
+  --color-txt-bright: #fff;
+  --color-txt-error: #b72e2e;
+
+  /* Actions */
+  --color-act-main: #09D7A0;
+  --color-act-secondary: #F9844E;
+
+  /* Other */
+  --color-theme-main: #f6d728;
+  --color-focus-main: rgb(6, 239, 177, 0.67);
+  --color-selection-main: #312b0a;
+  --color-highlight-main: #01ffbb;
+  --color-image-filter: grayscale(10%);
+  --color-badge-main: #5648d5;
+
+  /* Icons */
+  --icon-chevron-down: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPScjZmFmYWZhJyBoZWlnaHQ9JzI0JyB2aWV3Qm94PScwIDAgMjQgMjQnIHdpZHRoPScyNCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNNyAxMGw1IDUgNS01eicvPjxwYXRoIGQ9J00wIDBoMjR2MjRIMHonIGZpbGw9J25vbmUnLz48L3N2Zz4=)
+}
