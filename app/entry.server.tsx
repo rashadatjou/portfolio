@@ -8,7 +8,7 @@
  * -----
  */
 
-import type { AppLoadContext, EntryContext } from "@remix-run/cloudflare";
+import type { EntryContext } from "@remix-run/cloudflare";
 
 import { RemixServer } from "@remix-run/react";
 import { renderToReadableStream } from "react-dom/server";
@@ -22,9 +22,10 @@ export default async function handleRequest(
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext,
-  loadContext: AppLoadContext,
+  // loadContext: AppLoadContext,
 ) {
   const i18n = await i18nInterceptor(request, remixContext);
+
   const body = await renderToReadableStream(
     <I18nextProvider i18n={i18n}>
       <RemixServer context={remixContext} url={request.url} />

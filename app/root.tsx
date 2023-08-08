@@ -18,7 +18,7 @@ import {
 
 import { getLocale, i18nRemix } from "~/services/i18n/i18n.server";
 import { i18nCookie } from "~/services/i18n/config/cookie";
-import { useChangeLanguage } from "remix-i18next";
+import { useChangeLanguage } from "~/services/i18n/hook";
 import { useTranslation } from "react-i18next";
 
 import resetCssPath from "~/styles/reset.css";
@@ -41,8 +41,8 @@ type LoaderData = {
 export const loader: LoaderFunction = async ({ request }) => {
   const locale = await getLocale(request);
   const translate = await i18nRemix.getFixedT(request, "base");
-  const title = translate("meta.title");
-  const description = translate("meta.description");
+  const title = "@rashadatjou" // translate("meta.title");
+  const description = "Developer Friendly." //translate("meta.description");
 
   const headers = new Headers();
   headers.set("Set-Cookie", await i18nCookie.serialize(locale));

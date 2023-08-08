@@ -14,9 +14,26 @@ import { createInstance } from "i18next";
 import { initReactI18next } from "react-i18next";
 import { RemixI18Next } from "remix-i18next";
 import { i18nServerConfig, i18nRemixConfig } from "./config/i18n.config.server";
-import Backend from "i18next-fs-backend";
+// import Backend from "i18next-fs-backend";
+import resourcesToBackend from "i18next-resources-to-backend";
 
 export const i18nRemix = new RemixI18Next(i18nRemixConfig);
+
+import enLocale from "@public/locales/en/base.json";
+import svLocale from "@public/locales/sv/base.json";
+import bsLocale from "@public/locales/bs/base.json";
+
+const availableLanguages = {
+  en: {
+    base: enLocale,
+  },
+  sv: {
+    base: svLocale,
+  },
+  bs: {
+    base: bsLocale,
+  },
+};
 
 export async function i18nInterceptor(request: Request, context: EntryContext) {
   // First, we create a new instance of i18next so every request will have a
@@ -31,7 +48,8 @@ export async function i18nInterceptor(request: Request, context: EntryContext) {
 
   await i18n
     .use(initReactI18next)
-    .use(Backend)
+    .use(resourcesToBackend(availableLanguages))
+    // .use(Backend)
     .init({
       ...i18nServerConfig,
       lng: language,
