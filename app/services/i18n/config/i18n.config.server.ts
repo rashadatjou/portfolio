@@ -13,10 +13,7 @@ import type { RemixI18NextOption } from "remix-i18next";
 import { resolve } from "node:path";
 import { i18nCookie } from "./cookie";
 
-import Backend from "i18next-fs-backend";
-
 const remixConfig: RemixI18NextOption = {
-  backend: Backend as any, // Bug ?
   detection: {
     // Persist language selection in cookie
     cookie: i18nCookie,
