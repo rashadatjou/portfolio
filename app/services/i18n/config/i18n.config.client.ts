@@ -15,6 +15,7 @@ export const i18nClientConfig: InitOptions = {
   // The default namespace of i18next is "translation", but you can customize it here
   react: { useSuspense: false },
   defaultNS: "base",
+  fallbackLng: "en",
   // This function detects the namespaces your routes rendered while SSR use
   ns: getInitialNamespaces(),
   backend: {
