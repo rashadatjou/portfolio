@@ -24,4 +24,9 @@ export default [
     username: "rashadatjou",
     href: "https://instagram.com/rashadatjou",
   },
+  {
+    platform: "LinkedIn",
+    username: "rashadatjou",
+    href: "https://www.linkedin.com/in/mehdi-rashadatjou-114a77266",
+  },
 ];
