@@ -59,7 +59,7 @@ const AboutView = ({ gitUser }: Props) => {
           publicGistCount={gitUser?.publicGistCount}
           publicRepoCount={gitUser?.publicRepoCount}
           followersCount={gitUser?.followersCount}
-          bio={gitUser?.bio}
+          bio={t("about.profile.bio")}
           translate={t}
         />
         <LinkList size="normal" buttonLike data={linkListData} translate={t} />
