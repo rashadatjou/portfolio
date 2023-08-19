@@ -29,7 +29,7 @@
 }
 
 .intro-content > p {
-  padding: var(--space-m);
+  padding: var(--space-m) var(--space-xl);
 }
 
 /* Link List */
