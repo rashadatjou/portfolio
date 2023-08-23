@@ -46,6 +46,11 @@ const projectList: Project[] = [
     href: "https://app.flowplayer.com",
     tags: ["Web", "React", "VOD", "Livestream"],
   },
+  {
+    name: "Wowza Flowplayer Apple SDK",
+    href: "https://github.com/flowplayer/apple-sdk-releases",
+    tags: ["Swift", "Livestream", "AVPlayer", "VOD", "iOS", "tvOS"],
+  },
 ];
 
 export default projectList;
