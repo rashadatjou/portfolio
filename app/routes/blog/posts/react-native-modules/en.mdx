@@ -1,0 +1,251 @@
+---
+meta:
+  name: "react-native-modules"
+  title: "Linking Dependencies inside of React Native View Modules for iOS"
+  description: "In depth tutorial on how to link frameworks/libraries to your native view modulews when building a react native package for iOS and Android."
+  date: "2023-09-01T10:18:29+0000"
+  tags: ["react", "react-native", "ios", "packages", "native modules"]
+headers:
+  Cache-Control: max-age=604800
+---
+
+# Linking Dependencies inside of React Native View Modules for iOS demystified
+
+I will start this blog of by saying that I have gained tremendous respect to my colleagues that use React Native day by day.
+
+## Introduction
+
+### The promise
+
+[React Native](https://reactnative.dev/) promises a lot by down-scaling the amount of work needed to produce a multi-platform app into a single JavaScript™️ project that can be handled by a single individual to produce both an iOS and an Android app that behave and look the same.
+
+### The reality
+
+When building a custom experiences like the one I was required to build form my client you realize that you now need to have 3 integrated development environments running side-by-side to actually get the app running.
+
+After the hassle of now having your attention spread across 3 different contexts (iOS, Web and Android) you need to handle platform specific errors which are hard to debug due to the obscurity of each error and a non existing debugging tool for React Native.
+
+Let's only hope that God, Google and ChatGPT can help you with it...
+
+### The problem
+
+We are trying to build a so called [React Native Native Component iOS](https://reactnative.dev/docs/native-components-ios) that leverages a native Swift™️ [XCFramework](https://developer.apple.com/documentation/xcode/creating-a-multi-platform-binary-framework-bundle) called [Wowza Flowplayer Apple SDK](https://github.com/flowplayer/apple-sdk-releases) that was built by me.
+
+> The _Wowza Flowplayer Apple SDK_ is a fully integrate video player that allows you to play: VODs, Livestreams and other types of media. It is small and customizable player that is easy to integrate and should run smoothly as it doesn't require many resources of the device due to it's architecture.
+
+## Step 1: Setting up the project
+
+Starting of the project using the [react-native-cli](https://www.npmjs.com/package/react-native-cli) and manually linking the `Native Module` turned into a mess due to all the linking required in your project
+
+The linking should look something like this:
+
+```
+Native Module -> React Native -> Example App
+```
+
+If you are thinking to start of and manually connect everything I highly advise against as the process is almost impossible to get right without serious knowledge in all 3 platforms (Web, iOS and Android).
+
+The recommended way to get started is by using the [react-native-builder-bob](https://github.com/callstack/react-native-builder-bob) CLI from [Callstack™️](https://callstack.com?utm_source=rashadatjou). Which is a delight to use and will get you up and running in no time.
+
+Following the docs you are going to run:
+
+```bash
+npx create-react-native-library@latest my-library
+```
+
+Answer the questions of the CLI:
+
+```bash
+? What is the name of the npm package? › <NAME>
+
+? What is the description for the package? › <DESCRIPTION>
+
+? What is the name of package author? › <DEVELOPER>
+
+? What is the email address for the package author? › <EMAIL>
+
+? What is the URL for the package author? › <URL>
+
+? What is the URL for the repository? › <GIT_URL>
+
+? What type of library do you want to develop? › - Use arrow-keys. Return to submit.
+    JavaScript library - supports Expo Go and Web
+    Native module
+ ❯  Native view
+    Turbo module with backward compat
+    Turbo module
+    Fabric view with backward compat
+    Fabric view
+
+? Which languages do you want to use? › - Use arrow-keys. Return to submit.
+    Java & Objective-C
+    Kotlin & Objective-C
+    Java & Swift
+❯   Kotlin & Swift
+```
+
+After the questioner the CLI will create your project and you will get the following message:
+
+```bash
+✔ Project created successfully at awesome-library!
+
+Get started with the project:
+
+  $ yarn
+
+Run the example app on iOS:
+
+  $ yarn example ios
+
+Run the example app on Android:
+
+  $ yarn example android
+```
+
+All that is left for us to do is `cd` into our project root and install the ungodly amount of dependencies need for this monstrosity to run.
+
+```bash
+cd my-library
+yarn
+```
+
+## Step 2: Exploring up the project
+
+The project comes bundled with a lot of tooling that is useful but in our scenario will only provide us with software bloat. While explaining the project and it's structure I will also delete some of the not so needed files and utilities along the way.
+
+```bash
+» ls -a
+__ .editorconfig
+__ .git
+__ .gitattributes
+__ .github
+__ .gitignore
+__ .nvmrc
+__ .watchmanconfig
+__ .yarnrc
+__ android
+__ babel.config.js
+__ CODE_OF_CONDUCT.md
+__ CONTRIBUTING.md
+__ example
+__ ios
+__ lefthook.yml
+__ LICENSE
+__ node_modules
+__ package.json
+__ react-native-awesome-library.podspec
+__ README.md
+__ scripts
+__ src
+__ tsconfig.build.json
+__ tsconfig.json
+__ turbo.json
+__ yarn.lock
+```
+
+As shown above the scaffold project is huge and to make it easier for everyone to follow along we will delete certain files and remove tools that uses them. But first let's explain all the files above and what they do:
+
+**`.editorconfig`** – [editorconfig.org](https://editorconfig.org)
+
+EditorConfig helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs.
+
+**`.git`**
+
+This is a directory where Git stores metadata and object files for the repository. It's the heart of the Git version control system.
+
+**`.gitattributes`**
+
+Configuration file for Git that can define attributes for paths, such as handling line endings or marking paths as export-ignore.
+
+**`.github`** – [github.com](https://docs.github.com/en/actions/using-workflows)
+
+This directory often contains GitHub-specific configurations, such as workflows for GitHub Actions or templates for issues and pull requests.
+
+**`.gitignore`**
+
+A file that specifies intentionally untracked files that Git should ignore when performing operations.
+
+**`.nvmrc`** – [nvm-sh](https://github.com/nvm-sh/nvm#nvmrc)
+
+Contains a version number that tells nvm (Node Version Manager) which version of Node.js to use for the project.
+
+**`.watchmanconfig`** – [watchman](https://facebook.github.io/watchman/)
+
+Configuration file for Watchman, a tool by Facebook that watches for file changes.
+
+**`.yarnrc`** – [yarn](https://yarnpkg.com/)
+
+Configuration file for Yarn, a JavaScript package manager. It may contain settings like registry URL or package installation settings.
+
+**`android`**
+
+This directory contains the native code for the Android platform.
+
+**`babel.config.js`** – [babeljs.io](https://babeljs.io/)
+
+Configuration file for Babel, a JavaScript transpiler. It helps convert ES6/ES7 JavaScript code into a version that can run in current JavaScript engines.
+
+**`CODE_OF_CONDUCT.md`**
+
+Guidelines for how contributors should behave within the community.
+
+**`CONTRIBUTING.md`** [contributing.md](https://contributing.md/)
+
+Guidelines for people who want to contribute to the project.
+
+**`example`**
+
+Example or demo application that uses the library/module being developed.
+
+**`ios`**
+
+This directory contains the native code for the iOS platform.
+
+**`lefthook.yml`** – [evilmartians/lefthook](https://github.com/evilmartians/lefthook)
+
+Configuration file for `Lefthook`, a fast and powerful Git hooks manager.
+
+**`LICENSE`**
+
+Specifies the license for the project. It defines how the software can be used and distributed.
+
+**`node_modules`**
+
+Folder where all the modules and libraries are stored after they're installed via yarn.
+
+**`package.json`**
+
+Contains metadata about the project, like its dependencies, scripts, version, etc.
+
+**`react-native-awesome-library.podspec`**
+
+A specification file for CocoaPods, which is a dependency manager for Swift and Objective-C. It describes the properties of the native module for iOS.
+
+**`README.md`**
+
+Documentation for the project. It gives an overview of what the project does, how to set it up, and other essential information.
+
+**`scripts`**
+
+Typically contains custom scripts that help in various project operations, like building or deployment.
+
+**`src`**
+
+TypeScript Source code directory of the project.
+
+**`tsconfig.build.json`** – [typescriptlang.org/tsconfig](https://www.typescriptlang.org/tsconfig)
+
+TypeScript compiler configuration specific for building the project.
+
+**`tsconfig.json`** – [typescriptlang.org/tsconfig](https://www.typescriptlang.org/tsconfig)
+
+Base TypeScript compiler configuration for the project.
+
+**`turbo.json`** – [turbo.build/repo](https://turbo.build/repo)
+
+Configuration for Turbo, which might be related to speeding up builds or other tasks within the project.
+
+**`yarn.lock`**
+
+Automatically generated file by Yarn that locks the installed versions of each package to ensure consistency across environments.
+
