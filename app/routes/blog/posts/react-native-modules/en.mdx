@@ -11,7 +11,7 @@ headers:
 
 # Linking Dependencies inside of React Native View Modules for iOS demystified
 
-I will start this blog of by saying that I have gained tremendous respect to my colleagues that use React Native day by day.
+I will start this blog of by saying that I have gained tremendous respect to my colleagues that use React Native day by day. As the sheer amount of tools need to run and compile a single React Native project is just tremendous.
 
 ## Introduction
 
@@ -115,32 +115,32 @@ The project comes bundled with a lot of tooling that is useful but in our scenar
 
 ```bash
 » ls -a
-__ .editorconfig
-__ .git
-__ .gitattributes
-__ .github
-__ .gitignore
-__ .nvmrc
-__ .watchmanconfig
-__ .yarnrc
-__ android
-__ babel.config.js
-__ CODE_OF_CONDUCT.md
-__ CONTRIBUTING.md
-__ example
-__ ios
-__ lefthook.yml
-__ LICENSE
-__ node_modules
-__ package.json
-__ react-native-awesome-library.podspec
-__ README.md
-__ scripts
-__ src
-__ tsconfig.build.json
-__ tsconfig.json
-__ turbo.json
-__ yarn.lock
+– .editorconfig
+– .git
+– .gitattributes
+– .github
+– .gitignore
+– .nvmrc
+– .watchmanconfig
+– .yarnrc
+– android
+– babel.config.js
+– CODE_OF_CONDUCT.md
+– CONTRIBUTING.md
+– example
+– ios
+– lefthook.yml
+– LICENSE
+– node_modules
+– package.json
+– react-native-awesome-library.podspec
+– README.md
+– scripts
+– src
+– tsconfig.build.json
+– tsconfig.json
+– turbo.json
+– yarn.lock
 ```
 
 As shown above the scaffold project is huge and to make it easier for everyone to follow along we will delete certain files and remove tools that uses them. But first let's explain all the files above and what they do:
@@ -249,3 +249,170 @@ Configuration for Turbo, which might be related to speeding up builds or other t
 
 Automatically generated file by Yarn that locks the installed versions of each package to ensure consistency across environments.
 
+> Okay... so you only need to know 13 different tools/technologies nothing to worry about 😅
+
+## Step 3: Exploring the Code
+
+The part of the code that I will cover here is only going to be the JavaScript™️ and iOS. I won't cover the Android side in this tutorial FYI.
+
+### Javascript
+
+If we open the `src` directory we can find the actual TypeScript code that we are going to need to integrate. The structure is pretty simple:
+
+```bash
+» cd src
+» ls -R
+
+– index.tsx
+– __tests__/
+  – index.test.tsx
+```
+
+Now lets look into the index.tsx and see what fun things are waiting for us inside:
+
+```bash
+» cat index.tsx
+```
+
+```javascript
+import {
+  requireNativeComponent,
+  UIManager,
+  Platform,
+  type ViewStyle,
+} from "react-native";
+
+const LINKING_ERROR =
+  `The package 'react-native-awesome-library' doesn't seem to be linked. Make sure: \n\n` +
+  Platform.select({ ios: "- You have run 'pod install'\n", default: "" }) +
+  "- You rebuilt the app after installing the package\n" +
+  "- You are not using Expo Go\n";
+
+type AwesomeLibraryProps = {
+  color: string,
+  style: ViewStyle,
+};
+
+const ComponentName = "AwesomeLibraryView";
+
+export const AwesomeLibraryView =
+  UIManager.getViewManagerConfig(ComponentName) != null
+    ? requireNativeComponent < AwesomeLibraryProps > ComponentName
+    : () => {
+        throw new Error(LINKING_ERROR);
+      };
+```
+
+What is happening in the file:
+
+1. We are importing all the necessary dependencies from the `react-native` module.
+2. We are setting up a linking error message for anyone who is going to use this module explaining him why it might be broken.
+3. We are declaring the `types` our `view` accepts (these properties should be the ones exported from the native iOS/Android side).
+4. We are declaring the name of our `view` (this is the name of the actual native `view` from iOS/Android).
+5. We are trying to load the actual `view` using the `requireNativeComponent` and if we have done so successfully we export it so that it can be used inside of our React Native module.
+
+### iOS
+
+With the understanding who the JavaScript™️ side now works. Let's go the iOS side and see what we have there.
+
+```bash
+» cd ../
+» cd ios/
+» ls -R
+
+– AwesomeLibrary-Bridging-Header.h
+– AwesomeLibraryViewManager.m
+– AwesomeLibrary.xcodeproj/
+– AwesomeLibraryViewManager.swift
+```
+
+At the first glance it looks like a simple boilerplate code for `Objective-C` library. Let's read the files one by one and see what awaits us there.
+
+**AwesomeLibrary-Bridging-Header.h**
+
+```bash
+» cat AwesomeLibrary-Bridging-Header.h
+```
+
+```swift
+#import <React/RCTViewManager.h>
+```
+
+The so called Bridging-Header file is a `Objective-C` header file which links our `Swift` code with `Objective-C`. This header file loads the `React/RCTViewManager` header so that we can use it our `Swift` files.
+
+**AwesomeLibraryViewManager.m**
+
+```bash
+» cat AwesomeLibraryViewManager.m
+```
+
+```swift
+#import <React/RCTViewManager.h>
+
+@interface RCT_EXTERN_MODULE(AwesomeLibraryViewManager, RCTViewManager)
+
+RCT_EXPORT_VIEW_PROPERTY(color, NSString)
+
+@end
+```
+
+We are again importing the the `RCTViewManager`
+
+The official React Native documentation states the following about the `RCTViewManager`:
+
+> Native views are created and manipulated by subclasses of RCTViewManager. These subclasses are similar in function to view controllers, but are essentially singletons - only one instance of each is created by the bridge
+
+We learn that `RCTViewManager` is what is actually going to represent our `view` in our Javascript code. We are creating here and exporting at the same time `AwesomeLibraryViewManager` which has a single property `color: NSString`.
+
+**AwesomeLibraryViewManager.swift**
+
+```bash
+» cat AwesomeLibraryViewManager.swift
+```
+
+```swift
+@objc(AwesomeLibraryViewManager)
+class AwesomeLibraryViewManager: RCTViewManager {
+
+  override func view() -> (AwesomeLibraryView) {
+    return AwesomeLibraryView()
+  }
+
+  @objc override static func requiresMainQueueSetup() -> Bool {
+    return false
+  }
+}
+
+class AwesomeLibraryView : UIView {
+
+  @objc var color: String = "" {
+    didSet {
+      self.backgroundColor = hexStringToUIColor(hexColor: color)
+    }
+  }
+
+  func hexStringToUIColor(hexColor: String) -> UIColor {
+    let stringScanner = Scanner(string: hexColor)
+
+    if(hexColor.hasPrefix("#")) {
+      stringScanner.scanLocation = 1
+    }
+    var color: UInt32 = 0
+    stringScanner.scanHexInt32(&color)
+
+    let r = CGFloat(Int(color >> 16) & 0x000000FF)
+    let g = CGFloat(Int(color >> 8) & 0x000000FF)
+    let b = CGFloat(Int(color) & 0x000000FF)
+
+    return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)
+  }
+}
+```
+
+So here is the actual implementation of the Native Swift UI... I was wondering after all those files we saw where the actual code is located.
+
+The important thing to note here is that we are exposing our Swift code to Objective-C using the` @objc` attribute. The native code that is then used by React Native is actually a Static Objective-C Library. To comply with that, we need to expose our `AwesomeLibraryViewManager` as an Objective-C class. The `AwesomeLibraryView` which inherits from the `UIView` class in `UIKit`, an Objective-C UI framework, doesn't need to be annotated. However, the `color: String` instance property needs the `@objc` annotation to be exposed to Objective-C.
+
+## Step 4: Adding Swift Dependencies
+
+TODO: ...
