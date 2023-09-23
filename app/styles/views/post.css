@@ -25,8 +25,21 @@ body {
 
 /* Elements */
 .post__wrapper > * {
-  margin: var(--space-m) var(--space-s);
-  padding-block: var(--space-s);
+  margin: var(--space-l);
+}
+
+ol {
+  list-style-type: square;
+  list-style-position: outside;
+}
+
+ol > li {
+  padding-bottom: var(--space-m);
+}
+
+code {
+  background-color: var(--color-bg-main);
+  color: var(--color-act-secondary);
 }
 
 pre {
