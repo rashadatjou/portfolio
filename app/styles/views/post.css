@@ -8,10 +8,6 @@
  * -----
  */
 
-body {
-  background-color: var(--color-bg-body);
-}
-
 .post {
   font-size: var(--size-font-s);
 }
@@ -38,12 +34,12 @@ ol > li {
 }
 
 code {
-  background-color: var(--color-bg-main);
+  background-color: var(--color-bg-body);
   color: var(--color-act-secondary);
 }
 
 pre {
-  background-color: var(--color-bg-main);
+  background-color: var(--color-bg-body);
   padding: var(--space-l) !important;
   border-radius: var(--size-border-radius);
   overflow: scroll;
