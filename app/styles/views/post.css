@@ -8,32 +8,40 @@
  * -----
  */
 
+body {
+  background-color: var(--color-bg-body);
+}
+
 .post {
-  text-align: center;
-  background-color: var(--color-bg-main);
+  font-size: var(--size-font-s);
 }
 
 .post__wrapper {
-  background-color: var(--color-bg-body);
-  max-width: var(--size-width-max);
+  height: max-content;
   margin: auto;
+  max-width: var(--size-width-max);
   padding-top: calc(var(--size-font-l) * 2);
-  height: 100vh;
-  border-left: var(--size-border-width) solid var(--color-bg-border);
-  border-right: var(--size-border-width) solid var(--color-bg-border);
-  padding-inline: var(--space-m);
 }
 
 /* Elements */
 .post__wrapper > * {
   margin: var(--space-m) var(--space-s);
+  padding-block: var(--space-s);
+}
+
+pre {
+  background-color: var(--color-bg-main);
+  padding: var(--space-l) !important;
+  border-radius: var(--size-border-radius);
+  overflow: scroll;
 }
 
 blockquote {
   background: var(--color-bg-main);
   border-left: 10px solid #ccc;
-  padding: var(--space-s);
+  padding: var(--space-l);
   quotes: "\201C""\201D""\2018""\2019";
+  border-radius: var(--size-border-radius);
 }
 
 blockquote:before {
