@@ -9,9 +9,7 @@
  */
 
 .tag__container {
-  display: flex;
-  column-gap: var(--space-l);
-  margin-top: var(--space-s);
+  overflow: hidden;
 }
 
 .tag {
@@ -22,4 +20,9 @@
   border-radius: var(--size-border-radius);
   font-weight: bold;
   text-decoration: none;
+  display: inline-block;
+}
+
+.tag ~ .tag {
+  margin: var(--space-xs);
 }

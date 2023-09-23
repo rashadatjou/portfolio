@@ -46,7 +46,7 @@ pre {
 }
 
 blockquote {
-  background: var(--color-bg-main);
+  background-color: var(--color-bg-body);
   border-left: 10px solid #ccc;
   padding: var(--space-l);
   quotes: "\201C""\201D""\2018""\2019";

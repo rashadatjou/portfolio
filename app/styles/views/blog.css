@@ -54,8 +54,7 @@
 }
 
 .blog__post .title {
-  margin-bottom: var(--space-xs);
-  font-size: var(--size-font-m);
+  margin-bottom: var(--space-s);
 }
 
 .blog__post .description {
