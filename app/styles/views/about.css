@@ -107,15 +107,17 @@
 
 .projects__container .card a {
   font-weight: 600;
+  word-break: break-all;
 }
 
 .projects__container .card .tag__container {
-  justify-content: center;
+  text-align: center;
 }
 
-.projects__container .card .tag__container > li {
+.projects__container .card .tag__container .tag {
   font-size: var(--size-font-xs);
   color: var(--color-txt-muted);
+  font-weight: 400;
 }
 
 /* Resume */

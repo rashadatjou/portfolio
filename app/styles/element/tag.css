@@ -26,3 +26,7 @@
 .tag ~ .tag {
   margin: var(--space-xs);
 }
+
+.tag.no-bg {
+  background-color: unset;
+}
