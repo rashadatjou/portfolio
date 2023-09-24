@@ -10,6 +10,7 @@
 
 .post {
   font-size: var(--size-font-s);
+  line-height: 1.5;
 }
 
 .post__wrapper {
