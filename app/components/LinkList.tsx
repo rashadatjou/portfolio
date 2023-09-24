@@ -37,9 +37,14 @@ const LinkList = ({
   <div className="link-list__container">
     <ul className={cns(["link-list", size])}>
       {data.map((item) => (
-        <li key={item.href} className={buttonLike ? "button" : undefined}>
+        <li key={item.href}>
           <NavLink
-            className={({ isActive }) => (isActive ? "active" : undefined)}
+            className={({ isActive }) =>
+              cns([
+                isActive ? "active" : undefined,
+                buttonLike ? "button" : undefined,
+              ])
+            }
             to={item.href}>
             {translate?.(item.name) || item.name}
           </NavLink>

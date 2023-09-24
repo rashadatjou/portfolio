@@ -43,7 +43,7 @@ const MainView = () => {
       <div className="intro-content">
         <h1>👋🏽</h1>
         <h1>{t("intro.title")}</h1>
-        <LinkList translate={t} data={linkListData} />
+        <LinkList translate={t} buttonLike data={linkListData} />
       </div>
       <Footer title={t(sourceCodeData.name)} href={sourceCodeData.href} />
     </div>
