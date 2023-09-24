@@ -20,7 +20,7 @@ type Props = {};
 function loadTypeEmoji(type: string): string {
   switch (type) {
     case "file":
-      return "📑";
+      return "🗂️";
     default:
       return "";
   }
