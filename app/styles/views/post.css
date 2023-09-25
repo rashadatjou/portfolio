@@ -70,3 +70,7 @@ blockquote p {
 blockquote em {
   font-style: italic;
 }
+
+img {
+  width: 100%;
+}

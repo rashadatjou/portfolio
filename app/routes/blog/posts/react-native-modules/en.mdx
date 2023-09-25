@@ -413,6 +413,175 @@ So here is the actual implementation of the Native Swift UI... I was wondering a
 
 The important thing to note here is that we are exposing our Swift code to Objective-C using the` @objc` attribute. The native code that is then used by React Native is actually a Static Objective-C Library. To comply with that, we need to expose our `AwesomeLibraryViewManager` as an Objective-C class. The `AwesomeLibraryView` which inherits from the `UIView` class in `UIKit`, an Objective-C UI framework, doesn't need to be annotated. However, the `color: String` instance property needs the `@objc` annotation to be exposed to Objective-C.
 
-## Step 4: Adding Swift Dependencies
+## Step 4: Adding 3rd party Swift Dependencies
 
-TODO: ...
+This part proved to be more tricky then it should be due to missing documentation on the React Native site. If we go to the official docs and see how to import 3rd party dependencies we will see [this](https://reactnative.dev/docs/linking-libraries-ios). The docs show us that we need to drag and drop our libraries/frameworks into our project and then we are going to be able to actually use them.
+
+In our scenario this is wrong and it should not be done this way! If we want to setup a proper development environment so that we don't need to manage our dependency versions and other knick-knacks we are going to use `CocoaPods` and the already present `.podspec` file that was generated for us.
+
+Let's open the `react-native-awesome-library.podspec` file and see what we have:
+
+```ruby
+require "json"
+
+package = JSON.parse(File.read(File.join(__dir__, "package.json")))
+folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
+
+Pod::Spec.new do |s|
+  s.name         = "react-native-awesome-library"
+  s.version      = package["version"]
+  s.summary      = package["description"]
+  s.homepage     = package["homepage"]
+  s.license      = package["license"]
+  s.authors      = package["author"]
+
+  s.platforms    = { :ios => "11.0" }
+  s.source       = { :git => "https://github.com/rashadatjou/react-native-awesome-library.git", :tag => "#{s.version}" }
+
+  s.source_files = "ios/**/*.{h,m,mm,swift}"
+
+  # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
+  # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
+  if respond_to?(:install_modules_dependencies, true)
+    install_modules_dependencies(s)
+  else
+    s.dependency "React-Core"
+
+    # Don't install the dependencies when we run `pod install` in the old architecture.
+    if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
+      s.compiler_flags = folly_compiler_flags + " -DRCT_NEW_ARCH_ENABLED=1"
+      s.pod_target_xcconfig    = {
+          "HEADER_SEARCH_PATHS" => "\"$(PODS_ROOT)/boost\"",
+          "OTHER_CPLUSPLUSFLAGS" => "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1",
+          "CLANG_CXX_LANGUAGE_STANDARD" => "c++17"
+      }
+      s.dependency "React-RCTFabric"
+      s.dependency "React-Codegen"
+      s.dependency "RCT-Folly"
+      s.dependency "RCTRequired"
+      s.dependency "RCTTypeSafety"
+      s.dependency "ReactCommon/turbomodule/core"
+    end
+  end
+end
+
+```
+
+I won't go into detail and explain what each line here does. The one thing that we are going to remember is the `s.dependency` declarations as that is how we are adding `CocoaPods` dependencies to our project.
+
+To add our desired `Wowza Flowplayer SDK` dependency into our project we are going to add the following right before the `if statement`:
+
+```ruby
+# Set FlowplayerSDK dependency
+s.dependency "FlowplayerSDK", '~> 4.1.0'
+s.dependency "GoogleAds-IMA-iOS-SDK", '~> 3.19.1'
+```
+
+All goody, now to run the `yarn` again to install these dependencies. I recommend everyone to always run `yarn clean` then `yarn` just to be sure no pesky bugs arise.
+
+```bash
+» yarn clean
+» yarn
+```
+
+Response:
+
+```bash
+error Command failed with exit code 1.
+```
+
+But why did it fail? The issue stems that we have already setup our dependencies in our `example/ios/` project and we need to now go purge everything there and restart the installation process.
+
+```bash
+» cd example/ios/
+» la -a
+– .xcode.env
+– AwesomeLibraryExample
+– AwesomeLibraryExample-Bridging-Header.h
+– AwesomeLibraryExample.xcodeproj
+– AwesomeLibraryExample.xcworkspace
+– AwesomeLibraryExampleTests
+– build
+– File.swift
+– Podfile
+– Podfile.lock # delete this
+– Pods # delete this
+```
+
+```bash
+» rm -rf Podfile.lock Pods
+```
+
+Awesome by deleting these 2 files now when we run `yarn` again we are going to force CocoaPods to install all dependencies again without any errors.
+
+There is one more extra step we need to do before we can install our dependencies. We need to update the minimum development version of our `example` to iOS 14 as our dependencies require that (you can skip this part if your dependency doesn't require iOS 13 or above)
+
+To accomplish this we are going to need to update both the `Podfile` and our Xcode project.
+
+Update `Podfile` from this:
+
+```bash
+» cat Podfile
+
+# Resolve react_native_pods.rb with node to allow for hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+
+platform :ios, min_ios_version_supported
+prepare_react_native_project!
+
+.
+.
+.
+```
+
+To this:
+
+```bash
+» cat Podfile
+
+# Resolve react_native_pods.rb with node to allow for hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+
+min_ios_versions_supported = ['14.0', min_ios_version_supported]
+index_of_max = min_ios_versions_supported.each_with_index.max_by { |number, _| number.to_f }[1]
+platform :ios, min_ios_versions_supported[index_of_max]
+prepare_react_native_project!
+
+.
+.
+.
+```
+
+Now open your `*.xcworkspace` file and do the following:
+
+![Xcode Image](/assets/blog2xcode.jpeg)
+
+> Voilà we are done 😅 finally we can start install our dependencies...
+
+Now go back to root of our project install the dependencies:
+
+```bash
+» cd ../..
+» yarn clean
+» yarn
+```
+
+Output:
+
+```bash
+Pod installation complete! There are 64 dependencies from the Podfile and 56 total pods installed.
+✨  Done in 18.88s.
+```
+
+DONE AND DONE.
+
+## Step 5 using our 3rd party dependency
+// TODO: ...
