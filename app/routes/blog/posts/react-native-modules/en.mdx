@@ -35,19 +35,19 @@ We're attempting to construct what's termed as a [React Native Native Component 
 
 ## Step 1: Setting up the project
 
-Starting of the project using the [react-native-cli](https://www.npmjs.com/package/react-native-cli) and manually linking the `Native Module` turned into a mess due to all the linking required in your project
+Starting a project using the [react-native-cli](https://www.npmjs.com/package/react-native-cli) and manually linking the `Native Module` can quickly become chaotic due to the extensive linking required for your project.
 
-The linking should look something like this:
+The linkage should ideally resemble:
 
 ```
 Native Module -> React Native -> Example App
 ```
 
-If you are thinking to start of and manually connect everything I highly advise against as the process is almost impossible to get right without serious knowledge in all 3 platforms (Web, iOS and Android).
+If you're contemplating starting from scratch and manually connecting everything, I'd strongly advise against it. Achieving this without deep expertise in all three platforms (Web, iOS, and Android) is nearly an insurmountable challenge.
 
-The recommended way to get started is by using the [react-native-builder-bob](https://github.com/callstack/react-native-builder-bob) CLI from [Callstack™️](https://callstack.com?utm_source=rashadatjou). Which is a delight to use and will get you up and running in no time.
+Instead, I recommend utilizing the [react-native-builder-bob](https://github.com/callstack/react-native-builder-bob) CLI from [Callstack™️](https://callstack.com?utm_source=rashadatjou). This tool is incredibly user-friendly, ensuring you're operational in no time.
 
-Following the docs you are going to run:
+To get started, you'll want to follow the documentation and execute:
 
 ```bash
 » npx create-react-native-library@latest my-library
@@ -102,7 +102,7 @@ Run the example app on Android:
   $ yarn example android
 ```
 
-All that is left for us to do is `cd` into our project root and install the ungodly amount of dependencies need for this monstrosity to run.
+All that remains is for us to `cd` into our project root and install the staggering number of dependencies required for this behemoth to function.
 
 ```bash
 » cd my-library
