@@ -2,7 +2,7 @@
 meta:
   name: "react-native-modules"
   title: "Linking Dependencies inside of React Native View Modules for iOS"
-  description: "In depth tutorial on how to link frameworks/libraries to your native view modulews when building a react native package for iOS and Android."
+  description: "In depth tutorial on how to link frameworks/libraries to your native view modules when building a react native package for iOS and Android."
   date: "2023-09-01T10:18:29+0000"
   tags: ["react", "react-native", "ios", "packages", "native modules"]
 headers:
@@ -584,4 +584,26 @@ Pod installation complete! There are 64 dependencies from the Podfile and 56 tot
 DONE AND DONE.
 
 ## Step 5 using our 3rd party dependency
-// TODO: ...
+
+We can finally do what React Native promised us that we can concentrate on the coding without worrying about the platform specific details 😉.
+
+Let's open our `ios/AwesomeLibraryViewManager.swift` project with Xcode and add our platform specific code:
+
+```swift
+import FlowplayerSDK
+
+// Add the code for setup here
+```
+
+Note that there is not going to be any intellisense as Xcode at this point doesn't know what is inside of `FlowplayerSDK`. Good luck though anyway 😅. This is due to how Objective-C allows us to link dependencies during run-time so the compiler doesn't care if you add import something that doesn't actually exists.
+
+## Conclusion
+
+We had to do a lot of platform specific tinkering to actually load our dependency in such a manner that we can update at anytime using our CLI and `CocoaPods`. I hope that this blog helps out some poor soul that needs to go trough the same hell as I did because this was not fun at all.
+
+If you are interested in a part 2 of the blog where I actually go and write code instead of setting up the development environment send an email using my portfolio website.
+
+Cheers,
+Mehdi Rashadatjou.
+
+<br />
