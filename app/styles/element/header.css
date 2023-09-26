@@ -23,9 +23,11 @@
 .nav-header.relative {
   position: relative;
   padding: unset;
+  margin-top: var(--space-l);
 }
 
 .nav-header.fixed {
   position: fixed;
   padding: var(--space-m);
+  margin-top: var(--space-l);
 }

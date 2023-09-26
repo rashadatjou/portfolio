@@ -49,7 +49,7 @@ function postFiltered(allPosts: MDXPost[], tag?: string | null) {
 const PostItem = ({ post, locale, navigate }: PostItemProps) => (
   <li className="blog__post">
     <div className="blog__post-container" onClick={() => navigate(post.slug)}>
-      <h1 className="title">{post.title}</h1>
+      <h2 className="title">{post.title}</h2>
 
       {post.description ? (
         <p className="description">{post.description}</p>

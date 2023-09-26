@@ -26,11 +26,11 @@ localizeRoot((i18n) => {
     hydrateRoot(
       document,
       <I18nextProvider i18n={i18n}>
-        <StrictMode>
-          <ThemeProvider<Theme> defaultTheme={defaultTheme || "auto"}>
+        <ThemeProvider<Theme> autoLoad defaultTheme={defaultTheme || "auto"}>
+          <StrictMode>
             <RemixBrowser />
-          </ThemeProvider>
-        </StrictMode>
+          </StrictMode>
+        </ThemeProvider>
       </I18nextProvider>,
     );
   });

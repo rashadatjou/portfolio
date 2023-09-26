@@ -58,7 +58,7 @@ const Projects = () => {
               </a>
               <ul className="tag__container">
                 {project.tags.map((tag) => (
-                  <li key={tag}>
+                  <li key={tag} className="tag no-bg">
                     <span>{tag}</span>
                   </li>
                 ))}

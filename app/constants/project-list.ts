@@ -49,7 +49,7 @@ const projectList: Project[] = [
   {
     name: "Wowza Flowplayer Apple SDK",
     href: "https://github.com/flowplayer/apple-sdk-releases",
-    tags: ["Swift", "Livestream", "AVPlayer", "VOD", "iOS", "tvOS"],
+    tags: ["Swift", "Livestream", "AVPlayer", "VOD"],
   },
 ];
 

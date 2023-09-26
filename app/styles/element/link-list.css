@@ -40,11 +40,12 @@
   text-decoration: underline;
 }
 
-.link-list > li.button {
+.link-list > li > .button {
   border: var(--size-border-width) solid var(--color-bg-border);
   border-radius: var(--size-border-radius);
-  padding: var(--space-m) var(--space-l);
   background-color: var(--color-bg-body);
+  padding: var(--space-m) var(--space-l);
+  display: block;
 }
 
 /* Mobile */

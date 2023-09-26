@@ -9,5 +9,6 @@
  */
 
 import * as HelloWorldBlog from "~/routes/blog/posts/hello-world";
+import * as ReactNativeBlog from "~/routes/blog/posts/react-native-modules";
 
-export default [HelloWorldBlog];
+export default [ReactNativeBlog, HelloWorldBlog];

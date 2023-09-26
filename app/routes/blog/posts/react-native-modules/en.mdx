@@ -1,0 +1,612 @@
+---
+meta:
+  name: "react-native-modules"
+  title: "Linking Dependencies inside of React Native View Modules for iOS"
+  description: "In depth tutorial on how to link frameworks/libraries to your native view modules when building a react native package for iOS and Android."
+  date: "2023-09-01T10:18:29+0000"
+  tags: ["react", "react-native", "ios", "packages", "native modules"]
+headers:
+  Cache-Control: max-age=604800
+---
+
+# Linking Dependencies Inside React Native View Modules for iOS
+
+I'll start this blog **post** by saying that I have gained tremendous respect **for** my colleagues who use React Native day in and day out. The sheer number of tools **needed** to run and compile a single React Native project is truly overwhelming.
+
+## Introduction
+
+### The Promise
+
+[React Native](https://reactnative.dev/) promises to significantly reduce the workload needed to produce a multi-platform app. With just a single JavaScript™️ project, an individual can create both an iOS and Android app that offer consistent behavior and appearance.
+
+### The Reality
+
+When tasked with building custom experiences, like the one my client required, you quickly realize that three integrated development environments (IDEs) must run side-by-side to get the app functioning.
+
+Managing attention across three distinct contexts—iOS, Web, and Android—is already a challenge. But then, you're hit with platform-specific errors. These errors are not only obscure but are further complicated by the lack of robust debugging tools for React Native.
+
+One can only hope that divine intervention, in the form of God, Google, or ChatGPT, might come to the rescue!
+
+### The Problem
+
+We're attempting to construct what's termed as a [React Native Native Component iOS](https://reactnative.dev/docs/native-components-ios). This leverages a native Swift™️ [XCFramework](https://developer.apple.com/documentation/xcode/creating-a-multi-platform-binary-framework-bundle) named [Wowza Flowplayer Apple SDK](https://github.com/flowplayer/apple-sdk-releases), which I developed.
+
+> The **Wowza Flowplayer Apple SDK** is a fully integrated video player that supports various media types, including VODs and livestreams. Despite its compact size and customizability, it operates seamlessly, demanding minimal device resources thanks to its efficient architecture.
+
+## Step 1: Setting Up the Project
+
+Starting a project using the [react-native-cli](https://www.npmjs.com/package/react-native-cli) and manually linking the `Native Module` can quickly become chaotic due to the extensive linking required for your project.
+
+The linkage should ideally resemble:
+
+```
+Native Module -> React Native -> Example App
+```
+
+If you're contemplating starting from scratch and manually connecting everything, I'd strongly advise against it. Achieving this without deep expertise in all three platforms (Web, iOS, and Android) is nearly an insurmountable challenge.
+
+Instead, I recommend utilizing the [react-native-builder-bob](https://github.com/callstack/react-native-builder-bob) CLI from [Callstack™️](https://callstack.com?utm_source=rashadatjou). This tool is incredibly user-friendly, ensuring you're operational in no time.
+
+To get started, you'll want to follow the documentation and execute:
+
+```bash
+» npx create-react-native-library@latest my-library
+```
+
+Answer the questions of the CLI:
+
+```bash
+? What is the name of the npm package? › <NAME>
+
+? What is the description for the package? › <DESCRIPTION>
+
+? What is the name of package author? › <DEVELOPER>
+
+? What is the email address for the package author? › <EMAIL>
+
+? What is the URL for the package author? › <URL>
+
+? What is the URL for the repository? › <GIT_URL>
+
+? What type of library do you want to develop? › - Use arrow-keys. Return to submit.
+    JavaScript library - supports Expo Go and Web
+    Native module
+ ❯  Native view
+    Turbo module with backward compat
+    Turbo module
+    Fabric view with backward compat
+    Fabric view
+
+? Which languages do you want to use? › - Use arrow-keys. Return to submit.
+    Java & Objective-C
+    Kotlin & Objective-C
+    Java & Swift
+❯   Kotlin & Swift
+```
+
+After the questioner the CLI will create your project and you will get the following message:
+
+```bash
+✔ Project created successfully at awesome-library!
+
+Get started with the project:
+
+  $ yarn
+
+Run the example app on iOS:
+
+  $ yarn example ios
+
+Run the example app on Android:
+
+  $ yarn example android
+```
+
+All that remains is for us to `cd` into our project root and install the staggering number of dependencies required for this behemoth to function.
+
+```bash
+» cd my-library
+» yarn
+```
+
+## Step 2: Setting Up the Project Structure
+
+The project comes bundled with an array of helpful tools. However, in our specific scenario, many of these tools only contribute to software bloat. I will walk you through the project and its structure:
+
+```bash
+» ls -a
+– .editorconfig
+– .git
+– .gitattributes
+– .github
+– .gitignore
+– .nvmrc
+– .watchmanconfig
+– .yarnrc
+– android
+– babel.config.js
+– CODE_OF_CONDUCT.md
+– CONTRIBUTING.md
+– example
+– ios
+– lefthook.yml
+– LICENSE
+– node_modules
+– package.json
+– react-native-awesome-library.podspec
+– README.md
+– scripts
+– src
+– tsconfig.build.json
+– tsconfig.json
+– turbo.json
+– yarn.lock
+```
+
+As shown above the scaffold project is huge and to make it easier for everyone to follow along we will delete certain files and remove tools that uses them. But first let's explain all the files above and what they do:
+
+**`.editorconfig`** – [editorconfig.org](https://editorconfig.org)
+
+EditorConfig helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs.
+
+**`.git`**
+
+This is a directory where Git stores metadata and object files for the repository. It's the heart of the Git version control system.
+
+**`.gitattributes`**
+
+Configuration file for Git that can define attributes for paths, such as handling line endings or marking paths as export-ignore.
+
+**`.github`** – [github.com](https://docs.github.com/en/actions/using-workflows)
+
+This directory often contains GitHub-specific configurations, such as workflows for GitHub Actions or templates for issues and pull requests.
+
+**`.gitignore`**
+
+A file that specifies intentionally untracked files that Git should ignore when performing operations.
+
+**`.nvmrc`** – [nvm-sh](https://github.com/nvm-sh/nvm#nvmrc)
+
+Contains a version number that tells nvm (Node Version Manager) which version of Node.js to use for the project.
+
+**`.watchmanconfig`** – [watchman](https://facebook.github.io/watchman/)
+
+Configuration file for Watchman, a tool by Facebook that watches for file changes.
+
+**`.yarnrc`** – [yarn](https://yarnpkg.com/)
+
+Configuration file for Yarn, a JavaScript package manager. It may contain settings like registry URL or package installation settings.
+
+**`android`**
+
+This directory contains the native code for the Android platform.
+
+**`babel.config.js`** – [babeljs.io](https://babeljs.io/)
+
+Configuration file for Babel, a JavaScript transpiler. It helps convert ES6/ES7 JavaScript code into a version that can run in current JavaScript engines.
+
+**`CODE_OF_CONDUCT.md`**
+
+Guidelines for how contributors should behave within the community.
+
+**`CONTRIBUTING.md`** [contributing.md](https://contributing.md/)
+
+Guidelines for people who want to contribute to the project.
+
+**`example`**
+
+Example or demo application that uses the library/module being developed.
+
+**`ios`**
+
+This directory contains the native code for the iOS platform.
+
+**`lefthook.yml`** – [evilmartians/lefthook](https://github.com/evilmartians/lefthook)
+
+Configuration file for `Lefthook`, a fast and powerful Git hooks manager.
+
+**`LICENSE`**
+
+Specifies the license for the project. It defines how the software can be used and distributed.
+
+**`node_modules`**
+
+Folder where all the modules and libraries are stored after they're installed via yarn.
+
+**`package.json`**
+
+Contains metadata about the project, like its dependencies, scripts, version, etc.
+
+**`react-native-awesome-library.podspec`**
+
+A specification file for CocoaPods, which is a dependency manager for Swift and Objective-C. It describes the properties of the native module for iOS.
+
+**`README.md`**
+
+Documentation for the project. It gives an overview of what the project does, how to set it up, and other essential information.
+
+**`scripts`**
+
+Typically contains custom scripts that help in various project operations, like building or deployment.
+
+**`src`**
+
+TypeScript Source code directory of the project.
+
+**`tsconfig.build.json`** – [typescriptlang.org/tsconfig](https://www.typescriptlang.org/tsconfig)
+
+TypeScript compiler configuration specific for building the project.
+
+**`tsconfig.json`** – [typescriptlang.org/tsconfig](https://www.typescriptlang.org/tsconfig)
+
+Base TypeScript compiler configuration for the project.
+
+**`turbo.json`** – [turbo.build/repo](https://turbo.build/repo)
+
+Configuration for Turbo, which might be related to speeding up builds or other tasks within the project.
+
+**`yarn.lock`**
+
+Automatically generated file by Yarn that locks the installed versions of each package to ensure consistency across environments.
+
+> Okay... so you only need to know 13 different tools/technologies nothing to worry about 😅
+
+## Step 3: Exploring the Code
+
+In this section, we'll delve into the JavaScript™️ and iOS parts of the code. Please note that the Android aspect won't be covered in this tutorial.
+
+### JavaScript
+
+Upon opening the `src` directory, you'll encounter the TypeScript code that we aim to integrate. The structure is fairly straightforward:
+
+```bash
+» cd src
+» ls -R
+
+– index.tsx
+– __tests__/
+  – index.test.tsx
+```
+
+Now let's look into the `index.tsx` and see what fun things are waiting for us inside:
+
+```bash
+» cat index.tsx
+```
+
+```javascript
+import {
+  requireNativeComponent,
+  UIManager,
+  Platform,
+  type ViewStyle,
+} from "react-native";
+
+const LINKING_ERROR =
+  `The package 'react-native-awesome-library' doesn't seem to be linked. Make sure: \n\n` +
+  Platform.select({ ios: "- You have run 'pod install'\n", default: "" }) +
+  "- You rebuilt the app after installing the package\n" +
+  "- You are not using Expo Go\n";
+
+type AwesomeLibraryProps = {
+  color: string,
+  style: ViewStyle,
+};
+
+const ComponentName = "AwesomeLibraryView";
+
+export const AwesomeLibraryView =
+  UIManager.getViewManagerConfig(ComponentName) != null
+    ? requireNativeComponent < AwesomeLibraryProps > ComponentName
+    : () => {
+        throw new Error(LINKING_ERROR);
+      };
+```
+
+Here's what's happening in the file:
+
+1. **Importing Dependencies:** All essential dependencies from the `react-native` module are being imported.
+2. **Linking Error Message:** An error message is established to guide anyone using this module, explaining potential reasons for malfunctions.
+3. **Type Declarations:** The `types` our `view` accepts are declared. These properties should align with those exported from the native iOS/Android side.
+4. **View Name Declaration:** The name of our `view` is defined, corresponding to the actual native `view` from iOS/Android.
+5. **Loading the View:** We attempt to load the actual `view` using `requireNativeComponent`. Once successfully loaded, it's exported to be incorporated within our React Native module.
+
+### iOS
+
+With a grasp on how the JavaScript™️ side functions, let's move on to the iOS side and explore its contents.
+
+```bash
+» cd ../
+» cd ios/
+» ls -R
+
+– AwesomeLibrary-Bridging-Header.h
+– AwesomeLibraryViewManager.m
+– AwesomeLibrary.xcodeproj/
+– AwesomeLibraryViewManager.swift
+```
+
+At first glance, it appears to be standard boilerplate code for an `Objective-C` library. Let's delve into the files sequentially and discover what lies within.
+
+**AwesomeLibrary-Bridging-Header.h**
+
+```bash
+» cat AwesomeLibrary-Bridging-Header.h
+```
+
+```swift
+#import <React/RCTViewManager.h>
+```
+
+The so-called "Bridging-Header" file acts as an `Objective-C` header, creating a bridge between our `Swift` code and `Objective-C`. This header not only imports the `React/RCTViewManager` but also all other `Objective-C` dependencies. This allows them to be used in our `Swift` files without the need for explicit imports.
+
+**AwesomeLibraryViewManager.m**
+
+```bash
+» cat AwesomeLibraryViewManager.m
+```
+
+```swift
+#import <React/RCTViewManager.h>
+
+@interface RCT_EXTERN_MODULE(AwesomeLibraryViewManager, RCTViewManager)
+
+RCT_EXPORT_VIEW_PROPERTY(color, NSString)
+
+@end
+```
+
+We once again import the `RCTViewManager`.
+
+The official React Native documentation provides clarity on the role of `RCTViewManager`:
+
+> Native views are created and manipulated by subclasses of RCTViewManager. These subclasses are similar in function to view controllers, but are essentially singletons - only one instance of each is created by the bridge.
+
+From this, we gather that the `RCTViewManager` acts as the representative of our `view` within our JavaScript code. In this context, we create and simultaneously export `AwesomeLibraryViewManager`, which carries a sole property, `color: NSString`.
+
+**AwesomeLibraryViewManager.swift**
+
+```bash
+» cat AwesomeLibraryViewManager.swift
+```
+
+```swift
+@objc(AwesomeLibraryViewManager)
+class AwesomeLibraryViewManager: RCTViewManager {
+
+  override func view() -> (AwesomeLibraryView) {
+    return AwesomeLibraryView()
+  }
+
+  @objc override static func requiresMainQueueSetup() -> Bool {
+    return false
+  }
+}
+
+class AwesomeLibraryView : UIView {
+
+  @objc var color: String = "" {
+    didSet {
+      self.backgroundColor = hexStringToUIColor(hexColor: color)
+    }
+  }
+
+  func hexStringToUIColor(hexColor: String) -> UIColor {
+    let stringScanner = Scanner(string: hexColor)
+
+    if(hexColor.hasPrefix("#")) {
+      stringScanner.scanLocation = 1
+    }
+    var color: UInt32 = 0
+    stringScanner.scanHexInt32(&color)
+
+    let r = CGFloat(Int(color >> 16) & 0x000000FF)
+    let g = CGFloat(Int(color >> 8) & 0x000000FF)
+    let b = CGFloat(Int(color) & 0x000000FF)
+
+    return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)
+  }
+}
+```
+
+At last, we've stumbled upon the actual implementation of the Native Swift UI. After going through the numerous files, it's a relief to locate the core code.
+
+A crucial point of emphasis here is the utilization of the `@objc` attribute to expose our Swift code to Objective-C. React Native leverages a Static Objective-C Library for the native code. To align with this structure, our `AwesomeLibraryViewManager` must be presented as an Objective-C class. While the `AwesomeLibraryView`, inheriting from the `UIView` class of the `UIKit` (an Objective-C UI framework), doesn't require annotation, the `color: String` instance property must carry the `@objc` annotation for proper exposure to Objective-C.
+
+## Step 4: Incorporating 3rd Party Swift Dependencies
+
+Navigating this step was unexpectedly tricky due to gaps in React Native's official documentation. Consulting the [official documentation](https://reactnative.dev/docs/linking-libraries-ios) for importing 3rd party dependencies suggests a straightforward drag-and-drop method for integrating libraries/frameworks into our project.
+
+However, this approach doesn't fit our use case—it's not the recommended path! For a more efficient development environment, minimizing the need for manual dependency version management and other tedious tasks, we'll leverage `CocoaPods`. We'll work with the `.podspec` file, which has already been generated for our convenience.
+
+Let's open the `react-native-awesome-library.podspec` file and see what we have:
+
+```ruby
+require "json"
+
+package = JSON.parse(File.read(File.join(__dir__, "package.json")))
+folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
+
+Pod::Spec.new do |s|
+  s.name         = "react-native-awesome-library"
+  s.version      = package["version"]
+  s.summary      = package["description"]
+  s.homepage     = package["homepage"]
+  s.license      = package["license"]
+  s.authors      = package["author"]
+
+  s.platforms    = { :ios => "11.0" }
+  s.source       = { :git => "https://github.com/rashadatjou/react-native-awesome-library.git", :tag => "#{s.version}" }
+
+  s.source_files = "ios/**/*.{h,m,mm,swift}"
+
+  # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
+  # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
+  if respond_to?(:install_modules_dependencies, true)
+    install_modules_dependencies(s)
+  else
+    s.dependency "React-Core"
+
+    # Don't install the dependencies when we run `pod install` in the old architecture.
+    if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
+      s.compiler_flags = folly_compiler_flags + " -DRCT_NEW_ARCH_ENABLED=1"
+      s.pod_target_xcconfig    = {
+          "HEADER_SEARCH_PATHS" => "\"$(PODS_ROOT)/boost\"",
+          "OTHER_CPLUSPLUSFLAGS" => "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1",
+          "CLANG_CXX_LANGUAGE_STANDARD" => "c++17"
+      }
+      s.dependency "React-RCTFabric"
+      s.dependency "React-Codegen"
+      s.dependency "RCT-Folly"
+      s.dependency "RCTRequired"
+      s.dependency "RCTTypeSafety"
+      s.dependency "ReactCommon/turbomodule/core"
+    end
+  end
+end
+
+```
+
+I won't delve deep into each line's purpose in this section. However, it's paramount to keep an eye on the `s.dependency` declarations—this is our key to integrating `CocoaPods` dependencies into the project.
+
+To incorporate the coveted `Wowza Flowplayer SDK` dependency, insert the following just prior to the `if` statement:
+
+```ruby
+# Set FlowplayerSDK dependency
+s.dependency "FlowplayerSDK", '~> 4.1.0'
+s.dependency "GoogleAds-IMA-iOS-SDK", '~> 3.19.1'
+```
+
+Great, with that in place, it's time to execute `yarn` once more to install the newly added dependencies. A pro tip for smoother development: always run `yarn clean` followed by `yarn`. This sequence helps ensure a clean slate and minimizes the chances of encountering stubborn bugs.
+
+```bash
+» yarn clean
+» yarn
+```
+
+Response:
+
+```bash
+error Command failed with exit code 1.
+```
+
+But why did it fail? The issue stems that we have already setup our dependencies in the `example/ios/` directory. The solution? Navigate to that directory, purge all existing configurations, and commence the installation process anew.
+
+```bash
+» cd example/ios/
+» la -a
+– .xcode.env
+– AwesomeLibraryExample
+– AwesomeLibraryExample-Bridging-Header.h
+– AwesomeLibraryExample.xcodeproj
+– AwesomeLibraryExample.xcworkspace
+– AwesomeLibraryExampleTests
+– build
+– File.swift
+– Podfile
+– Podfile.lock # delete this
+– Pods # delete this
+```
+
+```bash
+» rm -rf Podfile.lock Pods
+```
+
+Perfect! By removing those two files and running `yarn` once more, we compel CocoaPods to reinstall all dependencies afresh, sidestepping any potential errors.
+
+However, before we proceed with the installation of our dependencies, there's another critical step. Our dependencies demand a minimum development version of iOS 14 for the `example`. (Feel free to bypass this section if your dependencies are comfortable with iOS 13 or older.)
+
+To meet this requirement, updates are in order for both the `Podfile` and the Xcode project.
+
+Update `Podfile` from this:
+
+```bash
+» cat Podfile
+
+# Resolve react_native_pods.rb with node to allow for hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+
+platform :ios, min_ios_version_supported
+prepare_react_native_project!
+
+.
+.
+.
+```
+
+Update `Podfile` To this:
+
+```bash
+» cat Podfile
+
+# Resolve react_native_pods.rb with node to allow for hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+
+min_ios_versions_supported = ['14.0', min_ios_version_supported]
+index_of_max = min_ios_versions_supported.each_with_index.max_by { |number, _| number.to_f }[1]
+platform :ios, min_ios_versions_supported[index_of_max]
+prepare_react_native_project!
+
+.
+.
+.
+```
+
+Now open your `*.xcworkspace` and do the following:
+
+![Xcode Image](/assets/blog2xcode.jpeg)
+
+> Voilà! We've crossed the finish line. 😅 Now, it's finally time to install our dependencies.
+
+Now go back to root of the project and install the dependencies:
+
+```bash
+» cd ../..
+» yarn clean
+» yarn
+```
+
+Output:
+
+```bash
+Pod installation complete! There are 64 dependencies from the Podfile and 56 total pods installed.
+✨  Done in 18.88s.
+```
+
+DONE AND DONE.
+
+## Step 5: Utilizing our 3rd Party Dependency
+
+At last, we can immerse ourselves in what React Native pledged – focusing solely on the code, without the distractions of platform-specific intricacies. 😉
+
+Let's open our `ios/AwesomeLibraryViewManager.swift` project with Xcode and add our platform specific code:
+
+```swift
+import FlowplayerSDK
+
+// Add the code for setup here
+```
+
+> **Note:** Brace yourself for a lack of intellisense. At this point, Xcode remains unaware of the contents inside `FlowplayerSDK`. A something to smile at, perhaps? 😅 This peculiarity arises from Objective-C's ability to link dependencies during runtime. The compiler, it seems, is nonchalant about importing elements that may not truly exist.
+
+## Conclusion
+
+It's been quite the journey, plagued with platform-specific intricacies, just to get our dependency to load in a manner that's update-friendly via the CLI and `CocoaPods`. It's my sincerest wish that this blog post spares any other developer the same strenuous path I've had to traverse. Honestly, it was far from a joyride.
+
+If there's an appetite out there for a Part 2, where I pivot from setup to actual coding, shoot me an email through my portfolio website.
+
+Github repo for reference: [github.com/rashadatjou](https://github.com/rashadatjou/blog-react-native-awesome-library)
+
+Cheers to perseverance and the love of code,
+
+**Mehdi Rashadatjou.**
+
+<br />
