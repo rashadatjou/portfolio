@@ -413,11 +413,11 @@ At last, we've stumbled upon the actual implementation of the Native Swift UI. A
 
 A crucial point of emphasis here is the utilization of the `@objc` attribute to expose our Swift code to Objective-C. React Native leverages a Static Objective-C Library for the native code. To align with this structure, our `AwesomeLibraryViewManager` must be presented as an Objective-C class. While the `AwesomeLibraryView`, inheriting from the `UIView` class of the `UIKit` (an Objective-C UI framework), doesn't require annotation, the `color: String` instance property must carry the `@objc` annotation for proper exposure to Objective-C.
 
-## Step 4: Adding 3rd party Swift Dependencies
+## Step 4: Incorporating 3rd Party Swift Dependencies
 
-This part proved to be more tricky then it should be due to missing documentation on the React Native site. If we go to the official docs and see how to import 3rd party dependencies we will see [this](https://reactnative.dev/docs/linking-libraries-ios). The docs show us that we need to drag and drop our libraries/frameworks into our project and then we are going to be able to actually use them.
+Navigating this step was unexpectedly tricky due to gaps in React Native's official documentation. Consulting the [official documentation](https://reactnative.dev/docs/linking-libraries-ios) for importing 3rd party dependencies suggests a straightforward drag-and-drop method for integrating libraries/frameworks into our project.
 
-In our scenario this is wrong and it should not be done this way! If we want to setup a proper development environment so that we don't need to manage our dependency versions and other knick-knacks we are going to use `CocoaPods` and the already present `.podspec` file that was generated for us.
+However, this approach doesn't fit our use case—it's not the recommended path! For a more efficient development environment, minimizing the need for manual dependency version management and other tedious tasks, we'll leverage `CocoaPods`. We'll work with the `.podspec` file, which has already been generated for our convenience.
 
 Let's open the `react-native-awesome-library.podspec` file and see what we have:
 
@@ -467,9 +467,9 @@ end
 
 ```
 
-I won't go into detail and explain what each line here does. The one thing that we are going to remember is the `s.dependency` declarations as that is how we are adding `CocoaPods` dependencies to our project.
+I won't delve deep into each line's purpose in this section. However, it's paramount to keep an eye on the `s.dependency` declarations—this is our key to integrating `CocoaPods` dependencies into the project.
 
-To add our desired `Wowza Flowplayer SDK` dependency into our project we are going to add the following right before the `if statement`:
+To incorporate the coveted `Wowza Flowplayer SDK` dependency, insert the following just prior to the `if` statement:
 
 ```ruby
 # Set FlowplayerSDK dependency
@@ -477,7 +477,7 @@ s.dependency "FlowplayerSDK", '~> 4.1.0'
 s.dependency "GoogleAds-IMA-iOS-SDK", '~> 3.19.1'
 ```
 
-All goody, now to run the `yarn` again to install these dependencies. I recommend everyone to always run `yarn clean` then `yarn` just to be sure no pesky bugs arise.
+Great, with that in place, it's time to execute `yarn` once more to install the newly added dependencies. A pro tip for smoother development: always run `yarn clean` followed by `yarn`. This sequence helps ensure a clean slate and minimizes the chances of encountering stubborn bugs.
 
 ```bash
 » yarn clean
@@ -490,7 +490,7 @@ Response:
 error Command failed with exit code 1.
 ```
 
-But why did it fail? The issue stems that we have already setup our dependencies in our `example/ios/` project and we need to now go purge everything there and restart the installation process.
+But why did it fail? The issue stems that we have already setup our dependencies in the `example/ios/` directory. The solution? Navigate to that directory, purge all existing configurations, and commence the installation process anew.
 
 ```bash
 » cd example/ios/
@@ -512,11 +512,11 @@ But why did it fail? The issue stems that we have already setup our dependencies
 » rm -rf Podfile.lock Pods
 ```
 
-Awesome by deleting these 2 files now when we run `yarn` again we are going to force CocoaPods to install all dependencies again without any errors.
+Perfect! By removing those two files and running `yarn` once more, we compel CocoaPods to reinstall all dependencies afresh, sidestepping any potential errors.
 
-There is one more extra step we need to do before we can install our dependencies. We need to update the minimum development version of our `example` to iOS 14 as our dependencies require that (you can skip this part if your dependency doesn't require iOS 13 or above)
+However, before we proceed with the installation of our dependencies, there's another critical step. Our dependencies demand a minimum development version of iOS 14 for the `example`. (Feel free to bypass this section if your dependencies are comfortable with iOS 13 or older.)
 
-To accomplish this we are going to need to update both the `Podfile` and our Xcode project.
+To meet this requirement, updates are in order for both the `Podfile` and the Xcode project.
 
 Update `Podfile` from this:
 
@@ -538,7 +538,7 @@ prepare_react_native_project!
 .
 ```
 
-To this:
+Update `Podfile` To this:
 
 ```bash
 » cat Podfile
@@ -560,13 +560,13 @@ prepare_react_native_project!
 .
 ```
 
-Now open your `*.xcworkspace` file and do the following:
+Now open your `*.xcworkspace` and do the following:
 
 ![Xcode Image](/assets/blog2xcode.jpeg)
 
-> Voilà we are done 😅 finally we can start install our dependencies...
+> Voilà! We've crossed the finish line. 😅 Now, it's finally time to install our dependencies.
 
-Now go back to root of our project install the dependencies:
+Now go back to root of the project and install the dependencies:
 
 ```bash
 » cd ../..
@@ -583,9 +583,9 @@ Pod installation complete! There are 64 dependencies from the Podfile and 56 tot
 
 DONE AND DONE.
 
-## Step 5 using our 3rd party dependency
+## Step 5: Utilizing our 3rd Party Dependency
 
-We can finally do what React Native promised us that we can concentrate on the coding without worrying about the platform specific details 😉.
+At last, we can immerse ourselves in what React Native pledged – focusing solely on the code, without the distractions of platform-specific intricacies. 😉
 
 Let's open our `ios/AwesomeLibraryViewManager.swift` project with Xcode and add our platform specific code:
 
@@ -595,15 +595,16 @@ import FlowplayerSDK
 // Add the code for setup here
 ```
 
-Note that there is not going to be any intellisense as Xcode at this point doesn't know what is inside of `FlowplayerSDK`. Good luck though anyway 😅. This is due to how Objective-C allows us to link dependencies during run-time so the compiler doesn't care if you add import something that doesn't actually exists.
+> **Note:** Brace yourself for a lack of intellisense. At this point, Xcode remains unaware of the contents inside `FlowplayerSDK`. A something to smile at, perhaps? 😅 This peculiarity arises from Objective-C's ability to link dependencies during runtime. The compiler, it seems, is nonchalant about importing elements that may not truly exist.
 
 ## Conclusion
 
-We had to do a lot of platform specific tinkering to actually load our dependency in such a manner that we can update at anytime using our CLI and `CocoaPods`. I hope that this blog helps out some poor soul that needs to go trough the same hell as I did because this was not fun at all.
+It's been quite the journey, plagued with platform-specific intricacies, just to get our dependency to load in a manner that's update-friendly via the CLI and `CocoaPods`. It's my sincerest wish that this blog post spares any other developer the same strenuous path I've had to traverse. Honestly, it was far from a joyride.
 
-If you are interested in a part 2 of the blog where I actually go and write code instead of setting up the development environment send an email using my portfolio website.
+If there's an appetite out there for a Part 2, where I pivot from setup to actual coding, shoot me an email through my portfolio website.
 
-Cheers,
-Mehdi Rashadatjou.
+Cheers to perseverance and the love of code,
+
+**Mehdi Rashadatjou.**
 
 <br />
