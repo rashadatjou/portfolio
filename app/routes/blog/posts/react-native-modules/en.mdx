@@ -253,11 +253,11 @@ Automatically generated file by Yarn that locks the installed versions of each p
 
 ## Step 3: Exploring the Code
 
-The part of the code that I will cover here is only going to be the JavaScript™️ and iOS. I won't cover the Android side in this tutorial FYI.
+In this section, we'll delve into the JavaScript™️ and iOS parts of the code. Please note that the Android aspect won't be covered in this tutorial.
 
-### Javascript
+### JavaScript
 
-If we open the `src` directory we can find the actual TypeScript code that we are going to need to integrate. The structure is pretty simple:
+Upon opening the `src` directory, you'll encounter the TypeScript code that we aim to integrate. The structure is fairly straightforward:
 
 ```bash
 » cd src
@@ -268,7 +268,7 @@ If we open the `src` directory we can find the actual TypeScript code that we ar
   – index.test.tsx
 ```
 
-Now lets look into the index.tsx and see what fun things are waiting for us inside:
+Now let's look into the `index.tsx` and see what fun things are waiting for us inside:
 
 ```bash
 » cat index.tsx
@@ -303,13 +303,13 @@ export const AwesomeLibraryView =
       };
 ```
 
-What is happening in the file:
+Here's what's happening in the file:
 
-1. We are importing all the necessary dependencies from the `react-native` module.
-2. We are setting up a linking error message for anyone who is going to use this module explaining him why it might be broken.
-3. We are declaring the `types` our `view` accepts (these properties should be the ones exported from the native iOS/Android side).
-4. We are declaring the name of our `view` (this is the name of the actual native `view` from iOS/Android).
-5. We are trying to load the actual `view` using the `requireNativeComponent` and if we have done so successfully we export it so that it can be used inside of our React Native module.
+1. **Importing Dependencies:** All essential dependencies from the `react-native` module are being imported.
+2. **Linking Error Message:** An error message is established to guide anyone using this module, explaining potential reasons for malfunctions.
+3. **Type Declarations:** The `types` our `view` accepts are declared. These properties should align with those exported from the native iOS/Android side.
+4. **View Name Declaration:** The name of our `view` is defined, corresponding to the actual native `view` from iOS/Android.
+5. **Loading the View:** We attempt to load the actual `view` using `requireNativeComponent`. Once successfully loaded, it's exported to be incorporated within our React Native module.
 
 ### iOS
 
