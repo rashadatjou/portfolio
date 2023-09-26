@@ -313,7 +313,7 @@ Here's what's happening in the file:
 
 ### iOS
 
-With the understanding who the JavaScript™️ side now works. Let's go the iOS side and see what we have there.
+With a grasp on how the JavaScript™️ side functions, let's move on to the iOS side and explore its contents.
 
 ```bash
 » cd ../
@@ -326,7 +326,7 @@ With the understanding who the JavaScript™️ side now works. Let's go the iOS
 – AwesomeLibraryViewManager.swift
 ```
 
-At the first glance it looks like a simple boilerplate code for `Objective-C` library. Let's read the files one by one and see what awaits us there.
+At first glance, it appears to be standard boilerplate code for an `Objective-C` library. Let's delve into the files sequentially and discover what lies within.
 
 **AwesomeLibrary-Bridging-Header.h**
 
@@ -338,7 +338,7 @@ At the first glance it looks like a simple boilerplate code for `Objective-C` li
 #import <React/RCTViewManager.h>
 ```
 
-The so called Bridging-Header file is a `Objective-C` header file which links our `Swift` code with `Objective-C`. This header file loads the `React/RCTViewManager` header so that we can use it our `Swift` files.
+The so-called "Bridging-Header" file acts as an `Objective-C` header, creating a bridge between our `Swift` code and `Objective-C`. This header not only imports the `React/RCTViewManager` but also all other `Objective-C` dependencies. This allows them to be used in our `Swift` files without the need for explicit imports.
 
 **AwesomeLibraryViewManager.m**
 
@@ -356,13 +356,13 @@ RCT_EXPORT_VIEW_PROPERTY(color, NSString)
 @end
 ```
 
-We are again importing the the `RCTViewManager`
+We once again import the `RCTViewManager`.
 
-The official React Native documentation states the following about the `RCTViewManager`:
+The official React Native documentation provides clarity on the role of `RCTViewManager`:
 
-> Native views are created and manipulated by subclasses of RCTViewManager. These subclasses are similar in function to view controllers, but are essentially singletons - only one instance of each is created by the bridge
+> Native views are created and manipulated by subclasses of RCTViewManager. These subclasses are similar in function to view controllers, but are essentially singletons - only one instance of each is created by the bridge.
 
-We learn that `RCTViewManager` is what is actually going to represent our `view` in our Javascript code. We are creating here and exporting at the same time `AwesomeLibraryViewManager` which has a single property `color: NSString`.
+From this, we gather that the `RCTViewManager` acts as the representative of our `view` within our JavaScript code. In this context, we create and simultaneously export `AwesomeLibraryViewManager`, which carries a sole property, `color: NSString`.
 
 **AwesomeLibraryViewManager.swift**
 
@@ -409,9 +409,9 @@ class AwesomeLibraryView : UIView {
 }
 ```
 
-So here is the actual implementation of the Native Swift UI... I was wondering after all those files we saw where the actual code is located.
+At last, we've stumbled upon the actual implementation of the Native Swift UI. After going through the numerous files, it's a relief to locate the core code.
 
-The important thing to note here is that we are exposing our Swift code to Objective-C using the` @objc` attribute. The native code that is then used by React Native is actually a Static Objective-C Library. To comply with that, we need to expose our `AwesomeLibraryViewManager` as an Objective-C class. The `AwesomeLibraryView` which inherits from the `UIView` class in `UIKit`, an Objective-C UI framework, doesn't need to be annotated. However, the `color: String` instance property needs the `@objc` annotation to be exposed to Objective-C.
+A crucial point of emphasis here is the utilization of the `@objc` attribute to expose our Swift code to Objective-C. React Native leverages a Static Objective-C Library for the native code. To align with this structure, our `AwesomeLibraryViewManager` must be presented as an Objective-C class. While the `AwesomeLibraryView`, inheriting from the `UIView` class of the `UIKit` (an Objective-C UI framework), doesn't require annotation, the `color: String` instance property must carry the `@objc` annotation for proper exposure to Objective-C.
 
 ## Step 4: Adding 3rd party Swift Dependencies
 
