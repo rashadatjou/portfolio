@@ -597,6 +597,8 @@ import FlowplayerSDK
 
 > **Note:** Brace yourself for a lack of intellisense. At this point, Xcode remains unaware of the contents inside `FlowplayerSDK`. A something to smile at, perhaps? 😅 This peculiarity arises from Objective-C's ability to link dependencies during runtime. The compiler, it seems, is nonchalant about importing elements that may not truly exist.
 
+> **Note:** To actually get intellisense when developing React Native iOS Modules. You want to open `example/ios/AwesomeLibraryExample.xcworkspace` -> `Pods` -> `Development Pods` -> `react-native-awesome-library`. Edit all your files from here as the Example workspace has the context of all libraries and frameworks.
+
 ## Conclusion
 
 It's been quite the journey, plagued with platform-specific intricacies, just to get our dependency to load in a manner that's update-friendly via the CLI and `CocoaPods`. It's my sincerest wish that this blog post spares any other developer the same strenuous path I've had to traverse. Honestly, it was far from a joyride.
