@@ -32,16 +32,6 @@ const projectList: Project[] = [
     tags: ["tvOS", "Livestream", "AVPlayer", "VOD"],
   },
   {
-    name: "Kloeckner Metals Calculator",
-    href: "https://apkcombo.com/kloeckner-metals/com.kloeckner.metals.application",
-    tags: ["Android", "App", "Calculator", "Construction"],
-  },
-  {
-    name: "Bluemoon Client",
-    href: "https://bluemoon.ad-pro.info/login",
-    tags: ["Web", "React", "E-Commerce"],
-  },
-  {
     name: "Flowplayer OVP",
     href: "https://app.flowplayer.com",
     tags: ["Web", "React", "VOD", "Livestream"],
