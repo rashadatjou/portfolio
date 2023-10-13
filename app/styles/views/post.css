@@ -13,6 +13,10 @@
   line-height: 1.5;
 }
 
+h1 {
+  line-height: 1.25;
+}
+
 .post__wrapper {
   height: max-content;
   margin: auto;
