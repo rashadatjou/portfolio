@@ -26,37 +26,44 @@ type ProfileProps = { translate: TFunction } & Partial<
   >
 >;
 
-// - Component
-const Profile = ({
-  name,
-  avatarUrl,
-  bio,
-  publicRepoCount,
-  followersCount,
-  publicGistCount,
-  translate,
-}: ProfileProps) => (
+// type StatusProps = Partial<
+//   Pick<
+//     ProfileProps,
+//     "publicGistCount" | "publicRepoCount" | "followersCount" | "translate"
+//   >
+// >;
+
+// // - Component
+// const Statuses = ({
+//   translate,
+//   publicRepoCount,
+//   publicGistCount,
+//   followersCount,
+// }: StatusProps) => (
+//   <ul className="stat-list">
+//     <li>
+//       <Tooltip position="left" text={translate?.("about.profile.stat.1")}>
+//         <p className="stat">{publicRepoCount}</p>
+//       </Tooltip>
+//     </li>
+//     <li>
+//       <Tooltip position="bottom" text={translate?.("about.profile.stat.2")}>
+//         <p className="stat">{publicGistCount}</p>
+//       </Tooltip>
+//     </li>
+//     <li>
+//       <Tooltip position="right" text={translate?.("about.profile.stat.3")}>
+//         <p className="stat">{followersCount}</p>
+//       </Tooltip>
+//     </li>
+//   </ul>
+// );
+
+const Profile = ({ name, avatarUrl, bio }: ProfileProps) => (
   <div className="profile">
     <img className="image" src={avatarUrl} alt="Profile image" />
     <h2 className="title">{name}</h2>
     <p className="bio">{bio}</p>
-    <ul className="stat-list">
-      <li>
-        <Tooltip position="left" text={translate("about.profile.stat.1")}>
-          <p className="stat">{publicRepoCount}</p>
-        </Tooltip>
-      </li>
-      <li>
-        <Tooltip position="bottom" text={translate("about.profile.stat.2")}>
-          <p className="stat">{publicGistCount}</p>
-        </Tooltip>
-      </li>
-      <li>
-        <Tooltip position="right" text={translate("about.profile.stat.3")}>
-          <p className="stat">{followersCount}</p>
-        </Tooltip>
-      </li>
-    </ul>
   </div>
 );
 
