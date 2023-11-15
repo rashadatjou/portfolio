@@ -48,7 +48,7 @@ const AboutView = ({ gitUser }: Props) => {
   return (
     <div className="about">
       <NavHeader position="relative">
-        <Button buttonType="icon" href="/" bordered>
+        <Button buttonType="icon" href="/" bordered shadow>
           👈🏽
         </Button>
       </NavHeader>

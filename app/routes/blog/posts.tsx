@@ -30,7 +30,7 @@ export const links: LinksFunction = () => {
 // - Components
 const Header = () => (
   <NavHeader>
-    <Button buttonType="icon" bordered href="/blog">
+    <Button buttonType="icon" bordered href="/blog" shadow>
       👈🏽
     </Button>
   </NavHeader>

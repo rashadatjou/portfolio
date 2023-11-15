@@ -50,7 +50,7 @@ const Settings = () => {
 
   return (
     <div className="intro__settings">
-      <Button buttonType="icon" onClick={onToggleModal} bordered animated>
+      <Button buttonType="icon" onClick={onToggleModal} shadow bordered animated>
         ⚙️
       </Button>
       <SettingModal present={show} onToggle={onToggleModal} />

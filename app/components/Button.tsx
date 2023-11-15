@@ -26,6 +26,7 @@ type Props = {
   capsule?: boolean;
   href?: string;
   hrefAsset?: boolean;
+  shadow?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 // - Components
@@ -38,6 +39,7 @@ const Button = ({
   capsule,
   href,
   hrefAsset,
+  shadow,
   ...htmlAtt
 }: Props) => (
   <button
@@ -49,6 +51,7 @@ const Button = ({
       bordered && "border",
       animated && "animate",
       href && "link",
+      shadow && "shadow",
       className,
     ])}>
     {href && <Link to={href} replace reloadDocument={hrefAsset} />}

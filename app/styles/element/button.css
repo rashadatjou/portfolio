@@ -68,6 +68,10 @@
   border-radius: var(--size-font-l);
 }
 
+.btn.shadow {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 5px;
+}
+
 /* Link */
 .btn.link {
   position: relative;

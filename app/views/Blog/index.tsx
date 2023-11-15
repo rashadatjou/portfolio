@@ -27,7 +27,7 @@ import NavHeader from "~/components/Header";
 // - Types
 type PostItemProps = {
   post: MDXPost;
-  locale: string;
+  locale?: string;
   navigate: NavigateFunction;
 };
 
@@ -71,7 +71,7 @@ const PostItem = ({ post, locale, navigate }: PostItemProps) => (
 
 const BlogHeader = () => (
   <NavHeader position="relative">
-    <Button buttonType="icon" bordered href="/">
+    <Button buttonType="icon" bordered href="/" shadow>
       👈🏽
     </Button>
   </NavHeader>

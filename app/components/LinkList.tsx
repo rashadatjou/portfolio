@@ -24,6 +24,7 @@ type LinkListProps = {
   data: LinkListItem[];
   translate?: TFunction<"translation", undefined>;
   buttonLike?: boolean;
+  shadow?: boolean;
   size?: "small" | "normal" | "large";
 };
 
@@ -32,6 +33,7 @@ const LinkList = ({
   data,
   buttonLike,
   size = "large",
+  shadow,
   translate,
 }: LinkListProps) => (
   <div className="link-list__container">
@@ -42,7 +44,7 @@ const LinkList = ({
             className={({ isActive }) =>
               cns([
                 isActive ? "active" : undefined,
-                buttonLike ? "button" : undefined,
+                buttonLike ? "button" : undefined
               ])
             }
             to={item.href}>
