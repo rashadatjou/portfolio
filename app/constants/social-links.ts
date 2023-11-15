@@ -9,21 +9,21 @@
  */
 
 export default [
-  {
-    platform: "Twitter",
-    username: "rashadatjou",
-    href: "https://twitter.com/rashadatjou",
-  },
+  // {
+  //   platform: "Twitter",
+  //   username: "rashadatjou",
+  //   href: "https://twitter.com/rashadatjou",
+  // },
   {
     platform: "Github",
     username: "rashadatjou",
     href: "https://github.com/rashadatjou",
   },
-  {
-    platform: "Instagram",
-    username: "rashadatjou",
-    href: "https://instagram.com/rashadatjou",
-  },
+  // {
+  //   platform: "Instagram",
+  //   username: "rashadatjou",
+  //   href: "https://instagram.com/rashadatjou",
+  // },
   {
     platform: "LinkedIn",
     username: "rashadatjou",
