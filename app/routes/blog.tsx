@@ -15,8 +15,9 @@ import { json } from "@remix-run/cloudflare";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
 import { getLocale } from "~/services/i18n/i18n.server";
 
-import blogList from "~/constants/blog-list";
 import BlogView, { links as blogLinks } from "~/views/Blog";
+
+const blogList: any[] = [];
 
 // - Helpers
 function postFromModule(module: MDXModule): MDXPost {

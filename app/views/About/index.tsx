@@ -19,7 +19,7 @@ import loaderCSSPaths from "~/styles/element/loader.css";
 import type { LinkDescriptor } from "@remix-run/cloudflare";
 import type { GitUser } from "~/typings/git";
 
-import { Outlet, useTransition } from "@remix-run/react";
+import { Outlet, useNavigation } from "@remix-run/react";
 
 import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
@@ -42,7 +42,7 @@ const linkListData: LinkListItem[] = [
 
 // - Components
 const AboutView = ({ gitUser }: Props) => {
-  const { state } = useTransition();
+  const { state } = useNavigation();
   const { t } = useTranslation();
 
   return (

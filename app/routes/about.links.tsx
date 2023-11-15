@@ -9,15 +9,15 @@
  */
 
 import socialLinks from "~/constants/social-links";
-import { useTransition } from "@remix-run/react";
+import { useNavigation } from "@remix-run/react";
 
 // - Component
 const Links = () => {
-  const { type } = useTransition();
+  const { state } = useNavigation();
   return (
     <div className="links">
       <div className="links__container">
-        {type === "idle" && (
+        {state === "idle" && (
           <div className="card-grid">
             {socialLinks.map((item) => (
               <a

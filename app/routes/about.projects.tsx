@@ -14,7 +14,7 @@ import type { LoaderArgs, LinksFunction } from "@remix-run/cloudflare";
 import type { GitRepo } from "~/typings/git";
 
 import { json } from "@remix-run/cloudflare";
-import { useLoaderData, useTransition } from "@remix-run/react";
+import { useLoaderData, useNavigation } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import { mapRepoList } from "~/mapper/git.mapper";
 
@@ -39,10 +39,11 @@ export async function loader({}: LoaderArgs) {
 // - Component
 const Projects = () => {
   const { repoList } = useLoaderData<LoaderProps>();
-  const { type } = useTransition();
+  const { state } = useNavigation();
   const { t } = useTranslation();
 
-  if (type !== "idle") return null;
+  if (state !== "idle") return null;
+
   return (
     <div className="projects">
       <div className="projects__container">
