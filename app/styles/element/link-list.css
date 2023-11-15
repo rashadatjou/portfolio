@@ -46,7 +46,7 @@
   background-color: var(--color-bg-body);
   padding: var(--space-m) var(--space-l);
   display: block;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
+  box-shadow: var(--shadow-card);
 }
 
 /* Mobile */

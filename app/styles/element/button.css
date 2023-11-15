@@ -69,7 +69,7 @@
 }
 
 .btn.shadow {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 5px;
+  box-shadow: var(--shadow-button);
 }
 
 /* Link */

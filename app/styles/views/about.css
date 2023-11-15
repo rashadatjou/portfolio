@@ -53,7 +53,7 @@
   background-color: var(--color-bg-body);
   margin-top: var(--space-m);
   display: inline;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
+  box-shadow: var(--shadow-card);
 }
 
 .profile .stat-list {
