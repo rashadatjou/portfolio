@@ -41,6 +41,7 @@ ol > li {
 code {
   background-color: var(--color-bg-body);
   color: var(--color-act-secondary);
+  line-break: anywhere;
 }
 
 pre {
@@ -56,6 +57,7 @@ blockquote {
   padding: var(--space-l);
   quotes: "\201C""\201D""\2018""\2019";
   border-radius: var(--size-border-radius);
+  overflow: hidden;
 }
 
 blockquote:before {
