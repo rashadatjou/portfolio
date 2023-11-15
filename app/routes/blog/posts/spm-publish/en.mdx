@@ -9,7 +9,13 @@ headers:
   Cache-Control: max-age=604800
 ---
 
-# Publishing a Swift package with CI/CD ⚡️
+import { prettyPrintDate } from "../../../../utils/date.ts";
+
+# {meta.title}
+
+<time datetime={meta.date}>{prettyPrintDate(meta.date)}</time>
+
+---
 
 This guide is going to be a bit more complicated as it is going to deploy a compiled binary framework from a private repository to a public repository using CI/CD.
 

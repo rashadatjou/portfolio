@@ -8,6 +8,4 @@
  * -----
  */
 
-// export * as bs from "./bs.mdx";
 export * as en from "./en.mdx";
-// export * as sv from "./sv.mdx";
