@@ -21,4 +21,13 @@ export default {
     v2_normalizeFormMethod: true,
     v2_routeConvention: true,
   },
+  routes: (defineRoutes) => {
+    return defineRoutes((route) => {
+      route("blog", "routes/_blog.post.tsx", () => {
+        route("hello-world", "blogs/hello-world.mdx");
+        route("react-native-modules", "blogs/react-native-modules.mdx");
+        route("spm-publish", "blogs/spm-publish.mdx");
+      });
+    });
+  },
 };

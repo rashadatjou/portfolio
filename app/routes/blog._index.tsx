@@ -13,39 +13,25 @@ import type { MDXModule, MDXPost } from "~/typings/blog";
 
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData, useSearchParams } from "@remix-run/react";
-import { getLocale } from "~/services/i18n/i18n.server";
 
 import BlogView, { links as blogLinks } from "~/views/Blog";
 
-const blogList: any[] = [];
+import blogList from "~/blogs";
 
 // - Helpers
 function postFromModule(module: MDXModule): MDXPost {
   const { attributes, filename } = module;
   const { meta } = attributes;
-  const locale = filename.replace(/\.mdx?$/, "");
+  const name = filename.replace(/\.mdx?$/, "");
   return {
-    slug: `posts/${meta.name}/${locale}`,
+    slug: `${name}`,
     ...meta,
   };
 }
 
-function getLocalizedModule(locale: string, module: Record<string, MDXModule>) {
-  if (module?.[locale]) {
-    return module[locale];
-  }
-
-  // Default english
-  return module.en;
-}
-
 // - Route Module API
-export async function loader({ request }: LoaderArgs) {
-  const locale = await getLocale(request);
-  const localizedBlogs = blogList.map((module: any) =>
-    getLocalizedModule(locale, module),
-  );
-  return json(localizedBlogs.map(postFromModule));
+export async function loader({}: LoaderArgs) {
+  return json(blogList.map(postFromModule));
 }
 
 export const links: LinksFunction = () => {

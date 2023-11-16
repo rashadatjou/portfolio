@@ -1,10 +1,10 @@
 /*
- * File: /app/routes/blog/$.tsx
+ * File: /app/routes/post/route.tsx
  * Project: portfolio
- * Created: Saturday, 3rd December 2022
- * Author: Denpex
+ * Created: Thursday, 16th November 2023
+ * Author: rashadatjou
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2023, ©Mehdi Rashadatjou
  * -----
  */
 
@@ -18,7 +18,7 @@ import { Outlet } from "@remix-run/react";
 import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
 
-// - Types
+// - Route API
 export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: postCSSPath },
