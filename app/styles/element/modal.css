@@ -28,6 +28,7 @@
 
   background-color: var(--color-bg-shadow);
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .modal-container {
