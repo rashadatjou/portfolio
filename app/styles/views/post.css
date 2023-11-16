@@ -14,7 +14,7 @@
 }
 
 h1 {
-  line-height: 1.2;
+  line-height: normal;
   font-size: var(--size-font-xl);
 }
 
@@ -80,4 +80,12 @@ blockquote em {
 
 img {
   width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 25rem) {
+  h1 {
+    font-size: var(--size-font-l);
+    word-break: break-word;
+  }
 }
