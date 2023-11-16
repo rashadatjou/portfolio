@@ -1,5 +1,5 @@
 /*
- * File: /app/routes/index.tsx
+ * File: /app/routes/_index.tsx
  * Project: portfolio
  * Created: Tuesday, 4th October 2022
  * Author: Denpex

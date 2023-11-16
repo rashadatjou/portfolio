@@ -1,5 +1,5 @@
 /*
- * File: /app/views/About/element/Projects.tsx
+ * File: /app/routes/about.projects
  * Project: portfolio
  * Created: Wednesday, 7th December 2022
  * Author: Denpex

@@ -23,7 +23,7 @@ export default {
   },
   routes: (defineRoutes) => {
     return defineRoutes((route) => {
-      route("blog", "routes/_blog.post.tsx", () => {
+      route("blog/posts", "views/Posts/index.tsx", () => {
         route("hello-world", "blogs/hello-world.mdx");
         route("react-native-modules", "blogs/react-native-modules.mdx");
         route("spm-publish", "blogs/spm-publish.mdx");

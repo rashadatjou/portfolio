@@ -1,5 +1,5 @@
 /*
- * File: /app/routes/blog/index.tsx
+ * File: /app/routes/blog.tsx
  * Project: portfolio
  * Created: Sunday, 20th November 2022
  * Author: Denpex
@@ -24,7 +24,7 @@ function postFromModule(module: MDXModule): MDXPost {
   const { meta } = attributes;
   const name = filename.replace(/\.mdx?$/, "");
   return {
-    slug: `${name}`,
+    slug: `posts/${name}`,
     ...meta,
   };
 }

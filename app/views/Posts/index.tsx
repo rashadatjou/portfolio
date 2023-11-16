@@ -1,5 +1,5 @@
 /*
- * File: /app/routes/post/route.tsx
+ * File: /app/routes/_blog.post.tsx
  * Project: portfolio
  * Created: Thursday, 16th November 2023
  * Author: rashadatjou
@@ -18,7 +18,7 @@ import { Outlet } from "@remix-run/react";
 import Button from "~/components/Button";
 import NavHeader from "~/components/Header";
 
-// - Route API
+// - Const
 export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: postCSSPath },
