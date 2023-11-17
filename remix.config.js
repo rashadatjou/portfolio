@@ -19,6 +19,15 @@ export default {
     v2_headers: true,
     v2_meta: false,
     v2_normalizeFormMethod: true,
-    v2_routeConvention: false,
+    v2_routeConvention: true,
+  },
+  routes: (defineRoutes) => {
+    return defineRoutes((route) => {
+      route("blog/posts", "views/Posts/index.tsx", () => {
+        route("hello-world", "blogs/hello-world.mdx");
+        route("react-native-modules", "blogs/react-native-modules.mdx");
+        // route("spm-publish", "blogs/spm-publish.mdx");
+      });
+    });
   },
 };

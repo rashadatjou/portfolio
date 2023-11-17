@@ -35,12 +35,13 @@
 }
 
 .profile .title {
-  margin-block: var(--space-s);
+  margin-top: var(--space-l);
+  line-height: 1.5;
 }
 
 .profile .bio {
   font-size: var(--size-font-s);
-  margin-top: var(--space-xs);
+  margin-top: var(--space-s);
   color: var(--color-txt-secondary);
 }
 
@@ -52,6 +53,7 @@
   background-color: var(--color-bg-body);
   margin-top: var(--space-m);
   display: inline;
+  box-shadow: var(--shadow-card);
 }
 
 .profile .stat-list {

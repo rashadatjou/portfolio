@@ -11,7 +11,7 @@
 import type { GitUser } from "~/typings/git";
 import type { TFunction } from "i18next";
 
-import Tooltip from "~/components/Tooltip";
+// import Tooltip from "~/components/Tooltip";
 
 // - Types
 type ProfileProps = { translate: TFunction } & Partial<

@@ -57,20 +57,18 @@ fieldset.linear {
   -moz-appearance: none; /* Firefox */
   -webkit-appearance: none; /* Safari and Chrome */
   appearance: none;
-  background-image: var(--icon-chevron-down);
-  background-position-x: 100%;
-  background-position-y: calc(var(--form-field-height) / 5);
-  background-repeat: no-repeat;
   border-color: var(--color-bg-border);
   border-radius: var(--size-border-radius);
   border-width: var(--size-border-width);
   color: var(--color-txt-main);
   display: block;
   font-size: var(--size-font-s);
+  font-weight: 600;
   height: var(--form-field-height);
-  padding: var(--space-s);
+  padding: var(--space-s) var(--space-m);
   text-transform: capitalize;
   width: 100%;
+  box-shadow: var(--shadow-card);
 }
 
 .form input {
@@ -80,6 +78,7 @@ fieldset.linear {
   background-repeat: no-repeat;
   border-radius: var(--size-border-radius);
   border: solid var(--color-bg-border) var(--size-border-width);
+  box-shadow: var(--shadow-card);
   color: var(--color-txt-main);
   display: block;
   font-size: var(--size-font-s);

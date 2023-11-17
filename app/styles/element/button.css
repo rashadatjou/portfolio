@@ -68,6 +68,10 @@
   border-radius: var(--size-font-l);
 }
 
+.btn.shadow {
+  box-shadow: var(--shadow-button);
+}
+
 /* Link */
 .btn.link {
   position: relative;

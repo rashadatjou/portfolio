@@ -46,6 +46,7 @@
   background-color: var(--color-bg-body);
   padding: var(--space-m) var(--space-l);
   display: block;
+  box-shadow: var(--shadow-card);
 }
 
 /* Mobile */

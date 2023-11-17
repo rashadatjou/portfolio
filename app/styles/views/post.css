@@ -14,7 +14,8 @@
 }
 
 h1 {
-  line-height: 1.25;
+  line-height: normal;
+  font-size: var(--size-font-xl);
 }
 
 .post__wrapper {
@@ -41,6 +42,7 @@ ol > li {
 code {
   background-color: var(--color-bg-body);
   color: var(--color-act-secondary);
+  line-break: anywhere;
 }
 
 pre {
@@ -56,6 +58,7 @@ blockquote {
   padding: var(--space-l);
   quotes: "\201C""\201D""\2018""\2019";
   border-radius: var(--size-border-radius);
+  overflow: hidden;
 }
 
 blockquote:before {
@@ -77,4 +80,12 @@ blockquote em {
 
 img {
   width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 25rem) {
+  h1 {
+    font-size: var(--size-font-l);
+    word-break: break-word;
+  }
 }

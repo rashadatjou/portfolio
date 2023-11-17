@@ -1,5 +1,5 @@
 /*
- * File: /app/routes/about/links.tsx
+ * File: /app/routes/about.links.tsx
  * Project: portfolio
  * Created: Saturday, 10th December 2022
  * Author: Denpex
@@ -9,15 +9,15 @@
  */
 
 import socialLinks from "~/constants/social-links";
-import { useTransition } from "@remix-run/react";
+import { useNavigation } from "@remix-run/react";
 
 // - Component
 const Links = () => {
-  const { type } = useTransition();
+  const { state } = useNavigation();
   return (
     <div className="links">
       <div className="links__container">
-        {type === "idle" && (
+        {state === "idle" && (
           <div className="card-grid">
             {socialLinks.map((item) => (
               <a

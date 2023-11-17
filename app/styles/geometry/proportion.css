@@ -14,7 +14,7 @@
 
   /* Border */
   --size-border-width: 0.15rem;
-  --size-border-radius: 1rem;
+  --size-border-radius: 2rem;
 
   /* Screens */
   --size-screen-s: 320px;
@@ -22,6 +22,7 @@
   --size-screen-l: 1025px;
 
   /* Text size */
+  --size-font-xxl: 7.5rem;
   --size-font-xl: 5.5rem;
   --size-font-l: 4.5rem;
   --size-font-m: 3rem;

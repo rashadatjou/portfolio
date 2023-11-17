@@ -20,7 +20,7 @@ import { LinkDescriptor } from "@remix-run/cloudflare";
 import Settings from "./element/Settings";
 import LinkList, { LinkListItem } from "~/components/LinkList";
 import { useTranslation } from "react-i18next";
-import Footer from "~/views/Main/element/Footer";
+import Footer from "~/views/Intro/element/Footer";
 
 // - Const
 const sourceCodeData: LinkListItem = {
@@ -35,7 +35,7 @@ const linkListData: LinkListItem[] = [
 ];
 
 // - Components
-const MainView = () => {
+const IntroView = () => {
   const { t } = useTranslation();
   return (
     <div className="intro">
@@ -51,7 +51,7 @@ const MainView = () => {
 };
 
 // - Exports
-export default MainView;
+export default IntroView;
 export const links: LinkDescriptor[] = [
   { rel: "stylesheet", href: buttonCssPath },
   { rel: "stylesheet", href: modalCssPath },

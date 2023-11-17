@@ -1,5 +1,5 @@
 /*
- * File: /app/routes/about/downloads.tsx
+ * File: /app/routes/about.downloads.tsx
  * Project: portfolio
  * Created: Saturday, 10th December 2022
  * Author: Denpex
@@ -8,7 +8,7 @@
  * -----
  */
 
-import { useTransition } from "@remix-run/react";
+import { useNavigation } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import Button from "~/components/Button";
 import downloadsList from "~/constants/downloads-list";
@@ -28,13 +28,13 @@ function loadTypeEmoji(type: string): string {
 
 // - Component
 const Downloads = ({}: Props) => {
-  const { type } = useTransition();
+  const { state } = useNavigation();
   const { t } = useTranslation();
 
   return (
     <div className="downloads">
       <div className="downloads__container">
-        {type === "idle" && (
+        {state === "idle" && (
           <div className="card-grid">
             {downloadsList.map((item) => (
               <div key={item.href} className="card inline">

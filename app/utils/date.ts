@@ -37,7 +37,8 @@ export const getDateFormatter = (
 
 export function prettyPrintDate(
   dirtyDate: number | string | Date | undefined,
-  locale: string = DEFAULT_LOCALE,
+  locale?: string,
+  options?: Intl.DateTimeFormatOptions,
 ) {
   let cleanDate: Date;
 
@@ -53,6 +54,10 @@ export function prettyPrintDate(
     cleanDate = dirtyDate;
   }
 
-  const formatter = getDateFormatter(locale, DEFAULT_OPTIONS);
+  const formatter = getDateFormatter(
+    locale ?? DEFAULT_LOCALE,
+    options ?? DEFAULT_OPTIONS,
+  );
+
   return formatter.format(cleanDate!);
 }
