@@ -27,6 +27,7 @@ export default {
         route("hello-world", "blogs/hello-world.mdx");
         route("react-native-modules", "blogs/react-native-modules.mdx");
         route("spm-publish", "blogs/spm-publish.mdx");
+        route("open-sesame", "blogs/open-sesame.mdx");
       });
     });
   },
