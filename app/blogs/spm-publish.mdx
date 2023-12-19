@@ -33,9 +33,9 @@ Alright this sounds nice but there is again an even tinier problem here. The pro
 
 ## Step 1: Compiling
 
-We are going to start of by creating an basic compilation script to compile our project and create an XCFramework. We are going to compile a `.framework` for each platform that we support.
+We are going to start off by creating a basic compilation script to compile our project and create an XCFramework. We will compile a `.framework` for each platform that we support.
 
-The code bellow is for demonstration purposes only:
+The code below is for demonstration purposes only:
 
 ```bash
 FRAMEWORK_NAME="MyFramework"
@@ -53,7 +53,7 @@ xcodebuild -verbose archive \
 done
 ```
 
-After we have created a standalone `.framework` we need to wrap all the platforms into a single `XCFramework`:
+After we have created a standalone .framework, we need to wrap all the platforms into a single XCFramework:
 
 ```bash
 echo "Creating $FRAMEWORK_NAME XCFramework..."
@@ -65,13 +65,13 @@ xcodebuild -create-xcframework \
 
 ## Step 2: Store the XCFramework
 
-Woohooo! We have our product that we can deploy out to the wild but wait 🤔 the compiled `MyFramework.xcframework` is located on our private build server and was triggered from our private repo. Our intention to hide the implementation was successful but we need to upload the binary somewhere accessible so that we can actually upload it on our public repo.
+Woohoo! We have our product that we can deploy out to the wild, but wait 🤔 the compiled MyFramework.xcframework is located on our private build server and was triggered from our private repo. Our intention to hide the implementation was successful, but we need to upload the binary somewhere accessible so that we can actually upload it to our public repo.
 
-For this purpose I have chosen to do the release twice 🫨. Hear me out first. First we already have access to the private git repo from our build server so creating a GitHub release using the `gh` CLI is trivial this way we can also validate the release on our private GitHub release page before it goes out to the users on our public GitHub release page.
+For this purpose, I have chosen to do the release twice 🫨. Hear me out first. First, we already have access to the private git repo from our build server, so creating a GitHub release using the gh CLI is trivial. This way, we can also validate the release on our private GitHub release page before it goes out to the users on our public GitHub release page.
 
-But again why would you need to 2 releases, well it's simple again our build server has access to all our repos so we can actually download the compiled binary from the private repo and re-publish it on our public repo.
+But again, why would you need two releases? Well, it's simple: again, our build server has access to all our repos, so we can actually download the compiled binary from the private repo and re-publish it on our public repo.
 
-Here is a demo code that upload our compiled XCFramework and creates an GitHub release using `gh` CLI:
+Here is a demo code that uploads our compiled XCFramework and creates a GitHub release using the gh CLI:
 
 ```bash
 gh release create $GIT_TAG ./Release/MyFramework -t "v${GIT_TAG}" -F ./Changelog.md
@@ -83,11 +83,11 @@ We can now download the framework from:
 
 ## Step 3: Triggering other pipelines
 
-Awesome we have a way for our public build server to fetch the compiled framework and create an release without our beautiful closed-source code to be exposed. Now all that we got to do is to trigger the pipeline on the public build from our private repo.
+Awesome, we have a way for our public build server to fetch the compiled framework and create a release without our beautiful closed-source code being exposed. Now, all we have to do is to trigger the pipeline on the public build from our private repo.
 
-We are using `CircleCI` as our build server but I am sure that other providers allow you to trigger pipelines using http requests cause that is how we are going to do it.
+We are using CircleCI as our build server, but I am sure that other providers allow you to trigger pipelines using HTTP requests, because that is how we are going to do it.
 
-On our private build server trigger the http request to start the public build server pipeline:
+On our private build server, trigger the HTTP request to start the public build server pipeline:
 
 ```bash
 curl --request POST \
@@ -97,27 +97,27 @@ curl --request POST \
   --data '{"parameters":{"run-release-workflow": true, "version":"'$CIRCLE_TAG'", "changelog":"'$(cat ./ExternalChangelog.md | base64)'"}}'
 ```
 
-Cool right and we also provided an custom changelog that will go with the public release. This means that we have completely automated and separated our two releases. We are also sending metadata such as the version of the framework which is really important for the public pipeline to know.
+Cool, right? And we also provided a custom changelog that will go with the public release. This means that we have completely automated and separated our two releases. We are also sending metadata such as the version of the framework, which is really important for the public pipeline to know.
 
 ## Step 4: Publishing
 
-Now the last part here is when the pipeline on the public build server gets triggered we need to download the framework from our private repo and get the SHA-256.
+Now, the last part here is when the pipeline on the public build server gets triggered, we need to download the framework from our private repo and get the SHA-256.
 
-Downloading the framework
+Downloading the framework:
 
 ```bash
 gh release download --repo $PRIVATE_REPO_URL <<parameters.version>>
 ```
 
-Calculate the CHECKSUM
+Calculate the CHECKSUM:
 
 ```bash
 echo "CHECKSUM=$(shasum -a 256 MyFramework.zip | awk '{print $1}')" >> $BASH_ENV
 ```
 
-Okay we have the repo, we have the checksum we can now modify our `Package.swift` with this data. Our build server treated by GitHub as a regular user that is why it can access repos and download stuff from it if it can do that it can also create commits and push out code.
+Okay, we have the repo, we have the checksum; we can now modify our Package.swift with this data. Our build server, treated by GitHub as a regular user, can access repos and download stuff from them; if it can do that, it can also create commits and push out code.
 
-We are going to run an custom script that will take 2 inputs the version of the framework and CHECKSUM and this script will update our `Package.swift`.
+We are going to run a custom script that will take two inputs: the version of the framework and the CHECKSUM, and this script will update our Package.swift.
 
 The script can look something like this:
 
@@ -153,7 +153,7 @@ cat Package.swift
 rm Package.swift-E
 ```
 
-Make sure that `Package.swift` has an top variable called `let version` so that we can modify it simply:
+Make sure that `Package.swift`` has a top variable called let version so that we can modify it simply:
 
 ```swift
 // swift-tools-version: 5.6
@@ -177,7 +177,7 @@ let package = Package(
 )
 ```
 
-Code modified so lets create an actual release:
+Code modified, so let's create an actual release:
 
 ```bash
 git config --global user.email "$SRE_EMAIL"
@@ -187,7 +187,7 @@ git commit -m "release: <<parameters.version>> [skip ci]"
 git push origin main
 ```
 
-Now publish the release
+Now publish the release:
 
 ```bash
 gh release create <<parameters.version>> ./MyFramework.zip -t "v<<parameters.version>>" -F ./CHANGELOG.md
@@ -195,8 +195,8 @@ gh release create <<parameters.version>> ./MyFramework.zip -t "v<<parameters.ver
 
 ## Conclusion
 
-That is all folks. We have successfully created 2 pipelines that both validate our work, update all manifests and publish them when ever we push put a new `git tag`.
+That's all, folks. We have successfully created two pipelines that both validate our work, update all manifests, and publish them whenever we push out a new git tag.
 
-If this helped please feel free to share it!
+If this helped, please feel free to share it!
 
 Mehdi Rashadatjou
