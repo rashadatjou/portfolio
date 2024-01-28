@@ -1,0 +1,20 @@
+---
+meta:
+  name: "xr-world"
+  title: "Spatial Realty"
+  description: "Venturing into the world of augmented reality"
+  date: "2024-01-23T21:14:37Z"
+  tags: ["xr", "visionOS", "ar", "vr"]
+headers:
+  Cache-Control: max-age=604800
+---
+
+import { prettyPrintDate } from "~/utils/date.ts";
+
+# {meta.title}
+
+<time datetime={meta.date}>
+  {prettyPrintDate(meta.date, null, { dateStyle: "long" })}
+</time>
+
+---

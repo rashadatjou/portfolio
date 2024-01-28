@@ -35,8 +35,7 @@
   "about.profile.stat.3": "Git Prtailaca",
   "about.profile.bio": "Zanimaju me Swift eko-sistem i modularni softver.",
 
-  "about.projects.close-source": "Zatvoren izvor",
-  "about.projects.open-source": "Otvoreni izvor",
+  "about.projects": "Projekti",
   "about.projects.empty": "Nema dostupnih projekata...",
 
   "about.downloads.resume": "Životopis",

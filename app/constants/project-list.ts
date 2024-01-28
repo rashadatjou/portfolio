@@ -13,13 +13,8 @@ import { Project } from "~/typings/projects";
 const projectList: Project[] = [
   {
     name: "Rep Rise",
-    href: "https://apps.apple.com/ba/app/rep-rise-100-push-ups-counter/id1246695736",
+    href: "https://apps.apple.com/us/app/rep-rise-ultimate-workouts-ar/id1246695736",
     tags: ["iOS", "App", "ARKit", "Fitness"],
-  },
-  {
-    name: "Bodyweight Workout Trainer",
-    href: "https://apps.apple.com/us/app/bodyweight-workout-trainer/id1296603779",
-    tags: ["iOS", "App", "Fitness", "Nutrition"],
   },
   {
     name: "Flowplayer iOS Framework",
@@ -32,14 +27,44 @@ const projectList: Project[] = [
     tags: ["tvOS", "Livestream", "AVPlayer", "VOD"],
   },
   {
-    name: "Flowplayer OVP",
+    name: "Flowplayer OVP UI",
     href: "https://app.flowplayer.com",
     tags: ["Web", "React", "VOD", "Livestream"],
   },
   {
     name: "Wowza Flowplayer Apple SDK",
     href: "https://github.com/flowplayer/apple-sdk-releases",
-    tags: ["Swift", "Livestream", "AVPlayer", "VOD"],
+    tags: ["Swift", "Apple", "AVPlayer", "SDK"],
+  },
+  {
+    name: "Open Sesame - Network Port Surveillance",
+    href: "https://github.com/rashadatjou/open-sesame",
+    tags: ["macOS", "Security", "Network"],
+  },
+  {
+    name: "Professional Portfolio Website",
+    href: "https://github.com/rashadatjou/portfolio",
+    tags: ["Web", "Portfolio", "Remix.run", "CSS"],
+  },
+  {
+    name: "Themeit - Web Theme Switcher",
+    href: "https://github.com/rashadatjou/themeit",
+    tags: ["Web", "CSS", "UX", "Framework"],
+  },
+  {
+    name: "Google IMA SDK for iOS & tvOS",
+    href: "https://github.com/rashadatjou/google-ima-sdk-xc",
+    tags: ["iOS", "tvOS", "SDK", "Ad"],
+  },
+  {
+    name: "LocoPlugin - Localization Tool for Xcode",
+    href: "https://github.com/rashadatjou/LocoPlugin",
+    tags: ["Xcode", "Localization", "Plugin", "Loco"],
+  },
+  {
+    name: "XcodeProjectSecurity",
+    href: "https://gitlab.com/SwiftDevCollective/XcodeProjectSecurity.git",
+    tags: ["Xcode", "Security", "CI", "Swift"],
   },
 ];
 
