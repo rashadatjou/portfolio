@@ -18,8 +18,7 @@ import { useLoaderData, useNavigation } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import { mapRepoList } from "~/mapper/git.mapper";
 
-import closeSourceProjects from "~/constants/project-list";
-import REPO_LIST from "~/mock/git/repo-list.json";
+import projectList from "~/constants/project-list";
 
 // - Types
 type LoaderProps = {
@@ -31,14 +30,8 @@ export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: tagCssPath }];
 };
 
-export async function loader({}: LoaderArgs) {
-  let repoList = mapRepoList(REPO_LIST as any);
-  return json({ repoList }, { status: 200 });
-}
-
 // - Component
 const Projects = () => {
-  const { repoList } = useLoaderData<LoaderProps>();
   const { state } = useNavigation();
   const { t } = useTranslation();
 
@@ -47,9 +40,8 @@ const Projects = () => {
   return (
     <div className="projects">
       <div className="projects__container">
-        <h3 className="title">{t("about.projects.close-source")}</h3>
         <div className="card-grid">
-          {closeSourceProjects.map((project) => (
+          {projectList.map((project) => (
             <div className="card" key={project.href}>
               <a
                 href={project.href}
@@ -64,18 +56,6 @@ const Projects = () => {
                   </li>
                 ))}
               </ul>
-            </div>
-          ))}
-        </div>
-
-        <h3 className="title">{t("about.projects.open-source")}</h3>
-        <div className="card-grid">
-          {!repoList && <div className="card">{t("about.projects.empty")}</div>}
-          {repoList?.map((repo) => (
-            <div key={repo.info.id} className="card">
-              <a href={repo.urls.htmlURL} target="_blank">
-                <p>{repo.info.fullName}</p>
-              </a>
             </div>
           ))}
         </div>

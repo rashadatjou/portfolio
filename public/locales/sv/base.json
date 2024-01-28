@@ -35,8 +35,7 @@
   "about.profile.stat.3": "Git Följare",
   "about.profile.bio": "Intresserad av Swifts ekosystem och modulär programvara.",
 
-  "about.projects.close-source": "Stängd källa",
-  "about.projects.open-source": "Öppen källa",
+  "about.projects": "Projekt",
   "about.projects.empty": "Inga projekt tillgängliga...",
 
   "about.downloads.resume": "Meritförteckning",
