@@ -36,7 +36,7 @@ type Props = {
 // - Const
 const linkListData: LinkListItem[] = [
   { name: "about.link.0", href: "projects" },
-  { name: "about.link.1", href: "downloads" },
+  // { name: "about.link.1", href: "downloads" },
   { name: "about.link.2", href: "links" },
 ];
 
