@@ -60,9 +60,9 @@ type ProfileProps = { translate: TFunction } & Partial<
 //   </ul>
 // );
 
-const Profile = ({ name, avatarUrl, bio }: ProfileProps) => (
+const Profile = ({ name, bio }: ProfileProps) => (
   <div className="profile">
-    <ProfileImage />
+    <img className="image" src={ProfileImage} alt="Profile image" />
     <h2 className="title">{name}</h2>
     <p className="bio">{bio}</p>
   </div>
