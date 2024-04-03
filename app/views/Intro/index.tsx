@@ -21,6 +21,12 @@ import Settings from "./element/Settings";
 import LinkList, { LinkListItem } from "~/components/LinkList";
 import { useTranslation } from "react-i18next";
 import Footer from "~/views/Intro/element/Footer";
+import { TFunction } from "i18next";
+
+// - Types
+type IntroHelloProps = {
+  translate?: TFunction<"translation", undefined>;
+};
 
 // - Const
 const sourceCodeData: LinkListItem = {
@@ -35,14 +41,21 @@ const linkListData: LinkListItem[] = [
 ];
 
 // - Components
+const IntroHello = ({ translate }: IntroHelloProps) => (
+  <>
+    <h1>👋🏽</h1>
+    <h1>{translate?.("intro.title")}</h1>
+    <p>{translate?.("intro.summary")}</p>
+  </>
+);
+
 const IntroView = () => {
   const { t } = useTranslation();
   return (
     <div className="intro">
       <Settings />
       <div className="intro-content">
-        <h1>👋🏽</h1>
-        <h1>{t("intro.title")}</h1>
+        <IntroHello translate={t} />
         <LinkList translate={t} buttonLike data={linkListData} />
       </div>
       <Footer title={t(sourceCodeData.name)} href={sourceCodeData.href} />

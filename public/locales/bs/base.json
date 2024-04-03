@@ -1,7 +1,9 @@
 {
   "meta.title": "@rashdatjou",
   "meta.description": "Ja sam Swift i Javascript programer koji se u velikoj mjeri bavi aplikacijama na strani klijenta.",
-  "intro.title": "Zdravo, moje ime je Mehdi",
+
+  "intro.title": "Ja sam Mehdi",
+  "intro.summary": "Softverski inženjer sam zadnjih 8 godina. Ovdje možete saznati više o meni i na čemu trenutno radim ( Apple stvari i web otvorenog koda ).",
 
   "intro.link.1": "Blog",
   "intro.link.2": "Kontakt",
