@@ -10,6 +10,7 @@
 
 import type { GitUser } from "~/typings/git";
 import type { TFunction } from "i18next";
+import ProfileImage from "~/assets/profile.png";
 
 // import Tooltip from "~/components/Tooltip";
 
@@ -61,7 +62,7 @@ type ProfileProps = { translate: TFunction } & Partial<
 
 const Profile = ({ name, avatarUrl, bio }: ProfileProps) => (
   <div className="profile">
-    <img className="image" src={avatarUrl} alt="Profile image" />
+    <ProfileImage />
     <h2 className="title">{name}</h2>
     <p className="bio">{bio}</p>
   </div>

@@ -9,7 +9,7 @@
  */
 
 import type { LinksFunction, LoaderArgs } from "@remix-run/cloudflare";
-import type { ApiGitUser, GitUser } from "~/typings/git";
+import type { GitUser } from "~/typings/git";
 
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
