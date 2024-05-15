@@ -13,6 +13,6 @@ import * as postOne from "./hello-world.mdx";
 import * as postTwo from "./react-native-modules.mdx";
 import * as postThree from "./spm-publish.mdx";
 import * as postFour from "./open-sesame.mdx";
-// import * as postFive from "./xr-world.mdx";
+import * as postFive from "./web3-nextjs.mdx";
 
-export default [/*postFive, */ postFour, postThree, postTwo, postOne] as MDXModule[];
+export default [postFive, postFour, postThree, postTwo, postOne] as MDXModule[];
