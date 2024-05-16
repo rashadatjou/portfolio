@@ -21,4 +21,250 @@ import tos from "./tos.ts";
 
 ---
 
+In this tutorial, we will integrate NextAuth (now rebranded as Auth.js) with a Web3 credentials provider in a Next.js 14 application. We'll use `WalletConnect`, `Wagmi`, and `SIWE` (Sign-In With Ethereum) to create a robust authentication flow. This guide is designed for users with basic programming knowledge and aims to provide a clear, step-by-step approach.
+
 <TableOfContents data={tos} />
+
+## Prerequisites
+
+• Basic knowledge of NextJS and React
+
+• Node.js and npm installed
+
+• Familiarity with Web3 concepts
+
+## Route and Component in Next.js 14
+
+To start, create a new Next.js 14 project and install the necessary dependencies:
+
+```bash
+npx create-next-app@latest my-web3-app
+```
+
+```bash
+cd my-web3-app
+```
+
+```bash
+npm install next-auth@latest
+```
+
+Next.js 14 uses an app directory structure. We will create components and routes accordingly.
+
+## Pages
+
+We will create three main pages for our application:
+
+### Landing
+
+The landing page is the entry point of our application.
+
+```javascript
+// app/page.tsx
+import Link from "next/link";
+
+export default function LandingPage() {
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <Link href="/auth">
+        <button className="bg-blue-500 text-white p-4 rounded">Login</button>
+      </Link>
+    </div>
+  );
+}
+```
+
+### Auth
+
+The Auth page handles wallet connection and message signing. Users connect their Web3 wallet and sign a message for authentication, creating a signed message to verify their identity.
+
+```javascript
+//app/auth/page.tsx
+import { useEffect, useState } from "react";
+
+export default function AuthPage() {
+  const [mounted, setMounted] = useState < boolean > false;
+  // TODO: Use our shiny useWeb3Auth() hook to connect to Web3
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center bg-background text-white">
+      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+        <h1 className="text-5xl font-extrabold tracking-tight text-foreground sm:text-[5rem]">
+          Auth
+        </h1>
+        <button>Connect Wallet</button>
+      </div>
+    </main>
+  );
+}
+```
+
+### Protected
+
+The Protected page is for authenticated users only. After authentication, users can navigate here to see user-specific info, like their wallet address, and can sign out.
+
+```javascript
+// app/protected/page.tsx
+"use client";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
+export default function ProtectedPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/auth");
+    }
+  }, [status]);
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="flex justify-center items-center h-screen">
+      {session ? (
+        <div>
+          <p>Welcome, {session.user.address}</p>
+          <button
+            onClick={() => signOut()}
+            className="bg-red-500 text-white p-4 rounded">
+            Sign Out
+          </button>
+        </div>
+      ) : (
+        <div>Redirecting...</div>
+      )}
+    </div>
+  );
+}
+```
+
+## Web3 Integration
+
+## WAGMI?
+
+WAGMI is a collection of React hooks and utilities designed to help developers build Web3 applications with ease. It provides a streamlined and efficient way to interact with Ethereum and other EVM-compatible blockchains. By using WAGMI, developers can handle common Web3 tasks such as connecting wallets, signing messages, and managing blockchain interactions.
+
+### Install WAGMI
+
+```javascript
+npm install wagmi viem@2.x @tanstack/react-query
+```
+
+• [Viem](https://viem.sh) is a TypeScript interface for Ethereum that performs blockchain operations.
+
+• [TanStack Query](https://tanstack.com/query/v5) is an async state manager that handles requests, caching, and more.
+
+### Setup WAGMI Config
+
+Create a new directory inside of `src/` called `web3/`. Here we are going to host all our Web3 related goodies.
+
+```bash
+mkdir src/web3
+```
+
+Now create a new directory called `wagmi` inside of `web3`
+
+```bash
+mkdir src/web3/wagmi
+```
+
+Inside of the `wagmi/` directory create an new file `config.ts` here we are going to crate the needed configuration object that we are going to pass to our `WagmiProvider` more about that later:
+
+```bash
+touch src/web3/wagmi/config.ts
+```
+
+Inside of the `wagmi/config.ts` add the following code:
+
+```javascript
+// src/web3/wagmi/config.ts
+
+"use client";
+
+import { createConfig, http } from "wagmi";
+import { mainnet, sepolia } from "wagmi/chains";
+
+const config = createConfig({
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http(),
+    [sepolia.id]: http(),
+  },
+});
+
+export default Object.freeze(config);
+```
+
+WAGMI is configured to use the Mainnet and Sepolia chains, and injected connector.
+
+### Integrate WAGMI Provider
+
+Now that our configuration is setup and ready to be used lets create the actual _Context Provider_ that is required so that WAGMI can function.
+
+Inside of the `web3/wagmi/` directory create a new file called `provider.tsx`:
+
+```bash
+touch src/web3/wagmi/provider.stx
+```
+
+Add the following code to the `provider.tsx`:
+
+```javascript
+// src/web3/wagmi/provider.tsx
+
+"use client";
+
+import type { PropsWithChildren } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { WagmiProvider } from "wagmi";
+import config from "./config";
+
+const client = new QueryClient();
+
+const Provider = ({ children }: PropsWithChildren) => {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={client}>{children}</QueryClientProvider>
+    </WagmiProvider>
+  );
+};
+
+export default Provider;
+```
+
+Now that looks a lot better doesn't it? We have completely separated our WAGMI code so that id doesn't get in the way...
+
+The only thing left is to connect the provider. Go to the `src/app/layout.tsx` and modify your code to look like this:
+
+```javascript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode,
+}) {
+  return (
+    <html lang="en">
+      <WagmiProvider>
+        <body>{children}</body>
+      </WagmiProvider>
+    </html>
+  );
+}
+```
+
+With this we have integrated WAGMI into out NextJS app.
+
+## SIWE?
+
+SIWE (Sign-In With Ethereum) is an authentication standard that allows users to sign in to applications using their Ethereum wallet. It ensures that the authentication process is secure and decentralized by leveraging the cryptographic signatures provided by Ethereum wallets.
