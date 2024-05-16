@@ -11,6 +11,7 @@
 import postCSSPath from "~/styles/views/post.css";
 import buttonCSSPath from "~/styles/element/button.css";
 import headerCSSPath from "~/styles/element/header.css";
+import tosCSSPath from "~/styles/element/table-of-contents.css";
 
 import type { LinksFunction } from "@remix-run/cloudflare";
 
@@ -24,6 +25,7 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: postCSSPath },
     { rel: "stylesheet", href: buttonCSSPath },
     { rel: "stylesheet", href: headerCSSPath },
+    { rel: "stylesheet", href: tosCSSPath },
   ];
 };
 

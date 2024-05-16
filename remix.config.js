@@ -28,7 +28,7 @@ export default {
         route("react-native-modules", "blogs/react-native-modules.mdx");
         route("spm-publish", "blogs/spm-publish.mdx");
         route("open-sesame", "blogs/open-sesame.mdx");
-        route("web3-nextjs", "blogs/web3-nextjs.mdx");
+        route("web3-nextjs", "blogs/web3-nextjs/web3-nextjs.mdx");
       });
     });
   },
