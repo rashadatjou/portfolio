@@ -179,38 +179,11 @@ Now create a new directory called `wagmi` inside of `web3`
 mkdir src/web3/wagmi
 ```
 
-Inside of the `wagmi/` directory create an new file `config.ts` here we are going to crate the needed configuration object that we are going to pass to our `WagmiProvider` more about that later:
-
-```bash
-touch src/web3/wagmi/config.ts
-```
-
-Inside of the `wagmi/config.ts` add the following code:
-
-```javascript
-// src/web3/wagmi/config.ts
-
-"use client";
-
-import { createConfig, http } from "wagmi";
-import { mainnet, sepolia } from "wagmi/chains";
-
-const config = createConfig({
-  chains: [mainnet, sepolia],
-  transports: {
-    [mainnet.id]: http(),
-    [sepolia.id]: http(),
-  },
-});
-
-export default Object.freeze(config);
-```
-
-WAGMI is configured to use the Mainnet and Sepolia chains, and injected connector.
-
 ### Integrate WAGMI Provider
 
-Now that our configuration is setup and ready to be used lets create the actual _Context Provider_ that is required so that WAGMI can function.
+We need to create a _Context Provider_ that is required so that WAGMI can function.
+
+> **NOTE:** We are not going to create a WAGMI `Config` as we are going to do that in the next step when we setup `@web3modal` and hook into WAGMI with it.
 
 Inside of the `web3/wagmi/` directory create a new file called `provider.tsx`:
 
@@ -227,27 +200,156 @@ Add the following code to the `provider.tsx`:
 
 import type { PropsWithChildren } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { WagmiProvider } from "wagmi";
-import config from "./config";
+import { type Config, type State, WagmiProvider } from "wagmi";
 
 const client = new QueryClient();
 
-const Provider = ({ children }: PropsWithChildren) => {
+type Props = PropsWithChildren<{
+  config: Config,
+  initialState?: State,
+}>;
+
+const Provider = ({ children, config, initialState }: Props) => {
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={config} initialState={initialState}>
       <QueryClientProvider client={client}>{children}</QueryClientProvider>
     </WagmiProvider>
   );
 };
 
 export default Provider;
+export type ProviderProps = Props;
 ```
 
 Now that looks a lot better doesn't it? We have completely separated our WAGMI code so that id doesn't get in the way...
 
-The only thing left is to connect the provider. Go to the `src/app/layout.tsx` and modify your code to look like this:
+We are going to create a config and pass it to the WAGMI provider later on but for now we have a clean provider we can use inside of our dApp.
+
+## Web3Modal + WAGMI
+
+We are going to use `@web3modal` as our nifty way to connect to our wallet of choice.
+One great thing about `@web3modal` is that is offers an out of the box integration with `wagmi`.
+This way we only need a couple of lines of code to set up the model and use it in our dApp.
+
+### Install `@web3modal/wagmi`
+
+Lets add the dependency so that we can start the integration:
+
+```bash
+npm install @web3modal/wagmi
+```
+
+### Create our WAGMI/Web3Modal config
+
+The `web3model` integrates directly into our WAGMI config. This done so that the modal
+can have the following information that it requires to function: WalletConnect, Coinbase and Injected connectors and WalletConnects Blockchain API as a transport.
+
+We can automagically use all of this by using the `defaultWagmiConfig` method from `web3model` instead of the `createConfig` provided by WAGMI. To achieve this I am going to create a `web3model.utils.ts` file which will expose a `createWagmiConfig` method that will handle the creation of an WAGMI Config.
+
+> **NOTE:** Every dApp that relies on WalletConnect now needs to obtain a projectId from WalletConnect [Cloud](https://cloud.walletconnect.com). This is absolutely free and only takes a few minutes.
+
+First lets create a new `web3modal` directory inside of our `web3` directory that is going to hold all our `web3modal` code:
+
+```bash
+mkdir app/web3/web3modal
+```
+
+Create the config file:
+
+```bash
+touch app/web3/web3modal/config.ts
+```
+
+Add the following code to it `config.ts`:
 
 ```javascript
+"use client";
+
+import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
+import { cookieStorage, createStorage } from "wagmi";
+import { mainnet, sepolia } from "wagmi/chains";
+
+export const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_ID;
+
+const chains = [mainnet, sepolia] as const;
+
+const metadata = {
+  name: "My dApp",
+  description: "Used to connect your wallet to use dApp",
+  url: "http://localhost:3000",
+  icons: [],
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+export const config = defaultWagmiConfig({
+  chains,
+  projectId,
+  metadata,
+  ssr: true,
+  storage: createStorage({
+    storage: cookieStorage,
+  }),
+});
+```
+
+We just created our config that is going to be used by both WAGMI and `@web3modal`. I have setup the config with the support for mainnet and sepolia for now but we can upgrade this at any moment later on. What we are interested in is that we also need to export the `projectId` as it is going to be used outside of the config as well.
+
+### Create our Web3ModalProvider
+
+Another Provider? Really? Not really...
+
+To facilitate all the code that is required by `web3modal` into a single file we are going to create a wrapper around our already created `WagmiProvider`. This wrapper is going to initialize the `web3modal` and load the `WagmiProvider` with the proper state and config.
+
+Create a new file called `provider` inside of `web3modal`:
+
+```bash
+touch app/web3/web3modal/provider.tsx
+```
+
+Add the following code to the file:
+
+```javascript
+"use client";
+
+import type { PropsWithChildren } from "react";
+import { cookieToInitialState } from "wagmi";
+import { config, projectId } from "~/web3/web3model/config";
+import { createWeb3Modal } from "@web3modal/wagmi/react";
+import WagmiProvider from "~/web3/wagmi/provider";
+
+type Props = PropsWithChildren<{
+  cookie?: string | null,
+}>;
+
+createWeb3Modal({
+  wagmiConfig: config,
+  projectId,
+});
+
+export default function Provider({ children, cookie }: Props) {
+  const initialState = cookieToInitialState(config, cookie);
+  return (
+    <WagmiProvider config={config} initialState={initialState}>
+      {children}
+    </WagmiProvider>
+  );
+}
+```
+
+As mentioned above we have a nice simple provider that initializes all the things needed for the `web3modal` provider in a nice and easy way to use. The only thing we actually need to pass down is an optional `cookie` prop if we want to provide initial state to our `WagmiProvider`.
+
+To use this clean provider lets open the root layout inside of `app/layout.tsx` and add the following code to it:
+
+```javascript
+import { headers } from "next/headers";
+import Web3ModelProvider from "~/web3/web3model/provider";
+
+export const metadata = {
+  title: "My dApp",
+  description: "Some crazy life altering dApp",
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -255,15 +357,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <WagmiProvider>
-        <body>{children}</body>
-      </WagmiProvider>
+      <body>
+        <Web3ModelProvider cookie={headers().get("cookie")}>
+          {children}
+        </Web3ModelProvider>
+      </body>
     </html>
   );
 }
 ```
 
-With this we have integrated WAGMI into out NextJS app.
+That is it. We can use all `web3modal` related data inside of our dApp without any hassle. In the next steps we are going to create an simple and easy to use hook that will handle the wallet connection.
 
 ## SIWE?
 
