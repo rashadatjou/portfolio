@@ -506,4 +506,184 @@ This method will allow us to get the current Auth.js session inside of our serve
 
 Now its time to connect our Web3 side with our Auth.js side e2e. To accomplish this we are going to use a react hook that will handle the communication between these two entities.
 
-// TOOD: Complete this code
+First create a new directory called `hooks`:
+
+```bash
+mkdir app/web3/hooks
+```
+
+Here we are going to store all our hooks that are going to be used inside of the app. Now lets create the hook that we need and lets call it `useWeb3Auth`.
+
+```bash
+touch app/hooks/use-web3-auth.ts
+```
+
+Lets add the following code to it:
+
+```javascript
+"use client";
+
+import { useAccount } from "wagmi";
+import { useWeb3Modal, useWeb3ModalEvents } from "@web3modal/wagmi/react";
+import { signIn, useSession, signOut } from "next-auth/react";
+import { useEffect, useCallback, useState } from "react";
+
+type Return = [
+  isConnected: boolean,
+  connect: () => Promise<void>,
+  disconnect: () => Promise<void>,
+];
+
+export const useWeb3Auth = (): Return => {
+  const event = useWeb3ModalEvents();
+  const { status } = useSession();
+  const { open } = useWeb3Modal();
+  const { isConnected, address } = useAccount();
+  const callbackUrl = "/swap";
+  const [isOk, setOk] = useState(false);
+
+  useEffect(() => {
+    if (status === "loading") return;
+    setOk(status === "authenticated");
+  }, [status]);
+
+  useEffect(() => {
+    const handleConnectSuccess = async () => {
+      try {
+        const { data: eventData } = event;
+        if (eventData.event === "CONNECT_SUCCESS") {
+          console.log("Connected!", address);
+          await signIn("credentials", { address, callbackUrl });
+        }
+      } catch (error) {
+        console.error("Error during sign-in:", error);
+      }
+    };
+
+    if (event && address) {
+      handleConnectSuccess().catch(console.error);
+    }
+  }, [event, address]);
+
+  const authenticate = useCallback(async () => {
+    try {
+      if (!isConnected) {
+        await open();
+      }
+
+      if (!isOk && isConnected) {
+        console.log("Address available, signing in", address);
+        await signIn("credentials", { address, callbackUrl });
+      }
+    } catch (error) {
+      console.log("Connect failed with error:", error);
+      window.alert(error);
+    }
+  }, [isOk, isConnected, address, open]);
+
+  const disconnect = async () => {
+    await signOut({ callbackUrl: "/" });
+  };
+
+  return [isOk, authenticate, disconnect];
+};
+
+```
+
+Whoooo wait that is a lot of code... I will explain it just stay tight.
+
+The hook is separated into 4 main parts:
+
+- `authenticate`: Handles the wallet connection.
+- `disconnect`: Removes the session.
+- `isConnected`: Returns if the user is connected or not.
+- `useEffect`: Listens if an user has been connected.
+
+Here is an detailed explanation by ChatGPT if you are interested in more detail what the hook does. [Conversation link](https://chatgpt.com/share/4d000c7b-2c55-483b-bce6-91e131e23064)
+
+### Okey but how do I use this hook?
+
+To actual use this hook lets create our own `Web3Button` which we are going to use to connect to an wallet. This button will have 2 modes connect and disconnect. The code for it would look something like this:
+
+Let create a components directory inside of app:
+
+```bash
+mkdir app/components
+```
+
+Create the Web3Button file:
+
+```bash
+touch app/component/web3-button.tsx
+```
+
+Add the following code to it:
+
+```javascript
+//app/component/web3-button.tsx
+"use client";
+
+import { useWeb3Auth } from "~/web3/hooks/use-web3-auth";
+
+export const Web3Button = () => {
+  const [isAuthenticated, connect, disconnect] = useWeb3Auth();
+
+  if (!isAuthenticated) {
+    return (
+      <button variant="default" onClick={connect}>
+        Connect Wallet
+      </button>
+    );
+  } else {
+    return (
+      <button variant="destructive" onClick={disconnect}>
+        Disconnect Wallet
+      </button>
+    );
+  }
+};
+```
+
+Lets use it inside of our `app/page.tsx`:
+
+```
+import { Web3Button } from "~/components/web3-button.tsx";
+
+export default function HomePage() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center bg-background text-white">
+      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+        <h1 className="text-5xl font-extrabold tracking-tight text-foreground sm:text-[5rem]">
+          My <span className="text-blue-500">d</span>App
+        </h1>
+
+        <Web3Button />
+      </div>
+    </main>
+  );
+}
+
+```
+
+## Results
+
+Here is the full app functioning with all the components:
+
+<div align="center">
+  <img
+    src="/assets/blog5.result.gif"
+    alt="An gif showing a dApp connect to a MetaMask wallet"
+    style={{
+      borderRadius: "25px",
+      maxWidth: "100%",
+    }}
+  />
+</div>
+
+## Conclusion
+
+In this blog we saw how to setup NextJS, Auth.js and Web3 to connect to an wallet as an authentication provider. I would say that compared to traditional providers such as OAuth or Email. Web3 provides an simple and easy to use way to connect to the dApps and provide both authorization and authentication.
+
+As always I was your host Mehdi and If you liked this article make sure to share as it would mean the world to me!
+
+Thank you for reading!
