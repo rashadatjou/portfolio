@@ -1,0 +1,26 @@
+.table-of-contents {
+  border: var(--size-border-width) solid var(--color-bg-border);
+  border-radius: var(--size-border-radius);
+  padding: var(--space-m);
+  background-color: var(--color-bg-body);
+  box-shadow: var(--shadow-card);
+}
+
+.toc-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.toc-list > li {
+  margin-bottom: 10px;
+  font-size: var(--size-font-s);
+}
+
+.toc-sublist {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.toc-sublist > li {
+  margin-bottom: 5px;
+}
