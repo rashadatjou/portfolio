@@ -15,7 +15,7 @@ import tos from "./tos.ts";
 
 # {meta.title}
 
-<time datetime={meta.date}>
+<time dateTime={meta.date}>
   {prettyPrintDate(meta.date, null, { dateStyle: "long" })}
 </time>
 
@@ -151,7 +151,7 @@ export default function ProtectedPage() {
 
 ## Web3 Integration
 
-## WAGMI?
+### WAGMI
 
 WAGMI is a collection of React hooks and utilities designed to help developers build Web3 applications with ease. It provides a streamlined and efficient way to interact with Ethereum and other EVM-compatible blockchains. By using WAGMI, developers can handle common Web3 tasks such as connecting wallets, signing messages, and managing blockchain interactions.
 
@@ -393,7 +393,7 @@ Place this component inside of your `app/route.tsx` (if you encounter any lintin
 
 Great we have a basic NextJS app powered by Web3! Lets make it even better in the next couple of steps by adding an custom button + hook instead.
 
-## AuthJS Credentials
+## AuthJS
 
 To connect the Web3 portion with our NextJS app we are going to use AuthJS which will provide a session mechanisms that we can use on both the server and client. We can than build UI that can be protected and shown only to users who have connected to our app.
 
@@ -502,7 +502,7 @@ It is a bit complicated but when you have it setup it works like a charm.
 
 This method will allow us to get the current Auth.js session inside of our server side code and components.
 
-### Web3 + AuthJS
+### Web3 with AuthJS
 
 Now its time to connect our Web3 side with our Auth.js side e2e. To accomplish this we are going to use a react hook that will handle the communication between these two entities.
 
