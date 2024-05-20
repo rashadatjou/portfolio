@@ -383,4 +383,110 @@ Place this component inside of your `app/route.tsx` (if you encounter any lintin
 
 ![Show Wallet](./nexjs-web3-wallet.gif)
 
-Great we have an basic have an NextJS app powered by Web3! Lets make it even better in the next couple of steps.
+Great we have a basic NextJS app powered by Web3! Lets make it even better in the next couple of steps by adding an custom button + hook instead.
+
+## AuthJS Credentials
+
+To connect the Web3 portion with our NextJS app we are going to use AuthJS which will provide a session mechanisms that we can use on both the server and client. We can than build UI that can be protected and shown only to users who have connected to our app.
+
+### Setup AuthJS
+
+Setting up Auth.js is pretty straight forward. We are going to create a server side file that is handling our Auth.js setup and is going expose both our server and client side code that we can access.
+
+Create a new directory called: `server` and inside of it a file called `auth.ts`:
+
+```bash
+mkdir app/server
+```
+
+```bash
+touch app/server/auth.ts
+```
+
+Add the following code to `auth.ts`
+
+```javascript
+import Credentials from "next-auth/providers/credentials";
+import { getServerSession } from "next-auth";
+import { isAddress } from "ethers/address";
+
+import type { DefaultSession,  NextAuthOptions, } from "next-auth"
+
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    address?: string;
+  }
+}
+
+export const authOptions: NextAuthOptions = {
+  callbacks: {
+    session: ({ session, token }) => {
+      console.log("token", token);
+      session.address = token.sub;
+      return session;
+    },
+  },
+  providers: [
+    Credentials({
+      name: "Credentials",
+      credentials: {
+        address: {
+          label: "Address",
+          type: "text",
+          placeholder: "0x0",
+        },
+      },
+      async authorize(credentials) {
+        console.log("credentials", credentials);
+
+        if (!credentials?.address) {
+          console.error("No address with credentials");
+          return null;
+        }
+
+        if (!isAddress(credentials?.address)) {
+          console.error("Invalid address with credentials");
+          return null;
+        }
+
+        return {
+          id: credentials?.address,
+        };
+      },
+    }),
+  ],
+  session: {
+    strategy: "jwt",
+  },
+  pages: {
+    signIn: "/",
+    signOut: "/",
+    error: "/",
+    newUser: "/",
+  },
+};
+
+export const getServerAuthSession = () => getServerSession(authOptions);
+```
+
+Lets disect the code quickly so we understand what we added:
+
+`authOptions`:
+
+This object is our main config that is used by Auth.js. It sets up Auth.js using a Credentials provider that instead of using an email and password creates an session using an Web3 wallet address. We just validate that the address has is in a valid format. You can add further checks here but this is good for now. I wont go into detail what `callbacks`, `providers`, `session` and `pages` do here but in an nutshell they allow us to get an wallet address inside of our `callbacks` where we validate it and then then pass to our `sessions` which we then expose an `session.address` property that we can use inside of our app.
+
+Here is an quick diagram of how this is looking like:
+
+![Auth Flow](next-js-web3-flow.svg)
+
+It is a bit complicated but when you have it setup it works like a charm.
+
+`getServerAuthSession`:
+
+This method will allow us to get the current Auth.js session inside of our server side code and components.
+
+### Web3 + AuthJS
+
+Now its time to connect our Web3 side with our Auth.js side e2e. To accomplish this we are going to use a react hook that will handle the communication between these two entities.
+
+// TOOD: Complete this code
