@@ -5,11 +5,6 @@ export default [
     data: [],
   },
   {
-    sectionTitle: "SIWE?",
-    sectionLink: "#what-is-siwe",
-    data: [],
-  },
-  {
     sectionTitle: "Pages",
     sectionLink: "#components-and-pages",
     data: [

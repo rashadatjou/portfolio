@@ -165,7 +165,7 @@ npm install wagmi viem@2.x @tanstack/react-query
 
 • [TanStack Query](https://tanstack.com/query/v5) is an async state manager that handles requests, caching, and more.
 
-### Setup WAGMI Config
+### Setup WAGMI
 
 Create a new directory inside of `src/` called `web3/`. Here we are going to host all our Web3 related goodies.
 
@@ -221,7 +221,7 @@ export default Provider;
 export type ProviderProps = Props;
 ```
 
-Now that looks a lot better doesn't it? We have completely separated our WAGMI code so that id doesn't get in the way...
+Now that looks a lot better clean doesn't it? We have completely separated our WAGMI code so that id doesn't get in the way...
 
 We are going to create a config and pass it to the WAGMI provider later on but for now we have a clean provider we can use inside of our dApp.
 
@@ -369,6 +369,18 @@ export default function RootLayout({
 
 That is it. We can use all `web3modal` related data inside of our dApp without any hassle. In the next steps we are going to create an simple and easy to use hook that will handle the wallet connection.
 
-## SIWE?
+### Show the modal
 
-SIWE (Sign-In With Ethereum) is an authentication standard that allows users to sign in to applications using their Ethereum wallet. It ensures that the authentication process is secure and decentralized by leveraging the cryptographic signatures provided by Ethereum wallets.
+Before we continue with our implementation lets just validate that the above code actually works. We are going to do that by actually confirming that the modal is being shown and can connect to our desired wallet.
+
+A great thing about the `web3modal` is that is provides web components that can be used inside of our react app.
+
+Place this component inside of your `app/route.tsx` (if you encounter any linting issue disable them for now):
+
+```HTML
+<w3m-button />
+```
+
+![Show Wallet](./nexjs-web3-wallet.gif)
+
+Great we have an basic have an NextJS app powered by Web3! Lets make it even better in the next couple of steps.
