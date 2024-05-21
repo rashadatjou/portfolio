@@ -154,3 +154,8 @@ release/
 
 # macOS
 .DS_Store
+
+# Functions
+metafile.css.json
+metafile.js.json
+metafile.server.json
