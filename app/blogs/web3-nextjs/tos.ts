@@ -12,11 +12,7 @@ export default [
   {
     sectionTitle: "Pages",
     sectionLink: "#pages",
-    data: [
-      { title: "Landing", link: "#landing" },
-      { title: "Auth", link: "#auth" },
-      { title: "Protected", link: "#protected" },
-    ],
+    data: [],
   },
   {
     sectionTitle: "Web3 Integration",
