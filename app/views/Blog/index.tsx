@@ -2,9 +2,9 @@
  * File: /app/views/Blog/index.tsx
  * Project: portfolio
  * Created: Tuesday, 22nd November 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 

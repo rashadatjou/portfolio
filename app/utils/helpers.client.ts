@@ -2,9 +2,9 @@
  * File: /app/utils/client-helper.ts
  * Project: portfolio
  * Created: Tuesday, 4th October 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 

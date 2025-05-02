@@ -2,9 +2,9 @@
  * File: /app/views/Main/index.tsx
  * Project: portfolio
  * Created: Thursday, 17th November 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 
@@ -16,17 +16,12 @@ import switchCssPath from "~/styles/element/switch.css";
 import linkListCssPath from "~/styles/element/link-list.css";
 
 import { LinkDescriptor } from "@remix-run/cloudflare";
+import { useTranslation } from "react-i18next";
 
 import Settings from "./element/Settings";
 import LinkList, { LinkListItem } from "~/components/LinkList";
-import { useTranslation } from "react-i18next";
 import Footer from "~/views/Intro/element/Footer";
-import { TFunction } from "i18next";
-
-// - Types
-type IntroHelloProps = {
-  translate?: TFunction<"translation", undefined>;
-};
+import MovedDiscloser from "~/components/MovedDiscloser";
 
 // - Const
 const sourceCodeData: LinkListItem = {
@@ -36,27 +31,19 @@ const sourceCodeData: LinkListItem = {
 
 const linkListData: LinkListItem[] = [
   { name: "intro.link.1", href: "/blog" },
-  { name: "intro.link.2", href: "mailto:mehdi@rashadatjou.com" },
+  { name: "intro.link.2", href: "mailto:daniel.reshad@proton.me" },
   { name: "intro.link.3", href: "/about" },
 ];
 
 // - Components
-const IntroHello = ({ translate }: IntroHelloProps) => (
-  <>
-    <h1>👋🏽</h1>
-    <h1>{translate?.("intro.title")}</h1>
-    <p>{translate?.("intro.summary")}</p>
-  </>
-);
-
 const IntroView = () => {
   const { t } = useTranslation();
   return (
     <div className="intro">
       <Settings />
       <div className="intro-content">
-        <IntroHello translate={t} />
         <LinkList translate={t} buttonLike data={linkListData} />
+        <MovedDiscloser />
       </div>
       <Footer title={t(sourceCodeData.name)} href={sourceCodeData.href} />
     </div>

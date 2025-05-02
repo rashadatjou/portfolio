@@ -2,9 +2,9 @@
  * File: /app/constants/closed-source.ts
  * Project: portfolio
  * Created: Saturday, 10th December 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 
@@ -13,7 +13,7 @@ import { Project } from "~/typings/projects";
 const projectList: Project[] = [
   {
     name: "Rep Rise",
-    href: "https://apps.apple.com/us/app/rep-rise-ultimate-workouts-ar/id1246695736",
+    href: "https://apps.apple.com/us/app/rep-rise-home-workout-buddy/id1246695736",
     tags: ["iOS", "App", "ARKit", "Fitness"],
   },
   {
@@ -38,27 +38,27 @@ const projectList: Project[] = [
   },
   {
     name: "Open Sesame - Network Port Surveillance",
-    href: "https://github.com/rashadatjou/open-sesame",
+    href: "https://github.com/br3akzero/open-sesame",
     tags: ["macOS", "Security", "Network"],
   },
   {
     name: "Professional Portfolio Website",
-    href: "https://github.com/rashadatjou/portfolio",
+    href: "https://github.com/br3akzero/portfolio",
     tags: ["Web", "Portfolio", "Remix.run", "CSS"],
   },
   {
     name: "Themeit - Web Theme Switcher",
-    href: "https://github.com/rashadatjou/themeit",
+    href: "https://github.com/br3akzero/themeit",
     tags: ["Web", "CSS", "UX", "Framework"],
   },
   {
     name: "Google IMA SDK for iOS & tvOS",
-    href: "https://github.com/rashadatjou/google-ima-sdk-xc",
+    href: "https://github.com/br3akzero/google-ima-sdk-xc",
     tags: ["iOS", "tvOS", "SDK", "Ad"],
   },
   {
     name: "LocoPlugin - Localization Tool for Xcode",
-    href: "https://github.com/rashadatjou/LocoPlugin",
+    href: "https://github.com/br3akzero/LocoPlugin",
     tags: ["Xcode", "Localization", "Plugin", "Loco"],
   },
   {

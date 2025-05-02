@@ -4,7 +4,7 @@
  * Created: Friday, 13th January 2023
  * Author: rashadatjou
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 

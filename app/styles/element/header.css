@@ -2,17 +2,17 @@
  * File: /app/styles/element/header.css
  * Project: portfolio
  * Created: Tuesday, 6th December 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 
 .nav-header {
-  --size-nav-height: calc(var(--space-l) + var(--size-font-l));
+  --size-nav-height: calc(var(--space-xl) + var(--size-font-xl));
 
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
   align-items: center;
   height: var(--size-nav-height);
   left: 0;

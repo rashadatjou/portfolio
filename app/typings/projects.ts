@@ -2,9 +2,9 @@
  * File: /app/typings/projects.ts
  * Project: portfolio
  * Created: Wednesday, 14th December 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 

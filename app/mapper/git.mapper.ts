@@ -2,9 +2,9 @@
  * File: /app/mapper/git.mapper.ts
  * Project: portfolio
  * Created: Thursday, 8th December 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 

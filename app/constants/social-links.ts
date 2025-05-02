@@ -2,31 +2,16 @@
  * File: /app/constants/social-links.ts
  * Project: portfolio
  * Created: Saturday, 10th December 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 
 export default [
-  // {
-  //   platform: "Twitter",
-  //   username: "rashadatjou",
-  //   href: "https://twitter.com/rashadatjou",
-  // },
   {
     platform: "Github",
-    username: "rashadatjou",
-    href: "https://github.com/rashadatjou",
-  },
-  // {
-  //   platform: "Instagram",
-  //   username: "rashadatjou",
-  //   href: "https://instagram.com/rashadatjou",
-  // },
-  {
-    platform: "LinkedIn",
-    username: "rashadatjou",
-    href: "https://www.linkedin.com/in/mehdi-rashadatjou-114a77266",
-  },
+    username: "Break Zero",
+    href: "https://github.com/br3akzero",
+  }
 ];

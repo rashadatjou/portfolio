@@ -40,9 +40,8 @@ type LoaderData = {
 // - Route Module API
 export const loader: LoaderFunction = async ({ request }) => {
   const locale = await getLocale(request);
-  const translate = await i18nRemix.getFixedT(request, "base");
-  const title = "@rashadatjou" // translate("meta.title");
-  const description = "Developer Friendly." //translate("meta.description");
+  const title = "Break Zero";
+  const description = "Human Developer";
 
   const headers = new Headers();
   headers.set("Set-Cookie", await i18nCookie.serialize(locale));

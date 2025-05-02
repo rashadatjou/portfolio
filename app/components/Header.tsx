@@ -2,9 +2,9 @@
  * File: /app/components/NavHeader.tsx
  * Project: portfolio
  * Created: Monday, 5th December 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 
@@ -15,6 +15,7 @@
 
 import type { PropsWithChildren } from "react";
 import cns from "classnames";
+import MovedDiscloser from "~/components/MovedDiscloser";
 
 // - Type
 type Props = PropsWithChildren<{
@@ -23,7 +24,12 @@ type Props = PropsWithChildren<{
 
 // - Component
 function NavHeader({ children, position = "fixed" }: Props) {
-  return <div className={cns(["nav-header", position])}>{children}</div>;
+  return (
+    <div className={cns(["nav-header", position])}>
+      {children}
+      <MovedDiscloser />
+    </div>
+  );
 }
 
 // - Exports

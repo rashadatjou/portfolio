@@ -2,9 +2,9 @@
  * File: /app/views/Main/element/Footer.tsx
  * Project: portfolio
  * Created: Tuesday, 10th January 2023
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 

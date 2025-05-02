@@ -2,9 +2,9 @@
  * File: /app/views/Intro/element/SettingForm.tsx
  * Project: portfolio
  * Created: Thursday, 17th November 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 

@@ -4,7 +4,7 @@
  * Created: Thursday, 16th May 2024
  * Author: rashadatjou
  * -----
- * Copyright 2024, ©Mehdi Rashadatjou
+ * Copyright 2024, Break Zero
  * -----
  */
 

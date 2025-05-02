@@ -2,9 +2,9 @@
  * File: /app/views/About/index.tsx
  * Project: portfolio
  * Created: Tuesday, 6th December 2022
- * Author: Denpex
+ * Author: Break Zero
  * -----
- * Copyright 2022, ©Mehdi Rashadatjou
+ * Copyright 2022, Break Zero
  * -----
  */
 
@@ -54,7 +54,7 @@ const AboutView = ({ gitUser }: Props) => {
       </NavHeader>
       <div className="about__content">
         <Profile
-          name={gitUser?.name}
+          name="Break Zero"
           avatarUrl={profilePictureRoute}
           publicGistCount={gitUser?.publicGistCount}
           publicRepoCount={gitUser?.publicRepoCount}
